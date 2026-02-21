@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page Not Found | Nisarth Patel</title>
+    <meta name="description" content="This page doesn't exist. Head back to Nisarth Patel's homepage.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+</head>
+
+<body>
+    <div class="grain-overlay" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-outline" aria-hidden="true"><span class="cursor-label"></span></div>
+
+    <a href="https://wa.me/917016353896" class="whatsapp-fab" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.792 9.792 0 01-5.016-1.382l-.36-.214-3.732.978.994-3.638-.235-.374A9.79 9.79 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z" />
+        </svg>
+        <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+    </a>
+
+    <nav class="nav scrolled" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo"><span class="nav-logo-mark">NP</span><span
+                    class="nav-logo-name">Nisarth Patel</span></a>
+            <a href="contact.html" class="nav-cta desktop-only">Let's Talk</a>
+        </div>
+    </nav>
+
+    <main class="not-found" role="main">
+        <div class="not-found-number">
+            <span class="glitch display" data-text="404" aria-label="404 error">404</span>
+        </div>
+        <p class="not-found-message">Looks like this page got lost in the algorithm.</p>
+        <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:var(--space-2xl);">The URL you're looking
+            for doesn't exist here.</p>
+        <div class="not-found-links">
+            <a href="index.html" class="btn btn-primary">Go back home <span class="arrow-icon"
+                    aria-hidden="true">&rarr;</span></a>
+            <a href="contact.html" class="btn btn-outline">Contact me</a>
+        </div>
+        <div class="not-found-nav" style="margin-top:var(--space-3xl);">
+            <a href="work.html">Work</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="process.html">Process</a>
+        </div>
+    </main>
+
+    <script src="assets/js/cursor.js" defer></script>
+</body>
+
+</html>
