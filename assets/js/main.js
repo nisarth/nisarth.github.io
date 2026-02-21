@@ -3,6 +3,23 @@
    Lenis · Navigation · Loader · Page Transitions · FAQ · Forms
    ============================================================ */
 
+/* ── Google Analytics (auto-loaded on every page via this file) ── */
+(function () {
+    var GA_ID = 'G-372JGPFET7';
+    // Inject the gtag.js script tag
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    // Initialise dataLayer
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+})();
+
+
 (function () {
     'use strict';
 
