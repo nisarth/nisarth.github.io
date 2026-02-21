@@ -107,8 +107,14 @@
         // Mark current page link
         const currentPath = window.location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll('.nav-link, .nav-overlay-link').forEach((link) => {
-            const href = link.getAttribute('href');
-            if (href && href === currentPath) {
+            let href = link.getAttribute('href');
+            if (!href) return;
+
+            // Normalize index.html and root path
+            const isHomePath = (currentPath === 'index.html' || currentPath === '');
+            const isHomeHref = (href === './' || href === 'index.html');
+
+            if (href === currentPath || (isHomePath && isHomeHref)) {
                 link.style.color = 'var(--accent-primary)';
             }
         });
