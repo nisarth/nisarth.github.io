@@ -1,0 +1,6 @@
+# Robots.txt for nisarthpatel.github.io
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nisarthpatel.github.io/sitemap.xml
