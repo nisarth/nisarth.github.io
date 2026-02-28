@@ -1,0 +1,57 @@
+# Nisarth Patel — Digital Growth Specialist
+
+> This file helps AI tools understand this website. For more, visit https://nisarthpatel.github.io/
+
+## About
+
+Nisarth Patel is a freelance digital growth specialist based in Ahmedabad, Gujarat, India. He has 4+ years of experience helping businesses grow through SEO, AI automation, web development, and digital marketing. He works with startups, local businesses, and growing brands across India and internationally.
+
+## Services Offered
+
+- **SEO Consulting** – Technical audits, keyword strategy, on-page/off-page optimisation, monthly performance tracking
+- **AEO (Answer Engine Optimisation)** – FAQ schema, featured snippet optimisation, direct-answer content
+- **GEO (Generative Engine Optimisation)** – Getting businesses cited by ChatGPT, Perplexity, Gemini, and AI Overviews
+- **Google My Business Optimisation** – Profile setup, category research, review strategy, local citation building
+- **Website Performance Optimisation** – Core Web Vitals, image compression, caching, mobile speed
+- **Online Reputation Management** – Review monitoring, brand mentions, negative review strategy
+- **n8n Workflow Automation** – Custom workflow design, multi-app integrations, self-hosted or cloud deployment
+- **AI-Powered Business Automation** – AI-driven decision logic, OpenAI/LLM integration, automated reporting
+- **Custom AI Tool Integration** – LLM API integration, prompt engineering, RAG and knowledge base setup
+- **Zapier / Make.com Automation** – Multi-app workflows, API connections, CRM sync
+- **AI Chatbot Setup** – Website and WhatsApp chatbots, custom knowledge base, CRM integration
+- **Marketing Automation** – Email sequences, WhatsApp follow-ups, lead nurture pipelines
+- **Website Development** – Custom design, SEO-ready, mobile-first, performance optimised
+- **App Development** – Web apps, admin panels, dashboards, API integrations
+- **UI/UX Optimisation** – Conversion rate optimisation, heatmap analysis, A/B testing
+- **Digital Marketing** – Google Ads, Meta Ads, content marketing, email campaigns
+- **Social Media Management** – Content planning, post creation, community engagement
+- **Lead Generation** – Lead funnel design, landing page optimisation, CRM tracking
+- **Email Marketing** – Newsletter strategy, automated sequences, list segmentation
+
+## Contact
+
+- **Email**: pnisarth@gmail.com
+- **WhatsApp**: +91 7016353896
+- **Location**: Ahmedabad, Gujarat, India
+- **LinkedIn**: https://www.linkedin.com/in/nisarthpatel/
+- **Twitter/X**: https://x.com/nisarthpatel_
+- **GitHub**: https://github.com/nisarth
+
+## Site Pages
+
+- Homepage: https://nisarthpatel.github.io/
+- Services: https://nisarthpatel.github.io/services.html
+- Portfolio/Work: https://nisarthpatel.github.io/work.html
+- About: https://nisarthpatel.github.io/about.html
+- Process: https://nisarthpatel.github.io/process.html
+- Blog: https://nisarthpatel.github.io/blog.html
+- Contact: https://nisarthpatel.github.io/contact.html
+
+## Key Differentiators
+
+- Specialises in both traditional SEO and emerging disciplines (AEO, GEO)
+- Builds AI automation workflows using n8n, Make.com, and Zapier
+- Combines SEO expertise with web development for performance-first sites
+- Data-driven approach with transparent, plain-language reporting
+- Free website audit offered (SEO health, page speed, UX)
+- Based in India, works with clients internationally

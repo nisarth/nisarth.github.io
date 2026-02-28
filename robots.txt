@@ -4,3 +4,7 @@ Allow: /
 
 # Sitemap
 Sitemap: https://nisarthpatel.github.io/sitemap.xml
+
+# AI/LLM Information
+# See https://llmstxt.org/ for more info
+LLMs: https://nisarthpatel.github.io/llms.txt
