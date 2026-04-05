@@ -123,6 +123,7 @@
 .service-card:hover {
     border-color: var(--border-accent);
     box-shadow: var(--glow);
+    transform: translateY(-4px);
 }
 
 .service-card:hover::before {
@@ -137,6 +138,7 @@
 .service-card.ai-card:hover {
     border-color: rgba(191, 255, 0, 0.4);
     box-shadow: 0 0 40px rgba(191, 255, 0, 0.1);
+    transform: translateY(-4px);
 }
 
 .service-number {
