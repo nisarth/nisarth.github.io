@@ -8,7 +8,9 @@
     <meta name="theme-color" content="#0a0a0a">
     <title>404 — Page Not Found | Nisarth Patel</title>
     <meta name="description" content="This page doesn't exist. Head back to Nisarth Patel's homepage.">
-    <link rel="icon" href="https://nisarthpatel.github.io/assets/images/favicon.png" type="image/png">
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon.svg">
+    <link rel="apple-touch-icon" href="./assets/images/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,9 +20,21 @@
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="stylesheet" href="assets/css/components.css">
 
+    <noscript>
+        <style>
+            #loader, .cursor-dot, .cursor-outline, .grain-overlay { display: none !important; }
+            .service-card, .work-card, .blog-card, .portfolio-item, .section-heading,
+            .about-teaser, .about-teaser-visual, .about-teaser-text, .reveal-up,
+            .timeline-item, .process-step, .ai-feature-card, .value-card, .audit-banner,
+            .footer, .tech-item, .stat-item, .nav, .hero-word-inner, .hero-sub, .hero-ctas,
+            .hero-badge, .scroll-indicator, .contact-info-item, .faq-item { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+            #page-transition { display: none !important; }
+        </style>
+    </noscript>
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="grain-overlay" aria-hidden="true"></div>
     <div class="cursor-dot" aria-hidden="true"></div>
     <div class="cursor-outline" aria-hidden="true"><span class="cursor-label"></span></div>
@@ -65,6 +79,8 @@
     </main>
 
     <script src="assets/js/cursor.js" defer></script>
+    <button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
+    <div class="cookie-banner" role="alert"><p>This site uses cookies for analytics. Your data helps improve the experience.</p><div class="cookie-actions"><button class="btn btn-primary" data-cookie="accept" style="padding:0.5rem 1rem;font-size:0.8rem;border-radius:100px;background:var(--accent-primary);color:var(--bg-primary);font-weight:600;">Accept</button><button data-cookie="decline" style="padding:0.5rem 1rem;font-size:0.8rem;color:var(--text-secondary);background:none;border:1px solid var(--border);border-radius:100px;cursor:pointer;">Decline</button></div></div>
 </body>
 
 </html>

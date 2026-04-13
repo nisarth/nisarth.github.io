@@ -1,0 +1,387 @@
+[
+  {
+    "title": "Technical SEO Audit Checklist for 2026",
+    "url": "blog/technical-seo-audit-checklist-2026.html",
+    "excerpt": "A comprehensive technical SEO audit checklist covering crawlability, indexation, site speed, and structured data. Follow this step-by-step guide to identify and fix critical SEO issues.",
+    "category": "seo",
+    "readingTime": "12 min"
+  },
+  {
+    "title": "On-Page SEO Guide: Optimize Every Element",
+    "url": "blog/on-page-seo-guide.html",
+    "excerpt": "Master on-page SEO with proven techniques for title tags, meta descriptions, headers, and content optimization. Learn how to structure pages for maximum search visibility.",
+    "category": "seo",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Keyword Research Strategy That Drives Results",
+    "url": "blog/keyword-research-strategy.html",
+    "excerpt": "Learn a systematic keyword research strategy to uncover high-value opportunities. Discover how to analyze search intent, competition, and traffic potential.",
+    "category": "seo",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "Link Building Strategies for Sustainable Growth",
+    "url": "blog/link-building-strategies.html",
+    "excerpt": "Explore ethical and effective link building strategies that earn high-quality backlinks. From digital PR to content-driven outreach, build authority the right way.",
+    "category": "seo",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Core Web Vitals Guide: Improve Page Experience",
+    "url": "blog/core-web-vitals-guide.html",
+    "excerpt": "Understand and optimize Core Web Vitals including LCP, INP, and CLS. This guide covers measurement tools, common issues, and practical fixes for better performance.",
+    "category": "seo",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "SEO for Startups: A Practical Growth Framework",
+    "url": "blog/seo-for-startups.html",
+    "excerpt": "A practical SEO framework designed for startups with limited budgets. Learn how to prioritize efforts, build organic traffic, and compete with established players.",
+    "category": "seo",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "Content Silo Structure for Topical Authority",
+    "url": "blog/content-silo-structure.html",
+    "excerpt": "Learn how to build content silos that establish topical authority and improve rankings. Organize your site architecture for both users and search engines.",
+    "category": "seo",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "Schema Markup Guide: Structured Data for SEO",
+    "url": "blog/schema-markup-guide.html",
+    "excerpt": "Implement schema markup to enhance your search listings with rich results. This guide covers JSON-LD implementation for articles, products, FAQs, and more.",
+    "category": "seo",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Common SEO Mistakes Businesses Make",
+    "url": "blog/seo-mistakes-businesses-make.html",
+    "excerpt": "Avoid the most common SEO mistakes that hurt rankings and waste resources. Learn what pitfalls to watch for and how to correct them quickly.",
+    "category": "seo",
+    "readingTime": "8 min"
+  },
+  {
+    "title": "Search Intent Optimization: Match What Users Want",
+    "url": "blog/search-intent-optimization.html",
+    "excerpt": "Align your content with search intent to improve rankings and engagement. Understand informational, navigational, commercial, and transactional intent types.",
+    "category": "seo",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "How to Measure SEO ROI Effectively",
+    "url": "blog/seo-roi-measurement.html",
+    "excerpt": "Learn how to measure and report SEO ROI with the right metrics and attribution models. Connect organic search efforts to real business outcomes.",
+    "category": "seo",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Image SEO Optimization: A Complete Guide",
+    "url": "blog/image-seo-optimization.html",
+    "excerpt": "Optimize images for search with proper alt text, file naming, compression, and lazy loading. Improve page speed and drive traffic from image search results.",
+    "category": "seo",
+    "readingTime": "8 min"
+  },
+  {
+    "title": "What Is AEO? Answer Engine Optimization Explained",
+    "url": "blog/what-is-aeo.html",
+    "excerpt": "Answer Engine Optimization (AEO) focuses on getting your content featured in AI-generated answers. Learn how AEO works and why it matters for modern search.",
+    "category": "aeo",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "How to Win Featured Snippets in Search Results",
+    "url": "blog/featured-snippets-guide.html",
+    "excerpt": "Learn proven strategies to earn featured snippets and position zero in Google. Structure your content to answer questions directly and concisely.",
+    "category": "aeo",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "FAQ Schema Optimization for Better Visibility",
+    "url": "blog/faq-schema-optimization.html",
+    "excerpt": "Implement FAQ schema markup to expand your search listings and improve click-through rates. Step-by-step instructions with real-world examples.",
+    "category": "aeo",
+    "readingTime": "8 min"
+  },
+  {
+    "title": "Voice Search Optimization: Prepare for Conversational Queries",
+    "url": "blog/voice-search-optimization.html",
+    "excerpt": "Optimize your content for voice search by targeting conversational queries and natural language patterns. Stay ahead as voice assistants reshape search behavior.",
+    "category": "aeo",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "AEO vs SEO: Understanding the Key Differences",
+    "url": "blog/aeo-vs-seo.html",
+    "excerpt": "Compare Answer Engine Optimization and traditional SEO to understand how they complement each other. Learn when to prioritize each approach for maximum visibility.",
+    "category": "aeo",
+    "readingTime": "8 min"
+  },
+  {
+    "title": "Zero-Click Search Strategy: Thrive Without the Click",
+    "url": "blog/zero-click-search-strategy.html",
+    "excerpt": "Adapt your strategy for zero-click searches where answers appear directly in search results. Turn SERP features into brand visibility and authority opportunities.",
+    "category": "aeo",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "What Is GEO? Generative Engine Optimization Explained",
+    "url": "blog/what-is-geo.html",
+    "excerpt": "Generative Engine Optimization (GEO) is the practice of optimizing content for AI-powered search engines. Learn the fundamentals and why GEO is essential.",
+    "category": "geo",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "How to Get Mentioned by ChatGPT and AI Assistants",
+    "url": "blog/get-mentioned-by-chatgpt.html",
+    "excerpt": "Discover actionable strategies to get your brand and content cited by ChatGPT, Gemini, and other AI assistants. Build the authority signals that AI models rely on.",
+    "category": "geo",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "GEO Strategy Guide: Optimize for AI Search",
+    "url": "blog/geo-strategy-guide.html",
+    "excerpt": "A complete GEO strategy guide covering content structure, citation building, and authority signals for AI-powered search engines and LLM-based discovery.",
+    "category": "geo",
+    "readingTime": "12 min"
+  },
+  {
+    "title": "AI Overview Optimization: Appear in Google AI Results",
+    "url": "blog/ai-overview-optimization.html",
+    "excerpt": "Learn how to optimize your content to appear in Google AI Overviews. Understand the ranking factors and content formats that AI summaries prefer.",
+    "category": "geo",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Entity SEO and Knowledge Graph Optimization",
+    "url": "blog/entity-seo-knowledge-graph.html",
+    "excerpt": "Build your entity presence in knowledge graphs to improve visibility in both traditional and AI-powered search. Learn entity-based SEO techniques and structured data strategies.",
+    "category": "geo",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "LLMs.txt and AI Optimization for Your Website",
+    "url": "blog/llms-txt-ai-optimization.html",
+    "excerpt": "Learn how to implement llms.txt and optimize your website for large language model crawlers. Make your content more accessible to AI systems.",
+    "category": "geo",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "GEO for Local Business: AI Visibility That Matters",
+    "url": "blog/geo-for-local-business.html",
+    "excerpt": "Apply Generative Engine Optimization strategies to local businesses. Get your services recommended by AI assistants when users ask for local solutions.",
+    "category": "geo",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "n8n Automation Guide: Build Workflows Without Code",
+    "url": "blog/n8n-automation-guide.html",
+    "excerpt": "Get started with n8n to build powerful automation workflows without coding. This guide covers setup, nodes, triggers, and real business use cases.",
+    "category": "ai-automation",
+    "readingTime": "12 min"
+  },
+  {
+    "title": "n8n vs Zapier: Which Automation Tool Is Right for You?",
+    "url": "blog/n8n-vs-zapier.html",
+    "excerpt": "Compare n8n and Zapier across pricing, features, flexibility, and use cases. Find the right automation platform for your business needs and technical comfort level.",
+    "category": "ai-automation",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "AI Chatbot Setup Guide for Business Websites",
+    "url": "blog/ai-chatbot-setup-guide.html",
+    "excerpt": "Set up an AI-powered chatbot on your website to handle customer inquiries and capture leads. Step-by-step instructions from planning to deployment.",
+    "category": "ai-automation",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "AI Lead Generation Automation: Capture More Leads",
+    "url": "blog/ai-lead-generation-automation.html",
+    "excerpt": "Automate your lead generation pipeline with AI-powered tools and workflows. From prospecting to qualification, reduce manual effort and increase conversions.",
+    "category": "ai-automation",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "CRM Automation Workflows That Save Hours Weekly",
+    "url": "blog/crm-automation-workflows.html",
+    "excerpt": "Build CRM automation workflows to eliminate repetitive tasks and keep your pipeline organized. Learn practical automations for follow-ups, scoring, and reporting.",
+    "category": "ai-automation",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "AI Content Workflow: From Ideation to Publication",
+    "url": "blog/ai-content-workflow.html",
+    "excerpt": "Streamline your content creation process with AI-assisted workflows. Learn how to use AI tools for research, drafting, editing, and distribution efficiently.",
+    "category": "ai-automation",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "Make.com Automation Guide for Business Processes",
+    "url": "blog/make-com-automation-guide.html",
+    "excerpt": "Master Make.com (formerly Integromat) to automate complex business processes visually. Build multi-step scenarios connecting your favorite apps and services.",
+    "category": "ai-automation",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "AI Email Marketing Automation That Converts",
+    "url": "blog/ai-email-marketing-automation.html",
+    "excerpt": "Leverage AI to automate email marketing campaigns with smart segmentation, personalization, and send-time optimization. Drive higher open rates and conversions.",
+    "category": "ai-automation",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Website Speed Optimization: A Performance Playbook",
+    "url": "blog/website-speed-optimization.html",
+    "excerpt": "Speed up your website with proven optimization techniques covering caching, code minification, image compression, and server configuration best practices.",
+    "category": "web-development",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Mobile-First Web Design: Build for the Majority",
+    "url": "blog/mobile-first-web-design.html",
+    "excerpt": "Design and develop websites with a mobile-first approach for better user experience and SEO. Learn responsive patterns and mobile-specific optimizations.",
+    "category": "web-development",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "Landing Page Conversion Optimization Techniques",
+    "url": "blog/landing-page-conversion.html",
+    "excerpt": "Increase landing page conversions with data-driven design and copy techniques. Learn about CTAs, social proof, form optimization, and A/B testing strategies.",
+    "category": "web-development",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Web Accessibility Guide: Build an Inclusive Web",
+    "url": "blog/web-accessibility-guide.html",
+    "excerpt": "Make your website accessible to all users by following WCAG guidelines. Cover semantic HTML, keyboard navigation, screen readers, and color contrast requirements.",
+    "category": "web-development",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "Static Site Performance: Speed and Simplicity",
+    "url": "blog/static-site-performance.html",
+    "excerpt": "Explore why static sites deliver superior performance and how to build them effectively. Compare static site generators and hosting solutions for fast delivery.",
+    "category": "web-development",
+    "readingTime": "8 min"
+  },
+  {
+    "title": "Progressive Web Apps Guide: The Best of Web and Mobile",
+    "url": "blog/progressive-web-apps-guide.html",
+    "excerpt": "Build Progressive Web Apps that work offline, load instantly, and feel native. Learn about service workers, app manifests, and PWA best practices.",
+    "category": "web-development",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "Google Ads Optimization: Maximize Your Ad Spend",
+    "url": "blog/google-ads-optimization.html",
+    "excerpt": "Optimize your Google Ads campaigns for better ROI with smart bidding, audience targeting, ad copy testing, and quality score improvements.",
+    "category": "digital-marketing",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Content Marketing Strategy for Sustainable Growth",
+    "url": "blog/content-marketing-strategy.html",
+    "excerpt": "Build a content marketing strategy that attracts, engages, and converts your target audience. From planning to measurement, create content that drives business results.",
+    "category": "digital-marketing",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "Measuring Social Media ROI for Your Business",
+    "url": "blog/social-media-roi.html",
+    "excerpt": "Learn how to measure and improve social media ROI with the right metrics and tracking tools. Connect social efforts to tangible business outcomes.",
+    "category": "digital-marketing",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "Email Marketing Strategy That Builds Relationships",
+    "url": "blog/email-marketing-strategy.html",
+    "excerpt": "Develop an email marketing strategy focused on building subscriber relationships and driving conversions. Cover list building, segmentation, and campaign optimization.",
+    "category": "digital-marketing",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Marketing Funnel Design: Guide Prospects to Conversion",
+    "url": "blog/marketing-funnel-design.html",
+    "excerpt": "Design an effective marketing funnel that guides prospects from awareness to conversion. Learn about touchpoints, content mapping, and funnel optimization.",
+    "category": "digital-marketing",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Digital Marketing Budget: Allocate for Maximum Impact",
+    "url": "blog/digital-marketing-budget.html",
+    "excerpt": "Plan and allocate your digital marketing budget across channels for maximum ROI. Learn frameworks for budget distribution, forecasting, and performance tracking.",
+    "category": "digital-marketing",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "Google My Business Optimization for Local Visibility",
+    "url": "blog/google-my-business-optimization.html",
+    "excerpt": "Optimize your Google Business Profile to dominate local search results. Learn how to manage listings, posts, reviews, and Q&A for maximum local visibility.",
+    "category": "local-business",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Local SEO Guide: Rank in Your Area",
+    "url": "blog/local-seo-guide.html",
+    "excerpt": "A comprehensive local SEO guide covering Google Business Profile, local citations, reviews, and on-page optimization for location-based businesses.",
+    "category": "local-business",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "Local Citation Building for Search Visibility",
+    "url": "blog/local-citation-building.html",
+    "excerpt": "Build consistent local citations across directories and platforms to strengthen your local search presence. Learn NAP consistency and citation management strategies.",
+    "category": "local-business",
+    "readingTime": "8 min"
+  },
+  {
+    "title": "Review Management Strategy for Local Businesses",
+    "url": "blog/review-management-strategy.html",
+    "excerpt": "Develop a review management strategy that builds trust and improves local rankings. Learn how to generate, respond to, and leverage customer reviews effectively.",
+    "category": "local-business",
+    "readingTime": "9 min"
+  },
+  {
+    "title": "Building a Digital Presence for Local Businesses",
+    "url": "blog/local-business-digital-presence.html",
+    "excerpt": "Establish a strong digital presence for your local business across search, social, and directories. A practical roadmap from website to full online visibility.",
+    "category": "local-business",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Ecommerce SEO Guide: Drive Organic Store Traffic",
+    "url": "blog/ecommerce-seo-guide.html",
+    "excerpt": "Optimize your ecommerce store for search engines with strategies for product pages, category pages, technical SEO, and content marketing specific to online retail.",
+    "category": "ecommerce-saas",
+    "readingTime": "12 min"
+  },
+  {
+    "title": "SaaS SEO Strategy: Grow Organic Signups",
+    "url": "blog/saas-seo-strategy.html",
+    "excerpt": "Build an SEO strategy tailored for SaaS companies focused on organic acquisition. Cover keyword targeting, content hubs, comparison pages, and conversion optimization.",
+    "category": "ecommerce-saas",
+    "readingTime": "11 min"
+  },
+  {
+    "title": "Ecommerce Conversion Optimization: Turn Visitors into Buyers",
+    "url": "blog/ecommerce-conversion-optimization.html",
+    "excerpt": "Increase your ecommerce conversion rate with proven UX, copywriting, and checkout optimization techniques. Data-driven strategies to reduce cart abandonment.",
+    "category": "ecommerce-saas",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "SaaS Lead Generation: Fill Your Pipeline",
+    "url": "blog/saas-lead-generation.html",
+    "excerpt": "Generate qualified leads for your SaaS product with inbound and outbound strategies. Learn about content marketing, free trials, and demo optimization.",
+    "category": "ecommerce-saas",
+    "readingTime": "10 min"
+  },
+  {
+    "title": "Product Page Optimization for Higher Conversions",
+    "url": "blog/product-page-optimization.html",
+    "excerpt": "Optimize product pages to boost conversions and search visibility. Cover product descriptions, images, reviews, structured data, and persuasive design elements.",
+    "category": "ecommerce-saas",
+    "readingTime": "9 min"
+  }
+]

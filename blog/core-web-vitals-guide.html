@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Nisarth Patel">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Core Web Vitals Explained: What They Are and How to Fix Them | Nisarth Patel</title>
+    <meta name="description"
+        content="A practical guide to Core Web Vitals — LCP, INP, and CLS diagnosis and fixes with real examples, PageSpeed Insights workflows, and field vs lab data explained.">
+    <link rel="canonical" href="https://nisarth.github.io/blog/core-web-vitals-guide.html">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Core Web Vitals Explained: What They Are and How to Fix Them">
+    <meta property="og:description"
+        content="A practical guide to Core Web Vitals — LCP, INP, and CLS diagnosis and fixes with real examples and step-by-step instructions.">
+    <meta property="og:image" content="https://nisarth.github.io/assets/images/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Core Web Vitals Explained by Nisarth Patel">
+    <meta property="og:url" content="https://nisarth.github.io/blog/core-web-vitals-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Nisarth Patel">
+    <meta property="article:published_time" content="2026-04-10">
+    <meta property="article:author" content="https://nisarth.github.io/about.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Core Web Vitals Explained: What They Are and How to Fix Them">
+    <meta name="twitter:description"
+        content="A practical guide to Core Web Vitals — LCP, INP, and CLS diagnosis and fixes with real examples and step-by-step instructions.">
+    <meta name="twitter:image" content="https://nisarth.github.io/assets/images/og-image.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nisarth.github.io/"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://nisarth.github.io/blog.html"},
+        {"@type": "ListItem", "position": 3, "name": "Core Web Vitals Explained", "item": "https://nisarth.github.io/blog/core-web-vitals-guide.html"}
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Core Web Vitals Explained: What They Are and How to Fix Them",
+      "description": "A practical guide to Core Web Vitals — LCP, INP, and CLS diagnosis and fixes with real examples, PageSpeed Insights workflows, and field vs lab data explained.",
+      "image": "https://nisarth.github.io/assets/images/og-image.svg",
+      "author": {
+        "@type": "Person",
+        "name": "Nisarth Patel",
+        "url": "https://nisarth.github.io/about.html"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Nisarth Patel"
+      },
+      "datePublished": "2026-04-10",
+      "dateModified": "2026-04-12",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://nisarth.github.io/blog/core-web-vitals-guide.html"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ".article-intro"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are Core Web Vitals a ranking factor in Google?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Core Web Vitals are a confirmed ranking factor as part of Google's page experience signals. However, they are not the most heavily weighted factor. Relevance and content quality still matter more. Think of Core Web Vitals as a tiebreaker — if two pages have equally relevant content, the one with better Core Web Vitals will likely rank higher. That said, failing Core Web Vitals can hold back otherwise excellent content, which is why I always recommend fixing them. The ranking impact is most noticeable in competitive niches where many pages offer similar content quality."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between field data and lab data for Core Web Vitals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Field data comes from real users visiting your site and is collected through the Chrome User Experience Report (CrUX). It reflects actual performance across different devices, network conditions, and geographic locations. Lab data comes from controlled tests run in tools like Lighthouse or PageSpeed Insights using simulated conditions. Google uses field data for ranking purposes, making it your primary source of truth. Lab data is essential for debugging because it provides detailed diagnostic information that field data lacks. I use both — field data to identify problems and lab data to diagnose and fix them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I check my Core Web Vitals scores?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The easiest way is Google Search Console's Core Web Vitals report, which shows field data for all your pages grouped by status. For individual page analysis, use PageSpeed Insights which combines field data from CrUX with lab data from Lighthouse. Chrome DevTools' Performance tab provides the most detailed diagnostic data for debugging specific issues. For a site-wide view, the CrUX Dashboard in Looker Studio lets you track trends over time. I recommend checking Search Console weekly and running PageSpeed Insights on your most important pages after any significant site changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are my lab scores good but my field data scores poor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This is one of the most common questions I get. Lab tests run on fast hardware with a simulated connection, while field data reflects real users on varied devices and networks. Your visitors might be using older phones, slower connections, or experiencing different conditions than the lab test simulates. Third-party scripts like analytics, chat widgets, and ad networks also behave differently in real conditions versus controlled tests. Geographic distance from your server matters too — a lab test from your location might be fast, but users in another country experience higher latency. Focus on optimising for real user conditions, not just lab scores."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take for Core Web Vitals improvements to affect rankings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After you implement fixes, it typically takes 28 days for the CrUX data to update because Google collects field data over a rolling 28-day window. Once the updated field data shows your pages passing Core Web Vitals, ranking improvements can follow within a few weeks, though the timeline varies. In my experience, the full cycle from implementing fixes to seeing measurable ranking changes is usually six to ten weeks. Pages that move from 'poor' to 'good' status tend to see more noticeable ranking lifts than pages moving from 'needs improvement' to 'good'. Patience is important — do not revert changes just because rankings have not moved within a week."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <noscript>
+        <style>
+            #loader, .cursor-dot, .cursor-outline, .grain-overlay { display: none !important; }
+            .service-card, .work-card, .blog-card, .portfolio-item, .section-heading,
+            .about-teaser, .about-teaser-visual, .about-teaser-text, .reveal-up,
+            .timeline-item, .process-step, .ai-feature-card, .value-card, .audit-banner,
+            .footer, .tech-item, .stat-item, .nav, .hero-word-inner, .hero-sub, .hero-ctas,
+            .hero-badge, .scroll-indicator, .contact-info-item, .faq-item { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+            #page-transition { display: none !important; }
+        </style>
+    </noscript>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="grain-overlay" aria-hidden="true"></div>
+    <div id="page-transition" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-outline" aria-hidden="true"><span class="cursor-label"></span></div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <a href="https://wa.me/917016353896" class="whatsapp-fab" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.792 9.792 0 01-5.016-1.382l-.36-.214-3.732.978.994-3.638-.235-.374A9.79 9.79 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z" />
+        </svg>
+        <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+    </a>
+
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="../" class="nav-logo"><span class="nav-logo-mark">NP</span><span class="nav-logo-name">Nisarth
+                    Patel</span></a>
+            <div class="nav-links">
+                <a href="../work.html" class="nav-link magnetic">Work</a>
+                <a href="../services.html" class="nav-link magnetic">Services</a>
+                <a href="../about.html" class="nav-link magnetic">About</a>
+                <a href="../process.html" class="nav-link magnetic">Process</a>
+                <a href="../blog.html" class="nav-link magnetic" style="color:var(--accent-primary);">Blog</a>
+            </div>
+            <a href="../contact.html" class="nav-cta desktop-only">Let's Talk</a>
+            <button class="theme-toggle" aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+            <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="nav-overlay" role="dialog" aria-modal="true">
+        <button class="nav-overlay-close" aria-label="Close menu">&#x2715;</button>
+        <nav class="nav-overlay-links">
+            <a href="../" class="nav-overlay-link">Home</a>
+            <a href="../work.html" class="nav-overlay-link">Work</a>
+            <a href="../services.html" class="nav-overlay-link">Services</a>
+            <a href="../about.html" class="nav-overlay-link">About</a>
+            <a href="../process.html" class="nav-overlay-link">Process</a>
+            <a href="../blog.html" class="nav-overlay-link">Blog</a>
+            <a href="../contact.html" class="nav-overlay-link">Contact</a>
+        </nav>
+    </div>
+
+    <div class="article-progress"></div>
+
+    <article id="main-content" role="main">
+        <!-- Article Header -->
+        <header class="article-header section-pad"
+            style="padding-top:calc(var(--nav-height) + var(--space-4xl)); background:var(--bg-secondary);">
+            <div class="container" style="max-width:800px;">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol style="display:flex;gap:0.5rem;list-style:none;padding:0;font-size:0.85rem;color:var(--text-muted);">
+                        <li><a href="../">Home</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li aria-current="page">Core Web Vitals Guide</li>
+                    </ol>
+                </nav>
+                <div class="article-tags" style="margin-top:var(--space-lg);">
+                    <span class="tag tag-accent">Performance</span>
+                    <span class="tag tag-accent">SEO</span>
+                </div>
+                <h1 class="text-h1 section-heading"
+                    style="font-size:clamp(2rem,5vw,3.5rem); margin-top:var(--space-xl);">Core Web Vitals Explained: What They Are and How to Fix Them</h1>
+                <div class="article-meta" style="display:flex;gap:var(--space-lg);align-items:center;margin-top:var(--space-lg);color:var(--text-muted);font-size:0.9rem;">
+                    <span>April 10, 2026</span>
+                    <span>&middot;</span>
+                    <span>15 min read</span>
+                    <span>&middot;</span>
+                    <span>By <a href="../about.html" style="color:var(--accent-primary);">Nisarth Patel</a></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Article Layout: TOC + Body -->
+        <div class="container article-layout" style="max-width:1100px;">
+            <aside class="article-toc" aria-label="Table of contents">
+                <h4>Contents</h4>
+                <ol></ol>
+            </aside>
+
+            <div class="article-body prose">
+                <p class="article-intro">Core Web Vitals are Google's way of measuring the real-world user experience of your website. They focus on three specific aspects of how a page loads and behaves: how fast the main content appears, how quickly the page responds to user interactions, and how visually stable the layout is while loading. Since becoming a confirmed ranking factor, Core Web Vitals have moved from a "nice to have" optimisation to a critical component of any serious <a href="../blog/technical-seo-audit-checklist-2026.html">technical SEO strategy</a>. If your pages fail Core Web Vitals, you are leaving rankings and traffic on the table.</p>
+
+                <p>I have spent a significant portion of the past four years diagnosing and fixing Core Web Vitals issues for clients across different industries -- from content-heavy media sites to complex e-commerce platforms, from single-page applications to traditional WordPress sites. The problems I see are remarkably consistent. The same handful of issues cause the vast majority of Core Web Vitals failures, and the fixes, while sometimes technically involved, follow predictable patterns. This guide is built from that hands-on experience. I will walk you through each metric in detail, show you exactly how to diagnose problems, and give you the specific fixes that have worked for my clients in the real world.</p>
+
+                <p>Before we get into the technical details, let me set your expectations. Core Web Vitals optimisation is not about chasing a perfect Lighthouse score. Lighthouse runs in a controlled environment that does not reflect how real users experience your site. What matters is your <strong>field data</strong> -- the actual performance metrics collected from real Chrome users visiting your site. I have seen sites with Lighthouse scores of ninety-five that fail Core Web Vitals in the field, and sites scoring seventy-five in Lighthouse that pass comfortably. Understanding this distinction is fundamental to everything that follows.</p>
+
+                <h2 id="understanding-the-three-metrics">Understanding the Three Core Web Vitals Metrics</h2>
+
+                <p>In 2026, Core Web Vitals consist of three metrics: <strong>Largest Contentful Paint (LCP)</strong>, <strong>Interaction to Next Paint (INP)</strong>, and <strong>Cumulative Layout Shift (CLS)</strong>. Each measures a different dimension of user experience, and each has specific thresholds that Google uses to classify your pages as "good," "needs improvement," or "poor."</p>
+
+                <p><strong>Largest Contentful Paint (LCP)</strong> measures loading performance. Specifically, it measures the time from when the user initiates the page load to when the largest content element visible in the viewport has fully rendered. This is usually a hero image, a large text block, a video poster, or a background image. Google considers an LCP of <strong>2.5 seconds or less</strong> as good. Between 2.5 and 4 seconds needs improvement. Above 4 seconds is poor. LCP is the metric that most directly reflects what users perceive as "page speed" -- it tells you how long a visitor waits before seeing the main content of your page.</p>
+
+                <p><strong>Interaction to Next Paint (INP)</strong> measures responsiveness. It replaced First Input Delay (FID) in March 2024 and represents a significant upgrade in how Google evaluates interactivity. While FID only measured the delay of the first interaction, INP tracks every single interaction throughout the page visit -- every click, tap, and keyboard input -- and reports a value representative of the overall responsiveness. An INP of <strong>200 milliseconds or less</strong> is good. Between 200 and 500 milliseconds needs improvement. Above 500 milliseconds is poor. INP is harder to optimise than FID was because it exposes responsiveness issues that occur later in the page lifecycle, not just on initial load.</p>
+
+                <p><strong>Cumulative Layout Shift (CLS)</strong> measures visual stability. It quantifies how much the visible page content shifts around unexpectedly during the entire lifespan of the page. Every time a visible element changes its position from one rendered frame to the next without being triggered by a user interaction, it contributes to the CLS score. A CLS of <strong>0.1 or less</strong> is good. Between 0.1 and 0.25 needs improvement. Above 0.25 is poor. CLS matters because unexpected layout shifts are extremely frustrating -- you have probably experienced clicking a button only to have the page shift at the last moment, causing you to click something else entirely. That is exactly what CLS measures.</p>
+
+                <h2 id="field-data-vs-lab-data">Field Data vs Lab Data: Why the Distinction Matters</h2>
+
+                <p>This is the single most important concept to understand before you start optimising Core Web Vitals. There are two fundamentally different ways to measure these metrics, and they often produce different results.</p>
+
+                <p><strong>Lab data</strong> comes from running a page through a testing tool in a controlled environment. Lighthouse, PageSpeed Insights' lab section, and Chrome DevTools' Performance panel all produce lab data. The test runs on a specific device with specific network conditions, at a specific moment in time. Lab data is reproducible -- you can run the same test multiple times and get similar results. It is excellent for debugging because it provides detailed diagnostic information including performance traces, waterfall charts, and specific recommendations.</p>
+
+                <p><strong>Field data</strong> comes from real users visiting your site with real devices on real network connections. Google collects this through the <strong>Chrome User Experience Report (CrUX)</strong>, which aggregates anonymised performance data from Chrome users who have opted in to usage statistics. Field data is what Google actually uses for ranking purposes. It reflects the true diversity of conditions your visitors experience -- different devices, different connection speeds, different geographic locations, different browser extensions, and different usage patterns.</p>
+
+                <p>The gap between lab and field data can be substantial. Here is a real example from a client project. Their homepage had a Lighthouse LCP of 1.8 seconds -- well within the "good" threshold. But their field LCP from CrUX was 3.9 seconds, nearly in the "poor" range. The reason? A large percentage of their traffic came from mobile users in tier-two Indian cities with slower 4G connections. The Lighthouse test simulated a fast 4G connection and a mid-range device, which did not reflect the actual conditions most visitors experienced. We only discovered this by looking at the field data in Google Search Console.</p>
+
+                <p>My workflow always starts with field data to identify which pages and metrics have problems, then uses lab data to diagnose the specific causes. If you only look at lab data, you might optimise the wrong things or declare victory prematurely. If you only look at field data, you will know there is a problem but will not have enough diagnostic detail to fix it. You need both, but field data is your source of truth for whether your optimisation efforts are actually working.</p>
+
+                <h2 id="diagnosing-and-fixing-lcp">Diagnosing and Fixing LCP Issues</h2>
+
+                <p>LCP problems are the most common Core Web Vitals failure I encounter. The good news is that LCP issues usually have clear, fixable causes. The bad news is that there are often multiple contributing factors, and you need to address all of them to see meaningful improvement.</p>
+
+                <p><strong>Step one: identify the LCP element.</strong> Before you can fix LCP, you need to know what the LCP element actually is on each page. Open Chrome DevTools, go to the Performance tab, record a page load, and look for the "LCP" marker in the timeline. Click it to see which element was identified as the largest contentful paint. On most pages, it will be one of four things: a hero image, a large heading block, a video poster image, or a background image set via CSS. Knowing the exact element tells you where to focus your optimisation effort.</p>
+
+                <p><strong>Image optimisation</strong> is the most impactful LCP fix for most websites. If your LCP element is an image, here is my checklist. First, convert to modern formats -- WebP provides twenty-five to thirty-five percent smaller file sizes than JPEG with equivalent quality, and AVIF is even better where browser support allows. Second, serve responsive images using the <code>srcset</code> attribute so mobile devices download smaller versions. Third, set explicit <code>width</code> and <code>height</code> attributes to allow the browser to reserve space before the image loads. Fourth, use <code>fetchpriority="high"</code> on the LCP image to tell the browser to download it immediately. Fifth, remove <code>loading="lazy"</code> from any image that is the LCP element -- lazy loading the largest contentful element is counterproductive because it delays its loading. For a client running a WordPress blog, these image optimisations alone dropped their LCP from 4.3 seconds to 2.1 seconds across their entire site.</p>
+
+                <p><strong>Server response time (TTFB)</strong> is the foundation that all other loading metrics build on. If your server takes two seconds to respond, your LCP cannot possibly be under 2.5 seconds. I check Time to First Byte using WebPageTest or the Network tab in Chrome DevTools. For static sites, TTFB should be under 200 milliseconds. For dynamic sites, under 600 milliseconds is acceptable but under 400 is ideal. Common TTFB fixes include upgrading your hosting plan, implementing server-side caching, using a CDN to serve content from edge locations closer to your users, and optimising database queries for dynamic pages. I worked with an e-commerce client whose TTFB was 1.8 seconds because every page load triggered uncached database queries. Adding Redis caching reduced TTFB to 280 milliseconds, which had a cascading positive effect on every other performance metric.</p>
+
+                <p><strong>Render-blocking resources</strong> delay LCP by forcing the browser to download and process CSS and JavaScript before rendering any content. I use the Coverage tab in Chrome DevTools to identify unused CSS and JavaScript on each page. For CSS, I extract the critical above-the-fold styles and inline them in the <code>&lt;head&gt;</code>, then load the full stylesheet asynchronously. For JavaScript, I add <code>defer</code> or <code>async</code> attributes to script tags and move non-essential scripts to the bottom of the page. Third-party scripts are often the worst offenders -- analytics, chat widgets, A/B testing tools, and social media embeds all add render-blocking resources. I audit every third-party script and either defer it, lazy-load it, or remove it entirely if it is not providing sufficient value.</p>
+
+                <p><strong>Preloading critical resources</strong> can significantly improve LCP when the LCP element depends on a resource that the browser discovers late in the loading process. If your LCP image is referenced in CSS rather than HTML, the browser cannot discover it until it has downloaded and parsed the CSS file. Adding a <code>&lt;link rel="preload"&gt;</code> tag in the <code>&lt;head&gt;</code> for the LCP image tells the browser to start downloading it immediately, before it would normally discover it. Similarly, preloading critical fonts prevents text-based LCP elements from being delayed by font loading.</p>
+
+                <h2 id="diagnosing-and-fixing-inp">Diagnosing and Fixing INP Issues</h2>
+
+                <p>INP is the metric that gives the most developers and site owners trouble. Unlike LCP, which is primarily about loading and can often be fixed with hosting and image optimisations, INP is fundamentally about JavaScript execution efficiency. Fixing INP requires understanding how the browser's main thread works and how JavaScript can block it.</p>
+
+                <p><strong>Understanding what INP measures.</strong> When a user clicks a button, taps a link, or presses a key, the browser needs to process that interaction and update the visual display. INP measures the time from the input event to the next frame paint. This includes three phases: the <strong>input delay</strong> (time waiting for ongoing tasks to finish before the event handler can run), the <strong>processing time</strong> (time spent executing the event handler code), and the <strong>presentation delay</strong> (time for the browser to calculate layout and paint the next frame). All three phases contribute to the total INP value, and any of them can be the bottleneck.</p>
+
+                <p><strong>Identifying slow interactions.</strong> The Chrome Web Vitals extension is my first diagnostic tool for INP. Install it, enable the console logging option, and interact with the page. It logs every interaction with its INP contribution, showing you exactly which interactions are slow. The Performance tab in Chrome DevTools provides more detail -- record a trace while performing interactions, then look for "Long Tasks" (tasks exceeding 50 milliseconds) that coincide with your interactions. These long tasks are what cause input delay and slow processing.</p>
+
+                <p><strong>Breaking up long tasks</strong> is the most effective INP fix. JavaScript runs on the browser's main thread, and while a long task is executing, the browser cannot respond to user interactions. If a click triggers a function that takes 300 milliseconds to execute, the user sees a 300-millisecond delay. The solution is to break long functions into smaller chunks that yield back to the main thread between them. The <code>scheduler.yield()</code> API, which is now supported in all major browsers, is the cleanest way to do this. You insert yield points in your code that allow the browser to process pending interactions between chunks of work. For older browser support, <code>setTimeout(callback, 0)</code> achieves a similar result, though with slightly more overhead.</p>
+
+                <p><strong>Deferring non-critical JavaScript</strong> reduces input delay by ensuring less code is competing for main thread time when users interact with the page. I audit every JavaScript file loaded on the page and categorise them as critical (needed for above-the-fold interactivity), important (needed but can load after initial render), and non-essential (analytics, tracking, social widgets). Critical scripts load normally. Important scripts use <code>defer</code>. Non-essential scripts are loaded dynamically after the page has become interactive, often triggered by user interaction or a <code>requestIdleCallback</code>. For one client's product listing page, moving their filtering JavaScript from synchronous loading to deferred loading reduced INP from 380 milliseconds to 140 milliseconds because the filter code was no longer blocking interactions during initial page load.</p>
+
+                <p><strong>Web Workers</strong> are an underutilised solution for INP problems caused by expensive computation. A Web Worker runs JavaScript in a background thread, completely separate from the main thread. This means you can perform heavy calculations -- data sorting, image processing, complex filtering -- without blocking user interactions at all. I have used Web Workers to offload client-side search indexing, real-time data processing, and complex form validation logic. The implementation requires restructuring your code to communicate with the worker via messages, but the INP improvement can be dramatic. An analytics dashboard I worked on had INP over 600 milliseconds because of client-side data aggregation. Moving that computation to a Web Worker dropped INP to ninety milliseconds.</p>
+
+                <p><strong>Optimising event handlers</strong> directly reduces processing time. Common issues I find include event handlers that trigger expensive DOM reads and writes (causing forced reflows), handlers that run complex logic synchronously when they could debounce or throttle, and handlers that update state management systems inefficiently. For React applications specifically, unnecessary re-renders triggered by interaction handlers are a major INP contributor. I use React DevTools' Profiler to identify components that re-render excessively, then apply <code>React.memo</code>, <code>useMemo</code>, and <code>useCallback</code> where they will have the most impact.</p>
+
+                <h2 id="diagnosing-and-fixing-cls">Diagnosing and Fixing CLS Issues</h2>
+
+                <p>CLS is often the easiest of the three Core Web Vitals to fix because the causes are usually straightforward and the solutions are well-established. However, CLS issues can be deceptively tricky to detect because they depend on how the page loads for specific users on specific devices and connections.</p>
+
+                <p><strong>Finding layout shifts.</strong> Chrome DevTools has a dedicated tool for this. Open the Rendering panel (press Escape to open the drawer, then select the Rendering tab) and enable "Layout Shift Regions." Now reload the page and watch -- areas that shift will be highlighted in blue. The Performance tab also marks layout shifts in the Experience row of the timeline, and clicking on them shows exactly which elements shifted and by how much. For field data, the Web Vitals extension logs CLS contributions in the console, showing you the cumulative score and individual shift events.</p>
+
+                <p><strong>Images and media without dimensions</strong> are the number one cause of CLS I encounter. When an image loads without explicit <code>width</code> and <code>height</code> attributes in the HTML, the browser does not know how much space to reserve for it. The surrounding content initially renders as if the image does not exist, then shifts when the image loads and pushes everything down. The fix is simple: add <code>width</code> and <code>height</code> attributes to every <code>&lt;img&gt;</code>, <code>&lt;video&gt;</code>, and <code>&lt;iframe&gt;</code> element. Modern CSS with <code>aspect-ratio</code> or the combination of <code>width</code>, <code>height</code>, and <code>height: auto</code> in CSS ensures the browser reserves the correct space while still allowing the element to be responsive. I run a site-wide crawl in Screaming Frog and filter for images missing dimension attributes -- on a typical site, this single fix resolves fifty to seventy percent of CLS issues.</p>
+
+                <p><strong>Font loading</strong> causes CLS through what is known as Flash of Unstyled Text (FOUT) or Flash of Invisible Text (FOIT). When a web font loads, text rendered in the fallback system font gets replaced by the web font, which usually has different metrics, causing the text to shift and change size. My approach to font-related CLS involves three steps. First, I use <code>font-display: swap</code> to ensure text is visible immediately with a fallback font, rather than being invisible until the web font loads. Second, I preload critical font files using <code>&lt;link rel="preload" as="font" crossorigin&gt;</code> to minimise the time users spend seeing the fallback font. Third, I use the CSS <code>size-adjust</code>, <code>ascent-override</code>, and <code>descent-override</code> properties on the fallback font to match its metrics as closely as possible to the web font, minimising the visual shift when the swap happens. This third step is the most effective but requires some trial and error to get the override values right. Tools like the <a href="../blog/website-speed-optimization.html">Font Face Observer library</a> and Fontaine can help automate the process.</p>
+
+                <p><strong>Dynamically injected content</strong> is the second most common CLS cause. Cookie consent banners, newsletter pop-ups, notification bars, and lazy-loaded ad slots all inject content into the page after initial load, pushing existing content around. For banners and notifications, the fix is to reserve space for them in the initial layout using min-height on their container elements, or to overlay them on top of content rather than pushing content down. For ad slots, always define explicit dimensions on the ad container element so space is reserved even before the ad loads. I have seen CLS scores improve from 0.35 to 0.04 just by adding fixed dimensions to ad containers on a media client's site.</p>
+
+                <p><strong>Late-loading CSS and JavaScript that modifies layout</strong> can cause CLS by changing element sizes or positions after the initial render. If a stylesheet loads late and changes the padding, margin, or dimensions of visible elements, that is a layout shift. Similarly, JavaScript that injects elements, changes class names, or modifies styles after page load contributes to CLS. The solution is to ensure all layout-affecting CSS is loaded before the first render (inline critical CSS or include it in the main stylesheet) and to minimise JavaScript that modifies the layout of already-visible elements.</p>
+
+                <h2 id="pagespeed-insights-workflow">My PageSpeed Insights Workflow</h2>
+
+                <p>PageSpeed Insights is the tool I use most frequently for Core Web Vitals work because it combines both field data and lab data in a single view. Here is my exact workflow when investigating a page.</p>
+
+                <p><strong>Step one: check field data first.</strong> At the top of the PageSpeed Insights results, there is a section labelled "Discover what your real users are experiencing." This shows CrUX field data for the specific URL you tested, or for the origin (entire domain) if the specific URL does not have enough traffic. I look at the three Core Web Vitals metrics and note which ones are in the "good" (green), "needs improvement" (amber), or "poor" (red) range. This tells me which metrics to focus on.</p>
+
+                <p><strong>Step two: compare with lab data.</strong> Scroll down to the Lighthouse lab results. I compare the lab scores with the field data. If they align, the lab diagnostics will be directly useful for fixing the issues. If they diverge significantly -- for example, field LCP is poor but lab LCP is good -- I know the problem is related to real-world conditions like slow devices, distant servers, or third-party script behaviour, and I need to investigate further using Real User Monitoring (RUM) tools or the CrUX API to understand the demographic breakdown of the poor experiences.</p>
+
+                <p><strong>Step three: analyse the diagnostics.</strong> The Lighthouse report provides specific diagnostics for each metric. For LCP, I look at "Largest Contentful Paint element" to identify what the LCP element is, "Eliminate render-blocking resources" for CSS and JS that delay rendering, and "Properly size images" for optimisation opportunities. For INP (shown as TBT in lab data since INP cannot be measured in lab), I look at "Minimize main-thread work" and "Reduce JavaScript execution time." For CLS, I look at "Avoid large layout shifts" which identifies the specific elements causing shifts.</p>
+
+                <p><strong>Step four: check the Treemap.</strong> PageSpeed Insights includes a JavaScript treemap that shows exactly how much code each script contributes and how much of it is unused. This is invaluable for identifying bloated third-party scripts and unused JavaScript that could be removed or deferred. I often find that forty to sixty percent of JavaScript loaded on a page is unused on that specific page, which represents significant optimisation potential for both LCP and INP.</p>
+
+                <p><strong>Step five: test after fixes.</strong> After implementing changes, I run PageSpeed Insights again to verify lab improvements. But the real validation comes from waiting twenty-eight days and checking the field data in Google Search Console. Lab improvements should correlate with field improvements, but not always at the same magnitude. I keep a spreadsheet tracking both lab and field scores over time for every page I optimise, which helps me understand the relationship between the two for each specific site.</p>
+
+                <h2 id="chrome-ux-report-deep-dive">Using the Chrome UX Report Effectively</h2>
+
+                <p>The Chrome User Experience Report is the dataset behind the field data in PageSpeed Insights and Google Search Console, but you can also query it directly for deeper analysis. I use two approaches depending on the level of detail I need.</p>
+
+                <p><strong>The CrUX Dashboard</strong> is a free Looker Studio template that connects directly to the CrUX BigQuery dataset. It shows Core Web Vitals trends over time for your domain, broken down by device type (mobile, desktop, tablet) and connection type (4G, 3G, etc.). The historical view is particularly valuable -- you can see exactly when a metric started deteriorating, which often correlates with a specific deployment or change. I set up CrUX Dashboards for all my clients as the first step of any Core Web Vitals project because it gives me the baseline data I need to measure improvement.</p>
+
+                <p><strong>The CrUX API</strong> provides programmatic access to the data and is useful when you need to check many pages or automate monitoring. I use it to build custom monitoring scripts that alert me when a client's Core Web Vitals regress. The API returns the same 75th percentile values you see in PageSpeed Insights, along with the distribution of "good," "needs improvement," and "poor" experiences. Understanding the distribution is important -- a 75th percentile LCP of 2.4 seconds might seem fine, but if ten percent of your users are experiencing LCP above 6 seconds, that is a significant problem for those users even if the overall metric passes.</p>
+
+                <p>One thing to understand about CrUX data is that it requires a minimum amount of traffic to be reported. If a page or origin does not have enough Chrome users to produce statistically significant data, CrUX will not have field data for it. This is common for small business websites with low traffic. In those cases, you rely entirely on lab data for optimisation, supplemented by Real User Monitoring if you implement a tool like web-vitals.js on your site to collect your own field data.</p>
+
+                <h2 id="real-client-examples">Real Client Examples and Results</h2>
+
+                <p>Theory is important, but I find that concrete examples help illustrate how these fixes work in practice. Here are three real projects where Core Web Vitals optimisation produced measurable improvements in both performance and search rankings.</p>
+
+                <p><strong>E-commerce product pages.</strong> A mid-size e-commerce client selling industrial equipment had failing LCP and INP across their product pages. LCP was 4.8 seconds because their product images were unoptimised PNGs averaging 2.5 MB each, loaded without dimensions and without lazy loading on below-the-fold images. INP was 420 milliseconds because their product configurator ran expensive calculations on the main thread every time a user changed an option. The fixes: we converted all images to WebP with proper <code>srcset</code> for responsive loading, added <code>fetchpriority="high"</code> to the main product image, implemented lazy loading for gallery images below the fold, and moved the configurator calculations to a Web Worker. Results: LCP dropped to 1.9 seconds, INP dropped to 120 milliseconds, and over the following three months, organic traffic to product pages increased by twenty-two percent. Not all of that traffic increase was from Core Web Vitals alone -- we also made <a href="../blog/on-page-seo-guide.html">on-page SEO improvements</a> -- but the performance gains were a significant contributor.</p>
+
+                <p><strong>News and content site.</strong> A digital media client with hundreds of articles had severe CLS issues caused by display ads. Their CLS score averaged 0.42 because ad slots loaded asynchronously without reserved space, causing content to jump every time an ad appeared. Their LCP was also poor at 3.6 seconds because the hero image on each article was loaded via CSS background-image, which the browser could not discover until the CSS was parsed. Fixes: we reserved space for every ad slot using fixed-height containers, converted hero images from CSS backgrounds to HTML <code>&lt;img&gt;</code> tags with <code>fetchpriority="high"</code> and preload hints, inlined critical CSS, and deferred non-essential scripts. Results: CLS dropped from 0.42 to 0.06, LCP dropped from 3.6 to 2.0 seconds, and the number of pages passing Core Web Vitals in Search Console went from thirty-one percent to ninety-four percent within two months.</p>
+
+                <p><strong>SaaS application landing pages.</strong> A SaaS client's landing pages had excellent lab scores but poor field INP because their live chat widget loaded a 450 KB JavaScript bundle synchronously, which created a long task that blocked interactions during the critical first few seconds of the page visit. Users trying to click the CTA button during this window experienced delays of over 500 milliseconds. The fix was deceptively simple: we loaded the chat widget script after a three-second delay or on first user interaction (whichever came first) instead of on page load. Field INP improved from 340 milliseconds to 90 milliseconds. The chat widget still loaded quickly enough that no user ever reported an issue, but the three-second window of blocked interactivity was eliminated. This change alone improved their form completion rate by eleven percent, which the client valued more than the SEO benefit.</p>
+
+                <h2 id="common-mistakes-to-avoid">Common Core Web Vitals Mistakes I See</h2>
+
+                <p>After fixing Core Web Vitals on dozens of sites, I have noticed patterns in the mistakes that teams make. Here are the most common ones.</p>
+
+                <p><strong>Optimising for Lighthouse score instead of field data.</strong> I cannot stress this enough. A perfect Lighthouse score means nothing if your field data is poor. I have worked with teams that spent weeks getting their Lighthouse score from eighty to ninety-eight, only to find that their field Core Web Vitals had not improved at all because the real bottleneck was third-party scripts that Lighthouse does not fully account for, or slow devices that Lighthouse does not simulate.</p>
+
+                <p><strong>Lazy-loading the LCP element.</strong> This is surprisingly common. Developers apply <code>loading="lazy"</code> to all images globally, including the hero image that is the LCP element. Lazy loading defers the image request until it is near the viewport, which adds unnecessary delay to the most important visual element on the page. The LCP image should always load eagerly, ideally with <code>fetchpriority="high"</code>.</p>
+
+                <p><strong>Ignoring third-party scripts.</strong> Analytics, tag managers, A/B testing tools, chat widgets, social share buttons, and advertising scripts collectively account for a shocking percentage of performance problems. I have audited sites where third-party scripts were responsible for sixty percent of total JavaScript execution time. Every third-party script needs to justify its existence with measurable business value. If it does not, remove it. If it does, explore options for loading it asynchronously or deferring it until after the critical rendering path.</p>
+
+                <p><strong>Not testing on real devices.</strong> Emulated mobile testing in Chrome DevTools is useful for development, but it does not capture the full picture. I keep a collection of mid-range and budget Android devices for testing because that is what a large portion of my clients' users actually use. A page that feels snappy on a developer's MacBook Pro may feel sluggish on a three-year-old Samsung phone with 3 GB of RAM. Especially for sites targeting Indian users, testing on budget devices is essential because the device landscape here skews heavily toward lower-end hardware.</p>
+
+                <p><strong>Making changes without measuring.</strong> Every optimisation should be measurable. Before making changes, document your current field data scores. After deployment, monitor the CrUX data over the following twenty-eight-day cycle. If a change does not produce measurable improvement in field data, investigate why rather than assuming it worked based on lab results alone. I use a simple spreadsheet that tracks field data for key pages on a weekly basis, which makes it easy to correlate changes with results.</p>
+
+                <h2 id="tools-for-core-web-vitals">Essential Tools for Core Web Vitals Work</h2>
+
+                <p>Here is the toolkit I use for every Core Web Vitals project, organised by purpose.</p>
+
+                <p><strong>For monitoring field data:</strong> Google Search Console's Core Web Vitals report gives you the site-wide view. PageSpeed Insights shows field data for individual URLs. The CrUX Dashboard in Looker Studio provides historical trends. For custom monitoring, the <code>web-vitals</code> JavaScript library lets you collect your own field data and send it to any analytics platform. I recommend implementing web-vitals.js on every site regardless of size -- it gives you granular data that CrUX alone cannot provide, such as which specific elements triggered layout shifts or which interactions had the highest INP values.</p>
+
+                <p><strong>For diagnosing issues:</strong> Chrome DevTools is indispensable. The Performance tab for recording and analysing page load traces. The Network tab for inspecting resource loading waterfalls. The Coverage tab for finding unused CSS and JavaScript. The Rendering panel for visualising layout shifts. The Layers panel for debugging compositing issues. I also use <strong>WebPageTest</strong> for its filmstrip view that shows exactly what users see at each moment during page load, and its waterfall chart that reveals resource loading dependencies.</p>
+
+                <p><strong>For automated auditing:</strong> Lighthouse CI integrates into your deployment pipeline and fails builds if Core Web Vitals regress. This is the most effective way to prevent regressions -- catch them before they reach production. <a href="../blog/website-speed-optimization.html">Site speed optimisation tools</a> like Calibre and SpeedCurve provide ongoing synthetic monitoring with alerting. For bulk page analysis, I use Screaming Frog's PageSpeed integration which runs Lighthouse on every page during a crawl, giving me Core Web Vitals scores for the entire site in a single report.</p>
+
+                <p><strong>For image optimisation specifically:</strong> Squoosh is a free, browser-based tool that lets you compare different formats and quality settings visually. ShortPixel and Imagify work as WordPress plugins for automated optimisation. For build-time optimisation, Sharp (Node.js) and the <code>&lt;picture&gt;</code> element with multiple source formats give you the most control. I typically set up automated image optimisation in the build pipeline so developers never need to manually optimise images -- they upload any format and the build system produces optimised WebP and AVIF versions automatically.</p>
+
+                <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <h3>Are Core Web Vitals a ranking factor in Google?</h3>
+                        <p>Yes, Core Web Vitals are a confirmed ranking factor as part of Google's page experience signals. However, they are not the most heavily weighted factor. Relevance and content quality still matter more. Think of Core Web Vitals as a tiebreaker -- if two pages have equally relevant content, the one with better Core Web Vitals will likely rank higher. That said, failing Core Web Vitals can hold back otherwise excellent content, which is why I always recommend fixing them. The ranking impact is most noticeable in competitive niches where many pages offer similar content quality. Start with your highest-traffic pages for maximum impact.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What is the difference between field data and lab data for Core Web Vitals?</h3>
+                        <p>Field data comes from real users visiting your site and is collected through the Chrome User Experience Report. It reflects actual performance across different devices, network conditions, and geographic locations. Lab data comes from controlled tests run in tools like Lighthouse or PageSpeed Insights using simulated conditions. Google uses field data for ranking purposes, making it your primary source of truth. Lab data is essential for debugging because it provides detailed diagnostic information that field data lacks. I always use both -- field data to identify problems and prioritise fixes, and lab data to diagnose specific causes and verify that changes have the intended effect.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How do I check my Core Web Vitals scores?</h3>
+                        <p>The easiest way is Google Search Console's Core Web Vitals report, which shows field data for all your pages grouped by status. For individual page analysis, use PageSpeed Insights which combines field data from CrUX with lab data from Lighthouse. Chrome DevTools' Performance tab provides the most detailed diagnostic data for debugging specific issues. For a site-wide view, the CrUX Dashboard in Looker Studio lets you track trends over time. I recommend checking Search Console weekly and running PageSpeed Insights on your most important pages after any significant site changes or deployments.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Why are my lab scores good but my field data scores poor?</h3>
+                        <p>This is one of the most common questions I get. Lab tests run on fast hardware with a simulated connection, while field data reflects real users on varied devices and networks. Your visitors might be using older phones, slower connections, or experiencing different conditions than the lab test simulates. Third-party scripts like analytics, chat widgets, and ad networks also behave differently in real conditions versus controlled tests. Geographic distance from your server matters too -- a lab test from your location might be fast, but users in another country experience higher latency. Focus on optimising for real user conditions, not just lab scores. Implementing <code>web-vitals.js</code> can help you understand the specific conditions causing poor experiences.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How long does it take for Core Web Vitals improvements to affect rankings?</h3>
+                        <p>After you implement fixes, it typically takes twenty-eight days for the CrUX data to update because Google collects field data over a rolling twenty-eight-day window. Once the updated field data shows your pages passing Core Web Vitals, ranking improvements can follow within a few weeks, though the timeline varies. In my experience, the full cycle from implementing fixes to seeing measurable ranking changes is usually six to ten weeks. Pages that move from "poor" to "good" status tend to see more noticeable ranking lifts than pages moving from "needs improvement" to "good." If you need help prioritising fixes, <a href="../contact.html">get in touch for a free performance audit</a>.</p>
+                    </div>
+                </div>
+
+                <div class="article-callout" role="complementary" aria-label="Key takeaway">
+                    <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>
+                    <div>
+                        <strong>The bottom line:</strong> Core Web Vitals optimisation is not about chasing perfect scores in testing tools. It is about ensuring real users on real devices have a fast, responsive, visually stable experience on your website. Start with field data to identify your biggest problems, use lab data to diagnose the specific causes, implement targeted fixes, and validate with field data over the following twenty-eight-day cycle. The three metrics -- LCP, INP, and CLS -- each have well-established diagnosis and fix patterns. Work through them systematically and you will see measurable improvements in both user experience and search rankings. If you want a professional assessment, I offer a <a href="../contact.html#audit">free website audit</a> that includes a detailed Core Web Vitals analysis.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Social Share -->
+    <section class="article-share" style="padding:var(--space-2xl) 0; background:var(--bg-secondary);">
+        <div class="container" style="max-width:800px; text-align:center;">
+            <h4 style="margin-bottom:var(--space-lg);">Share this article</h4>
+            <div style="display:flex; gap:var(--space-md); justify-content:center; flex-wrap:wrap;">
+                <button class="btn btn-outline share-btn" data-platform="twitter" aria-label="Share on Twitter" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">Twitter</button>
+                <button class="btn btn-outline share-btn" data-platform="linkedin" aria-label="Share on LinkedIn" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">LinkedIn</button>
+                <button class="btn btn-outline share-btn" data-platform="whatsapp" aria-label="Share on WhatsApp" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">WhatsApp</button>
+                <button class="btn btn-outline share-btn" data-platform="email" aria-label="Share via Email" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">Email</button>
+                <button class="btn btn-outline share-btn" data-platform="copy" aria-label="Copy link" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">Copy Link</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Bio -->
+    <section class="article-author" style="padding:var(--space-2xl) 0;">
+        <div class="container" style="max-width:800px;">
+            <div style="display:flex; gap:var(--space-xl); align-items:center; flex-wrap:wrap;">
+                <div class="author-avatar" style="width:80px;height:80px;font-size:1.5rem;" aria-hidden="true">NP</div>
+                <div style="flex:1; min-width:250px;">
+                    <h4 style="margin-bottom:0.25rem;">Nisarth Patel</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:var(--space-md);">Digital Growth Specialist from Ahmedabad, India. I help businesses grow through SEO, AI automation, and modern web development. 4+ years of hands-on experience.</p>
+                    <div style="display:flex; gap:var(--space-md); font-size:0.85rem;">
+                        <a href="https://www.linkedin.com/in/nisarth-patel/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">LinkedIn</a>
+                        <a href="../contact.html" style="color:var(--accent-primary);">Contact</a>
+                        <a href="../about.html" style="color:var(--accent-primary);">About</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section style="padding:var(--space-2xl) 0; background:var(--bg-secondary);">
+        <div class="container" style="max-width:600px; text-align:center;">
+            <h3 style="margin-bottom:var(--space-md);">Get SEO insights in your inbox</h3>
+            <p style="color:var(--text-secondary); margin-bottom:var(--space-xl); font-size:0.95rem;">Practical SEO, GEO, and digital growth tips. No spam, no fluff -- just things that actually work.</p>
+            <a href="../contact.html" class="btn btn-primary" style="font-size:0.9rem;">Subscribe &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="article-related" style="padding:var(--space-3xl) 0;">
+        <div class="container">
+            <h3 style="margin-bottom:var(--space-2xl); text-align:center;">Related Articles</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:var(--space-xl);">
+                <a href="../blog/technical-seo-audit-checklist-2026.html" class="blog-card" style="text-decoration:none;">
+                    <div style="padding:var(--space-xl);">
+                        <span class="tag tag-accent" style="font-size:0.7rem; padding:2px 8px; margin-bottom:var(--space-sm); display:inline-block;">SEO</span>
+                        <h4 style="margin-bottom:var(--space-sm);">Technical SEO Audit Checklist 2026</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">The complete technical SEO audit checklist covering crawlability, Core Web Vitals, structured data, JS rendering, and AI readiness.</p>
+                    </div>
+                </a>
+                <a href="../blog/website-speed-optimization.html" class="blog-card" style="text-decoration:none;">
+                    <div style="padding:var(--space-xl);">
+                        <span class="tag tag-accent" style="font-size:0.7rem; padding:2px 8px; margin-bottom:var(--space-sm); display:inline-block;">Performance</span>
+                        <h4 style="margin-bottom:var(--space-sm);">Website Speed Optimisation Guide</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">Practical techniques to make your website faster -- from image optimisation to caching strategies and CDN setup.</p>
+                    </div>
+                </a>
+                <a href="../blog/on-page-seo-guide.html" class="blog-card" style="text-decoration:none;">
+                    <div style="padding:var(--space-xl);">
+                        <span class="tag tag-accent" style="font-size:0.7rem; padding:2px 8px; margin-bottom:var(--space-sm); display:inline-block;">SEO</span>
+                        <h4 style="margin-bottom:var(--space-sm);">The Complete On-Page SEO Guide</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">Everything you need to know about optimising individual pages for search engines -- from title tags to content structure.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to blog -->
+    <div style="background:var(--bg-secondary); padding:var(--space-2xl) 0;">
+        <div class="container"
+            style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-lg);">
+            <a href="../blog.html" class="btn btn-outline">&larr; Back to Blog</a>
+            <a href="../contact.html" class="btn btn-primary">Work with Nisarth <span aria-hidden="true">&rarr;</span></a>
+        </div>
+    </div>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="nav-logo" style="margin-bottom:var(--space-lg);"><span
+                            class="nav-logo-mark">NP</span><span class="nav-logo-name">Nisarth Patel</span></div>
+                    <p style="font-size:0.875rem;color:var(--text-secondary);">Ahmedabad, Gujarat, India</p>
+                </div>
+                <nav aria-label="Footer navigation">
+                    <div class="footer-links"><a href="../work.html" class="footer-link">Work</a><a href="../services.html"
+                            class="footer-link">Services</a><a href="../about.html" class="footer-link">About</a><a
+                            href="../process.html" class="footer-link">Process</a><a href="../blog.html"
+                            class="footer-link">Blog</a><a href="../contact.html" class="footer-link">Contact</a></div>
+                </nav>
+                <div>
+                    <div class="footer-links"><a href="mailto:pnisarth@gmail.com"
+                            class="footer-link">pnisarth@gmail.com</a><a href="https://wa.me/917016353896"
+                            class="footer-link" target="_blank" rel="noopener noreferrer">+91 7016353896</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom"><span>&copy; Nisarth Patel &middot; Ahmedabad, India</span></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/animations.js" defer></script>
+    <script src="../assets/js/cursor.js" defer></script>
+    <button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
+    <div class="cookie-banner" role="alert"><p>This site uses cookies for analytics. Your data helps improve the experience.</p><div class="cookie-actions"><button class="btn btn-primary" data-cookie="accept" style="padding:0.5rem 1rem;font-size:0.8rem;border-radius:100px;background:var(--accent-primary);color:var(--bg-primary);font-weight:600;">Accept</button><button data-cookie="decline" style="padding:0.5rem 1rem;font-size:0.8rem;color:var(--text-secondary);background:none;border:1px solid var(--border);border-radius:100px;cursor:pointer;">Decline</button></div></div>
+</body>
+
+</html>

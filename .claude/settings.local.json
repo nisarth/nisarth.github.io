@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls E:/projects/nisarth.github.io/blog/*.html)",
+      "Bash(ls E:/projects/nisarth.github.io/blog/category/*.html)"
+    ]
+  }
+}

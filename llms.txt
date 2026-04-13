@@ -1,6 +1,6 @@
 # Nisarth Patel — Digital Growth Specialist
 
-> This file helps AI tools understand this website. For more, visit https://nisarthpatel.github.io/
+> This file helps AI tools understand this website. For more, visit https://nisarth.github.io/
 
 ## About
 
@@ -39,13 +39,13 @@ Nisarth Patel is a freelance digital growth specialist based in Ahmedabad, Gujar
 
 ## Site Pages
 
-- Homepage: https://nisarthpatel.github.io/
-- Services: https://nisarthpatel.github.io/services.html
-- Portfolio/Work: https://nisarthpatel.github.io/work.html
-- About: https://nisarthpatel.github.io/about.html
-- Process: https://nisarthpatel.github.io/process.html
-- Blog: https://nisarthpatel.github.io/blog.html
-- Contact: https://nisarthpatel.github.io/contact.html
+- Homepage: https://nisarth.github.io/
+- Services: https://nisarth.github.io/services.html
+- Portfolio/Work: https://nisarth.github.io/work.html
+- About: https://nisarth.github.io/about.html
+- Process: https://nisarth.github.io/process.html
+- Blog: https://nisarth.github.io/blog.html
+- Contact: https://nisarth.github.io/contact.html
 
 ## Key Differentiators
 

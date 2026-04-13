@@ -33,7 +33,7 @@
         camera.position.z = 80;
 
         // ── Particle System ──
-        const PARTICLE_COUNT = 1500;
+        const PARTICLE_COUNT = 800;
         const geometry = new THREE.BufferGeometry();
         const positions = new Float32Array(PARTICLE_COUNT * 3);
         const colors = new Float32Array(PARTICLE_COUNT * 3);
@@ -116,10 +116,17 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
+        // ── Visibility throttle ──
+        let isVisible = true;
+        document.addEventListener('visibilitychange', function () {
+            isVisible = !document.hidden;
+        });
+
         // ── Animation Loop ──
         let frame = 0;
         function animate() {
             requestAnimationFrame(animate);
+            if (!isVisible) return;
             frame += 0.005;
 
             // Smooth mouse follow

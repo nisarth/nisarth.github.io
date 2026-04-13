@@ -278,38 +278,37 @@
         const form = document.getElementById('contact-form');
         if (!form) return;
 
+        // Check for success redirect
+        if (window.location.search.includes('success=true')) {
+            form.style.display = 'none';
+            var success = document.querySelector('.form-success');
+            if (success) success.style.display = 'block';
+        }
+
         form.addEventListener('submit', (e) => {
+            if (!validateForm(form)) {
+                e.preventDefault();
+                return;
+            }
+
+            // If form has action (Formsubmit.co), let it submit natively
+            if (form.action && form.action.includes('formsubmit.co')) {
+                var btn = form.querySelector('[type="submit"]');
+                btn.textContent = 'Sending...';
+                btn.disabled = true;
+                return; // Allow native form submission
+            }
+
             e.preventDefault();
-
-            if (!validateForm(form)) return;
-
-            const btn = form.querySelector('[type="submit"]');
-            const originalTxt = btn.textContent;
+            var btn = form.querySelector('[type="submit"]');
+            var originalTxt = btn.textContent;
             btn.textContent = 'Sending...';
             btn.disabled = true;
 
-            // Use FormSpree if available, otherwise mailto fallback
-            const formspreeUrl = form.dataset.formspree;
-            if (formspreeUrl) {
-                const data = new FormData(form);
-                fetch(formspreeUrl, {
-                    method: 'POST',
-                    body: data,
-                    headers: { Accept: 'application/json' },
-                })
-                    .then((res) => {
-                        if (res.ok) showFormSuccess(form);
-                        else showFormError(form, btn, originalTxt);
-                    })
-                    .catch(() => showFormError(form, btn, originalTxt));
-            } else {
-                // Mailto fallback
-                setTimeout(() => {
-                    form.style.display = 'none';
-                    const success = document.querySelector('.form-success');
-                    if (success) success.style.display = 'block';
-                }, 600);
-            }
+            // Fallback: show success after delay
+            setTimeout(function () {
+                showFormSuccess(form);
+            }, 600);
         });
     }
 
@@ -366,8 +365,143 @@
         });
     }
 
+    // ── Theme Toggle ──
+    function initThemeToggle() {
+        var saved = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', saved);
+
+        document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var current = document.documentElement.getAttribute('data-theme') || 'dark';
+                var next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            });
+        });
+    }
+
+    // ── Back to Top ──
+    function initBackToTop() {
+        var btn = document.querySelector('.back-to-top');
+        if (!btn) return;
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 500) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        }, { passive: true });
+        btn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ── Cookie Consent ──
+    function initCookieConsent() {
+        if (localStorage.getItem('cookie-consent')) return;
+        var banner = document.querySelector('.cookie-banner');
+        if (!banner) return;
+        setTimeout(function () { banner.classList.add('visible'); }, 1500);
+        banner.querySelectorAll('[data-cookie]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                localStorage.setItem('cookie-consent', btn.dataset.cookie);
+                banner.classList.remove('visible');
+                if (btn.dataset.cookie === 'decline') {
+                    // Disable GA if declined
+                    window['ga-disable-G-372JGPFET7'] = true;
+                }
+            });
+        });
+    }
+
+    // ── Article TOC Generation ──
+    function initArticleTOC() {
+        var tocContainer = document.querySelector('.article-toc ol');
+        var articleBody = document.querySelector('.article-body');
+        if (!tocContainer || !articleBody) return;
+
+        var headings = articleBody.querySelectorAll('h2, h3');
+        headings.forEach(function (heading, i) {
+            var id = heading.id || heading.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            heading.id = id;
+            var li = document.createElement('li');
+            var a = document.createElement('a');
+            a.href = '#' + id;
+            a.textContent = heading.textContent;
+            if (heading.tagName === 'H3') a.classList.add('toc-h3');
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            li.appendChild(a);
+            tocContainer.appendChild(li);
+        });
+
+        // Highlight active heading on scroll
+        var tocLinks = tocContainer.querySelectorAll('a');
+        function updateActiveTOC() {
+            var scrollPos = window.scrollY + 120;
+            var active = null;
+            headings.forEach(function (heading, i) {
+                if (heading.offsetTop <= scrollPos) active = i;
+            });
+            tocLinks.forEach(function (link, i) {
+                link.classList.toggle('active', i === active);
+            });
+        }
+        window.addEventListener('scroll', updateActiveTOC, { passive: true });
+    }
+
+    // ── Reading Progress ──
+    function initReadingProgress() {
+        var bar = document.querySelector('.article-progress');
+        var body = document.querySelector('.article-body');
+        if (!bar || !body) return;
+
+        window.addEventListener('scroll', function () {
+            var rect = body.getBoundingClientRect();
+            var bodyTop = rect.top + window.scrollY;
+            var bodyHeight = rect.height;
+            var progress = Math.min(Math.max((window.scrollY - bodyTop + 300) / bodyHeight, 0), 1);
+            bar.style.width = (progress * 100) + '%';
+        }, { passive: true });
+    }
+
+    // ── Social Sharing ──
+    function initShareButtons() {
+        document.querySelectorAll('.share-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var platform = btn.dataset.platform;
+                var url = encodeURIComponent(window.location.href);
+                var title = encodeURIComponent(document.title);
+                var shareUrls = {
+                    twitter: 'https://twitter.com/intent/tweet?url=' + url + '&text=' + title,
+                    linkedin: 'https://www.linkedin.com/sharing/share-offsite/?url=' + url,
+                    whatsapp: 'https://wa.me/?text=' + title + ' ' + url,
+                    email: 'mailto:?subject=' + title + '&body=' + url,
+                };
+                if (platform === 'copy') {
+                    navigator.clipboard.writeText(window.location.href).then(function () {
+                        btn.textContent = 'Copied!';
+                        setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
+                    });
+                } else if (shareUrls[platform]) {
+                    window.open(shareUrls[platform], '_blank', 'noopener,noreferrer');
+                }
+            });
+        });
+    }
+
+    // ── Service Worker Registration ──
+    function initServiceWorker() {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').catch(function () {});
+        }
+    }
+
     // ── Initialize all on DOM ready ──
     function init() {
+        initThemeToggle();
         initLenis();
         initNav();
         initLoader();
@@ -376,6 +510,12 @@
         initFilters();
         initContactForm();
         initScramble();
+        initBackToTop();
+        initCookieConsent();
+        initArticleTOC();
+        initReadingProgress();
+        initShareButtons();
+        initServiceWorker();
     }
 
     if (document.readyState === 'loading') {
