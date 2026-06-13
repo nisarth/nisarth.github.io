@@ -2,6 +2,19 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { cities } from '../../data/cities';
 import { breadcrumb } from '../../schema';
+import { SITE } from '../../consts';
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Cities served by Nisarth Patel',
+  itemListElement: cities.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    url: new URL(`/locations/${c.slug}.html`, SITE.url).href,
+  })),
+};
 
 const title = 'SEO & Digital Marketing by City | Nisarth Patel';
 const description =
@@ -20,7 +33,7 @@ const countries = Object.keys(byCountry);
   title={title}
   description={description}
   path={path}
-  jsonLd={[breadcrumb([{ name: 'Home', path: '/' }, { name: 'Locations', path }])]}
+  jsonLd={[breadcrumb([{ name: 'Home', path: '/' }, { name: 'Locations', path }]), itemList]}
 >
   <section class="section">
     <div class="container narrow">

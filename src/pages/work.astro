@@ -34,13 +34,27 @@ const engagements = [
     work: 'Direct-answer content, FAQ schema, and pages structured the way AI retrieval reads them.',
   },
 ];
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Types of work by Nisarth Patel',
+  itemListElement: engagements.map((e, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: e.title,
+  })),
+};
 ---
 
 <BaseLayout
   title={title}
   description={description}
   path="/work.html"
-  jsonLd={[breadcrumb([{ name: 'Home', path: '/' }, { name: 'Work', path: '/work.html' }])]}
+  jsonLd={[
+    breadcrumb([{ name: 'Home', path: '/' }, { name: 'Work', path: '/work.html' }]),
+    itemList,
+  ]}
 >
   <section class="section">
     <div class="container">
