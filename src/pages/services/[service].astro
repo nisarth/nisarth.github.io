@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Faq from '../../components/Faq.astro';
+import { services, serviceBySlug } from '../../data/services';
+import { cities } from '../../data/cities';
+import { breadcrumb, faqPage, service as serviceSchema } from '../../schema';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { service: s.slug }, props: { record: s } }));
+}
+
+const { record } = Astro.props;
+const path = `/services/${record.slug}.html`;
+const related = record.related
+  .map((slug) => serviceBySlug(slug))
+  .filter(Boolean);
+// A few cities to link to with relevant anchors.
+const linkCities = cities.slice(0, 6);
+---
+
+<BaseLayout
+  title={record.title}
+  description={record.description}
+  path={path}
+  jsonLd={[
+    serviceSchema({
+      name: `${record.name} services by Nisarth Patel`,
+      serviceType: record.primaryKeyword,
+      description: record.description,
+      url: path,
+    }),
+    breadcrumb([
+      { name: 'Home', path: '/' },
+      { name: 'Services', path: '/services.html' },
+      { name: record.name, path },
+    ]),
+    faqPage(record.faqs),
+  ]}
+>
+  <article class="section">
+    <div class="container narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/services.html">Services</a> <span aria-hidden="true">/</span>
+        <span>{record.name}</span>
+      </nav>
+
+      <p class="eyebrow">{record.name}</p>
+      <h1>{record.h1}</h1>
+      <p class="lead">{record.definition}</p>
+      <p>{record.intro}</p>
+
+      <h2>What my {record.primaryKeyword} include</h2>
+      <ul class="check-list">
+        {record.included.map((i) => <li>{i}</li>)}
+      </ul>
+
+      <h2>Who it is for</h2>
+      <p>{record.whoFor}</p>
+
+      <h2>Related services</h2>
+      <ul class="related-links">
+        {
+          related.map((r) => (
+            <li>
+              <a href={`/services/${r!.slug}.html`}>{r!.name} services</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>{record.name} in your city</h2>
+      <p class="muted">I work remote-first with businesses across India and abroad.</p>
+      <ul class="city-links">
+        {
+          linkCities.map((c) => (
+            <li>
+              <a href={`/locations/${c.slug}.html`}>{record.name} in {c.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="updated">Last updated: June 2026</p>
+      <a href="/contact.html" class="btn btn-primary">Get a quote for {record.name}</a>
+    </div>
+  </article>
+
+  <Faq items={record.faqs} />
+</BaseLayout>
+
+<style>
+  .crumbs {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .crumbs a:hover {
+    color: var(--accent);
+  }
+  h1 {
+    margin-bottom: 1rem;
+  }
+  h2 {
+    margin: 2.3rem 0 1rem;
+  }
+  .lead {
+    margin-bottom: 1rem;
+  }
+  .check-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .check-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-muted);
+  }
+  .check-list li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .related-links,
+  .city-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    margin-top: 0.8rem;
+  }
+  .related-links a,
+  .city-links a {
+    color: var(--link);
+  }
+  .related-links a:hover,
+  .city-links a:hover {
+    color: var(--accent);
+  }
+  .city-links {
+    margin-top: 0.6rem;
+  }
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 2.5rem 0 1.2rem;
+  }
+</style>

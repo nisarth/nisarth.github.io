@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Faq from '../components/Faq.astro';
 import { breadcrumb, faqPage, professionalService } from '../schema';
+import { services } from '../data/services';
 
 const title = 'Services: SEO, AEO, AI Automation, and Web Development';
 const description =
@@ -105,6 +106,22 @@ const faqs = [
         }
       </div>
 
+      <h2 class="explore-heading">Explore each service in detail</h2>
+      <ul class="explore-links">
+        {
+          services.map((s) => (
+            <li>
+              <a href={`/services/${s.slug}.html`}>{s.name} services</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="locations-line">
+        I work remote-first with businesses everywhere. See
+        <a href="/locations.html">SEO and digital marketing by city</a>.
+      </p>
+
       <p class="updated">Last updated: June 2026</p>
       <a href="/contact.html" class="btn btn-primary">Get a quote</a>
     </div>
@@ -149,10 +166,34 @@ const faqs = [
     color: var(--accent);
     font-weight: 700;
   }
+  .explore-heading {
+    margin: 2.5rem 0 1rem;
+  }
+  .explore-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.5rem;
+  }
+  .explore-links a {
+    color: var(--link);
+  }
+  .explore-links a:hover {
+    color: var(--accent);
+  }
+  .locations-line {
+    margin-top: 1.4rem;
+    color: var(--text-muted);
+  }
+  .locations-line a {
+    color: var(--link);
+  }
+  .locations-line a:hover {
+    color: var(--accent);
+  }
   .updated {
     font-family: var(--font-mono);
     font-size: 0.8rem;
     color: var(--text-muted);
-    margin: 1rem 0 1.2rem;
+    margin: 1.6rem 0 1.2rem;
   }
 </style>
