@@ -1,0 +1,17 @@
+{
+  "name": "nisarth-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "npm run check:dashes && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "check:dashes": "node tools/check-no-em-dash.mjs"
+  },
+  "dependencies": {
+    "astro": "^6.4.6"
+  }
+}

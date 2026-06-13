@@ -1,0 +1,7 @@
+#!/bin/sh
+# Block any commit that introduces an em dash (U+2014).
+# Enable once per clone with: git config core.hooksPath .githooks
+node tools/check-no-em-dash.mjs || {
+  echo "Commit blocked: remove em dashes first."
+  exit 1
+}

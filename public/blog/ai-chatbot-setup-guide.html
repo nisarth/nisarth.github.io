@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Nisarth Patel">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>How to Set Up an AI Chatbot for Your Business Website | Nisarth Patel</title>
+    <meta name="description"
+        content="A step-by-step guide to setting up an AI chatbot for your business website covering platform selection, knowledge base preparation, conversation design, CRM integration, and performance measurement.">
+    <link rel="canonical" href="https://nisarth.github.io/blog/ai-chatbot-setup-guide.html">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="How to Set Up an AI Chatbot for Your Business Website">
+    <meta property="og:description"
+        content="A practitioner's guide to implementing an AI chatbot - platform selection, knowledge base setup, conversation flow design, CRM integration, and measuring ROI.">
+    <meta property="og:image" content="https://nisarth.github.io/assets/images/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="AI Chatbot Setup Guide by Nisarth Patel">
+    <meta property="og:url" content="https://nisarth.github.io/blog/ai-chatbot-setup-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Nisarth Patel">
+    <meta property="article:published_time" content="2026-04-10">
+    <meta property="article:author" content="https://nisarth.github.io/about.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Set Up an AI Chatbot for Your Business Website">
+    <meta name="twitter:description"
+        content="A practitioner's guide to implementing an AI chatbot - platform selection, knowledge base setup, conversation flow design, CRM integration, and measuring ROI.">
+    <meta name="twitter:image" content="https://nisarth.github.io/assets/images/og-image.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nisarth.github.io/"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://nisarth.github.io/blog.html"},
+        {"@type": "ListItem", "position": 3, "name": "AI Chatbot Setup Guide", "item": "https://nisarth.github.io/blog/ai-chatbot-setup-guide.html"}
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Set Up an AI Chatbot for Your Business Website",
+      "description": "A step-by-step guide to setting up an AI chatbot for your business website covering platform selection, knowledge base preparation, conversation design, CRM integration, and performance measurement.",
+      "image": "https://nisarth.github.io/assets/images/og-image.svg",
+      "author": {
+        "@type": "Person",
+        "name": "Nisarth Patel",
+        "url": "https://nisarth.github.io/about.html"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Nisarth Patel"
+      },
+      "datePublished": "2026-04-10",
+      "dateModified": "2026-04-12",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://nisarth.github.io/blog/ai-chatbot-setup-guide.html"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ".article-intro"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does it cost to set up an AI chatbot for a business website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Costs vary widely depending on the approach. A basic chatbot using a platform like Tidio or Crisp with limited AI features can cost zero to fifty dollars per month. Mid-range solutions like Intercom or Drift with full AI capabilities run two hundred to five hundred dollars per month. Custom-built chatbots using n8n with an OpenAI or Anthropic API typically cost twenty to one hundred dollars per month in API and hosting fees. For most small to medium businesses, I recommend starting with a mid-range platform or a custom n8n build to balance cost with capability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to implement an AI chatbot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A basic AI chatbot with a simple knowledge base can be deployed in two to three days. A properly configured chatbot with comprehensive knowledge base training, CRM integration, conversation flows, and testing typically takes two to three weeks. Enterprise implementations with custom integrations, compliance requirements, and extensive testing can take six to eight weeks. The knowledge base preparation phase usually takes the longest because gathering and structuring your business information is more time-consuming than the technical setup."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can an AI chatbot really replace human customer support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not entirely, and it should not try to. A well-configured AI chatbot typically handles sixty to eighty percent of common customer queries -- FAQs, order status, pricing information, basic troubleshooting. This frees your human agents to focus on complex issues that require empathy, judgment, or account-specific knowledge. The best implementations use a hybrid model where the chatbot handles initial contact, gathers information, resolves simple issues, and escalates to humans when needed. Trying to eliminate human support entirely leads to frustrated customers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when the AI chatbot gives wrong information?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hallucination is a real risk with AI chatbots. The best mitigation strategies include limiting the chatbot to respond only from your approved knowledge base using retrieval-augmented generation, adding confidence thresholds that trigger human handoff when the AI is unsure, implementing regular conversation review to catch and correct errors, and including clear disclaimers for sensitive topics like pricing or legal information. I always configure chatbots to say they are not sure and offer to connect the user with a human rather than guessing at answers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which AI model should I use for my business chatbot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most business chatbots, GPT-4o-mini or Claude 3.5 Haiku offer the best balance of quality and cost. They are fast, affordable at scale, and handle conversational interactions well. For chatbots that need to handle complex reasoning, technical support, or nuanced customer situations, GPT-4o or Claude Sonnet provide better accuracy at higher cost. I generally start clients on a smaller model and upgrade only if conversation quality metrics indicate the need. The model choice matters less than the quality of your knowledge base and prompt engineering."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <noscript>
+        <style>
+            #loader, .cursor-dot, .cursor-outline, .grain-overlay { display: none !important; }
+            .service-card, .work-card, .blog-card, .portfolio-item, .section-heading,
+            .about-teaser, .about-teaser-visual, .about-teaser-text, .reveal-up,
+            .timeline-item, .process-step, .ai-feature-card, .value-card, .audit-banner,
+            .footer, .tech-item, .stat-item, .nav, .hero-word-inner, .hero-sub, .hero-ctas,
+            .hero-badge, .scroll-indicator, .contact-info-item, .faq-item { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+            #page-transition { display: none !important; }
+        </style>
+    </noscript>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="grain-overlay" aria-hidden="true"></div>
+    <div id="page-transition" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-outline" aria-hidden="true"><span class="cursor-label"></span></div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <a href="https://wa.me/917016353896" class="whatsapp-fab" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.792 9.792 0 01-5.016-1.382l-.36-.214-3.732.978.994-3.638-.235-.374A9.79 9.79 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z" />
+        </svg>
+        <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+    </a>
+
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="../" class="nav-logo"><span class="nav-logo-mark">NP</span><span class="nav-logo-name">Nisarth
+                    Patel</span></a>
+            <div class="nav-links">
+                <a href="../work.html" class="nav-link magnetic">Work</a>
+                <a href="../services.html" class="nav-link magnetic">Services</a>
+                <a href="../about.html" class="nav-link magnetic">About</a>
+                <a href="../process.html" class="nav-link magnetic">Process</a>
+                <a href="../blog.html" class="nav-link magnetic" style="color:var(--accent-primary);">Blog</a>
+            </div>
+            <a href="../contact.html" class="nav-cta desktop-only">Let's Talk</a>
+            <button class="theme-toggle" aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+            <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="nav-overlay" role="dialog" aria-modal="true">
+        <button class="nav-overlay-close" aria-label="Close menu">&#x2715;</button>
+        <nav class="nav-overlay-links">
+            <a href="../" class="nav-overlay-link">Home</a>
+            <a href="../work.html" class="nav-overlay-link">Work</a>
+            <a href="../services.html" class="nav-overlay-link">Services</a>
+            <a href="../about.html" class="nav-overlay-link">About</a>
+            <a href="../process.html" class="nav-overlay-link">Process</a>
+            <a href="../blog.html" class="nav-overlay-link">Blog</a>
+            <a href="../contact.html" class="nav-overlay-link">Contact</a>
+        </nav>
+    </div>
+
+    <div class="article-progress"></div>
+
+    <article id="main-content" role="main">
+        <!-- Article Header -->
+        <header class="article-header section-pad"
+            style="padding-top:calc(var(--nav-height) + var(--space-4xl)); background:var(--bg-secondary);">
+            <div class="container" style="max-width:800px;">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol style="display:flex;gap:0.5rem;list-style:none;padding:0;font-size:0.85rem;color:var(--text-muted);">
+                        <li><a href="../">Home</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li aria-current="page">AI Chatbot Setup Guide</li>
+                    </ol>
+                </nav>
+                <div class="article-tags" style="margin-top:var(--space-lg);">
+                    <span class="tag tag-accent">AI Automation</span>
+                </div>
+                <h1 class="text-h1 section-heading"
+                    style="font-size:clamp(2rem,5vw,3.5rem); margin-top:var(--space-xl);">How to Set Up an AI Chatbot for Your Business Website</h1>
+                <div class="article-meta" style="display:flex;gap:var(--space-lg);align-items:center;margin-top:var(--space-lg);color:var(--text-muted);font-size:0.9rem;">
+                    <span>April 10, 2026</span>
+                    <span>&middot;</span>
+                    <span>15 min read</span>
+                    <span>&middot;</span>
+                    <span>By <a href="../about.html" style="color:var(--accent-primary);">Nisarth Patel</a></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Article Layout: TOC + Body -->
+        <div class="container article-layout" style="max-width:1100px;">
+            <aside class="article-toc" aria-label="Table of contents">
+                <h4>Contents</h4>
+                <ol></ol>
+            </aside>
+
+            <div class="article-body prose">
+                <p class="article-intro">An AI chatbot on your business website is no longer a nice-to-have -- it is becoming a competitive necessity. Your visitors expect instant answers. They do not want to fill out a contact form and wait twenty-four hours for a response. They do not want to search through your FAQ page for ten minutes. They want to type a question and get a useful answer within seconds. A well-implemented <strong>AI chatbot</strong> delivers exactly that, and in the process, it captures leads, qualifies prospects, reduces support ticket volume, and works twenty-four hours a day without taking a single break.</p>
+
+                <p>I have set up AI chatbots for over a dozen businesses in the past two years -- from e-commerce stores in India handling product queries to SaaS companies managing technical support conversations. The technology has matured enormously. We are past the era of rigid decision-tree chatbots that could only handle pre-scripted paths. Modern AI chatbots powered by large language models can understand natural language, maintain context across a conversation, pull answers from your knowledge base, and know when to hand off to a human agent.</p>
+
+                <p>But here is what most guides do not tell you: the technology is the easy part. The hard part is preparing your knowledge base, designing the right conversation flows, and integrating the chatbot into your existing business processes so that it actually adds value instead of frustrating your visitors. This guide covers all of it -- from choosing a platform to measuring whether the chatbot is actually working.</p>
+
+                <h2 id="choosing-a-chatbot-platform">Choosing the Right Chatbot Platform</h2>
+
+                <p>The platform you choose determines your capabilities, costs, and implementation complexity. Let me walk you through the main categories and specific tools I recommend in each.</p>
+
+                <p><strong>All-in-one customer messaging platforms.</strong> Tools like Intercom, Drift, Freshchat, and Zendesk offer AI chatbot features as part of a broader customer communication suite. These platforms combine live chat, email, help desk, and AI chatbot functionality in one package. The advantage is that everything is integrated -- when the AI chatbot cannot handle a query, it seamlessly hands off to a human agent with full conversation context. The disadvantage is cost. Intercom starts at around seventy-four dollars per month, and once you add AI features and higher message volumes, you are easily looking at two hundred to five hundred dollars monthly. For established businesses with dedicated support teams, these platforms are often worth the investment.</p>
+
+                <p><strong>Dedicated AI chatbot builders.</strong> Platforms like Chatbase, Botpress, Voiceflow, and Landbot specialise in building conversational AI experiences. They typically offer a more focused chatbot-building experience with features like visual flow builders, knowledge base ingestion, and widget customisation. Pricing is generally lower than the all-in-one platforms, ranging from twenty to one hundred dollars per month. These work well for businesses that already have a separate live chat or support system and want to add an AI layer.</p>
+
+                <p><strong>Custom-built with automation tools.</strong> This is my preferred approach for many clients. Using <a href="../blog/n8n-automation-guide.html">n8n</a> or a similar automation platform, you can build a custom AI chatbot that connects directly to your preferred LLM provider (OpenAI, Anthropic, or others), your knowledge base, your CRM, and any other business system. The initial setup requires more technical effort, but the result is a chatbot that is deeply integrated with your business processes and costs a fraction of what commercial platforms charge in ongoing fees. A typical custom setup using n8n self-hosted with the OpenAI API costs fifteen to forty dollars per month depending on conversation volume.</p>
+
+                <p><strong>My recommendation framework.</strong> If you want the fastest implementation with minimal technical effort and have the budget, go with an all-in-one platform like Intercom or Freshchat. If you want a good balance of features and cost with moderate technical effort, use a dedicated builder like Chatbase or Botpress. If you want maximum customisation, lowest ongoing costs, and have a technical team member, build custom with n8n. For most of the small to medium businesses I work with in India, the custom n8n approach delivers the best value because the monthly cost savings are significant at Indian market price points.</p>
+
+                <h2 id="knowledge-base-preparation">Preparing Your Knowledge Base</h2>
+
+                <p>Your AI chatbot is only as good as the information it has access to. This is the step most businesses rush through, and it is the primary reason chatbots give poor answers. Let me be direct: you should spend more time on knowledge base preparation than on any other part of this process.</p>
+
+                <p><strong>Audit your existing content.</strong> Start by collecting every piece of information that a customer might ask about. This includes your website pages, FAQ documents, product descriptions, pricing information, return and refund policies, shipping details, service descriptions, onboarding documentation, troubleshooting guides, and any internal knowledge base your support team uses. I create a spreadsheet with every topic, the source document, and a quality rating for each piece of content. You will almost certainly find gaps -- questions your customers ask regularly that are not documented anywhere.</p>
+
+                <p><strong>Structure the information for AI consumption.</strong> Raw website content is often not ideal for chatbot training. Marketing copy with vague claims, pages with complex layouts, and content spread across multiple pages needs to be reorganised. I create a dedicated knowledge base document (or set of documents) structured around questions and clear answers. For each topic, I write a concise, factual answer that includes specific details -- prices, timelines, requirements, limitations. The AI does not need creative marketing language. It needs clear, accurate, structured information that it can use to construct helpful responses.</p>
+
+                <p><strong>Handle sensitive and dynamic information carefully.</strong> Pricing that changes frequently, stock availability, account-specific information, and legal or medical advice all require special handling. For dynamic data, configure the chatbot to query your systems in real time rather than relying on static knowledge base content. For sensitive topics, set up guardrails that direct the user to a human agent or a specific page rather than having the AI attempt an answer. I always create a "do not answer" list of topics where the chatbot should explicitly decline and escalate -- legal liability questions, specific medical advice, detailed financial guidance, and anything where an incorrect answer could cause real harm.</p>
+
+                <p><strong>Create FAQ pairs.</strong> Beyond your general knowledge base, compile a specific set of frequently asked questions with ideal answers. These serve as high-priority retrieval targets and help the AI understand the tone and level of detail expected in responses. I typically start with twenty to thirty FAQ pairs covering the most common customer queries, then expand to fifty to one hundred as I analyse conversation logs after launch. Each answer should be eighty to two hundred words -- detailed enough to be helpful but concise enough to read quickly in a chat interface.</p>
+
+                <h2 id="conversation-flow-design">Designing Conversation Flows</h2>
+
+                <p>Even with a powerful AI model, you need intentional design around how conversations should flow. A chatbot without designed flows feels aimless. A chatbot with well-designed flows feels helpful and professional.</p>
+
+                <p><strong>The greeting and intent detection.</strong> The first message your chatbot sends sets expectations for the entire interaction. I recommend a brief greeting that identifies the chatbot as AI, states what it can help with, and offers two to three quick-reply buttons for common intents. Something like: "Hi there, I am the AI assistant for [Business Name]. I can help with product information, pricing, or support questions. What can I help you with today?" The quick-reply buttons reduce friction and help the AI understand intent from the first interaction. For a client in the education sector, adding three buttons -- "Course Information," "Pricing," and "Admissions Process" -- increased meaningful conversations by forty percent compared to an open-ended greeting.</p>
+
+                <p><strong>Multi-turn conversation handling.</strong> Real conversations are not single question-and-answer exchanges. A visitor might ask about your services, then ask for pricing, then ask about timelines, then want to schedule a call. Your chatbot needs to maintain context across these turns and transition smoothly between topics. When using LLM-powered chatbots, context management is built in to the model's conversation memory. But you need to configure the memory window appropriately -- too short and the chatbot forgets earlier context, too long and you burn through tokens unnecessarily. I typically set conversation memory to the last ten to fifteen messages, which covers most business conversations adequately.</p>
+
+                <p><strong>Lead capture integration.</strong> If your chatbot is customer-facing, it should be capturing lead information at the right moment. Not immediately -- asking for an email address as the first response is a fast way to kill engagement. Instead, capture information after the chatbot has provided value. Once the visitor has received a helpful answer, the chatbot can naturally say: "I would be happy to send you more detailed information about this. What is the best email to reach you?" This approach typically achieves twenty to thirty percent higher capture rates than upfront lead forms. The captured information should flow directly into your <a href="../blog/crm-automation-workflows.html">CRM through an automated workflow</a>.</p>
+
+                <p><strong>Escalation paths.</strong> Every chatbot conversation should have a clear path to a human agent. I design three types of escalation triggers: explicit (the user asks to speak to a human), confidence-based (the AI is unsure about its answer and proactively offers human help), and topic-based (the conversation touches a sensitive topic that requires human judgment). The escalation should transfer the full conversation context to the human agent so the customer does not have to repeat themselves. Nothing frustrates a user more than explaining their issue to a chatbot for five minutes only to be transferred to a human who asks them to start from the beginning.</p>
+
+                <h2 id="crm-integration">Integrating with Your CRM</h2>
+
+                <p>A chatbot that does not connect to your business systems is just a glorified FAQ page. The real value comes from integration -- specifically with your CRM, where customer data lives and sales processes run.</p>
+
+                <p><strong>Contact creation and enrichment.</strong> When a chatbot captures a lead's email address, name, or phone number, that information should automatically create or update a contact record in your CRM. If the contact already exists, the chatbot conversation should be logged against their existing record. I set up these integrations using <a href="../blog/n8n-automation-guide.html">n8n workflows</a> that check for existing contacts before creating new ones to avoid duplicates. The workflow also tags the contact with the source (chatbot), the page they were on when the conversation started, and a summary of their inquiry generated by the AI.</p>
+
+                <p><strong>Lead scoring from conversations.</strong> The content of a chatbot conversation tells you a lot about a lead's intent and readiness to buy. Someone asking about pricing and implementation timelines is a hotter lead than someone asking a general informational question. I configure the chatbot to pass conversation intent signals to the CRM, which then adjusts the lead score accordingly. Specific signals I track include: asked about pricing (high intent), requested a demo or meeting (very high intent), asked about competitors (medium intent, comparison shopping), asked only informational questions (lower intent). These signals feed into the <a href="../blog/ai-lead-generation-automation.html">lead scoring automation</a> that routes leads to the appropriate follow-up sequence.</p>
+
+                <p><strong>Deal creation and pipeline tracking.</strong> For higher-intent interactions, the chatbot can automatically create a deal or opportunity in your CRM. If a visitor asks to schedule a consultation, the chatbot captures their details, creates the deal, assigns it to the appropriate sales representative based on your routing rules, and sends calendar booking links -- all within the chat conversation. This automation eliminates the manual data entry that sales teams hate and ensures no leads fall through the cracks between the chatbot and the CRM.</p>
+
+                <p><strong>Conversation logging.</strong> Every chatbot conversation should be stored and accessible from the CRM contact record. When a sales rep follows up with a lead, they should be able to read exactly what the prospect asked about and what information the chatbot provided. This context makes the follow-up call significantly more productive. I store conversation transcripts as notes or activities on the CRM record, with key topics automatically tagged for easy scanning.</p>
+
+                <h2 id="training-the-ai">Training and Fine-Tuning the AI</h2>
+
+                <p>Training an AI chatbot is not a one-time event. It is an ongoing process of refinement based on real conversation data. Here is how I approach it.</p>
+
+                <p><strong>Initial prompt engineering.</strong> The system prompt is the most important piece of configuration for your chatbot. It defines the AI's personality, knowledge boundaries, response format, and behavioural guardrails. A good system prompt for a business chatbot includes: who the AI is (assistant for [Business Name]), what it can help with (specific topic areas), how it should respond (professional but conversational, concise, use British English if applicable), what it should never do (make promises, provide legal advice, discuss competitors negatively, make up information), and how to handle uncertainty (acknowledge the limitation and offer to connect with a human). I spend one to two hours crafting and testing the system prompt before any other configuration.</p>
+
+                <p><strong>Retrieval-augmented generation (RAG).</strong> RAG is the technique that makes your chatbot answer from your knowledge base rather than its general training data. The process works like this: the user asks a question, the system searches your knowledge base for relevant content using semantic similarity, the most relevant chunks are included in the prompt context, and the AI generates a response based on that specific information. This dramatically reduces hallucination because the AI is answering from your documents rather than making things up. Most chatbot platforms and custom implementations support RAG natively. The quality of your RAG depends heavily on how well you have chunked and structured your knowledge base documents -- which is why the preparation step is so important.</p>
+
+                <p><strong>Testing with real scenarios.</strong> Before launching, I test the chatbot with at least fifty real customer questions collected from your support team's history. I categorise the results into four buckets: correct and helpful (the goal), correct but could be better (needs prompt refinement), partially correct or incomplete (needs knowledge base updates), and incorrect or unhelpful (needs immediate fixing). The target before launch is at least eighty percent in the first two categories. If you are below seventy percent, you need more work on your knowledge base or prompt engineering before going live.</p>
+
+                <p><strong>Post-launch refinement.</strong> After launch, I review conversation logs weekly for the first month, then bi-weekly. I look for patterns: questions the chatbot handles poorly, topics that come up frequently but are not in the knowledge base, conversations where users abandon the chat (indicating frustration), and escalation rates. Each finding leads to a specific improvement -- a knowledge base addition, a prompt refinement, or a conversation flow adjustment. Most chatbots reach their optimal performance after four to six weeks of active refinement.</p>
+
+                <h2 id="handling-edge-cases">Handling Edge Cases and Difficult Conversations</h2>
+
+                <p>Every chatbot encounters situations it was not explicitly prepared for. How you handle these edge cases determines whether users trust your chatbot or learn to avoid it.</p>
+
+                <p><strong>Off-topic queries.</strong> Users will ask your business chatbot about the weather, tell it jokes, test it with trick questions, or ask it to do things completely outside its scope. Your chatbot needs graceful handling for these situations. I configure a friendly redirect: "I appreciate the question, but I am specifically designed to help with [Business Name]'s products and services. Is there anything I can help you with in that area?" Avoid being dismissive or robotic in these responses -- a touch of personality goes a long way.</p>
+
+                <p><strong>Angry or frustrated users.</strong> Some users arrive at your chatbot already frustrated, perhaps after a failed product experience or a billing issue. The chatbot needs to recognise emotional language and respond with empathy before trying to solve the problem. I train the AI to acknowledge frustration explicitly: "I understand this is frustrating, and I want to help resolve this for you." For highly emotional interactions, I configure automatic escalation to a human agent because AI does not handle emotional nuance as well as a trained support representative.</p>
+
+                <p><strong>Multi-language support.</strong> If your business serves customers who speak different languages, your chatbot should handle at least the primary languages of your audience. Most LLMs handle multilingual conversations well natively. For an Indian business, I typically configure the chatbot to detect and respond in English, Hindi, and the regional language relevant to the business. The knowledge base should include translated versions of key information, or you can rely on the AI's translation capabilities for less critical content. For a client in Gujarat, configuring the chatbot to respond in Gujarati when it detected Gujarati input increased engagement from local customers by thirty-five percent.</p>
+
+                <p><strong>System downtime and errors.</strong> What happens when the AI API is down, the knowledge base is unavailable, or an integration fails? You need fallback behaviour. I configure a static fallback message that provides contact information and business hours, so the user always has a path forward even when the AI is not functioning. The fallback should also log the error for your team to investigate.</p>
+
+                <h2 id="measuring-chatbot-performance">Measuring Chatbot Performance</h2>
+
+                <p>You cannot improve what you do not measure. Here are the metrics I track for every chatbot deployment, along with benchmarks from my client work.</p>
+
+                <p><strong>Resolution rate.</strong> This is the percentage of conversations where the chatbot successfully resolves the user's query without human intervention. A well-configured chatbot should achieve a resolution rate of sixty to seventy-five percent within the first month, improving to seventy to eighty-five percent after optimisation. If your resolution rate is below fifty percent, your knowledge base needs significant expansion or your prompt engineering needs work.</p>
+
+                <p><strong>Escalation rate.</strong> The flip side of resolution rate -- what percentage of conversations require human handoff. Some escalation is healthy and expected. An escalation rate of fifteen to thirty percent is typical. Below fifteen percent might mean your chatbot is not offering human help when it should. Above forty percent means the chatbot is not handling enough queries to justify its existence. Track the reasons for escalation to identify knowledge base gaps.</p>
+
+                <p><strong>User satisfaction.</strong> Add a simple thumbs up or thumbs down rating at the end of chatbot conversations. Target a satisfaction rate of at least seventy-five percent positive ratings. Collect optional feedback text from dissatisfied users to understand specific issues. I have found that most negative ratings come from two sources: the chatbot not having the answer (knowledge base gap) or the chatbot misunderstanding the question (prompt engineering issue). Both are fixable.</p>
+
+                <p><strong>Lead capture rate.</strong> For chatbots with a lead generation objective, track the percentage of conversations that result in a captured email address or phone number. Benchmarks vary by industry, but I typically see ten to twenty-five percent capture rates for B2B websites and five to fifteen percent for B2C. If your capture rate is low, experiment with the timing and phrasing of your information request. Sometimes moving the ask from the third message to the fifth message makes a meaningful difference.</p>
+
+                <p><strong>Conversation completion rate.</strong> What percentage of users who start a chatbot conversation reach a natural conclusion versus abandoning mid-conversation? Abandonment usually signals frustration. Track where in the conversation users drop off to identify problematic flows. A healthy completion rate is seventy to eighty-five percent.</p>
+
+                <h2 id="costs-and-roi">Costs, ROI, and the Business Case</h2>
+
+                <p>Let me break down the real numbers so you can build a business case for your AI chatbot.</p>
+
+                <p><strong>Implementation costs.</strong> For a commercial platform (Intercom, Freshchat), expect fifty to five hundred dollars per month depending on the tier, plus five to twenty hours of setup time. For a custom build using n8n, expect fifteen to forty dollars per month in hosting and API costs, plus twenty to forty hours of initial development time. If you hire someone like me to build it, add the consulting cost. The custom route has higher upfront time investment but significantly lower ongoing costs.</p>
+
+                <p><strong>Ongoing costs.</strong> Commercial platforms charge monthly subscriptions that scale with usage. API-based custom builds charge per token, which means costs scale linearly with conversation volume. For a business handling one hundred chatbot conversations per day with an average of eight messages per conversation, API costs with GPT-4o-mini run approximately thirty to sixty dollars per month. The same volume on Intercom would cost three hundred to five hundred dollars per month.</p>
+
+                <p><strong>ROI calculation.</strong> The value comes from three areas. First, support cost reduction: if the chatbot handles sixty percent of your current support queries and your average support agent handles forty queries per day at a loaded cost of fifteen hundred to three thousand rupees per hour, the savings add up quickly. Second, lead capture: if the chatbot captures twenty additional qualified leads per month that would otherwise have bounced, and your average customer lifetime value is fifty thousand rupees, the pipeline value is significant. Third, after-hours coverage: the chatbot handles queries at two in the morning, on weekends, and during holidays when your team is unavailable. For a client in the education sector, thirty percent of their chatbot-generated leads came from after-hours conversations.</p>
+
+                <p>For most businesses I work with, the chatbot pays for itself within sixty to ninety days of deployment. The exact timeline depends on conversation volume, the quality of the knowledge base, and how well the chatbot is integrated into the sales process.</p>
+
+                <h2 id="implementation-timeline">Implementation Timeline: A Realistic Plan</h2>
+
+                <p>Here is the timeline I follow for chatbot implementations, with realistic time estimates for each phase.</p>
+
+                <p><strong>Week one: Discovery and planning.</strong> Audit your existing content, compile customer FAQs from your support team, define the chatbot's objectives and scope, choose the platform or technical approach, and document the conversation flows. This week is all about preparation. Do not skip it or rush it. Time investment: eight to twelve hours.</p>
+
+                <p><strong>Week two: Knowledge base and platform setup.</strong> Structure your knowledge base documents, create FAQ pairs, set up the chatbot platform or build the custom integration, configure the AI model and system prompt, and connect your CRM. Time investment: twelve to twenty hours.</p>
+
+                <p><strong>Week three: Testing and refinement.</strong> Test with your collected real customer questions, fix knowledge base gaps and prompt issues, conduct user acceptance testing with team members, refine conversation flows based on test results, and configure fallback and escalation behaviour. Time investment: eight to fifteen hours.</p>
+
+                <p><strong>Week four: Soft launch and monitoring.</strong> Deploy the chatbot on your website with limited visibility (perhaps only on specific pages or during specific hours), monitor every conversation closely, make rapid adjustments based on real user interactions, and prepare for full rollout. Time investment: five to ten hours of monitoring and adjustment.</p>
+
+                <p><strong>Ongoing: Optimisation.</strong> Review conversation logs weekly, expand the knowledge base, refine prompts, track performance metrics, and iterate. Time investment: two to four hours per week for the first two months, then one to two hours per week thereafter.</p>
+
+                <p>Total implementation time for a small to medium business: forty to sixty hours spread over four weeks. This is achievable in-house if you have someone dedicated to the project, or you can work with a specialist to compress the timeline. Either way, do not expect a chatbot to deliver results on day one. Plan for a four-to-six-week ramp-up period before it reaches peak performance.</p>
+
+                <h2 id="common-mistakes">Common Mistakes to Avoid</h2>
+
+                <p>Having implemented chatbots for numerous businesses, I have seen the same mistakes repeatedly. Avoid these and you will be ahead of most implementations.</p>
+
+                <p><strong>Launching without a proper knowledge base.</strong> This is the number one mistake. Businesses install a chatbot, point it at their website, and expect it to magically know everything. The result is a chatbot that gives vague, generic answers because it does not have structured information to draw from. Invest the time in knowledge base preparation. It is the highest-leverage activity in the entire process.</p>
+
+                <p><strong>Not providing a human escalation path.</strong> Some businesses try to use the chatbot as a complete replacement for human support from day one. This frustrates users who have complex issues that the AI cannot handle. Always provide a clear, easy path to a human agent. You can tighten the escalation criteria over time as the chatbot improves, but never remove the option entirely.</p>
+
+                <p><strong>Ignoring conversation analytics.</strong> Deploying a chatbot and forgetting about it is a guaranteed way to deliver a poor experience. Conversation logs contain goldmines of insight about what your customers care about, what information is missing from your website, and where your chatbot is failing. Review them regularly and act on the findings.</p>
+
+                <p><strong>Over-engineering the conversation flow.</strong> Some businesses try to create elaborate decision trees that anticipate every possible conversation path. With LLM-powered chatbots, this is unnecessary and counterproductive. The AI handles natural conversation well. Focus your design effort on the greeting, escalation triggers, lead capture moments, and edge case handling. Let the AI handle the conversational flow naturally for everything in between.</p>
+
+                <p><strong>Making the chatbot pretend to be human.</strong> Transparency builds trust. Your chatbot should identify itself as an AI assistant in the greeting. Users who discover mid-conversation that they have been talking to a bot feel deceived. Users who know from the start that they are talking to an AI have appropriate expectations and are generally more forgiving of limitations. Interestingly, I have found that users who know they are talking to AI often ask more direct questions, which leads to more efficient conversations.</p>
+
+                <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <h3>How much does it cost to set up an AI chatbot for a business website?</h3>
+                        <p>Costs vary widely depending on the approach. A basic chatbot using a platform like Tidio or Crisp with limited AI features can cost zero to fifty dollars per month. Mid-range solutions like Intercom or Drift with full AI capabilities run two hundred to five hundred dollars per month. Custom-built chatbots using n8n with an OpenAI or Anthropic API typically cost twenty to one hundred dollars per month in API and hosting fees. For most small to medium businesses, I recommend starting with a mid-range platform or a custom n8n build to balance cost with capability.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How long does it take to implement an AI chatbot?</h3>
+                        <p>A basic AI chatbot with a simple knowledge base can be deployed in two to three days. A properly configured chatbot with comprehensive knowledge base training, CRM integration, conversation flows, and testing typically takes two to three weeks. Enterprise implementations with custom integrations, compliance requirements, and extensive testing can take six to eight weeks. The knowledge base preparation phase usually takes the longest because gathering and structuring your business information is more time-consuming than the technical setup itself.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can an AI chatbot really replace human customer support?</h3>
+                        <p>Not entirely, and it should not try to. A well-configured AI chatbot typically handles sixty to eighty percent of common customer queries -- FAQs, order status, pricing information, basic troubleshooting. This frees your human agents to focus on complex issues that require empathy, judgment, or account-specific knowledge. The best implementations use a hybrid model where the chatbot handles initial contact, gathers information, resolves simple issues, and escalates to humans when needed. Trying to eliminate human support entirely almost always leads to frustrated customers and negative brand experiences.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What happens when the AI chatbot gives wrong information?</h3>
+                        <p>Hallucination is a real risk with AI chatbots. The best mitigation strategies include limiting the chatbot to respond only from your approved knowledge base using retrieval-augmented generation, adding confidence thresholds that trigger human handoff when the AI is unsure, implementing regular conversation review to catch and correct errors, and including clear disclaimers for sensitive topics like pricing or legal information. I always configure chatbots to say they are not sure and offer to connect the user with a human rather than guessing at answers.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Which AI model should I use for my business chatbot?</h3>
+                        <p>For most business chatbots, GPT-4o-mini or Claude 3.5 Haiku offer the best balance of quality and cost. They are fast, affordable at scale, and handle conversational interactions well. For chatbots that need to handle complex reasoning, technical support, or nuanced customer situations, GPT-4o or Claude Sonnet provide better accuracy at higher cost. I generally start clients on a smaller model and upgrade only if conversation quality metrics indicate the need. The model choice matters less than the quality of your knowledge base and prompt engineering.</p>
+                    </div>
+                </div>
+
+                <div class="article-callout" role="complementary" aria-label="Key takeaway">
+                    <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>
+                    <div>
+                        <strong>The bottom line:</strong> Setting up an AI chatbot is a four-to-six-week investment that pays dividends for years. The key to success is not the technology -- it is the knowledge base preparation, the conversation flow design, and the ongoing optimisation based on real user interactions. Start with a focused scope, invest heavily in your knowledge base, always provide a path to a human agent, and commit to reviewing conversation logs regularly. If you want help implementing a chatbot for your business, <a href="../contact.html">reach out and we can discuss</a> the best approach for your specific needs.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Social Share -->
+    <section class="article-share" style="padding:var(--space-2xl) 0; background:var(--bg-secondary);">
+        <div class="container" style="max-width:800px; text-align:center;">
+            <h4 style="margin-bottom:var(--space-lg);">Share this article</h4>
+            <div style="display:flex; gap:var(--space-md); justify-content:center; flex-wrap:wrap;">
+                <button class="btn btn-outline share-btn" data-platform="twitter" aria-label="Share on Twitter" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">Twitter</button>
+                <button class="btn btn-outline share-btn" data-platform="linkedin" aria-label="Share on LinkedIn" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">LinkedIn</button>
+                <button class="btn btn-outline share-btn" data-platform="whatsapp" aria-label="Share on WhatsApp" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">WhatsApp</button>
+                <button class="btn btn-outline share-btn" data-platform="email" aria-label="Share via Email" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">Email</button>
+                <button class="btn btn-outline share-btn" data-platform="copy" aria-label="Copy link" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">Copy Link</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Bio -->
+    <section class="article-author" style="padding:var(--space-2xl) 0;">
+        <div class="container" style="max-width:800px;">
+            <div style="display:flex; gap:var(--space-xl); align-items:center; flex-wrap:wrap;">
+                <div class="author-avatar" style="width:80px;height:80px;font-size:1.5rem;" aria-hidden="true">NP</div>
+                <div style="flex:1; min-width:250px;">
+                    <h4 style="margin-bottom:0.25rem;">Nisarth Patel</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:var(--space-md);">Digital Growth Specialist from Ahmedabad, India. I help businesses grow through SEO, AI automation, and modern web development. 4+ years of hands-on experience.</p>
+                    <div style="display:flex; gap:var(--space-md); font-size:0.85rem;">
+                        <a href="https://www.linkedin.com/in/nisarth-patel/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">LinkedIn</a>
+                        <a href="../contact.html" style="color:var(--accent-primary);">Contact</a>
+                        <a href="../about.html" style="color:var(--accent-primary);">About</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section style="padding:var(--space-2xl) 0; background:var(--bg-secondary);">
+        <div class="container" style="max-width:600px; text-align:center;">
+            <h3 style="margin-bottom:var(--space-md);">Get AI automation insights in your inbox</h3>
+            <p style="color:var(--text-secondary); margin-bottom:var(--space-xl); font-size:0.95rem;">Practical AI, automation, and digital growth tips. No spam, no fluff -- just things that actually work.</p>
+            <a href="../contact.html" class="btn btn-primary" style="font-size:0.9rem;">Subscribe &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="article-related" style="padding:var(--space-3xl) 0;">
+        <div class="container">
+            <h3 style="margin-bottom:var(--space-2xl); text-align:center;">Related Articles</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:var(--space-xl);">
+                <a href="../blog/n8n-automation-guide.html" class="blog-card" style="text-decoration:none;">
+                    <div style="padding:var(--space-xl);">
+                        <span class="tag tag-accent" style="font-size:0.7rem; padding:2px 8px; margin-bottom:var(--space-sm); display:inline-block;">AI Automation</span>
+                        <h4 style="margin-bottom:var(--space-sm);">n8n Automation: The Complete Guide for Business Workflows</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">Everything you need to know about setting up and using n8n for business automation -- from installation to advanced workflows.</p>
+                    </div>
+                </a>
+                <a href="../blog/crm-automation-workflows.html" class="blog-card" style="text-decoration:none;">
+                    <div style="padding:var(--space-xl);">
+                        <span class="tag tag-accent" style="font-size:0.7rem; padding:2px 8px; margin-bottom:var(--space-sm); display:inline-block;">AI Automation</span>
+                        <h4 style="margin-bottom:var(--space-sm);">CRM Automation: Workflows That Save Hours Every Week</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">How to automate your CRM workflows to eliminate manual data entry and never miss a follow-up.</p>
+                    </div>
+                </a>
+                <a href="../blog/ai-lead-generation-automation.html" class="blog-card" style="text-decoration:none;">
+                    <div style="padding:var(--space-xl);">
+                        <span class="tag tag-accent" style="font-size:0.7rem; padding:2px 8px; margin-bottom:var(--space-sm); display:inline-block;">AI Automation</span>
+                        <h4 style="margin-bottom:var(--space-sm);">AI-Powered Lead Generation: Automating Your Sales Pipeline</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">How to use AI and automation to capture, score, and nurture leads through your sales pipeline.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to blog -->
+    <div style="background:var(--bg-secondary); padding:var(--space-2xl) 0;">
+        <div class="container"
+            style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-lg);">
+            <a href="../blog.html" class="btn btn-outline">&larr; Back to Blog</a>
+            <a href="../contact.html" class="btn btn-primary">Work with Nisarth <span aria-hidden="true">&rarr;</span></a>
+        </div>
+    </div>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="nav-logo" style="margin-bottom:var(--space-lg);"><span
+                            class="nav-logo-mark">NP</span><span class="nav-logo-name">Nisarth Patel</span></div>
+                    <p style="font-size:0.875rem;color:var(--text-secondary);">Ahmedabad, Gujarat, India</p>
+                </div>
+                <nav aria-label="Footer navigation">
+                    <div class="footer-links"><a href="../work.html" class="footer-link">Work</a><a href="../services.html"
+                            class="footer-link">Services</a><a href="../about.html" class="footer-link">About</a><a
+                            href="../process.html" class="footer-link">Process</a><a href="../blog.html"
+                            class="footer-link">Blog</a><a href="../contact.html" class="footer-link">Contact</a></div>
+                </nav>
+                <div>
+                    <div class="footer-links"><a href="mailto:pnisarth@gmail.com"
+                            class="footer-link">pnisarth@gmail.com</a><a href="https://wa.me/917016353896"
+                            class="footer-link" target="_blank" rel="noopener noreferrer">+91 7016353896</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom"><span>&copy; Nisarth Patel &middot; Ahmedabad, India</span></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/animations.js" defer></script>
+    <script src="../assets/js/cursor.js" defer></script>
+    <button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
+    <div class="cookie-banner" role="alert"><p>This site uses cookies for analytics. Your data helps improve the experience.</p><div class="cookie-actions"><button class="btn btn-primary" data-cookie="accept" style="padding:0.5rem 1rem;font-size:0.8rem;border-radius:100px;background:var(--accent-primary);color:var(--bg-primary);font-weight:600;">Accept</button><button data-cookie="decline" style="padding:0.5rem 1rem;font-size:0.8rem;color:var(--text-secondary);background:none;border:1px solid var(--border);border-radius:100px;cursor:pointer;">Decline</button></div></div>
+</body>
+
+</html>

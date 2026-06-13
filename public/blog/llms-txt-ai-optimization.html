@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Nisarth Patel">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>The llms.txt Standard: Making Your Site AI-Readable | Nisarth Patel</title>
+    <meta name="description"
+        content="Learn how to implement the llms.txt standard to make your website AI-readable. Covers the specification, creation steps, best practices, and the future of AI-web interaction.">
+    <link rel="canonical" href="https://nisarth.github.io/blog/llms-txt-ai-optimization.html">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The llms.txt Standard: Making Your Site AI-Readable">
+    <meta property="og:description"
+        content="A practical guide to implementing llms.txt - the emerging standard for making your website accessible and understandable to AI language models.">
+    <meta property="og:image" content="https://nisarth.github.io/assets/images/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="The llms.txt Standard Guide by Nisarth Patel">
+    <meta property="og:url" content="https://nisarth.github.io/blog/llms-txt-ai-optimization.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Nisarth Patel">
+    <meta property="article:published_time" content="2026-04-10">
+    <meta property="article:author" content="https://nisarth.github.io/about.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The llms.txt Standard: Making Your Site AI-Readable">
+    <meta name="twitter:description"
+        content="A practical guide to implementing llms.txt - the emerging standard for making your website accessible and understandable to AI language models.">
+    <meta name="twitter:image" content="https://nisarth.github.io/assets/images/og-image.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nisarth.github.io/"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://nisarth.github.io/blog.html"},
+        {"@type": "ListItem", "position": 3, "name": "The llms.txt Standard", "item": "https://nisarth.github.io/blog/llms-txt-ai-optimization.html"}
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The llms.txt Standard: Making Your Site AI-Readable",
+      "description": "Learn how to implement the llms.txt standard to make your website AI-readable. Covers the specification, creation steps, best practices, and the future of AI-web interaction.",
+      "image": "https://nisarth.github.io/assets/images/og-image.svg",
+      "author": {
+        "@type": "Person",
+        "name": "Nisarth Patel",
+        "url": "https://nisarth.github.io/about.html"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Nisarth Patel"
+      },
+      "datePublished": "2026-04-10",
+      "dateModified": "2026-04-12",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://nisarth.github.io/blog/llms-txt-ai-optimization.html"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ".article-intro"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is llms.txt and why does it matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The llms.txt file is a proposed web standard that provides AI language models with a structured, machine-readable summary of your website. Placed in your site's root directory, it tells AI systems who you are, what your site covers, and which pages contain your most important content. It matters because AI models increasingly use web content to generate answers, and llms.txt helps ensure they understand your site accurately. Without it, AI crawlers must interpret your site from raw HTML, which can lead to incomplete or incorrect representations of your business in AI-generated responses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is llms.txt the same as robots.txt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, they serve different purposes. The robots.txt file controls which pages web crawlers are allowed to access -- it is a permission file that says 'you can crawl this, but not that.' The llms.txt file is an informational file that helps AI models understand your site's content and structure -- it says 'here is who we are and what our most important content covers.' Think of robots.txt as a security guard controlling access, and llms.txt as a helpful receptionist explaining what the building contains. You need both files, and they work together as part of a comprehensive AI crawler management strategy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do all AI crawlers support llms.txt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not yet. As of early 2026, llms.txt is still an emerging standard and support varies across AI providers. Some AI systems and tools actively look for and parse llms.txt files, while others rely on traditional crawling methods. However, adoption is growing quickly, and implementing llms.txt now positions your site ahead of the curve. The file is simple to create and maintain, so the effort required is minimal compared to the potential benefit. Even if a particular AI crawler does not specifically parse your llms.txt file today, the structured information you include can still improve how AI systems understand your site through other means."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I update my llms.txt file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I recommend reviewing and updating your llms.txt file whenever you make significant changes to your website's content or structure. This includes adding new service pages, publishing major content pieces, changing your business description or offerings, or restructuring your site navigation. For most businesses, a quarterly review is sufficient to keep the file current. If you publish content frequently, you might update the file monthly to include links to your most important new articles or resources. The key is that your llms.txt should always accurately reflect the current state of your site's most important content."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can llms.txt help my site appear in AI-generated answers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While llms.txt alone will not guarantee that your site appears in AI-generated answers, it is one important component of a broader Generative Engine Optimisation strategy. By providing AI models with a clear, structured understanding of your site's content and expertise areas, you make it easier for those models to identify your site as a relevant source when generating answers. The file works best when combined with high-quality content, proper schema markup, strong entity signals, and consistent information across the web. Think of llms.txt as making your site easier for AI to understand, which increases your chances of being referenced in AI responses."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <noscript>
+        <style>
+            #loader, .cursor-dot, .cursor-outline, .grain-overlay { display: none !important; }
+            .service-card, .work-card, .blog-card, .portfolio-item, .section-heading,
+            .about-teaser, .about-teaser-visual, .about-teaser-text, .reveal-up,
+            .timeline-item, .process-step, .ai-feature-card, .value-card, .audit-banner,
+            .footer, .tech-item, .stat-item, .nav, .hero-word-inner, .hero-sub, .hero-ctas,
+            .hero-badge, .scroll-indicator, .contact-info-item, .faq-item { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+            #page-transition { display: none !important; }
+        </style>
+    </noscript>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="grain-overlay" aria-hidden="true"></div>
+    <div id="page-transition" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-outline" aria-hidden="true"><span class="cursor-label"></span></div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <a href="https://wa.me/917016353896" class="whatsapp-fab" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.792 9.792 0 01-5.016-1.382l-.36-.214-3.732.978.994-3.638-.235-.374A9.79 9.79 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z" />
+        </svg>
+        <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+    </a>
+
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="../" class="nav-logo"><span class="nav-logo-mark">NP</span><span class="nav-logo-name">Nisarth
+                    Patel</span></a>
+            <div class="nav-links">
+                <a href="../work.html" class="nav-link magnetic">Work</a>
+                <a href="../services.html" class="nav-link magnetic">Services</a>
+                <a href="../about.html" class="nav-link magnetic">About</a>
+                <a href="../process.html" class="nav-link magnetic">Process</a>
+                <a href="../blog.html" class="nav-link magnetic" style="color:var(--accent-primary);">Blog</a>
+            </div>
+            <a href="../contact.html" class="nav-cta desktop-only">Let's Talk</a>
+            <button class="theme-toggle" aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+            <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="nav-overlay" role="dialog" aria-modal="true">
+        <button class="nav-overlay-close" aria-label="Close menu">&#x2715;</button>
+        <nav class="nav-overlay-links">
+            <a href="../" class="nav-overlay-link">Home</a>
+            <a href="../work.html" class="nav-overlay-link">Work</a>
+            <a href="../services.html" class="nav-overlay-link">Services</a>
+            <a href="../about.html" class="nav-overlay-link">About</a>
+            <a href="../process.html" class="nav-overlay-link">Process</a>
+            <a href="../blog.html" class="nav-overlay-link">Blog</a>
+            <a href="../contact.html" class="nav-overlay-link">Contact</a>
+        </nav>
+    </div>
+
+    <div class="article-progress"></div>
+
+    <article id="main-content" role="main">
+        <!-- Article Header -->
+        <header class="article-header section-pad"
+            style="padding-top:calc(var(--nav-height) + var(--space-4xl)); background:var(--bg-secondary);">
+            <div class="container" style="max-width:800px;">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol style="display:flex;gap:0.5rem;list-style:none;padding:0;font-size:0.85rem;color:var(--text-muted);">
+                        <li><a href="../">Home</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li aria-current="page">The llms.txt Standard</li>
+                    </ol>
+                </nav>
+                <div class="article-tags" style="margin-top:var(--space-lg);">
+                    <span class="tag tag-accent">GEO</span>
+                </div>
+                <h1 class="text-h1 section-heading"
+                    style="font-size:clamp(2rem,5vw,3.5rem); margin-top:var(--space-xl);">The llms.txt Standard: Making Your Site AI-Readable</h1>
+                <div class="article-meta" style="display:flex;gap:var(--space-lg);align-items:center;margin-top:var(--space-lg);color:var(--text-muted);font-size:0.9rem;">
+                    <span>April 10, 2026</span>
+                    <span>&middot;</span>
+                    <span>14 min read</span>
+                    <span>&middot;</span>
+                    <span>By <a href="../about.html" style="color:var(--accent-primary);">Nisarth Patel</a></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Article Layout: TOC + Body -->
+        <div class="container article-layout" style="max-width:1100px;">
+            <aside class="article-toc" aria-label="Table of contents">
+                <h4>Contents</h4>
+                <ol></ol>
+            </aside>
+
+            <div class="article-body prose">
+                <p class="article-intro">The web was built for humans and traditional search engine crawlers. Every page on your website -- the HTML structure, the navigation, the visual design -- is optimised for people browsing with a web browser and for bots like Googlebot that index content for search results. But there is a new category of visitor to your website that neither of those approaches serves well: <strong>AI language models</strong>. These models crawl your site to understand your content, but they process information fundamentally differently from both humans and traditional search crawlers. The <strong>llms.txt standard</strong> is an emerging solution to this problem -- a simple file that helps AI systems understand who you are, what your site contains, and which content matters most.</p>
+
+                <p>I first started paying attention to llms.txt when I noticed that AI tools were citing some of my clients' content accurately and others poorly. The difference was not content quality -- it was how easy the content was for AI systems to parse and understand. Websites with clear structure, well-defined entities, and accessible content were being referenced accurately. Websites with complex JavaScript rendering, fragmented information, and inconsistent naming were being misrepresented or ignored entirely. This led me down the path of <a href="../blog/what-is-geo.html">Generative Engine Optimisation (GEO)</a>, and llms.txt became a key component of the strategy I now recommend to every client.</p>
+
+                <p>In this guide, I will explain exactly what llms.txt is, how the specification works, how to create one for your website, what to include, and how it fits into the broader landscape of AI crawler management. Whether you are a developer implementing this technically or a business owner trying to understand why it matters, this guide covers everything you need to know.</p>
+
+                <h2 id="what-is-llms-txt">What Is llms.txt</h2>
+
+                <p>The llms.txt file is a plain text file placed in the root directory of your website (accessible at <code>yoursite.com/llms.txt</code>) that provides AI language models with a structured summary of your site. It uses Markdown formatting to describe your website's purpose, your organisation, and your most important content in a way that is easy for AI models to parse and understand.</p>
+
+                <p>The concept was proposed by Jeremy Howard, co-founder of fast.ai, who recognised that AI language models face a fundamental challenge when trying to understand websites. When a human visits a website, they can navigate through pages, interpret visual design cues, understand context from branding and layout, and build a mental model of the site over time. When a traditional search crawler visits, it follows links, indexes text content, and uses algorithms to determine relevance and authority. But when an AI language model encounters your website, it is trying to build a comprehensive understanding of your entire operation from raw HTML -- a task made difficult by navigation elements, cookie banners, footer links, JavaScript-dependent content, and all the other elements that make modern websites complex.</p>
+
+                <p>The llms.txt file solves this by giving AI models a clean, structured starting point. Instead of having to crawl your entire site and piece together what you do, an AI model can read your llms.txt and immediately understand your business, your key content areas, and where to find your most important information. Think of it as a cover letter for your website -- a concise introduction that tells the reader who you are and what they will find inside.</p>
+
+                <p>It is important to understand what llms.txt is not. It is not a replacement for robots.txt, which controls crawler access permissions. It is not a sitemap, which lists all URLs for indexing. It is not schema markup, which provides structured data about specific page content. It is a complementary file that serves a unique purpose -- helping AI models understand the big picture of your website quickly and accurately. All of these files work together as part of a comprehensive AI readiness strategy, which I covered in detail in my <a href="../blog/technical-seo-audit-checklist-2026.html">technical SEO audit checklist</a>.</p>
+
+                <h2 id="the-llms-txt-specification">The llms.txt Specification</h2>
+
+                <p>The llms.txt specification is deliberately simple, which is one of its strengths. It uses Markdown formatting, making it both human-readable and easy for AI models to parse. The specification defines a structured format with specific sections, each serving a clear purpose.</p>
+
+                <p>The file begins with a <strong>title</strong> using a top-level Markdown heading (H1). This should be your website or organisation name. It is the first thing an AI model reads and establishes the primary entity associated with your site.</p>
+
+                <p>Next comes a <strong>description block</strong> -- a brief paragraph immediately following the title that describes what your website or organisation does. This should be a clear, factual summary written in the third person. Avoid marketing language and superlatives. AI models are looking for factual information they can use to accurately represent your business, not promotional copy. A description like "Nisarth Patel is a digital growth specialist based in Ahmedabad, India, offering SEO, GEO, and AI automation services for businesses" is far more useful to an AI model than "The world's most innovative digital growth agency delivering game-changing results."</p>
+
+                <p>The specification then defines several optional sections using second-level Markdown headings (H2). The most common sections include:</p>
+
+                <p><strong>## Docs</strong> -- Links to your most important documentation or informational pages. For a business website, this might include your services page, about page, and key resource pages. For a software product, this would include API documentation, getting started guides, and reference materials.</p>
+
+                <p><strong>## Blog</strong> or <strong>## Articles</strong> -- Links to your most important or recent content pieces. You do not need to list every blog post -- focus on the content that best represents your expertise and is most likely to be relevant to AI-generated answers.</p>
+
+                <p><strong>## Optional</strong> -- Additional links that provide supplementary context but are not essential for understanding your core business. This might include case studies, testimonials, or secondary content areas.</p>
+
+                <p>Each link within these sections follows a specific format: the URL in standard Markdown link syntax, followed by a brief description. For example: <code>[SEO Services](https://yoursite.com/services/seo): Comprehensive SEO services including technical audits, on-page optimisation, and link building.</code> The description is crucial because it gives the AI model context about what the linked page contains without requiring it to actually visit and parse that page.</p>
+
+                <p>There is also a companion format called <strong>llms-full.txt</strong> which contains more detailed content -- potentially including full text from key pages rather than just links and descriptions. This is useful for sites that want to provide AI models with complete information in a single file, but it comes with the trade-off of being larger and potentially harder to maintain.</p>
+
+                <h2 id="how-to-create-your-llms-txt-file">How to Create Your llms.txt File</h2>
+
+                <p>Creating an llms.txt file is straightforward, but doing it well requires thoughtful consideration of what information matters most. Let me walk you through the process I follow with clients.</p>
+
+                <p><strong>Step one: define your primary entity.</strong> Start with a clear H1 title -- your business or personal brand name. Then write a one to three sentence description that covers who you are, what you do, where you are located (if relevant), and who your target audience is. This description should be factual and specific. Instead of "we help businesses grow," write "we provide SEO, content marketing, and AI automation services for small and medium businesses in India." Specificity helps AI models categorise and reference you accurately.</p>
+
+                <p><strong>Step two: identify your core pages.</strong> List the five to fifteen pages on your website that best represent your business and contain your most authoritative content. For most business websites, this includes the homepage, about page, services or product pages, and contact page. For content-heavy sites, include your pillar articles -- the comprehensive guides that demonstrate your deepest expertise. Do not try to list every page; curate the selection to your strongest and most important content.</p>
+
+                <p><strong>Step three: write descriptive annotations.</strong> For each link in your llms.txt, write a brief description that tells an AI model what the page contains and why it matters. This is the most time-consuming part of the process, but it is also the most valuable. A link with no description forces the AI to visit and interpret the page. A link with a clear, accurate description provides the information immediately. I typically spend a sentence or two on each link, focusing on the specific topics covered and the unique value of the page.</p>
+
+                <p><strong>Step four: organise into sections.</strong> Group your links into the standard sections defined by the specification. Use "## Docs" for your core informational pages, "## Blog" for content pieces, and "## Optional" for supplementary content. Within each section, order the links by importance -- the most critical pages first. AI models may not process the entire file in all contexts, so front-loading the most important information ensures it is captured even in a partial read.</p>
+
+                <p><strong>Step five: deploy and validate.</strong> Save the file as <code>llms.txt</code> in your site's root directory so it is accessible at <code>https://yoursite.com/llms.txt</code>. If you are using a static site generator, place it in the public or static directory. For WordPress sites, you can create a simple plugin or use a redirect rule to serve the file from the root. After deployment, access the URL in your browser to confirm it loads correctly and the Markdown formatting is intact.</p>
+
+                <p>Here is a simplified example of what the file might look like for a business website:</p>
+
+                <p><code># Nisarth Patel - Digital Growth Specialist</code></p>
+                <p><code>Nisarth Patel is a digital growth specialist based in Ahmedabad, India, offering SEO, Generative Engine Optimisation (GEO), Answer Engine Optimisation (AEO), and AI automation services for businesses looking to grow their online presence.</code></p>
+                <p><code>## Docs</code></p>
+                <p><code>- [About](https://nisarth.github.io/about.html): Background, experience, and expertise areas of Nisarth Patel.</code></p>
+                <p><code>- [Services](https://nisarth.github.io/services.html): Full list of digital growth services including SEO, GEO, web development, and AI automation.</code></p>
+                <p><code>## Blog</code></p>
+                <p><code>- [What Is GEO](https://nisarth.github.io/blog/what-is-geo.html): Comprehensive guide to Generative Engine Optimisation and how it differs from traditional SEO.</code></p>
+
+                <p>The actual file would be longer, but this gives you the idea. Keep it clean, factual, and focused on your most important content.</p>
+
+                <h2 id="what-to-include-and-what-to-leave-out">What to Include and What to Leave Out</h2>
+
+                <p>The art of creating a good llms.txt file lies in curation. Including too little makes the file unhelpful; including too much defeats its purpose as a concise summary. Here is how I think about what belongs in the file and what does not.</p>
+
+                <p><strong>Always include:</strong> Your business description, core service or product pages, your about page, your most authoritative content pieces (pillar articles, comprehensive guides), and your contact information or page. These are the pages that define your entity and expertise. An AI model reading your llms.txt should come away with a clear, accurate understanding of who you are, what you do, and what topics you are authoritative on.</p>
+
+                <p><strong>Consider including:</strong> Recent blog posts on topics where you want AI visibility, case studies that demonstrate real expertise, FAQ pages that answer common questions in your industry, and any pages that contain unique data or research. These pages provide supporting evidence of your authority and give AI models specific content to reference.</p>
+
+                <p><strong>Generally leave out:</strong> Legal pages (privacy policy, terms of service), login or account pages, paginated archives, tag and category index pages, duplicate or near-duplicate content, thin content pages, and any pages you would not want an AI model to reference or cite. The llms.txt file is about putting your best foot forward, so only include content you would be happy to see cited in an AI-generated response.</p>
+
+                <p>One mistake I see frequently is businesses treating llms.txt like a sitemap and dumping every URL into the file. This is counterproductive. A large, unfocused llms.txt is harder for AI models to process and dilutes the signal of what your most important content actually is. Think quality over quantity. I typically recommend keeping the file to 20 to 40 links maximum for most business websites, with the exact number depending on the breadth of your content.</p>
+
+                <p>Another consideration is freshness. If you publish content regularly, your llms.txt should be updated to reflect your newest important content. I do not mean adding every new blog post -- just the significant pieces that represent your current expertise and thinking. For most of my clients, I update the llms.txt monthly or quarterly, adding new pillar content and removing older pieces that are no longer representative of their best work.</p>
+
+                <h2 id="relationship-to-robots-txt">Relationship to robots.txt</h2>
+
+                <p>Understanding the relationship between llms.txt and robots.txt is crucial because they serve complementary but distinct purposes in managing how AI systems interact with your website.</p>
+
+                <p>The <code>robots.txt</code> file is an access control mechanism. It tells crawlers which parts of your site they are allowed to access and which parts they should avoid. It has been a web standard since the mid-1990s and is universally supported by search engine crawlers. In the context of AI crawlers, robots.txt has taken on new importance because you now need to make deliberate decisions about which AI crawlers to allow or block.</p>
+
+                <p>The major AI crawler user agents you should be aware of include <code>GPTBot</code> from OpenAI, <code>ClaudeBot</code> from Anthropic, <code>PerplexityBot</code> from Perplexity, and <code>Google-Extended</code> which controls whether Google can use your content for Gemini training. You can add specific rules in your robots.txt for each of these crawlers, allowing or disallowing access to your entire site or specific sections.</p>
+
+                <p>The llms.txt file, by contrast, is an information file, not an access control file. It does not grant or restrict access to anything. It provides context and guidance about what your site contains and what matters most. An AI crawler could completely ignore your llms.txt and crawl your site normally using the permissions defined in robots.txt. But an AI crawler that reads your llms.txt first can build a better understanding of your site more efficiently.</p>
+
+                <p>The two files should work together as part of a coherent strategy. Here is how I typically set them up for clients:</p>
+
+                <p>In <strong>robots.txt</strong>, I define which AI crawlers are allowed to access the site and which specific directories or pages should be off-limits. For most business sites, I allow the major AI crawlers because being included in AI-generated responses is valuable. For sites with proprietary content or subscription models, I may restrict access to premium content while allowing crawling of public content.</p>
+
+                <p>In <strong>llms.txt</strong>, I highlight the most important content that we want AI models to understand and potentially reference. This creates a "guided tour" effect -- the AI crawler has permission to access the site (from robots.txt) and a roadmap of what matters most (from llms.txt).</p>
+
+                <p>There is one important nuance: if you block an AI crawler in robots.txt but include links to blocked pages in your llms.txt, the crawler will not be able to access those pages regardless of what llms.txt says. Always ensure your robots.txt permissions align with the content you are promoting in your llms.txt file.</p>
+
+                <h2 id="ai-crawler-management-strategy">AI Crawler Management Strategy</h2>
+
+                <p>Managing AI crawlers has become an essential part of technical SEO in 2026. The landscape has grown complex, with multiple AI companies crawling the web at significant scale, and your decisions about how to handle them have real implications for your business visibility.</p>
+
+                <p>The first decision is whether to allow AI crawlers at all. For most businesses, I recommend allowing them. The visibility benefits of being included in AI-generated responses outweigh the concerns about content usage for the majority of commercial websites. If someone asks ChatGPT, Claude, or Perplexity a question related to your industry and your business is recommended in the response, that is valuable exposure. Blocking AI crawlers means opting out of that visibility entirely.</p>
+
+                <p>However, there are legitimate reasons to block or restrict AI crawlers. If you operate a news publication that relies on subscription revenue, having your articles summarised by AI tools may reduce the incentive for users to subscribe. If you create original research or data that you monetise, unrestricted AI access may allow others to obtain that value without compensation. If you have privacy concerns about customer data or internal content being processed by AI models, restricting access is prudent. Each business needs to make this decision based on its specific circumstances.</p>
+
+                <p>For businesses that do allow AI crawlers, the strategy should be proactive rather than passive. Do not just leave the default settings and hope for the best. Implement llms.txt to guide AI models toward your most important content. Use robots.txt to block access to pages that should not be included in AI training data -- admin areas, customer portals, internal documentation, and any content you do not want publicly synthesised. Monitor your server logs to understand which AI crawlers are visiting, how frequently, and what they are accessing.</p>
+
+                <p>Crawl rate is another consideration. Some AI crawlers can be aggressive, sending thousands of requests in a short period. If this is causing performance issues for your site, you can use <code>Crawl-delay</code> directives in robots.txt (though not all crawlers honour them) or implement rate limiting at the server level. I have seen smaller websites experience noticeable slowdowns from AI crawler traffic, and rate limiting resolved the issue without blocking the crawlers entirely.</p>
+
+                <p>Server log analysis is particularly valuable for understanding AI crawler behaviour. I regularly review logs for client sites to see which AI crawlers are visiting, which pages they access most frequently, and whether they are respecting robots.txt rules. This data informs ongoing strategy adjustments. If a particular AI crawler is consistently accessing your FAQ pages, that signals that your FAQ content is being used in AI-generated answers -- a signal to invest more in that content.</p>
+
+                <h2 id="implementation-examples-across-platforms">Implementation Examples Across Platforms</h2>
+
+                <p>The process of implementing llms.txt varies depending on your website platform. Let me walk through the most common scenarios I encounter with clients.</p>
+
+                <p><strong>Static sites and GitHub Pages.</strong> This is the simplest implementation. Create the llms.txt file and place it in the root of your repository or build directory. For Jekyll sites, put it in the root directory alongside your index.html. For Hugo, place it in the <code>static</code> directory. For Next.js static exports, put it in the <code>public</code> directory. The file will be served directly at your domain's root path without any additional configuration.</p>
+
+                <p><strong>WordPress.</strong> WordPress does not serve arbitrary files from the root directory by default. You have several options. The cleanest approach is to create a small custom plugin or add a function to your theme's <code>functions.php</code> that registers a rewrite rule to serve the llms.txt file. Alternatively, you can upload the file via FTP to the root directory of your WordPress installation, alongside the existing wp-config.php and robots.txt files. Some SEO plugins are beginning to add llms.txt management features, so check whether your existing plugin supports it.</p>
+
+                <p><strong>Shopify.</strong> Shopify's file system is more restrictive than self-hosted platforms. You cannot directly place a file in the root directory. However, you can use a workaround by creating a page with a specific URL path and setting the content type appropriately, or by using Shopify's proxy feature in the theme's liquid templates. This is one area where the Shopify ecosystem is still catching up to the needs of AI optimisation.</p>
+
+                <p><strong>Custom web applications.</strong> If you are running a custom application on frameworks like Express, Django, Flask, or Laravel, adding a route that serves the llms.txt file is straightforward. Create a route handler for <code>/llms.txt</code> that returns the file content with a <code>text/plain</code> content type. You can either serve a static file or generate the content dynamically, which is useful if you want to automatically include your latest content.</p>
+
+                <p>For any platform, the key technical requirements are: the file must be accessible at the root path (<code>/llms.txt</code>), it should be served with a <code>text/plain</code> or <code>text/markdown</code> content type, and it should not require authentication or JavaScript execution to access. AI crawlers need to be able to fetch and parse the file in a single HTTP request without any additional rendering.</p>
+
+                <p>I also recommend adding a reference to your llms.txt file in your robots.txt. While this is not part of the formal specification, it helps AI crawlers discover the file. A simple comment line like <code># See also: /llms.txt for AI model guidance</code> at the top of your robots.txt creates a pointer that some AI systems may follow.</p>
+
+                <h2 id="testing-and-validating-your-implementation">Testing and Validating Your Implementation</h2>
+
+                <p>After creating and deploying your llms.txt file, you need to verify that it is working correctly. Here is the validation process I follow.</p>
+
+                <p><strong>Accessibility check.</strong> Open your browser and navigate to <code>https://yoursite.com/llms.txt</code>. The file should load as plain text without any HTML wrapping, navigation elements, or styling. If you see your site's header and footer around the content, the file is being processed by your CMS rather than served as a raw text file. This needs to be fixed because AI crawlers expect raw text, not HTML-wrapped content.</p>
+
+                <p><strong>Format validation.</strong> Check that the Markdown formatting is correct. The H1 title should start with a single hash symbol. H2 sections should start with double hashes. Links should use standard Markdown syntax with descriptive text. There should be no broken links or formatting errors. I manually review the file in a text editor and also test it in a Markdown preview tool to ensure the structure renders correctly.</p>
+
+                <p><strong>Link verification.</strong> Every URL in your llms.txt should return a 200 status code and contain the content described in the annotation. I use a simple script or tool like Screaming Frog to check all links in the file. A broken link in your llms.txt is worse than no link at all because it signals to the AI model that your site information may be unreliable.</p>
+
+                <p><strong>Content accuracy.</strong> Read through the descriptions you have written for each link and verify they accurately reflect the current content of each page. If a page has been updated since you created the llms.txt file, the description may be outdated. This is why regular reviews are important -- your llms.txt should always be an accurate reflection of your site's current state.</p>
+
+                <p><strong>Server response headers.</strong> Check the HTTP headers returned when the file is requested. The content type should be <code>text/plain</code> or <code>text/markdown</code>. If it is being served as <code>text/html</code>, some AI parsers may have difficulty processing it. You can check headers using browser developer tools, <code>curl -I</code>, or an online header checking tool.</p>
+
+                <p>While there is no official validator for llms.txt yet (as the standard is still emerging), the community has created several tools and scripts that check for common issues. I expect formal validation tools to become available as adoption increases. In the meantime, the manual checks I have described above are sufficient to ensure your implementation is correct.</p>
+
+                <h2 id="the-future-of-ai-web-interaction">The Future of AI-Web Interaction</h2>
+
+                <p>The llms.txt standard is just the beginning of a broader shift in how AI systems interact with the web. Understanding where this is heading helps you make strategic decisions today that will pay off as the ecosystem evolves.</p>
+
+                <p>The fundamental tension in AI-web interaction is between AI models that want to access and understand web content, and website owners who want to control how their content is used. The robots.txt protocol was designed for search engines that index content and send users to the source. AI models operate differently -- they consume content and synthesise it into responses that may or may not credit the source. This tension is driving the development of new protocols and standards.</p>
+
+                <p>One direction is toward more granular content licensing signals. Just as Creative Commons licences allow creators to specify how their content can be reused, we may see standardised signals that tell AI systems what they can do with your content -- whether it can be used for training, whether it can be summarised, whether citation is required, and so on. Some of these capabilities may eventually be incorporated into an expanded version of llms.txt or a related standard.</p>
+
+                <p>Another direction is toward richer communication between websites and AI models. The current llms.txt specification is a one-way communication -- the website provides information and the AI model reads it. Future versions may support more interactive patterns, such as the ability to specify preferred citation formats, indicate content update frequencies, or provide machine-readable expertise signals that help AI models assess the authority of the source.</p>
+
+                <p>The relationship between traditional SEO and AI optimisation is also converging. <a href="../blog/get-mentioned-by-chatgpt.html">Getting mentioned by ChatGPT</a> and other AI tools is becoming a meaningful traffic and visibility driver. Google's AI Overviews already use web content to generate answers, and the quality of your AI-readable signals (including llms.txt, schema markup, and content structure) directly influences whether your content is cited. I expect that within the next year or two, AI readiness will be as standard a part of SEO audits as mobile optimisation is today.</p>
+
+                <p>For businesses, the practical implication is clear: invest in AI readiness now. The effort required is relatively small -- creating an llms.txt file, managing AI crawlers in robots.txt, implementing structured data, and writing clear, well-structured content. These investments compound over time as AI-generated content consumption grows. The businesses that establish strong AI readability now will have a significant advantage as the ecosystem matures.</p>
+
+                <h2 id="integrating-llms-txt-into-your-geo-strategy">Integrating llms.txt into Your GEO Strategy</h2>
+
+                <p>The llms.txt file should not exist in isolation. It is one component of a comprehensive <a href="../blog/what-is-geo.html">Generative Engine Optimisation (GEO)</a> strategy that includes multiple complementary elements.</p>
+
+                <p><strong>Content structure.</strong> Your website content should be written and structured in a way that is easy for AI models to parse and understand. This means clear headings, concise paragraphs, direct-answer openings, defined terminology, and logical information flow. The content your llms.txt links to should exemplify these qualities, because that is the content AI models will evaluate most closely.</p>
+
+                <p><strong>Schema markup.</strong> Structured data provides machine-readable metadata about your content that complements the information in llms.txt. While llms.txt provides a site-level overview, schema markup provides page-level detail -- who the author is, when the content was published, what questions the page answers, and what entities are discussed. Together, they create a comprehensive picture that AI models can use to accurately represent your content.</p>
+
+                <p><strong>Entity consistency.</strong> Your business name, description, services, and expertise should be described consistently across your llms.txt, schema markup, Google Business Profile, social media profiles, and directory listings. Inconsistencies create confusion for AI models that are trying to build a unified understanding of your entity. I audit entity consistency across all platforms as part of my GEO work with clients, and I am always surprised by how many discrepancies exist even for businesses that think their information is consistent.</p>
+
+                <p><strong>Authority signals.</strong> AI models assess the authority of sources using signals similar to what traditional search engines use -- backlinks, mentions from authoritative sources, consistency of information across the web, and the quality of the content itself. Strengthening these signals makes it more likely that AI models will reference your content when generating responses. Your llms.txt can highlight your most authoritative content, but the authority itself needs to be earned through genuine expertise and recognition.</p>
+
+                <p>The combination of these elements creates a powerful GEO foundation. When an AI model encounters your site, it can read your llms.txt for the big picture, examine your schema markup for detailed metadata, verify your claims against your broader web presence, and assess your authority based on external signals. Businesses that get all of these elements right are the ones that consistently appear in AI-generated recommendations and responses. If you want help implementing a comprehensive GEO strategy, <a href="../contact.html">reach out and let us discuss your specific situation</a>.</p>
+
+                <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <h3>What is llms.txt and why does it matter?</h3>
+                        <p>The llms.txt file is a proposed web standard that provides AI language models with a structured, machine-readable summary of your website. Placed in your site's root directory, it tells AI systems who you are, what your site covers, and which pages contain your most important content. It matters because AI models increasingly use web content to generate answers, and llms.txt helps ensure they understand your site accurately. Without it, AI crawlers must interpret your site from raw HTML, which can lead to incomplete or incorrect representations of your business in AI-generated responses. Implementing it is a low-effort, high-potential step toward better AI visibility.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Is llms.txt the same as robots.txt?</h3>
+                        <p>No, they serve different purposes. The robots.txt file controls which pages web crawlers are allowed to access -- it is a permission file that says "you can crawl this, but not that." The llms.txt file is an informational file that helps AI models understand your site's content and structure -- it says "here is who we are and what our most important content covers." Think of robots.txt as a security guard controlling access, and llms.txt as a helpful receptionist explaining what the building contains. You need both files, and they work together as part of a comprehensive AI crawler management strategy to maximise your site's visibility to AI tools.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Do all AI crawlers support llms.txt?</h3>
+                        <p>Not yet. As of early 2026, llms.txt is still an emerging standard and support varies across AI providers. Some AI systems and tools actively look for and parse llms.txt files, while others rely on traditional crawling methods. However, adoption is growing quickly, and implementing llms.txt now positions your site ahead of the curve. The file is simple to create and maintain, so the effort required is minimal compared to the potential benefit. Even if a particular AI crawler does not specifically parse your llms.txt file today, the structured information you include improves your overall AI readiness and can influence how AI systems understand your site through other means.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How often should I update my llms.txt file?</h3>
+                        <p>I recommend reviewing and updating your llms.txt file whenever you make significant changes to your website's content or structure. This includes adding new service pages, publishing major content pieces, changing your business description or offerings, or restructuring your site navigation. For most businesses, a quarterly review is sufficient to keep the file current. If you publish content frequently, you might update the file monthly to include links to your most important new articles or resources. The key is that your llms.txt should always accurately reflect the current state of your site's most important content and be treated as a living document rather than a set-and-forget file.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can llms.txt help my site appear in AI-generated answers?</h3>
+                        <p>While llms.txt alone will not guarantee that your site appears in AI-generated answers, it is one important component of a broader Generative Engine Optimisation strategy. By providing AI models with a clear, structured understanding of your site's content and expertise areas, you make it easier for those models to identify your site as a relevant source when generating answers. The file works best when combined with high-quality content, proper schema markup, strong entity signals, and consistent information across the web. Think of llms.txt as making your site easier for AI to understand, which increases your chances of being referenced when AI tools generate answers in your area of expertise.</p>
+                    </div>
+                </div>
+
+                <div class="article-callout" role="complementary" aria-label="Key takeaway">
+                    <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>
+                    <div>
+                        <strong>The bottom line:</strong> The llms.txt standard is a simple but powerful step toward making your website AI-readable. As AI-generated content discovery grows, the businesses that make it easy for AI models to understand their content will have a significant visibility advantage. Creating and maintaining an llms.txt file takes minimal effort compared to the potential impact. Combine it with proper robots.txt AI crawler management, schema markup, and well-structured content for a comprehensive AI readiness strategy. If you need help implementing llms.txt and a broader GEO strategy for your business, <a href="../contact.html">let us talk</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Social Share -->
+    <section class="article-share" style="padding:var(--space-2xl) 0; background:var(--bg-secondary);">
+        <div class="container" style="max-width:800px; text-align:center;">
+            <h4 style="margin-bottom:var(--space-lg);">Share this article</h4>
+            <div style="display:flex; gap:var(--space-md); justify-content:center; flex-wrap:wrap;">
+                <button class="btn btn-outline share-btn" data-platform="twitter" aria-label="Share on Twitter" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">Twitter</button>
+                <button class="btn btn-outline share-btn" data-platform="linkedin" aria-label="Share on LinkedIn" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">LinkedIn</button>
+                <button class="btn btn-outline share-btn" data-platform="whatsapp" aria-label="Share on WhatsApp" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">WhatsApp</button>
+                <button class="btn btn-outline share-btn" data-platform="email" aria-label="Share via Email" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">Email</button>
+                <button class="btn btn-outline share-btn" data-platform="copy" aria-label="Copy link" style="font-size:0.85rem; padding:0.5rem 1rem; border-radius:100px;">Copy Link</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Bio -->
+    <section class="article-author" style="padding:var(--space-2xl) 0;">
+        <div class="container" style="max-width:800px;">
+            <div style="display:flex; gap:var(--space-xl); align-items:center; flex-wrap:wrap;">
+                <div class="author-avatar" style="width:80px;height:80px;font-size:1.5rem;" aria-hidden="true">NP</div>
+                <div style="flex:1; min-width:250px;">
+                    <h4 style="margin-bottom:0.25rem;">Nisarth Patel</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:var(--space-md);">Digital Growth Specialist from Ahmedabad, India. I help businesses grow through SEO, AI automation, and modern web development. 4+ years of hands-on experience.</p>
+                    <div style="display:flex; gap:var(--space-md); font-size:0.85rem;">
+                        <a href="https://www.linkedin.com/in/nisarth-patel/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">LinkedIn</a>
+                        <a href="../contact.html" style="color:var(--accent-primary);">Contact</a>
+                        <a href="../about.html" style="color:var(--accent-primary);">About</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section style="padding:var(--space-2xl) 0; background:var(--bg-secondary);">
+        <div class="container" style="max-width:600px; text-align:center;">
+            <h3 style="margin-bottom:var(--space-md);">Get SEO insights in your inbox</h3>
+            <p style="color:var(--text-secondary); margin-bottom:var(--space-xl); font-size:0.95rem;">Practical SEO, GEO, and digital growth tips. No spam, no fluff -- just things that actually work.</p>
+            <a href="../contact.html" class="btn btn-primary" style="font-size:0.9rem;">Subscribe &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="article-related" style="padding:var(--space-3xl) 0;">
+        <div class="container">
+            <h3 style="margin-bottom:var(--space-2xl); text-align:center;">Related Articles</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:var(--space-xl);">
+                <a href="../blog/what-is-geo.html" class="blog-card" style="text-decoration:none;">
+                    <div style="padding:var(--space-xl);">
+                        <span class="tag tag-accent" style="font-size:0.7rem; padding:2px 8px; margin-bottom:var(--space-sm); display:inline-block;">GEO</span>
+                        <h4 style="margin-bottom:var(--space-sm);">What Is Generative Engine Optimisation (GEO)?</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">A complete guide to GEO -- what it is, why it matters, and how to optimise your content for AI-powered search engines.</p>
+                    </div>
+                </a>
+                <a href="../blog/get-mentioned-by-chatgpt.html" class="blog-card" style="text-decoration:none;">
+                    <div style="padding:var(--space-xl);">
+                        <span class="tag tag-accent" style="font-size:0.7rem; padding:2px 8px; margin-bottom:var(--space-sm); display:inline-block;">GEO</span>
+                        <h4 style="margin-bottom:var(--space-sm);">How to Get Mentioned by ChatGPT</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">Practical strategies to get your brand and content referenced in ChatGPT and other AI assistant responses.</p>
+                    </div>
+                </a>
+                <a href="../blog/technical-seo-audit-checklist-2026.html" class="blog-card" style="text-decoration:none;">
+                    <div style="padding:var(--space-xl);">
+                        <span class="tag tag-accent" style="font-size:0.7rem; padding:2px 8px; margin-bottom:var(--space-sm); display:inline-block;">SEO</span>
+                        <h4 style="margin-bottom:var(--space-sm);">Technical SEO Audit Checklist for 2026</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">The complete technical SEO audit checklist covering crawlability, Core Web Vitals, structured data, and AI readiness.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to blog -->
+    <div style="background:var(--bg-secondary); padding:var(--space-2xl) 0;">
+        <div class="container"
+            style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-lg);">
+            <a href="../blog.html" class="btn btn-outline">&larr; Back to Blog</a>
+            <a href="../contact.html" class="btn btn-primary">Work with Nisarth <span aria-hidden="true">&rarr;</span></a>
+        </div>
+    </div>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="nav-logo" style="margin-bottom:var(--space-lg);"><span
+                            class="nav-logo-mark">NP</span><span class="nav-logo-name">Nisarth Patel</span></div>
+                    <p style="font-size:0.875rem;color:var(--text-secondary);">Ahmedabad, Gujarat, India</p>
+                </div>
+                <nav aria-label="Footer navigation">
+                    <div class="footer-links"><a href="../work.html" class="footer-link">Work</a><a href="../services.html"
+                            class="footer-link">Services</a><a href="../about.html" class="footer-link">About</a><a
+                            href="../process.html" class="footer-link">Process</a><a href="../blog.html"
+                            class="footer-link">Blog</a><a href="../contact.html" class="footer-link">Contact</a></div>
+                </nav>
+                <div>
+                    <div class="footer-links"><a href="mailto:pnisarth@gmail.com"
+                            class="footer-link">pnisarth@gmail.com</a><a href="https://wa.me/917016353896"
+                            class="footer-link" target="_blank" rel="noopener noreferrer">+91 7016353896</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom"><span>&copy; Nisarth Patel &middot; Ahmedabad, India</span></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/animations.js" defer></script>
+    <script src="../assets/js/cursor.js" defer></script>
+    <button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
+    <div class="cookie-banner" role="alert"><p>This site uses cookies for analytics. Your data helps improve the experience.</p><div class="cookie-actions"><button class="btn btn-primary" data-cookie="accept" style="padding:0.5rem 1rem;font-size:0.8rem;border-radius:100px;background:var(--accent-primary);color:var(--bg-primary);font-weight:600;">Accept</button><button data-cookie="decline" style="padding:0.5rem 1rem;font-size:0.8rem;color:var(--text-secondary);background:none;border:1px solid var(--border);border-radius:100px;cursor:pointer;">Decline</button></div></div>
+</body>
+
+</html>
