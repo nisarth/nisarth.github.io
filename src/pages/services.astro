@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Faq from '../components/Faq.astro';
+import { breadcrumb, faqPage, professionalService } from '../schema';
+
+const title = 'Services: SEO, AEO, AI Automation, and Web Development';
+const description =
+  'SEO, answer engine optimization, AI automation, and web development services from Nisarth Patel, a freelance digital growth specialist in Ahmedabad.';
+
+const groups = [
+  {
+    name: 'Search visibility',
+    line: 'Search visibility is the work of making your business easy to find in Google and in AI answers.',
+    items: [
+      'Technical SEO audits and fixes',
+      'Keyword research and content strategy',
+      'On-page and on-site optimization',
+      'AEO: FAQ schema and direct-answer content',
+      'GEO: content built to be cited by ChatGPT, Perplexity, and AI Overviews',
+      'Local SEO and Google Business Profile',
+    ],
+  },
+  {
+    name: 'AI automation',
+    line: 'AI automation is connecting your tools so routine work runs on its own.',
+    items: [
+      'n8n, Make, and Zapier workflow builds',
+      'AI chatbots for websites and WhatsApp',
+      'Lead capture and CRM sync',
+      'Automated follow-up and email sequences',
+      'Reporting and data automation',
+    ],
+  },
+  {
+    name: 'Web development',
+    line: 'Web development here means fast, accessible sites that search engines and AI tools can read.',
+    items: [
+      'Static and modern site builds',
+      'Core Web Vitals and speed work',
+      'Structured data and clean URLs',
+      'Mobile-first, accessible design',
+    ],
+  },
+  {
+    name: 'Marketing',
+    line: 'Marketing support is the steady work of turning visitors into leads.',
+    items: [
+      'Content planning and writing',
+      'Landing page and conversion work',
+      'Email marketing and newsletters',
+      'Simple, honest performance reporting',
+    ],
+  },
+];
+
+const allServiceNames = groups.flatMap((g) => g.items);
+
+const faqs = [
+  {
+    q: 'How do you price your work?',
+    a: 'Pricing depends on the scope of the project. Smaller one-off jobs are quoted as a fixed price, and ongoing work is set up as a monthly retainer. Tell me what you need and I will send a clear quote.',
+  },
+  {
+    q: 'Do you offer one-off projects or ongoing work?',
+    a: 'Both. Some clients need a single fix, such as a technical SEO audit or an automation build. Others prefer ongoing support each month. I am happy to do either.',
+  },
+  {
+    q: 'Which businesses do you work with?',
+    a: 'I work with startups, local businesses, and growing brands, both in India and internationally. Most projects are remote.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/services.html"
+  jsonLd={[
+    professionalService(allServiceNames),
+    breadcrumb([{ name: 'Home', path: '/' }, { name: 'Services', path: '/services.html' }]),
+    faqPage(faqs),
+  ]}
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Services</p>
+      <h1>What I can do for your business</h1>
+      <p class="lead narrow-lead">
+        These are the services I offer as a freelance digital growth specialist. Each
+        one is focused on a clear outcome: more visibility, more leads, or less manual
+        work.
+      </p>
+
+      <div class="service-groups">
+        {
+          groups.map((g) => (
+            <article class="card service-group">
+              <h2>{g.name}</h2>
+              <p class="group-line">{g.line}</p>
+              <ul>
+                {g.items.map((i) => <li>{i}</li>)}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="updated">Last updated: June 2026</p>
+      <a href="/contact.html" class="btn btn-primary">Get a quote</a>
+    </div>
+  </section>
+
+  <Faq items={faqs} />
+</BaseLayout>
+
+<style>
+  .narrow-lead {
+    max-width: 60ch;
+    margin: 0.8rem 0 0;
+  }
+  .service-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.4rem;
+    margin: 2rem 0;
+  }
+  .service-group h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .group-line {
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .service-group ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    color: var(--text-muted);
+  }
+  .service-group li {
+    padding-left: 1.3rem;
+    position: relative;
+  }
+  .service-group li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 1rem 0 1.2rem;
+  }
+</style>
