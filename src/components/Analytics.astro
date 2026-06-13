@@ -26,6 +26,11 @@ import { GA_ID } from '../consts';
 </div>
 
 <style>
+  /* The hidden attribute must win over display:flex below, or the banner
+     never disappears when the visitor clicks Accept or Decline. */
+  .consent[hidden] {
+    display: none;
+  }
   .consent {
     position: fixed;
     left: 50%;
