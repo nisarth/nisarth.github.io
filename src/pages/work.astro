@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumb } from '../schema';
+
+const title = 'Work: Case Studies in SEO, Automation, and Web';
+const description =
+  'Selected work by Nisarth Patel across SEO, AI automation, and web development. Detailed case studies with client results are being added.';
+
+// Honest engagement types, no invented numbers. Real metrics, client names, and
+// timeframes will be added here once confirmed with Nisarth.
+const engagements = [
+  {
+    tag: 'SEO',
+    title: 'Organic search growth for a local business',
+    goal: 'Goal: rank for the searches that bring real customers and grow steady organic leads.',
+    work: 'Technical audit, on-page fixes, local SEO, and a content plan built around buyer intent.',
+  },
+  {
+    tag: 'Automation',
+    title: 'Lead and follow-up automation',
+    goal: 'Goal: stop losing leads and free up hours of manual follow-up each week.',
+    work: 'An n8n workflow linking the website form, CRM, email, and WhatsApp so follow-up happens on its own.',
+  },
+  {
+    tag: 'Web',
+    title: 'Fast, SEO-ready website build',
+    goal: 'Goal: a site that loads fast, reads well on mobile, and is easy for search and AI tools to understand.',
+    work: 'A static build with clean code, structured data, strong Core Web Vitals, and accessible design.',
+  },
+  {
+    tag: 'AEO and GEO',
+    title: 'Getting cited by AI answer engines',
+    goal: 'Goal: show up inside AI answers and featured snippets, not just the blue links.',
+    work: 'Direct-answer content, FAQ schema, and pages structured the way AI retrieval reads them.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/work.html"
+  jsonLd={[breadcrumb([{ name: 'Home', path: '/' }, { name: 'Work', path: '/work.html' }])]}
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Work</p>
+      <h1>The work I do</h1>
+      <p class="lead narrow-lead">
+        Here are the kinds of projects I take on. Detailed case studies with client
+        results are being added. If you want specifics for a project like yours, just
+        ask and I will walk you through real examples.
+      </p>
+
+      <div class="work-grid">
+        {
+          engagements.map((e) => (
+            <article class="card work-item">
+              <span class="work-tag">{e.tag}</span>
+              <h2>{e.title}</h2>
+              <p class="work-goal">{e.goal}</p>
+              <p class="muted">{e.work}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="work-cta card">
+        <h2>Want the numbers?</h2>
+        <p class="muted">
+          I can share real results and references that match your industry and goals on
+          a call.
+        </p>
+        <a href="/contact.html" class="btn btn-primary">Ask for case studies</a>
+      </div>
+
+      <p class="updated">Last updated: June 2026</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow-lead {
+    max-width: 60ch;
+    margin: 0.8rem 0 2rem;
+  }
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.4rem;
+  }
+  .work-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+  }
+  .work-item h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0.6rem;
+  }
+  .work-goal {
+    margin-bottom: 0.6rem;
+  }
+  .work-cta {
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .work-cta .muted {
+    max-width: 48ch;
+  }
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 2.5rem 0 0;
+  }
+</style>
