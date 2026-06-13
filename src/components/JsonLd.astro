@@ -1,0 +1,12 @@
+---
+// Renders one JSON-LD structured data block.
+// JSON.stringify escapes quotes; we also escape any "</" so a string value
+// can never close the script tag early.
+interface Props {
+  schema: Record<string, unknown>;
+}
+const { schema } = Astro.props;
+const json = JSON.stringify(schema).replace(/<\//g, '<\\/');
+---
+
+<script type="application/ld+json" set:html={json} />

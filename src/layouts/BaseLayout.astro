@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import JsonLd from '../components/JsonLd.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  path,
+  ogImage,
+  ogType,
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Seo
+      title={title}
+      description={description}
+      path={path}
+      ogImage={ogImage}
+      ogType={ogType}
+      noindex={noindex}
+    />
+    {jsonLd.map((schema) => <JsonLd schema={schema} />)}
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <Analytics />
+  </body>
+</html>

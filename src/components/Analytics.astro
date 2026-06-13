@@ -1,0 +1,108 @@
+---
+import { GA_ID } from '../consts';
+---
+
+<!--
+  Privacy-first analytics. Google Analytics loads only after the visitor
+  accepts. Until then no GA script runs, so analytics cannot affect Core Web
+  Vitals for first-time or non-consenting visitors. The choice is remembered.
+-->
+<div
+  id="consent"
+  class="consent"
+  role="region"
+  aria-label="Cookie consent"
+  data-ga-id={GA_ID}
+  hidden
+>
+  <p class="consent-text">
+    This site uses Google Analytics to understand traffic. No data is collected
+    until you accept.
+  </p>
+  <div class="consent-actions">
+    <button type="button" class="btn btn-ghost" data-consent="deny">Decline</button>
+    <button type="button" class="btn btn-primary" data-consent="allow">Accept</button>
+  </div>
+</div>
+
+<style>
+  .consent {
+    position: fixed;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    z-index: 150;
+    width: min(560px, calc(100% - 2rem));
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--bg-elev-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  }
+  .consent-text {
+    flex: 1 1 240px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  .consent-actions {
+    display: flex;
+    gap: 0.6rem;
+  }
+  .consent .btn {
+    padding: 0.55rem 1rem;
+    font-size: 0.9rem;
+  }
+</style>
+
+<script>
+  const KEY = 'analytics-consent';
+  const banner = document.getElementById('consent');
+  if (banner) {
+    const gaId = banner.getAttribute('data-ga-id') || '';
+
+    function loadGA(id: string) {
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+      document.head.appendChild(s);
+      // @ts-ignore
+      window.dataLayer = window.dataLayer || [];
+      // @ts-ignore
+      function gtag() { window.dataLayer.push(arguments); }
+      // @ts-ignore
+      window.gtag = gtag;
+      // @ts-ignore
+      gtag('js', new Date());
+      // @ts-ignore
+      gtag('config', id, { anonymize_ip: true });
+    }
+
+    const choice = localStorage.getItem(KEY);
+    if (choice === 'allow') {
+      loadGA(gaId);
+    } else if (choice !== 'deny') {
+      banner.hidden = false;
+    }
+
+    banner.querySelectorAll('[data-consent]').forEach((el) => {
+      el.addEventListener('click', () => {
+        const value = el.getAttribute('data-consent');
+        localStorage.setItem(KEY, value || 'deny');
+        banner.hidden = true;
+        if (value === 'allow') {
+          loadGA(gaId);
+        } else {
+          // Hard opt-out flag respected by gtag if ever loaded later.
+          // @ts-ignore
+          window['ga-disable-' + gaId] = true;
+        }
+      });
+    });
+  }
+</script>
