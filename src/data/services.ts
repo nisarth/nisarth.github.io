@@ -11,6 +11,8 @@ export interface ServiceRecord {
   slug: string;
   name: string;
   primaryKeyword: string;
+  // Short phrase used to compose unique city combo intros.
+  outcome: string;
   title: string;
   description: string;
   h1: string;
@@ -28,6 +30,7 @@ export const services: ServiceRecord[] = [
     slug: 'seo',
     name: 'SEO',
     primaryKeyword: 'SEO services',
+    outcome: 'rank in Google for the searches that bring real leads',
     title: 'SEO Services for Businesses | Nisarth Patel',
     description:
       'SEO services that help your business rank in Google for the searches your buyers actually type. Technical audits, content, and on-page work that drives organic leads.',
@@ -66,6 +69,7 @@ export const services: ServiceRecord[] = [
     slug: 'aeo',
     name: 'AEO',
     primaryKeyword: 'AEO services',
+    outcome: 'get quoted in featured snippets and AI answers',
     title: 'AEO Services: Get Cited by AI Answers | Nisarth Patel',
     description:
       'AEO services (answer engine optimization) that get your business quoted in featured snippets, voice search, and AI answers. Direct-answer content and FAQ schema that win the answer.',
@@ -104,6 +108,7 @@ export const services: ServiceRecord[] = [
     slug: 'geo',
     name: 'GEO',
     primaryKeyword: 'GEO services',
+    outcome: 'get cited by AI tools like ChatGPT and Perplexity',
     title: 'GEO Services: Get Cited by ChatGPT and AI Search | Nisarth Patel',
     description:
       'GEO services (generative engine optimization) that get your business mentioned and cited by ChatGPT, Perplexity, Gemini, and Google AI Overviews. Content built for AI retrieval.',
@@ -142,6 +147,7 @@ export const services: ServiceRecord[] = [
     slug: 'ai-automation',
     name: 'AI automation',
     primaryKeyword: 'AI automation services',
+    outcome: 'automate routine work and follow-up to save hours each week',
     title: 'AI Automation Services (n8n, Make, Zapier) | Nisarth Patel',
     description:
       'AI automation services that connect your apps so routine work runs on its own. Custom n8n, Make, and Zapier workflows, AI chatbots, and lead pipelines that save hours each week.',
@@ -180,6 +186,7 @@ export const services: ServiceRecord[] = [
     slug: 'web-development',
     name: 'Web development',
     primaryKeyword: 'web development services',
+    outcome: 'launch a fast, search-ready website that converts',
     title: 'Web Development Services: Fast, SEO-Ready Sites | Nisarth Patel',
     description:
       'Web development services for fast, accessible, SEO-ready websites that load in under a second. Clean static builds, strong Core Web Vitals, and structured data search engines can read.',
@@ -218,6 +225,7 @@ export const services: ServiceRecord[] = [
     slug: 'local-seo',
     name: 'Local SEO',
     primaryKeyword: 'local SEO services',
+    outcome: 'show up in the Google map pack for nearby searches',
     title: 'Local SEO Services: Rank on Google Maps | Nisarth Patel',
     description:
       'Local SEO services that get your business found on Google Maps and in local search. Google Business Profile optimization, local citations, and reviews that bring nearby customers.',
