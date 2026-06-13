@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Faq from '../components/Faq.astro';
+import Map from '../components/Map.astro';
 import { SITE, SOCIAL } from '../consts';
 import { breadcrumb, faqPage } from '../schema';
 
@@ -61,6 +62,7 @@ const faqs = [
             <a href={SOCIAL.github} rel="noopener noreferrer" target="_blank">GitHub</a>
           </li>
         </ul>
+        <Map query="Ahmedabad, Gujarat, India" label="Ahmedabad" />
       </div>
 
       <form

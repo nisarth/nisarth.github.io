@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Faq from '../../components/Faq.astro';
+import Map from '../../components/Map.astro';
 import { cities, cityBySlug } from '../../data/cities';
 import { services } from '../../data/services';
 import { breadcrumb, faqPage, service as serviceSchema } from '../../schema';
@@ -24,7 +25,7 @@ const nearby = record.nearby.map((slug) => cityBySlug(slug)).filter(Boolean);
       serviceType: record.primaryKeyword,
       description: record.description,
       url: path,
-      areaServed: `${record.name}, ${record.country}`,
+      areaServed: { '@type': 'City', name: record.name },
     }),
     breadcrumb([
       { name: 'Home', path: '/' },
@@ -63,6 +64,12 @@ const nearby = record.nearby.map((slug) => cityBySlug(slug)).filter(Boolean);
           ))
         }
       </ul>
+
+      <h2>{record.name} on the map</h2>
+      <p class="muted">
+        I serve {record.name} remotely. Here is the area I cover.
+      </p>
+      <Map query={`${record.name}, ${record.region}, ${record.country}`} label={record.name} />
 
       <h2>Nearby cities</h2>
       <ul class="nearby-links">

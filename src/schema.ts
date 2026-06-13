@@ -106,7 +106,7 @@ export function service(item: {
   serviceType: string;
   description: string;
   url: string;
-  areaServed?: string;
+  areaServed?: string | Record<string, unknown>;
 }) {
   return {
     '@context': 'https://schema.org',

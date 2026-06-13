@@ -1,0 +1,103 @@
+---
+// Map with a click-to-load facade. The heavy Google Maps iframe is only loaded
+// when the visitor clicks, so it never affects Core Web Vitals or Lighthouse.
+// A plain Google Maps link is always present for those who do not click.
+interface Props {
+  query: string;
+  label: string;
+}
+const { query, label } = Astro.props;
+const q = encodeURIComponent(query);
+const embed = `https://www.google.com/maps?q=${q}&output=embed`;
+const link = `https://www.google.com/maps/search/?api=1&query=${q}`;
+---
+
+<figure class="map-embed">
+  <button
+    type="button"
+    class="map-facade"
+    data-map-src={embed}
+    data-map-label={`Map of ${label}`}
+    aria-label={`Load the interactive map of ${label}`}
+  >
+    <span class="map-pin" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+      </svg>
+    </span>
+    <span class="map-place">{label}</span>
+    <span class="map-cta">Load interactive map</span>
+  </button>
+  <figcaption>
+    <a href={link} rel="noopener noreferrer" target="_blank">View {label} on Google Maps</a>
+  </figcaption>
+</figure>
+
+<style>
+  .map-embed {
+    margin: 1.5rem 0 0;
+  }
+  .map-facade {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(200, 255, 77, 0.08), transparent 60%),
+      var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+  }
+  .map-facade:hover {
+    border-color: var(--accent);
+  }
+  .map-pin {
+    color: var(--accent);
+  }
+  .map-place {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .map-cta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .map-embed :global(iframe) {
+    width: 100%;
+    height: 320px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: block;
+  }
+  .map-embed figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+  }
+  .map-embed a {
+    color: var(--link);
+  }
+  .map-embed a:hover {
+    color: var(--accent);
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.map-facade').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = btn.getAttribute('data-map-src') || '';
+      iframe.title = btn.getAttribute('data-map-label') || 'Map';
+      iframe.loading = 'lazy';
+      iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+      iframe.setAttribute('allowfullscreen', '');
+      btn.replaceWith(iframe);
+    });
+  });
+</script>
