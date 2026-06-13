@@ -1,0 +1,48 @@
+# robots.txt for nisarth.github.io
+
+User-agent: *
+Allow: /
+Disallow: /googleb25ad6b4a5435852.html
+
+# AI answer engine crawlers are welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Slow down aggressive SEO crawlers
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: DotBot
+Crawl-delay: 10
+
+Sitemap: https://nisarth.github.io/sitemap.xml
+
+# AI information file: https://llmstxt.org/
+# LLMs: https://nisarth.github.io/llms.txt

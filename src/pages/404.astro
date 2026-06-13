@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Page Not Found (404) | Nisarth Patel';
+const description = 'This page does not exist. Head back to the homepage or browse the main pages.';
+---
+
+<BaseLayout title={title} description={description} path="/404.html" noindex>
+  <section class="section notfound">
+    <div class="container narrow">
+      <p class="eyebrow">Error 404</p>
+      <h1>This page does not exist</h1>
+      <p class="lead">
+        The page you were looking for moved or never existed. Try one of these
+        instead.
+      </p>
+      <div class="notfound-links">
+        <a href="/" class="btn btn-primary">Home</a>
+        <a href="/services.html" class="btn btn-ghost">Services</a>
+        <a href="/blog.html" class="btn btn-ghost">Blog</a>
+        <a href="/contact.html" class="btn btn-ghost">Contact</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    min-height: 50vh;
+  }
+  .notfound h1 {
+    margin: 0.7rem 0 1rem;
+  }
+  .notfound-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+</style>

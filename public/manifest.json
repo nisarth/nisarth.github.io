@@ -1,0 +1,17 @@
+{
+  "name": "Nisarth Patel: Digital Growth Specialist",
+  "short_name": "Nisarth Patel",
+  "description": "SEO, AEO, GEO, and AI automation for businesses that want to be found.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0c0e",
+  "theme_color": "#0b0c0e",
+  "icons": [
+    {
+      "src": "/assets/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
