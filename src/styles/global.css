@@ -77,6 +77,12 @@ a {
   text-decoration: none;
 }
 
+/* Inline links inside body paragraphs must not rely on color alone (WCAG). */
+p a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 ul,
 ol {
   list-style: none;
