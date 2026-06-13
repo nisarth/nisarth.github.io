@@ -101,6 +101,25 @@ export function professionalService(services: string[]) {
   };
 }
 
+export function service(item: {
+  name: string;
+  serviceType: string;
+  description: string;
+  url: string;
+  areaServed?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: item.name,
+    serviceType: item.serviceType,
+    description: item.description,
+    url: abs(item.url),
+    provider: { '@id': personId },
+    areaServed: item.areaServed || 'Worldwide',
+  };
+}
+
 export function creativeWork(item: {
   name: string;
   description: string;
