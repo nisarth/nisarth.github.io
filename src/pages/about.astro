@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Faq from '../components/Faq.astro';
+import { SITE } from '../consts';
+import { person, breadcrumb, faqPage } from '../schema';
+
+const title = 'About Nisarth Patel: Freelance Digital Growth Specialist';
+const description =
+  'Nisarth Patel is a freelance digital growth specialist in Ahmedabad with 2.5 years helping businesses grow through SEO, AI automation, and web development.';
+
+const skills = [
+  { group: 'Search', items: ['Technical SEO', 'On-page SEO', 'Keyword strategy', 'AEO and GEO', 'Local SEO'] },
+  { group: 'Automation', items: ['n8n', 'Make', 'Zapier', 'AI chatbots', 'Lead pipelines'] },
+  { group: 'Web', items: ['Static sites', 'Core Web Vitals', 'Structured data', 'Accessibility'] },
+  { group: 'Marketing', items: ['Content strategy', 'Email automation', 'Landing pages', 'Reporting'] },
+];
+
+const faqs = [
+  {
+    q: 'What does a digital growth specialist do?',
+    a: 'A digital growth specialist helps a business get more customers online by improving how it shows up in search, AI answers, and on its own website. The work covers SEO, content, automation, and site performance.',
+  },
+  {
+    q: 'Where are you based?',
+    a: 'I am based in Ahmedabad, Gujarat, India, and I work remotely with clients across India and internationally.',
+  },
+  {
+    q: 'How much experience do you have?',
+    a: 'I have 2.5 years of hands-on experience in SEO, AI automation, and web development for startups, local businesses, and growing brands.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/about.html"
+  jsonLd={[person(), breadcrumb([{ name: 'Home', path: '/' }, { name: 'About', path: '/about.html' }]), faqPage(faqs)]}
+>
+  <section class="section">
+    <div class="container narrow">
+      <p class="eyebrow">About</p>
+      <h1>About {SITE.name}</h1>
+      <p class="lead">
+        {SITE.name} is a freelance {SITE.role.toLowerCase()} based in {SITE.location}.
+        I help businesses get found online and turn that attention into leads, using
+        SEO, answer engine optimization, and AI automation.
+      </p>
+
+      <!-- Personal background to expand once confirmed with Nisarth:
+           how he got started, past roles, education, notable clients. Kept
+           general here so nothing is invented. -->
+      <h2>How I work</h2>
+      <p>
+        I keep the work simple and honest. Every project starts with a clear goal,
+        moves through steady and measurable steps, and ends with reporting you can
+        actually read. No jargon, no vanity numbers, no lock-in.
+      </p>
+      <p>
+        I care about the result that matters to your business, whether that is more
+        organic traffic, more booked calls, or hours saved each week through
+        automation.
+      </p>
+
+      <h2>What I am good at</h2>
+      <div class="skills-grid">
+        {
+          skills.map((s) => (
+            <div class="card skill-card">
+              <h3>{s.group}</h3>
+              <ul>
+                {s.items.map((i) => <li>{i}</li>)}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="updated">Last updated: June 2026</p>
+      <a href="/contact.html" class="btn btn-primary">Work with me</a>
+    </div>
+  </section>
+
+  <Faq items={faqs} />
+</BaseLayout>
+
+<style>
+  h2 {
+    margin: 2.5rem 0 1rem;
+  }
+  .lead {
+    margin-bottom: 1rem;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+  .skill-card h3 {
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  .skill-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: var(--text-muted);
+  }
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 2.5rem 0 1.2rem;
+  }
+</style>
