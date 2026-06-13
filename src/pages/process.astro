@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Faq from '../components/Faq.astro';
+import { breadcrumb, faqPage } from '../schema';
+
+const title = 'My Process: How I Run a Digital Growth Project';
+const description =
+  'A clear six-step process from discovery to results. See how Nisarth Patel runs SEO, automation, and web projects with no surprises and no guesswork.';
+
+const steps = [
+  {
+    n: '01',
+    name: 'Discovery',
+    line: 'Discovery is a short call to understand your business, your goals, and your customers.',
+    detail: 'We talk about what you sell, who you sell to, and what a win looks like for you.',
+  },
+  {
+    n: '02',
+    name: 'Audit',
+    line: 'An audit is a close look at where you stand today.',
+    detail: 'I review your site, search rankings, content, and any tools you already use, then list what is holding you back.',
+  },
+  {
+    n: '03',
+    name: 'Strategy',
+    line: 'Strategy is a simple, prioritized plan you can understand.',
+    detail: 'You get a clear roadmap with the work in order of impact, so you know what happens first and why.',
+  },
+  {
+    n: '04',
+    name: 'Build',
+    line: 'Build is where the work gets done.',
+    detail: 'I make the fixes, write the content, or set up the automation, and keep you updated as I go.',
+  },
+  {
+    n: '05',
+    name: 'Measure',
+    line: 'Measure means checking the numbers that matter.',
+    detail: 'I track rankings, traffic, leads, or hours saved, and report them in plain language.',
+  },
+  {
+    n: '06',
+    name: 'Iterate',
+    line: 'Iterate is the steady improvement after launch.',
+    detail: 'Growth is not one and done. We keep refining based on what the data shows.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How long does a project take?',
+    a: 'It depends on the work. A technical SEO audit can be done in a week, while ongoing SEO or content work shows results over a few months. I will give you a realistic timeline before we start.',
+  },
+  {
+    q: 'How often will I hear from you?',
+    a: 'I send regular updates and a plain-language report so you always know what is happening and what the results are. You will never have to chase me for a status.',
+  },
+  {
+    q: 'What do you need from me to start?',
+    a: 'A short call to understand your goals, and access to the relevant tools, such as your website, Google Search Console, or analytics. I will guide you through anything you are unsure about.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/process.html"
+  jsonLd={[
+    breadcrumb([{ name: 'Home', path: '/' }, { name: 'Process', path: '/process.html' }]),
+    faqPage(faqs),
+  ]}
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Process</p>
+      <h1>How I work, step by step</h1>
+      <p class="lead narrow-lead">
+        My process is a simple six-step path from first call to steady results. It
+        keeps the work clear, so you always know what is happening and why.
+      </p>
+
+      <ol class="steps">
+        {
+          steps.map((s) => (
+            <li class="card step">
+              <span class="step-n">{s.n}</span>
+              <div>
+                <h2>{s.name}</h2>
+                <p class="step-line">{s.line}</p>
+                <p class="muted">{s.detail}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+
+      <p class="updated">Last updated: June 2026</p>
+      <a href="/contact.html" class="btn btn-primary">Start with a call</a>
+    </div>
+  </section>
+
+  <Faq items={faqs} />
+</BaseLayout>
+
+<style>
+  .narrow-lead {
+    max-width: 58ch;
+    margin: 0.8rem 0 2rem;
+  }
+  .steps {
+    display: grid;
+    gap: 1.1rem;
+    counter-reset: step;
+  }
+  .step {
+    display: flex;
+    gap: 1.3rem;
+    align-items: flex-start;
+  }
+  .step-n {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    min-width: 2.2rem;
+  }
+  .step h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+  }
+  .step-line {
+    margin-bottom: 0.4rem;
+  }
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 2.5rem 0 1.2rem;
+  }
+</style>
