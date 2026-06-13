@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+import { person, website } from '../schema';
+
+const title = 'Nisarth Patel: Digital Growth Specialist (SEO, AEO, AI Automation)';
+const description =
+  'Nisarth Patel is a freelance digital growth specialist in Ahmedabad who helps businesses get found through SEO, answer engine optimization, and AI automation.';
+
+const services = [
+  {
+    name: 'SEO',
+    line: 'SEO is the work of making a site rank in Google for the searches your buyers actually type.',
+    detail: 'Technical audits, keyword strategy, on-page fixes, and content built to rank.',
+  },
+  {
+    name: 'AEO and GEO',
+    line: 'AEO and GEO are the work of getting your business quoted by AI answers and featured snippets.',
+    detail: 'FAQ schema, direct-answer content, and pages structured for ChatGPT, Perplexity, and Google AI Overviews.',
+  },
+  {
+    name: 'AI automation',
+    line: 'AI automation is connecting your apps so repetitive work runs without you.',
+    detail: 'n8n, Make, and Zapier workflows, AI chatbots, and lead pipelines that save hours each week.',
+  },
+  {
+    name: 'Web development',
+    line: 'Web development here means fast, SEO-ready sites that load in under a second.',
+    detail: 'Static and modern builds, clean code, strong Core Web Vitals, and mobile-first design.',
+  },
+];
+
+const workTeaser = [
+  { tag: 'SEO', title: 'Organic search growth', text: 'Audits and content strategy that move a site up the rankings for the terms that bring real leads.' },
+  { tag: 'Automation', title: 'Workflow automation', text: 'n8n and Make builds that link CRMs, email, and chat so follow-up happens on its own.' },
+  { tag: 'Web', title: 'Website builds', text: 'Fast, accessible sites with structured data and clean URLs that search engines and AI tools can read.' },
+];
+---
+
+<BaseLayout title={title} description={description} path="/" jsonLd={[person(), website()]}>
+  <!-- Hero -->
+  <section class="hero section">
+    <div class="container">
+      <p class="eyebrow">{SITE.role} - {SITE.location}</p>
+      <h1>I help businesses get found in search and AI answers.</h1>
+      <p class="lead hero-lead">
+        {SITE.name} is a freelance {SITE.role.toLowerCase()} in Ahmedabad. I use SEO,
+        answer engine optimization, and AI automation to turn a quiet website into a
+        steady source of leads.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact.html" class="btn btn-primary">Start a project</a>
+        <a href="/work.html" class="btn btn-ghost">See the work</a>
+      </div>
+      <ul class="hero-stats">
+        <li><strong>{SITE.experienceYears}+</strong><span>years in digital growth</span></li>
+        <li><strong>SEO + AI</strong><span>search and automation focus</span></li>
+        <li><strong>Remote</strong><span>India and worldwide</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Services snapshot -->
+  <section class="section services" aria-labelledby="services-heading">
+    <div class="container">
+      <p class="eyebrow">What I do</p>
+      <h2 id="services-heading">Four ways I grow your business</h2>
+      <div class="service-grid">
+        {
+          services.map((s) => (
+            <article class="card service-card">
+              <h3>{s.name}</h3>
+              <p class="service-line">{s.line}</p>
+              <p class="muted">{s.detail}</p>
+            </article>
+          ))
+        }
+      </div>
+      <a href="/services.html" class="btn btn-ghost">All services</a>
+    </div>
+  </section>
+
+  <!-- Work teaser -->
+  <section class="section" aria-labelledby="work-heading">
+    <div class="container">
+      <p class="eyebrow">Selected work</p>
+      <h2 id="work-heading">The kind of problems I solve</h2>
+      <div class="work-grid">
+        {
+          workTeaser.map((w) => (
+            <article class="card work-card">
+              <span class="work-tag">{w.tag}</span>
+              <h3>{w.title}</h3>
+              <p class="muted">{w.text}</p>
+            </article>
+          ))
+        }
+      </div>
+      <a href="/work.html" class="btn btn-ghost">View case studies</a>
+    </div>
+  </section>
+
+  <!-- About strip -->
+  <section class="section about-strip" aria-labelledby="about-heading">
+    <div class="container narrow">
+      <p class="eyebrow">About</p>
+      <h2 id="about-heading">A freelancer who cares about results, not jargon</h2>
+      <p class="lead">
+        I have spent {SITE.experienceYears} years helping startups, local businesses,
+        and growing brands show up where their customers look. I keep the work simple:
+        clear plans, honest reporting, and steady progress you can measure.
+      </p>
+      <a href="/about.html" class="btn btn-ghost">More about me</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-band">
+    <div class="container cta-inner">
+      <h2>Have a project in mind?</h2>
+      <p class="lead">Tell me what you are trying to grow. I will reply with a clear next step.</p>
+      <a href="/contact.html" class="btn btn-primary">Get in touch</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-top: clamp(3rem, 7vw, 5.5rem);
+  }
+  .hero h1 {
+    max-width: 16ch;
+    margin: 0.8rem 0 1.2rem;
+  }
+  .hero-lead {
+    max-width: 56ch;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.8rem;
+  }
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .hero-stats li {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-stats strong {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+  }
+  .hero-stats span {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .services h2,
+  .work-grid + a,
+  .service-grid + a {
+    margin-bottom: 1.8rem;
+  }
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+    margin: 1.8rem 0;
+  }
+  .service-card h3 {
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .service-line {
+    margin-bottom: 0.6rem;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+    margin: 1.8rem 0;
+  }
+  .work-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+  }
+  .work-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .about-strip h2 {
+    margin: 0.7rem 0 1rem;
+  }
+  .about-strip .btn {
+    margin-top: 1.5rem;
+  }
+
+  .cta-band {
+    text-align: center;
+  }
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .cta-inner .lead {
+    max-width: 46ch;
+  }
+</style>
