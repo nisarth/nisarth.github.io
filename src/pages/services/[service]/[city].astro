@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Faq from '../../../components/Faq.astro';
+import Map from '../../../components/Map.astro';
+import { services, serviceBySlug } from '../../../data/services';
+import { cities, cityBySlug } from '../../../data/cities';
+import { breadcrumb, faqPage, service as serviceSchema } from '../../../schema';
+
+export function getStaticPaths() {
+  const paths = [];
+  for (const s of services) {
+    for (const c of cities) {
+      paths.push({
+        params: { service: s.slug, city: c.slug },
+        props: { s, c },
+      });
+    }
+  }
+  return paths;
+}
+
+const { s, c } = Astro.props;
+const path = `/services/${s.slug}/${c.slug}.html`;
+const industriesText = c.industries.slice(0, 3).join(', ');
+
+const title = `${s.name} services in ${c.name} | Nisarth Patel`;
+const description = `${s.name} services in ${c.name} for ${c.industries[0]}, ${c.industries[1]}, and more. I help ${c.name} businesses ${s.outcome}, remote-first.`;
+
+// Combo-specific FAQs (unique to this service + city), plus one reused city FAQ.
+const comboFaqs = [
+  {
+    q: `Do you offer ${s.name} services in ${c.name}?`,
+    a: `Yes. I provide ${s.primaryKeyword} for ${c.name} businesses on a remote-first basis, with clear reporting. The aim is simple: help you ${s.outcome}.`,
+  },
+  {
+    q: `How does ${s.name} help ${c.name} businesses specifically?`,
+    a: `${c.name} has a strong base of ${industriesText} businesses, and these sectors compete for the same buyers online. ${s.name} helps you ${s.outcome}, focused on the searches and channels that bring those buyers to you.`,
+  },
+  c.faqs[0],
+];
+
+// Other services for this city, and this service in nearby cities.
+const otherServices = services.filter((x) => x.slug !== s.slug);
+const nearbyCities = c.nearby.map((slug) => cityBySlug(slug)).filter(Boolean);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  jsonLd={[
+    serviceSchema({
+      name: `${s.name} services in ${c.name}`,
+      serviceType: `${s.primaryKeyword} in ${c.name}`,
+      description,
+      url: path,
+      areaServed: { '@type': 'City', name: c.name },
+    }),
+    breadcrumb([
+      { name: 'Home', path: '/' },
+      { name: 'Services', path: '/services.html' },
+      { name: s.name, path: `/services/${s.slug}.html` },
+      { name: c.name, path },
+    ]),
+    faqPage(comboFaqs),
+  ]}
+>
+  <article class="section">
+    <div class="container narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/services.html">Services</a> <span aria-hidden="true">/</span>
+        <a href={`/services/${s.slug}.html`}>{s.name}</a> <span aria-hidden="true">/</span>
+        <span>{c.name}</span>
+      </nav>
+
+      <p class="eyebrow">{s.name} in {c.name}, {c.region}</p>
+      <h1>{s.name} services in {c.name}</h1>
+      <p class="lead">{s.definition}</p>
+
+      <p>
+        In {c.name}, businesses in {industriesText} compete for attention online every
+        day. My <a href={`/services/${s.slug}.html`}>{s.primaryKeyword}</a> help {c.name}
+        companies {s.outcome}, focused on what actually brings buyers.
+      </p>
+
+      <h2>What my {s.primaryKeyword} include</h2>
+      <ul class="check-list">
+        {s.included.map((i) => <li>{i}</li>)}
+      </ul>
+
+      <h2>How {s.name} helps {c.name} businesses</h2>
+      {c.context.map((p) => <p>{p}</p>)}
+      <p>
+        For these sectors, {s.name.toLowerCase()} is about results you can measure, not
+        vanity metrics. I work remote-first with {c.name} businesses, with clear
+        reporting and steady progress.
+      </p>
+
+      <h2>{c.name} on the map</h2>
+      <Map query={`${c.name}, ${c.region}, ${c.country}`} label={c.name} />
+
+      <h2>Other services for {c.name} businesses</h2>
+      <ul class="link-list">
+        {
+          otherServices.map((x) => (
+            <li>
+              <a href={`/services/${x.slug}/${c.slug}.html`}>{x.name} services in {c.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>{s.name} in nearby cities</h2>
+      <ul class="link-list">
+        {
+          nearbyCities.map((n) => (
+            <li>
+              <a href={`/services/${s.slug}/${n!.slug}.html`}>{s.name} services in {n!.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="updated">Last updated: June 2026</p>
+      <a href="/contact.html" class="btn btn-primary">Get {s.name} for your {c.name} business</a>
+    </div>
+  </article>
+
+  <Faq items={comboFaqs} heading={`${s.name} services in ${c.name}: FAQs`} />
+</BaseLayout>
+
+<style>
+  .crumbs {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .crumbs a:hover {
+    color: var(--accent);
+  }
+  h1 {
+    margin-bottom: 1rem;
+  }
+  h2 {
+    margin: 2.3rem 0 1rem;
+  }
+  .lead {
+    margin-bottom: 1.2rem;
+  }
+  article p {
+    margin-bottom: 1rem;
+  }
+  article p a {
+    color: var(--link);
+  }
+  article p a:hover {
+    color: var(--accent);
+  }
+  .check-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .check-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-muted);
+  }
+  .check-list li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .link-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+  }
+  .link-list a {
+    color: var(--link);
+  }
+  .link-list a:hover {
+    color: var(--accent);
+  }
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 2.5rem 0 1.2rem;
+  }
+</style>
