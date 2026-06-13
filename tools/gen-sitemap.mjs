@@ -23,9 +23,18 @@ const serviceSlugs = ['seo', 'aeo', 'geo', 'ai-automation', 'web-development', '
 const citySlugs = [
   'mumbai', 'delhi', 'bengaluru', 'hyderabad', 'chennai', 'pune',
   'ahmedabad', 'surat', 'jaipur', 'indore', 'dubai', 'london',
+  'kolkata', 'lucknow', 'nagpur', 'coimbatore', 'kochi', 'chandigarh',
+  'bhopal', 'visakhapatnam', 'vadodara', 'rajkot', 'gandhinagar', 'bhavnagar',
+  'singapore', 'toronto', 'sydney', 'abu-dhabi', 'new-york', 'manchester',
 ];
 for (const s of serviceSlugs) core.push({ loc: `/services/${s}.html`, pr: '0.8', freq: 'monthly' });
 for (const c of citySlugs) core.push({ loc: `/locations/${c}.html`, pr: '0.7', freq: 'monthly' });
+// Service x city combo pages.
+for (const s of serviceSlugs) {
+  for (const c of citySlugs) {
+    core.push({ loc: `/services/${s}/${c}.html`, pr: '0.6', freq: 'monthly' });
+  }
+}
 
 function lastmodOf(file) {
   const html = readFileSync(file, 'utf8');

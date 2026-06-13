@@ -58,7 +58,7 @@ const nearby = record.nearby.map((slug) => cityBySlug(slug)).filter(Boolean);
         {
           services.map((s) => (
             <li class="card">
-              <a href={`/services/${s.slug}.html`} class="svc-name">{s.name} services</a>
+              <a href={`/services/${s.slug}/${record.slug}.html`} class="svc-name">{s.name} services in {record.name}</a>
               <p class="muted">{s.definition}</p>
             </li>
           ))

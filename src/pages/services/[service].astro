@@ -14,8 +14,8 @@ const path = `/services/${record.slug}.html`;
 const related = record.related
   .map((slug) => serviceBySlug(slug))
   .filter(Boolean);
-// A few cities to link to with relevant anchors.
-const linkCities = cities.slice(0, 6);
+// Link to this service's page in every city (the combo pages).
+const linkCities = cities;
 ---
 
 <BaseLayout
@@ -75,7 +75,7 @@ const linkCities = cities.slice(0, 6);
         {
           linkCities.map((c) => (
             <li>
-              <a href={`/locations/${c.slug}.html`}>{record.name} in {c.name}</a>
+              <a href={`/services/${record.slug}/${c.slug}.html`}>{record.name} services in {c.name}</a>
             </li>
           ))
         }
