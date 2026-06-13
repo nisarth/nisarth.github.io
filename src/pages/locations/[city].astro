@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Faq from '../../components/Faq.astro';
+import { cities, cityBySlug } from '../../data/cities';
+import { services } from '../../data/services';
+import { breadcrumb, faqPage, service as serviceSchema } from '../../schema';
+
+export function getStaticPaths() {
+  return cities.map((c) => ({ params: { city: c.slug }, props: { record: c } }));
+}
+
+const { record } = Astro.props;
+const path = `/locations/${record.slug}.html`;
+const nearby = record.nearby.map((slug) => cityBySlug(slug)).filter(Boolean);
+---
+
+<BaseLayout
+  title={record.title}
+  description={record.description}
+  path={path}
+  jsonLd={[
+    serviceSchema({
+      name: `SEO and digital marketing in ${record.name}`,
+      serviceType: record.primaryKeyword,
+      description: record.description,
+      url: path,
+      areaServed: `${record.name}, ${record.country}`,
+    }),
+    breadcrumb([
+      { name: 'Home', path: '/' },
+      { name: 'Locations', path: '/locations.html' },
+      { name: record.name, path },
+    ]),
+    faqPage(record.faqs),
+  ]}
+>
+  <article class="section">
+    <div class="container narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/locations.html">Locations</a> <span aria-hidden="true">/</span>
+        <span>{record.name}</span>
+      </nav>
+
+      <p class="eyebrow">{record.name}, {record.region}</p>
+      <h1>{record.h1}</h1>
+      <p class="lead">{record.definition}</p>
+
+      {record.context.map((p) => <p>{p}</p>)}
+
+      <h2>SEO and digital marketing built for {record.name}</h2>
+      <p class="muted">
+        Every service below is available to {record.name} businesses, delivered
+        remote-first.
+      </p>
+      <ul class="svc-list">
+        {
+          services.map((s) => (
+            <li class="card">
+              <a href={`/services/${s.slug}.html`} class="svc-name">{s.name} services</a>
+              <p class="muted">{s.definition}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>Nearby cities</h2>
+      <ul class="nearby-links">
+        {
+          nearby.map((c) => (
+            <li>
+              <a href={`/locations/${c!.slug}.html`}>SEO in {c!.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="updated">Last updated: June 2026</p>
+      <a href="/contact.html" class="btn btn-primary">Grow your {record.name} business</a>
+    </div>
+  </article>
+
+  <Faq items={record.faqs} heading={`SEO and digital marketing in ${record.name}: FAQs`} />
+</BaseLayout>
+
+<style>
+  .crumbs {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .crumbs a:hover {
+    color: var(--accent);
+  }
+  h1 {
+    margin-bottom: 1rem;
+  }
+  h2 {
+    margin: 2.3rem 0 1rem;
+  }
+  .lead {
+    margin-bottom: 1.2rem;
+  }
+  article p {
+    margin-bottom: 1rem;
+  }
+  .svc-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .svc-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
+    display: inline-block;
+    margin-bottom: 0.4rem;
+  }
+  .svc-list .muted {
+    margin: 0;
+  }
+  .nearby-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+  }
+  .nearby-links a {
+    color: var(--link);
+  }
+  .nearby-links a:hover {
+    color: var(--accent);
+  }
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 2.5rem 0 1.2rem;
+  }
+</style>

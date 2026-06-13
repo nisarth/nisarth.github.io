@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { cities } from '../../data/cities';
+import { breadcrumb } from '../../schema';
+
+const title = 'SEO & Digital Marketing by City | Nisarth Patel';
+const description =
+  'SEO and digital marketing services by city across India, the UAE, and the UK. Remote-first search, AEO, AI automation, and web development wherever your business is.';
+const path = '/locations.html';
+
+// Group by country for a clear, scannable list.
+const byCountry = cities.reduce((acc, c) => {
+  (acc[c.country] ||= []).push(c);
+  return acc;
+}, {} as Record<string, typeof cities>);
+const countries = Object.keys(byCountry);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  jsonLd={[breadcrumb([{ name: 'Home', path: '/' }, { name: 'Locations', path }])]}
+>
+  <section class="section">
+    <div class="container narrow">
+      <p class="eyebrow">Locations</p>
+      <h1>SEO and digital marketing by city</h1>
+      <p class="lead">
+        I work remote-first, so I help businesses get found in search and AI answers
+        wherever they are. Pick your city for a closer look at how I can help locally.
+      </p>
+
+      {
+        countries.map((country) => (
+          <div class="country-block">
+            <h2>{country}</h2>
+            <ul class="loc-grid">
+              {byCountry[country].map((c) => (
+                <li>
+                  <a href={`/locations/${c.slug}.html`} class="loc-card card">
+                    <span class="loc-name">{c.name}</span>
+                    <span class="loc-region muted">{c.region}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+
+      <p class="updated">Last updated: June 2026</p>
+      <a href="/contact.html" class="btn btn-primary">Start a project</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  .lead {
+    max-width: 60ch;
+    margin-bottom: 2rem;
+  }
+  .country-block {
+    margin-bottom: 2rem;
+  }
+  .country-block h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .loc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .loc-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 1rem 1.2rem;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .loc-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .loc-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .loc-region {
+    font-size: 0.85rem;
+  }
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 1.5rem 0 1.2rem;
+  }
+</style>
