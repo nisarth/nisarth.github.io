@@ -31,3 +31,17 @@ Nisarth Patel is a freelance digital growth specialist based in Ahmedabad, Gujar
 - Process: https://nisarth.github.io/process.html
 - Contact: https://nisarth.github.io/contact.html
 - Blog: https://nisarth.github.io/blog.html
+- Locations: https://nisarth.github.io/locations.html
+
+## Service pages
+
+- SEO services: https://nisarth.github.io/services/seo.html
+- AEO services (answer engine optimization): https://nisarth.github.io/services/aeo.html
+- GEO services (generative engine optimization): https://nisarth.github.io/services/geo.html
+- AI automation services: https://nisarth.github.io/services/ai-automation.html
+- Web development services: https://nisarth.github.io/services/web-development.html
+- Local SEO services: https://nisarth.github.io/services/local-seo.html
+
+## Cities served (remote-first)
+
+Mumbai, Delhi NCR, Bengaluru, Hyderabad, Chennai, Pune, Ahmedabad, Surat, Jaipur, Indore (India), Dubai (UAE), and London (UK). Each city has a dedicated page at https://nisarth.github.io/locations/<city>.html
