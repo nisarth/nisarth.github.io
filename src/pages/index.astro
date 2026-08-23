@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import portrait from '../assets/nisarth.jpg';
 import { SITE } from '../consts';
 import { person, website } from '../schema';
 
@@ -39,19 +41,41 @@ const workTeaser = [
 
 <BaseLayout title={title} description={description} path="/" jsonLd={[person(), website()]}>
   <!-- Hero -->
-  <section class="hero section">
-    <div class="container">
-      <p class="eyebrow">{SITE.role} - {SITE.location}</p>
-      <h1>I help businesses get found in search and AI answers.</h1>
-      <p class="lead hero-lead">
-        {SITE.name} is a freelance {SITE.role.toLowerCase()} in Ahmedabad. I use SEO,
-        answer engine optimization, and AI automation to turn a quiet website into a
-        steady source of leads.
-      </p>
-      <div class="hero-actions">
-        <a href="/contact.html" class="btn btn-primary">Start a project</a>
-        <a href="/work.html" class="btn btn-ghost">See the work</a>
+  <section class="hero section-lg">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">{SITE.role} - {SITE.location}</p>
+        <h1>I help businesses get found in search and AI answers.</h1>
+        <p class="lead hero-lead">
+          {SITE.name} is a freelance {SITE.role.toLowerCase()} in Ahmedabad. I use SEO,
+          answer engine optimization, and AI automation to turn a quiet website into a
+          steady source of leads.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact.html" class="btn btn-primary">Start a project</a>
+          <a href="/work.html" class="btn btn-ghost">See the work</a>
+        </div>
       </div>
+
+      <div class="hero-portrait">
+        <Picture
+          src={portrait}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpeg"
+          widths={[320, 480, 640]}
+          sizes="(max-width: 900px) 260px, 420px"
+          alt={`${SITE.name}, freelance ${SITE.role.toLowerCase()} based in Ahmedabad`}
+          loading="eager"
+          fetchpriority="high"
+        />
+        <p class="hero-badge">
+          <span class="dot" aria-hidden="true"></span>
+          Available for new projects
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
       <ul class="hero-stats">
         <li><strong>{SITE.experienceYears}+</strong><span>years in digital growth</span></li>
         <li><strong>SEO + AI</strong><span>search and automation focus</span></li>
@@ -68,7 +92,7 @@ const workTeaser = [
       <div class="service-grid">
         {
           services.map((s) => (
-            <article class="card service-card">
+            <article class="card service-card reveal">
               <h3>{s.name}</h3>
               <p class="service-line">{s.line}</p>
               <p class="muted">{s.detail}</p>
@@ -88,7 +112,7 @@ const workTeaser = [
       <div class="work-grid">
         {
           workTeaser.map((w) => (
-            <article class="card work-card">
+            <article class="card work-card reveal">
               <span class="work-tag">{w.tag}</span>
               <h3>{w.title}</h3>
               <p class="muted">{w.text}</p>
@@ -102,7 +126,7 @@ const workTeaser = [
 
   <!-- About strip -->
   <section class="section about-strip" aria-labelledby="about-heading">
-    <div class="container narrow">
+    <div class="container narrow reveal">
       <p class="eyebrow">About</p>
       <h2 id="about-heading">A freelancer who cares about results, not jargon</h2>
       <p class="lead">
@@ -116,7 +140,7 @@ const workTeaser = [
 
   <!-- CTA -->
   <section class="section cta-band">
-    <div class="container cta-inner">
+    <div class="container cta-inner reveal">
       <h2>Have a project in mind?</h2>
       <p class="lead">Tell me what you are trying to grow. I will reply with a clear next step.</p>
       <a href="/contact.html" class="btn btn-primary">Get in touch</a>
@@ -126,14 +150,51 @@ const workTeaser = [
 
 <style>
   .hero {
-    padding-top: clamp(3rem, 7vw, 5.5rem);
+    position: relative;
+    isolation: isolate;
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+    overflow: hidden;
+  }
+  /* Soft accent light plus a faint grid, both pure CSS so the hero gains
+     depth without loading a single image. */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: -30% -10% auto -10%;
+    height: 780px;
+    z-index: -2;
+    background:
+      radial-gradient(46% 46% at 72% 22%, var(--accent-glow), transparent 68%),
+      radial-gradient(40% 44% at 12% 8%, rgba(154, 208, 255, 0.09), transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 68px 68px;
+    opacity: 0.4;
+    -webkit-mask-image: radial-gradient(70% 60% at 50% 0%, #000 10%, transparent 75%);
+    mask-image: radial-gradient(70% 60% at 50% 0%, #000 10%, transparent 75%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
   }
   .hero h1 {
-    max-width: 16ch;
+    max-width: 15ch;
     margin: 0.8rem 0 1.2rem;
   }
   .hero-lead {
-    max-width: 56ch;
+    max-width: 52ch;
   }
   .hero-actions {
     display: flex;
@@ -141,13 +202,71 @@ const workTeaser = [
     gap: 0.8rem;
     margin-top: 1.8rem;
   }
+
+  .hero-portrait {
+    position: relative;
+    justify-self: center;
+    max-width: 420px;
+    width: 100%;
+  }
+  .hero-portrait :global(img) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: calc(var(--radius) * 1.6);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-lg);
+  }
+  .hero-badge {
+    position: absolute;
+    left: 50%;
+    bottom: -0.9rem;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--bg-elev-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 0.45rem 0.95rem;
+    box-shadow: var(--shadow-md);
+    margin: 0;
+  }
+  .hero-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
   .hero-stats {
     display: flex;
     flex-wrap: wrap;
     gap: 2.5rem;
-    margin-top: 3rem;
+    margin-top: clamp(3rem, 6vw, 4.5rem);
     padding-top: 2rem;
     border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2.8rem;
+    }
+    .hero h1 {
+      max-width: 18ch;
+    }
+    .hero-portrait {
+      max-width: 300px;
+      order: -1;
+      justify-self: start;
+    }
   }
   .hero-stats li {
     display: flex;

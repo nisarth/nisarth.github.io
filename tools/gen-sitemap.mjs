@@ -138,7 +138,23 @@ const xml = [
   '',
 ].join('\n');
 
+// A running dev server watches public/ and can briefly hold the file open on
+// Windows, so retry rather than failing the whole build on a transient lock.
+function writeWithRetry(target, contents, attempts = 5) {
+  for (let i = 0; i < attempts; i++) {
+    try {
+      writeFileSync(target, contents);
+      return true;
+    } catch (err) {
+      if (i === attempts - 1) throw err;
+      const until = Date.now() + 120;
+      while (Date.now() < until) { /* brief backoff */ }
+    }
+  }
+  return false;
+}
+
 // public/ is the committed source of truth, dist/ is what gets deployed.
-writeFileSync(join(pub, 'sitemap.xml'), xml);
-writeFileSync(join(dist, 'sitemap.xml'), xml);
+writeWithRetry(join(pub, 'sitemap.xml'), xml);
+writeWithRetry(join(dist, 'sitemap.xml'), xml);
 console.log(`gen-sitemap: ${urls.length} URLs written (${skippedNoindex} noindex pages skipped)`);

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Faq from '../../components/Faq.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Map from '../../components/Map.astro';
 import { cities, cityBySlug } from '../../data/cities';
 import { services } from '../../data/services';
@@ -37,11 +38,13 @@ const nearby = record.nearby.map((slug) => cityBySlug(slug)).filter(Boolean);
 >
   <article class="section">
     <div class="container narrow">
-      <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a> <span aria-hidden="true">/</span>
-        <a href="/locations.html">Locations</a> <span aria-hidden="true">/</span>
-        <span>{record.name}</span>
-      </nav>
+      <Breadcrumbs
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Locations', href: '/locations.html' },
+          { name: record.name },
+        ]}
+      />
 
       <p class="eyebrow">{record.name}, {record.region}</p>
       <h1>{record.h1}</h1>
@@ -91,14 +94,6 @@ const nearby = record.nearby.map((slug) => cityBySlug(slug)).filter(Boolean);
 </BaseLayout>
 
 <style>
-  .crumbs {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-  }
-  .crumbs a:hover {
-    color: var(--accent);
-  }
   h1 {
     margin-bottom: 1rem;
   }

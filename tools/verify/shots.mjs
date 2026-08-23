@@ -5,8 +5,10 @@ const browser = await chromium.launch();
 const shots = [
   ['home-desktop', '/', 1440, 900],
   ['home-mobile', '/', 390, 844],
-  ['contact-desktop', '/contact.html', 1440, 900],
-  ['thankyou-desktop', '/thank-you.html', 1440, 900],
+  ['about-desktop', '/about.html', 1440, 1000],
+  ['services-desktop', '/services.html', 1440, 900],
+  ['service-seo', '/services/seo.html', 1440, 1100],
+  ['contact-desktop', '/contact.html', 1440, 1000],
 ];
 for (const [name, path, w, h] of shots) {
   const page = await browser.newPage({ viewport: { width: w, height: h } });

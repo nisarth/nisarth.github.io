@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Faq from '../components/Faq.astro';
+import { Picture } from 'astro:assets';
+import portrait from '../assets/nisarth.jpg';
 import { SITE } from '../consts';
 import { person, breadcrumb, faqPage } from '../schema';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const title = 'About Nisarth Patel: Freelance Digital Growth Specialist';
 const description =
@@ -39,13 +42,26 @@ const faqs = [
 >
   <section class="section">
     <div class="container narrow">
+      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'About' }]} />
       <p class="eyebrow">About</p>
       <h1>About {SITE.name}</h1>
-      <p class="lead">
-        {SITE.name} is a freelance {SITE.role.toLowerCase()} based in {SITE.location}.
-        I help businesses get found online and turn that attention into leads, using
-        SEO, answer engine optimization, and AI automation.
-      </p>
+
+      <div class="about-intro">
+        <Picture
+          src={portrait}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpeg"
+          widths={[240, 360, 480]}
+          sizes="(max-width: 700px) 180px, 260px"
+          alt={`${SITE.name}, freelance ${SITE.role.toLowerCase()} based in Ahmedabad`}
+          loading="eager"
+        />
+        <p class="lead">
+          {SITE.name} is a freelance {SITE.role.toLowerCase()} based in {SITE.location}.
+          I help businesses get found online and turn that attention into leads, using
+          SEO, answer engine optimization, and AI automation.
+        </p>
+      </div>
 
       <!-- Personal background to expand once confirmed with Nisarth:
            how he got started, past roles, education, notable clients. Kept
@@ -66,7 +82,7 @@ const faqs = [
       <div class="skills-grid">
         {
           skills.map((s) => (
-            <div class="card skill-card">
+            <div class="card skill-card reveal">
               <h3>{s.group}</h3>
               <ul>
                 {s.items.map((i) => <li>{i}</li>)}
@@ -90,6 +106,34 @@ const faqs = [
   }
   .lead {
     margin-bottom: 1rem;
+  }
+  .about-intro {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+  .about-intro :global(img) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-md);
+  }
+  .about-intro .lead {
+    margin-bottom: 0;
+  }
+  @media (max-width: 700px) {
+    .about-intro {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
+    .about-intro :global(img) {
+      max-width: 180px;
+    }
   }
   .skills-grid {
     display: grid;

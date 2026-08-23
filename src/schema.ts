@@ -18,6 +18,9 @@ export function person(extra: Record<string, unknown> = {}) {
     description: `${SITE.name} is a freelance ${SITE.role.toLowerCase()} in ${SITE.location} who helps businesses get found through SEO, AEO, GEO, and AI automation.`,
     email: `mailto:${SITE.email}`,
     telephone: SITE.tel,
+    // Stable URL, not an Astro-processed asset: those carry content hashes
+    // that change on every rebuild, which would break the entity over time.
+    image: abs('/nisarth-patel.jpg'),
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Ahmedabad',

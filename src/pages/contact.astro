@@ -4,6 +4,7 @@ import Faq from '../components/Faq.astro';
 import Map from '../components/Map.astro';
 import { SITE, SOCIAL } from '../consts';
 import { breadcrumb, faqPage } from '../schema';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const title = 'Contact Nisarth Patel: Start a Project';
 const description =
@@ -37,6 +38,7 @@ const faqs = [
   <section class="section">
     <div class="container contact-grid">
       <div class="contact-intro">
+        <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Contact' }]} />
         <p class="eyebrow">Contact</p>
         <h1>Let us talk about your project</h1>
         <p class="lead">

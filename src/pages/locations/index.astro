@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { cities } from '../../data/cities';
 import { breadcrumb } from '../../schema';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { SITE } from '../../consts';
 
 const itemList = {
@@ -37,6 +38,7 @@ const countries = Object.keys(byCountry);
 >
   <section class="section">
     <div class="container narrow">
+      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Locations' }]} />
       <p class="eyebrow">Locations</p>
       <h1>SEO and digital marketing by city</h1>
       <p class="lead">
