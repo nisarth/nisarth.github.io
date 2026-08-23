@@ -23,6 +23,8 @@
   --accent-hover: #d6ff73;
   --accent-ink: #0b0c0e;
   --link: #9ad0ff;
+  /* Form validation. 7.1:1 on --bg and 6.7:1 on --bg-elev, so it clears AA. */
+  --error: #ff6b6b;
 
   /* Type */
   --font-display: 'Space Grotesk', system-ui, sans-serif;
@@ -51,6 +53,12 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+}
+
+/* Set while the mobile nav panel is open, so the page behind it cannot
+   scroll away under the visitor's finger. */
+body.nav-open {
+  overflow: hidden;
 }
 
 body {

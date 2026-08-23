@@ -30,7 +30,9 @@ jobs:
       - name: Check for em dashes
         run: npm run check:dashes
       - name: Build
-        run: npx astro build
+        # npm run build also regenerates sitemap.xml from the built output, so
+        # the deployed sitemap can never drift from the pages that exist.
+        run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
