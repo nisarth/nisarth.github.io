@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 
-const BASE = 'http://127.0.0.1:4321';
+const BASE = process.argv[2] || 'http://127.0.0.1:4322';
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 await page.goto(BASE + '/contact.html', { waitUntil: 'networkidle' });

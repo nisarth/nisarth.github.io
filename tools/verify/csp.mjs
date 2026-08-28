@@ -12,8 +12,6 @@ const pages = [
   '/blog/aeo-vs-seo.html',
   '/blog/category/seo.html',
   '/services/seo.html',
-  '/locations/mumbai.html',
-  '/services/seo/mumbai.html',
 ];
 
 const browser = await chromium.launch();
