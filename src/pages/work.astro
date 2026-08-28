@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { breadcrumb } from '../schema';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const title = 'Work: Case Studies in SEO, Automation, and Web';
 const description =
@@ -58,6 +59,7 @@ const itemList = {
 >
   <section class="section">
     <div class="container">
+      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Work' }]} />
       <p class="eyebrow">Work</p>
       <h1>The work I do</h1>
       <p class="lead narrow-lead">
@@ -69,7 +71,7 @@ const itemList = {
       <div class="work-grid">
         {
           engagements.map((e) => (
-            <article class="card work-item">
+            <article class="card work-item reveal">
               <span class="work-tag">{e.tag}</span>
               <h2>{e.title}</h2>
               <p class="work-goal">{e.goal}</p>

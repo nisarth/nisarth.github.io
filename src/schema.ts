@@ -18,6 +18,9 @@ export function person(extra: Record<string, unknown> = {}) {
     description: `${SITE.name} is a freelance ${SITE.role.toLowerCase()} in ${SITE.location} who helps businesses get found through SEO, AEO, GEO, and AI automation.`,
     email: `mailto:${SITE.email}`,
     telephone: SITE.tel,
+    // Stable URL, not an Astro-processed asset: those carry content hashes
+    // that change on every rebuild, which would break the entity over time.
+    image: abs('/nisarth-patel.jpg'),
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Ahmedabad',
@@ -132,5 +135,53 @@ export function creativeWork(item: {
     description: item.description,
     about: item.category,
     creator: { '@id': personId },
+  };
+}
+
+export function article(item: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  speakable?: string[];
+}) {
+  const node: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: item.headline,
+    description: item.description,
+    image: abs(SITE.ogImage),
+    author: { '@type': 'Person', name: SITE.name, url: abs('/about.html') },
+    publisher: { '@type': 'Person', name: SITE.name },
+    datePublished: item.datePublished,
+    dateModified: item.dateModified,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': abs(item.url) },
+  };
+  // Marks the passage a voice assistant should read aloud. The legacy pages
+  // carried this and it is worth keeping for AEO.
+  if (item.speakable && item.speakable.length) {
+    node.speakable = {
+      '@type': 'SpeakableSpecification',
+      cssSelector: item.speakable,
+    };
+  }
+  return node;
+}
+
+export function blogIndex(items: { name: string; url: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': abs('/blog.html'),
+    name: `${SITE.name} blog`,
+    description:
+      'Practical articles on SEO, AEO, GEO, AI automation, and web development.',
+    publisher: { '@id': personId },
+    blogPost: items.map((i) => ({
+      '@type': 'BlogPosting',
+      headline: i.name,
+      url: abs(i.url),
+    })),
   };
 }

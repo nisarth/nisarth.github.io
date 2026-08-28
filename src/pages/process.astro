@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Faq from '../components/Faq.astro';
 import { breadcrumb, faqPage } from '../schema';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const title = 'My Process: How I Run a Digital Growth Project';
 const description =
@@ -73,6 +74,7 @@ const faqs = [
 >
   <section class="section">
     <div class="container">
+      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Process' }]} />
       <p class="eyebrow">Process</p>
       <h1>How I work, step by step</h1>
       <p class="lead narrow-lead">

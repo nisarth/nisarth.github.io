@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Faq from '../../components/Faq.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getCollection } from 'astro:content';
 import { services, serviceBySlug } from '../../data/services';
 import { cities } from '../../data/cities';
+import { postsForService } from '../../data/topic-links';
 import { breadcrumb, faqPage, service as serviceSchema } from '../../schema';
 
 export function getStaticPaths() {
@@ -11,6 +14,8 @@ export function getStaticPaths() {
 
 const { record } = Astro.props;
 const path = `/services/${record.slug}.html`;
+// Articles on this topic, so the service page and the blog support each other.
+const guides = postsForService(await getCollection('blog'), record.slug);
 const related = record.related
   .map((slug) => serviceBySlug(slug))
   .filter(Boolean);
@@ -39,11 +44,13 @@ const linkCities = cities;
 >
   <article class="section">
     <div class="container narrow">
-      <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a> <span aria-hidden="true">/</span>
-        <a href="/services.html">Services</a> <span aria-hidden="true">/</span>
-        <span>{record.name}</span>
-      </nav>
+      <Breadcrumbs
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Services', href: '/services.html' },
+          { name: record.name },
+        ]}
+      />
 
       <p class="eyebrow">{record.name}</p>
       <h1>{record.h1}</h1>
@@ -59,7 +66,7 @@ const linkCities = cities;
       <p>{record.whoFor}</p>
 
       <h2>Related services</h2>
-      <ul class="related-links">
+      <ul class="link-chips">
         {
           related.map((r) => (
             <li>
@@ -69,9 +76,28 @@ const linkCities = cities;
         }
       </ul>
 
+      {
+        guides.length > 0 && (
+          <>
+            <h2>Guides on {record.name}</h2>
+            <p class="muted">
+              Everything below is written from client work, not theory.
+            </p>
+            <ul class="guide-list">
+              {guides.map((g) => (
+                <li>
+                  <a href={`/blog/${g.id}.html`}>{g.data.title}</a>
+                  <span class="guide-meta">{g.data.readingTime}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+
       <h2>{record.name} in your city</h2>
       <p class="muted">I work remote-first with businesses across India and abroad.</p>
-      <ul class="city-links">
+      <ul class="link-chips">
         {
           linkCities.map((c) => (
             <li>
@@ -90,14 +116,6 @@ const linkCities = cities;
 </BaseLayout>
 
 <style>
-  .crumbs {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-  }
-  .crumbs a:hover {
-    color: var(--accent);
-  }
   h1 {
     margin-bottom: 1rem;
   }
@@ -124,23 +142,52 @@ const linkCities = cities;
     color: var(--accent);
     font-weight: 700;
   }
-  .related-links,
-  .city-links {
+  /* Link chips. These lists run to 30 items on a service page, so plain
+     wrapped text is hard to scan. Chips give each link its own hit area. */
+  .link-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem 1.4rem;
-    margin-top: 0.8rem;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
   }
-  .related-links a,
-  .city-links a {
+  .link-chips a {
+    display: inline-block;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-elev);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .link-chips a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .guide-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 1rem;
+  }
+  .guide-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.7rem;
+  }
+  .guide-list a {
     color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
-  .related-links a:hover,
-  .city-links a:hover {
+  .guide-list a:hover {
     color: var(--accent);
   }
-  .city-links {
-    margin-top: 0.6rem;
+  .guide-meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
   }
   .updated {
     font-family: var(--font-mono);

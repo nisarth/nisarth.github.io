@@ -4,6 +4,7 @@ import Faq from '../components/Faq.astro';
 import Map from '../components/Map.astro';
 import { SITE, SOCIAL } from '../consts';
 import { breadcrumb, faqPage } from '../schema';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const title = 'Contact Nisarth Patel: Start a Project';
 const description =
@@ -37,6 +38,7 @@ const faqs = [
   <section class="section">
     <div class="container contact-grid">
       <div class="contact-intro">
+        <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Contact' }]} />
         <p class="eyebrow">Contact</p>
         <h1>Let us talk about your project</h1>
         <p class="lead">
@@ -75,16 +77,36 @@ const faqs = [
         <input type="hidden" name="_subject" value="New enquiry from nisarth.github.io" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
+        <!-- Without _next, formsubmit dumps the visitor on its own confirmation
+             page. Sending them to our thank-you page keeps them on the site and
+             lets us record the conversion. -->
+        <input type="hidden" name="_next" value={`${SITE.url}/thank-you.html`} />
         <!-- Honeypot: real people leave this empty -->
         <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
         <div class="field">
           <label for="name">Name</label>
-          <input id="name" name="name" type="text" required autocomplete="name" />
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            autocomplete="name"
+            aria-describedby="name-error"
+          />
+          <p class="field-error" id="name-error" role="alert"></p>
         </div>
         <div class="field">
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" required autocomplete="email" />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            aria-describedby="email-error"
+          />
+          <p class="field-error" id="email-error" role="alert"></p>
         </div>
         <div class="field">
           <label for="service">What do you need help with?</label>
@@ -99,7 +121,13 @@ const faqs = [
         </div>
         <div class="field">
           <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            aria-describedby="message-error"></textarea>
+          <p class="field-error" id="message-error" role="alert"></p>
         </div>
         <button type="submit" class="btn btn-primary">Send message</button>
       </form>
@@ -108,6 +136,56 @@ const faqs = [
 
   <Faq items={faqs} />
 </BaseLayout>
+
+<script>
+  const form = document.querySelector('.contact-form') as HTMLFormElement | null;
+  if (form) {
+    // Take over validation messaging so errors are announced and tied to the
+    // field, instead of relying on the browser's transient bubble.
+    form.setAttribute('novalidate', '');
+
+    const messageFor = (field: HTMLInputElement | HTMLTextAreaElement) => {
+      if (field.validity.valueMissing) {
+        return field.name === 'email'
+          ? 'Please enter your email so I can reply.'
+          : 'This field is required.';
+      }
+      if (field.validity.typeMismatch) {
+        return 'Please enter a valid email address, for example you@company.com.';
+      }
+      return '';
+    };
+
+    const check = (field: HTMLInputElement | HTMLTextAreaElement) => {
+      const slot = document.getElementById(field.name + '-error');
+      const problem = messageFor(field);
+      if (slot) slot.textContent = problem;
+      field.setAttribute('aria-invalid', problem ? 'true' : 'false');
+      return !problem;
+    };
+
+    const fields = ['name', 'email', 'message']
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as (HTMLInputElement | HTMLTextAreaElement)[];
+
+    fields.forEach((field) => {
+      // Only nag after the visitor has left the field once, never while typing
+      // their first character.
+      field.addEventListener('blur', () => check(field));
+      field.addEventListener('input', () => {
+        if (field.getAttribute('aria-invalid') === 'true') check(field);
+      });
+    });
+
+    form.addEventListener('submit', (event) => {
+      const bad = fields.filter((field) => !check(field));
+      if (bad.length > 0) {
+        event.preventDefault();
+        bad[0].focus();
+      }
+    });
+  }
+</script>
 
 <style>
   .contact-grid {
@@ -169,11 +247,25 @@ const faqs = [
     font: inherit;
     width: 100%;
   }
-  .field input:focus,
-  .field select:focus,
-  .field textarea:focus {
+  .field input:focus-visible,
+  .field select:focus-visible,
+  .field textarea:focus-visible {
     border-color: var(--accent);
-    outline: none;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .field input[aria-invalid='true'],
+  .field textarea[aria-invalid='true'] {
+    border-color: var(--error);
+  }
+  .field-error {
+    font-size: 0.85rem;
+    color: var(--error);
+    min-height: 0;
+    margin: 0;
+  }
+  .field-error:empty {
+    display: none;
   }
   .contact-form button {
     align-self: flex-start;

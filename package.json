@@ -6,10 +6,18 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "npm run check:dashes && astro build",
+    "build": "npm run check:dashes && astro build && npm run gen:sitemap",
     "preview": "astro preview",
     "check": "astro check",
-    "check:dashes": "node tools/check-no-em-dash.mjs"
+    "check:dashes": "node tools/check-no-em-dash.mjs",
+    "gen:sitemap": "node tools/gen-sitemap.mjs",
+    "gen:icons": "node tools/gen-icons.mjs",
+    "gen:og": "node tools/gen-og.mjs",
+    "verify": "node tools/verify/jsonld.mjs && node tools/verify/internal-links.mjs && node tools/verify/nav-a11y.mjs && node tools/verify/contact-form.mjs",
+    "verify:blog": "node tools/verify/blog-parity.mjs --allow-years-correction --allow-prose-fixes",
+    "migrate:blog": "node tools/migrate-blog.mjs",
+    "verify:csp": "node tools/verify/csp.mjs",
+    "fix:prose": "node tools/fix-blog-prose.mjs"
   },
   "dependencies": {
     "astro": "^6.4.6"
@@ -17,6 +25,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "playwright": "^1.60.0",
+    "sharp": "^0.34.5",
     "typescript": "^6.0.3"
   }
 }

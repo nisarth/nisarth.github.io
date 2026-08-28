@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+
+const title = 'Thank You: Message Received | Nisarth Patel';
+const description =
+  'Your message has been received. Nisarth Patel will reply within one business day.';
+---
+
+<BaseLayout title={title} description={description} path="/thank-you.html" noindex>
+  <section class="section thanks">
+    <div class="container narrow">
+      <p class="eyebrow">Message sent</p>
+      <h1>Thanks, I have your message</h1>
+      <p class="lead">
+        I reply within one business day. If it is urgent, send me a WhatsApp and I
+        will get back to you faster.
+      </p>
+
+      <div class="thanks-actions">
+        <a href={SITE.whatsappLink} class="btn btn-primary" rel="noopener noreferrer" target="_blank">
+          WhatsApp me
+        </a>
+        <a href="/work.html" class="btn btn-ghost">See the work</a>
+        <a href="/blog.html" class="btn btn-ghost">Read the blog</a>
+      </div>
+
+      <p class="muted next-steps">
+        While you wait, it helps if you have your website URL, your main competitors,
+        and the goal you care about most ready for our first call.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Record the completed enquiry, but only if the visitor accepted analytics.
+  // gtag is defined by Analytics.astro only after consent, so this is a no-op
+  // for anyone who declined.
+  if (localStorage.getItem('analytics-consent') === 'allow') {
+    // @ts-ignore
+    window.gtag?.('event', 'generate_lead', {
+      event_category: 'contact',
+      event_label: 'contact form',
+    });
+  }
+</script>
+
+<style>
+  .thanks {
+    min-height: 50vh;
+  }
+  .thanks h1 {
+    margin: 0.7rem 0 1rem;
+  }
+  .thanks-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .next-steps {
+    margin-top: 2.5rem;
+    max-width: 54ch;
+  }
+</style>

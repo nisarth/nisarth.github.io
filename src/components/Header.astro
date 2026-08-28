@@ -132,10 +132,17 @@ const isActive = (href: string) =>
       border-bottom: 1px solid var(--border);
       padding: 1rem clamp(1.1rem, 4vw, 2rem) 1.5rem;
       transform: translateY(-120%);
-      transition: transform 0.25s ease;
+      /* transform alone still leaves the links focusable and in the
+         accessibility tree, so a keyboard or screen reader user tabs into an
+         invisible menu. visibility removes them properly. The 0.25s delay on
+         the way out lets the slide animation finish before it hides. */
+      visibility: hidden;
+      transition: transform 0.25s ease, visibility 0s linear 0.25s;
     }
     .primary-nav.open {
       transform: translateY(0);
+      visibility: visible;
+      transition: transform 0.25s ease, visibility 0s;
     }
     .primary-nav ul {
       flex-direction: column;
@@ -167,17 +174,29 @@ const isActive = (href: string) =>
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
   if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
+    function setOpen(open: boolean) {
+      nav.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      // Stop the page behind the panel from scrolling while it is open.
+      document.body.classList.toggle('nav-open', open);
+    }
+
+    toggle.addEventListener('click', () => {
+      setOpen(!nav.classList.contains('open'));
     });
+
     nav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Open menu');
-      });
+      link.addEventListener('click', () => setOpen(false));
+    });
+
+    // Escape closes the panel and puts focus back on the button that opened
+    // it, so keyboard users are never left with focus on a hidden element.
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && nav.classList.contains('open')) {
+        setOpen(false);
+        (toggle as HTMLElement).focus();
+      }
     });
   }
 </script>

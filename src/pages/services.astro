@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Faq from '../components/Faq.astro';
 import { breadcrumb, faqPage, professionalService } from '../schema';
+import { getCollection } from 'astro:content';
+import blogCategories from '../data/blog-categories.json';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { services } from '../data/services';
 
 const title = 'Services: SEO, AEO, AI Automation, and Web Development';
@@ -56,6 +59,16 @@ const groups = [
 
 const allServiceNames = groups.flatMap((g) => g.items);
 
+// Link the hub into every blog topic, including the two categories
+// (digital marketing, e-commerce and SaaS) that have no service page of
+// their own and would otherwise be reachable only from the blog index.
+const posts = await getCollection('blog');
+const topics = blogCategories.map((c) => ({
+  ...c,
+  label: c.heading.replace(/ Articles$/, ''),
+  count: posts.filter((p) => p.data.categorySlug === c.slug).length,
+}));
+
 const faqs = [
   {
     q: 'How do you price your work?',
@@ -84,6 +97,7 @@ const faqs = [
 >
   <section class="section">
     <div class="container">
+      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Services' }]} />
       <p class="eyebrow">Services</p>
       <h1>What I can do for your business</h1>
       <p class="lead narrow-lead">
@@ -121,6 +135,22 @@ const faqs = [
         I work remote-first with businesses everywhere. See
         <a href="/locations.html">SEO and digital marketing by city</a>.
       </p>
+
+      <h2>Read up on any of it</h2>
+      <p class="muted">
+        {posts.length} articles written from client work, grouped by topic.
+      </p>
+      <ul class="link-chips">
+        {
+          topics.map((t) => (
+            <li>
+              <a href={`/blog/category/${t.slug}.html`}>
+                {t.label} ({t.count})
+              </a>
+            </li>
+          ))
+        }
+      </ul>
 
       <p class="updated">Last updated: June 2026</p>
       <a href="/contact.html" class="btn btn-primary">Get a quote</a>
@@ -189,6 +219,27 @@ const faqs = [
   }
   .locations-line a:hover {
     color: var(--accent);
+  }
+  .link-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .link-chips a {
+    display: inline-block;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-elev);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .link-chips a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-soft);
   }
   .updated {
     font-family: var(--font-mono);
