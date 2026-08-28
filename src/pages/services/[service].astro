@@ -2,8 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Faq from '../../components/Faq.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getCollection } from 'astro:content';
 import { services, serviceBySlug } from '../../data/services';
 import { cities } from '../../data/cities';
+import { postsForService } from '../../data/topic-links';
 import { breadcrumb, faqPage, service as serviceSchema } from '../../schema';
 
 export function getStaticPaths() {
@@ -12,6 +14,8 @@ export function getStaticPaths() {
 
 const { record } = Astro.props;
 const path = `/services/${record.slug}.html`;
+// Articles on this topic, so the service page and the blog support each other.
+const guides = postsForService(await getCollection('blog'), record.slug);
 const related = record.related
   .map((slug) => serviceBySlug(slug))
   .filter(Boolean);
@@ -71,6 +75,25 @@ const linkCities = cities;
           ))
         }
       </ul>
+
+      {
+        guides.length > 0 && (
+          <>
+            <h2>Guides on {record.name}</h2>
+            <p class="muted">
+              Everything below is written from client work, not theory.
+            </p>
+            <ul class="guide-list">
+              {guides.map((g) => (
+                <li>
+                  <a href={`/blog/${g.id}.html`}>{g.data.title}</a>
+                  <span class="guide-meta">{g.data.readingTime}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
 
       <h2>{record.name} in your city</h2>
       <p class="muted">I work remote-first with businesses across India and abroad.</p>
@@ -141,6 +164,30 @@ const linkCities = cities;
     color: var(--accent);
     border-color: var(--accent);
     background: var(--accent-soft);
+  }
+  .guide-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 1rem;
+  }
+  .guide-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.7rem;
+  }
+  .guide-list a {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .guide-list a:hover {
+    color: var(--accent);
+  }
+  .guide-meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
   }
   .updated {
     font-family: var(--font-mono);

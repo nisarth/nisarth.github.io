@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Picture } from 'astro:assets';
 import portrait from '../assets/nisarth.jpg';
+import { getCollection } from 'astro:content';
 import { SITE } from '../consts';
 import { person, website } from '../schema';
 
@@ -31,6 +32,13 @@ const services = [
     detail: 'Static and modern builds, clean code, strong Core Web Vitals, and mobile-first design.',
   },
 ];
+
+const latestPosts = (await getCollection('blog'))
+  .sort((a, b) => {
+    const diff = b.data.published.getTime() - a.data.published.getTime();
+    return diff !== 0 ? diff : a.data.title.localeCompare(b.data.title);
+  })
+  .slice(0, 3);
 
 const workTeaser = [
   { tag: 'SEO', title: 'Organic search growth', text: 'Audits and content strategy that move a site up the rankings for the terms that bring real leads.' },
@@ -135,6 +143,26 @@ const workTeaser = [
         clear plans, honest reporting, and steady progress you can measure.
       </p>
       <a href="/about.html" class="btn btn-ghost">More about me</a>
+    </div>
+  </section>
+
+  <!-- Latest writing -->
+  <section class="section" aria-labelledby="writing-heading">
+    <div class="container">
+      <p class="eyebrow">Writing</p>
+      <h2 id="writing-heading">Latest from the blog</h2>
+      <div class="post-teaser-grid">
+        {
+          latestPosts.map((p) => (
+            <a class="card post-teaser reveal" href={`/blog/${p.id}.html`}>
+              <span class="post-teaser-tag">{p.data.category}</span>
+              <span class="post-teaser-title">{p.data.title}</span>
+              <span class="muted post-teaser-meta">{p.data.readingTime}</span>
+            </a>
+          ))
+        }
+      </div>
+      <a href="/blog.html" class="btn btn-ghost">Read the blog</a>
     </div>
   </section>
 
@@ -324,6 +352,37 @@ const workTeaser = [
   }
   .about-strip .btn {
     margin-top: 1.5rem;
+  }
+
+  .post-teaser-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+    margin: 1.8rem 0;
+  }
+  .post-teaser {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .post-teaser-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .post-teaser-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+  .post-teaser:hover .post-teaser-title {
+    color: var(--accent);
+  }
+  .post-teaser-meta {
+    font-size: 0.85rem;
   }
 
   .cta-band {

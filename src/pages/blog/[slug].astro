@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
+import { CATEGORY_TO_SERVICE } from '../../data/topic-links';
+import { serviceBySlug } from '../../data/services';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -26,6 +28,9 @@ export async function getStaticPaths() {
 
 const { post, related } = Astro.props;
 const d = post.data;
+// The service page this topic supports, so every article routes readers back
+// into the commercial pages instead of dead-ending.
+const service = serviceBySlug(CATEGORY_TO_SERVICE[d.categorySlug] || '');
 const { Content } = await render(post);
 const iso = (date: Date) => date.toISOString().slice(0, 10);
 ---
@@ -45,6 +50,7 @@ const iso = (date: Date) => date.toISOString().slice(0, 10);
   faqs={d.faqs}
   speakable={d.speakable}
   related={related}
+  service={service ? { slug: service.slug, name: service.name } : undefined}
 >
   <Content />
 </BlogLayout>

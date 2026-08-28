@@ -28,6 +28,10 @@ const imageUrl = new URL(ogImage, SITE.url).href;
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="author" content={SITE.name} />
+<!-- Send the full URL to our own pages, origin only to other sites, and
+     nothing when downgrading to http. Permissions-Policy has no meta form and
+     GitHub Pages cannot set headers, so it is deliberately not attempted. -->
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="theme-color" content="#0b0c0e" />
 {
   noindex ? (

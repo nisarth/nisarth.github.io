@@ -29,11 +29,13 @@ interface Props {
   faqs: { q: string; a: string }[];
   speakable: string[];
   related: RelatedPost[];
+  service?: { slug: string; name: string };
 }
 
 const {
   title, description, heading, category, categorySlug, slug,
   published, modified, displayDate, readingTime, toc, faqs, speakable, related,
+  service,
 } = Astro.props;
 
 const path = `/blog/${slug}.html`;
@@ -152,11 +154,26 @@ const shareUrl = new URL(path, SITE.url).href;
   <section class="section-sm">
     <div class="container narrow">
       <div class="card post-cta">
-        <h2>Want this done for your business?</h2>
+        <h2>
+          {service ? `Want ${service.name} done for your business?` : 'Want this done for your business?'}
+        </h2>
         <p class="muted">
           Tell me what you are trying to grow and I will reply with a clear next step.
         </p>
-        <a href="/contact.html" class="btn btn-primary">Start a project</a>
+        <div class="post-cta-actions">
+          <a href="/contact.html" class="btn btn-primary">Start a project</a>
+          {
+            service ? (
+              <a href={`/services/${service.slug}.html`} class="btn btn-ghost">
+                {service.name} services
+              </a>
+            ) : (
+              <a href="/services.html" class="btn btn-ghost">
+                See all services
+              </a>
+            )
+          }
+        </div>
       </div>
     </div>
   </section>
@@ -371,5 +388,11 @@ const shareUrl = new URL(path, SITE.url).href;
   }
   .post-cta .muted {
     max-width: 46ch;
+  }
+  .post-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
   }
 </style>

@@ -3,8 +3,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Faq from '../../../components/Faq.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Map from '../../../components/Map.astro';
+import { getCollection } from 'astro:content';
 import { services, serviceBySlug } from '../../../data/services';
 import { cities, cityBySlug } from '../../../data/cities';
+import { postsForService } from '../../../data/topic-links';
 import { breadcrumb, faqPage, service as serviceSchema } from '../../../schema';
 
 export function getStaticPaths() {
@@ -42,6 +44,7 @@ const comboFaqs = [
 
 // Other services for this city, and this service in nearby cities.
 const otherServices = services.filter((x) => x.slug !== s.slug);
+const guides = postsForService(await getCollection('blog'), s.slug, 3);
 const nearbyCities = c.nearby.map((slug) => cityBySlug(slug)).filter(Boolean);
 ---
 
@@ -102,6 +105,22 @@ const nearbyCities = c.nearby.map((slug) => cityBySlug(slug)).filter(Boolean);
 
       <h2>{c.name} on the map</h2>
       <Map query={`${c.name}, ${c.region}, ${c.country}`} label={c.name} />
+
+      {
+        guides.length > 0 && (
+          <>
+            <h2>Read more on {s.name}</h2>
+            <ul class="guide-list">
+              {guides.map((g) => (
+                <li>
+                  <a href={`/blog/${g.id}.html`}>{g.data.title}</a>
+                  <span class="guide-meta">{g.data.readingTime}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
 
       <h2>Other services for {c.name} businesses</h2>
       <ul class="link-chips">
@@ -191,6 +210,30 @@ const nearbyCities = c.nearby.map((slug) => cityBySlug(slug)).filter(Boolean);
     color: var(--accent);
     border-color: var(--accent);
     background: var(--accent-soft);
+  }
+  .guide-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 1rem;
+  }
+  .guide-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.7rem;
+  }
+  .guide-list a {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .guide-list a:hover {
+    color: var(--accent);
+  }
+  .guide-meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
   }
   .updated {
     font-family: var(--font-mono);
