@@ -198,34 +198,7 @@ faqs:
 
 <p>For a bootstrapped Indian startup, a realistic minimum monthly SEO budget is around twenty-five to forty thousand rupees, with a significant portion of the work handled by the founding team. For a funded startup that can hire external help, seventy-five thousand to one hundred fifty thousand rupees per month provides enough resources for a comprehensive SEO program. International startups targeting English-speaking markets should expect to invest between seven hundred and two thousand US dollars per month for meaningful results. Whatever your budget, the key is sustained investment over time rather than large bursts followed by inactivity.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>How long does it take for a startup to see results from SEO?</h3>
-<p>For most startups starting from zero, expect three to six months before you see meaningful organic traffic from SEO efforts. Low-competition long-tail keywords can start ranking within four to eight weeks, while more competitive terms typically take six to twelve months. The timeline depends on your niche competitiveness, content quality, technical foundation, and link building pace. I always tell startup founders to treat the first six months as an investment period where you are building the foundation. The compounding effect of SEO means months seven through twelve typically show dramatically more growth than months one through six.</p>
-</div>
-
-<div class="faq-item">
-<h3>How much should a startup budget for SEO?</h3>
-<p>For an early-stage startup, I recommend allocating between fifteen and twenty-five percent of your total marketing budget to SEO. In absolute terms, this typically ranges from twenty-five thousand to one hundred thousand Indian rupees per month for startups in India, or five hundred to two thousand US dollars for those targeting global markets. The budget should cover content creation, basic link building, technical SEO maintenance, and tools. If budget is extremely tight, focus spending on content creation first since that is the hardest to do well without investment. Technical SEO and basic link building can be done with more effort and less cash in the early stages.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should a startup hire an in-house SEO or work with an agency?</h3>
-<p>For most early-stage startups, working with a freelance SEO specialist or small agency is more cost-effective than hiring full-time. A dedicated in-house SEO hire makes sense once organic traffic is a significant revenue channel and you need someone managing it daily. Until then, a consultant who works with you ten to twenty hours per month can build and execute the strategy while costing a fraction of a full-time salary. The key is finding someone with startup experience who understands resource constraints and can prioritize ruthlessly. If you need help evaluating your options, <a href="/contact.html">feel free to reach out</a>.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can I do SEO myself as a startup founder with no technical background?</h3>
-<p>Yes, but with realistic expectations. Many founders successfully handle basic SEO themselves during the earliest stages: setting up Google Search Console, writing optimized content, building initial local citations, and claiming their Google Business Profile. The technical and strategic aspects become harder to self-manage as the site grows. I recommend founders learn SEO fundamentals so they can make informed decisions and evaluate the quality of work if they later hire help. Resources like Google's Search Central documentation, Ahrefs Blog, and guides on this site provide solid foundational knowledge. Start with the basics and bring in professional help when you hit a ceiling.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should startups focus on SEO or paid ads first?</h3>
-<p>Start both simultaneously but with different objectives. Use paid ads for immediate validation: testing messaging, landing pages, and conversion rates while your SEO builds momentum. Use SEO as a long-term investment that reduces your customer acquisition cost over time. The mistake I see most often is startups that rely entirely on paid ads for twelve months, then panic when they realize they have zero organic presence. SEO compounds over time, so the earlier you start, the sooner you reduce your dependency on paid channels. Even a minimal SEO effort from day one puts you months ahead of competitors who delay.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

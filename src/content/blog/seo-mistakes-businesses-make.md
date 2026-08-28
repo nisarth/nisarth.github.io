@@ -206,34 +206,7 @@ faqs:
 
 <p><strong>The fix:</strong> Start with <a href="/blog/keyword-research-strategy.html">keyword research</a> to identify the topics and questions your target audience is searching for. Group those keywords into topical clusters with a pillar page and supporting content for each cluster. Create a content calendar that prioritizes high-value, achievable keywords. For each piece of content, define the target keyword, search intent, content format, and desired business outcome before writing. Review performance monthly and adjust your strategy based on what is working. If you need help building a content strategy from scratch, read my <a href="/blog/content-marketing-strategy.html">content marketing strategy guide</a> or <a href="/contact.html">get in touch</a>.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is the most common SEO mistake businesses make?</h3>
-<p>The most common SEO mistake I see is ignoring technical SEO entirely. Businesses invest heavily in content creation and link building but never check whether Google can actually crawl and index their pages. Broken robots.txt rules, missing sitemaps, slow page speeds, and crawl errors silently kill organic visibility. I always recommend running a basic <a href="/blog/technical-seo-audit-checklist-2026.html">technical audit</a> before spending money on any other SEO activity. Fix the foundation first, then build on it with content and links. The technical side is less glamorous than content creation, but it is non-negotiable.</p>
-</div>
-
-<div class="faq-item">
-<h3>How long does it take to recover from SEO mistakes?</h3>
-<p>Recovery time depends on the severity of the mistake. Technical fixes like correcting canonical tags or removing accidental noindex directives can show results within days once Google recrawls the affected pages. Content-related issues like thin content or keyword stuffing typically take four to eight weeks to recover from after making improvements. Penalties from buying links or other manipulative practices can take three to six months or longer, especially if a manual action was applied. Consistent, patient effort is the key: there are no shortcuts to recovery.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can I fix SEO mistakes myself or do I need a professional?</h3>
-<p>Many SEO mistakes can be fixed by business owners themselves with the right guidance. Basic issues like improving title tags, adding alt text to images, fixing broken links, and creating better content are all doable without professional help. However, technical issues like server configuration, JavaScript rendering problems, complex redirect chains, and structured data implementation often require someone with hands-on experience. If you are unsure, start with a <a href="../contact.html#audit">free audit</a> to identify the issues and then decide which ones you can handle internally.</p>
-</div>
-
-<div class="faq-item">
-<h3>Is keyword stuffing still a problem in 2026?</h3>
-<p>Yes, keyword stuffing is still surprisingly common, though it has evolved. Instead of repeating the same exact phrase twenty times, businesses now stuff variations and synonyms unnaturally into their content. Google's natural language processing is sophisticated enough to detect both forms. The fix is straightforward: write for humans first and use your target keyword naturally where it makes sense. If a paragraph reads awkwardly because of keyword placement, you have gone too far. Focus on covering the topic comprehensively rather than hitting a specific keyword density percentage.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I know if my website has SEO problems?</h3>
-<p>The clearest signs are declining organic traffic in Google Analytics, dropping keyword rankings, pages not appearing in Google search results, and high bounce rates on landing pages. Google Search Console is your best free diagnostic tool: it shows crawl errors, indexation issues, Core Web Vitals problems, and manual actions. Run a <code>site:yourdomain.com</code> search in Google to check how many pages are indexed. If the number is significantly lower than your actual page count, you likely have indexation issues that need investigation.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

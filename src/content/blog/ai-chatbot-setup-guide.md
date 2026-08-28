@@ -186,34 +186,7 @@ faqs:
 
 <p><strong>Making the chatbot pretend to be human.</strong> Transparency builds trust. Your chatbot should identify itself as an AI assistant in the greeting. Users who discover mid-conversation that they have been talking to a bot feel deceived. Users who know from the start that they are talking to an AI have appropriate expectations and are generally more forgiving of limitations. Interestingly, I have found that users who know they are talking to AI often ask more direct questions, which leads to more efficient conversations.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>How much does it cost to set up an AI chatbot for a business website?</h3>
-<p>Costs vary widely depending on the approach. A basic chatbot using a platform like Tidio or Crisp with limited AI features can cost zero to fifty dollars per month. Mid-range solutions like Intercom or Drift with full AI capabilities run two hundred to five hundred dollars per month. Custom-built chatbots using n8n with an OpenAI or Anthropic API typically cost twenty to one hundred dollars per month in API and hosting fees. For most small to medium businesses, I recommend starting with a mid-range platform or a custom n8n build to balance cost with capability.</p>
-</div>
-
-<div class="faq-item">
-<h3>How long does it take to implement an AI chatbot?</h3>
-<p>A basic AI chatbot with a simple knowledge base can be deployed in two to three days. A properly configured chatbot with comprehensive knowledge base training, CRM integration, conversation flows, and testing typically takes two to three weeks. Enterprise implementations with custom integrations, compliance requirements, and extensive testing can take six to eight weeks. The knowledge base preparation phase usually takes the longest because gathering and structuring your business information is more time-consuming than the technical setup itself.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can an AI chatbot really replace human customer support?</h3>
-<p>Not entirely, and it should not try to. A well-configured AI chatbot typically handles sixty to eighty percent of common customer queries: FAQs, order status, pricing information, basic troubleshooting. This frees your human agents to focus on complex issues that require empathy, judgment, or account-specific knowledge. The best implementations use a hybrid model where the chatbot handles initial contact, gathers information, resolves simple issues, and escalates to humans when needed. Trying to eliminate human support entirely almost always leads to frustrated customers and negative brand experiences.</p>
-</div>
-
-<div class="faq-item">
-<h3>What happens when the AI chatbot gives wrong information?</h3>
-<p>Hallucination is a real risk with AI chatbots. The best mitigation strategies include limiting the chatbot to respond only from your approved knowledge base using retrieval-augmented generation, adding confidence thresholds that trigger human handoff when the AI is unsure, implementing regular conversation review to catch and correct errors, and including clear disclaimers for sensitive topics like pricing or legal information. I always configure chatbots to say they are not sure and offer to connect the user with a human rather than guessing at answers.</p>
-</div>
-
-<div class="faq-item">
-<h3>Which AI model should I use for my business chatbot?</h3>
-<p>For most business chatbots, GPT-4o-mini or Claude 3.5 Haiku offer the best balance of quality and cost. They are fast, affordable at scale, and handle conversational interactions well. For chatbots that need to handle complex reasoning, technical support, or nuanced customer situations, GPT-4o or Claude Sonnet provide better accuracy at higher cost. I generally start clients on a smaller model and upgrade only if conversation quality metrics indicate the need. The model choice matters less than the quality of your knowledge base and prompt engineering.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

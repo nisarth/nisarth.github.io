@@ -6,6 +6,7 @@ import portrait from '../assets/nisarth.jpg';
 import { SITE } from '../consts';
 import { person, breadcrumb, faqPage } from '../schema';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { lastUpdated } from '../lib/last-updated';
 
 const title = 'About Nisarth Patel: Freelance Digital Growth Specialist';
 const description =
@@ -32,6 +33,7 @@ const faqs = [
     a: 'I have 2.5 years of hands-on experience in SEO, AI automation, and web development for startups, local businesses, and growing brands.',
   },
 ];
+const updated = lastUpdated('src/pages/about.astro');
 ---
 
 <BaseLayout
@@ -92,7 +94,7 @@ const faqs = [
         }
       </div>
 
-      <p class="updated">Last updated: June 2026</p>
+      {updated && <p class="updated">Last updated: {updated}</p>}
       <a href="/contact.html" class="btn btn-primary">Work with me</a>
     </div>
   </section>

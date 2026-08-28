@@ -80,12 +80,23 @@ function articleDates(blocks) {
   return '';
 }
 
+// The FAQ block used to sit inside the article body and now renders from front
+// matter through the Faq component, outside .prose. Excluding it from both
+// sides keeps this comparison about the article text; the questions themselves
+// are still checked separately against the FAQPage node.
+function withoutFaq(html) {
+  return html
+    .replace(/<h2 id="frequently-asked-questions"[^>]*>[\s\S]*?<\/h2>/g, ' ')
+    .replace(/<div class="faq-section">[\s\S]*?(?=<div class="article-callout")/g, ' ')
+    .replace(/<div class="faq-section">[\s\S]*$/g, ' ');
+}
+
 // The legacy body lives in .article-body prose; the migrated one in .prose.
 function bodyText(html) {
   const legacy = html.match(
     /<div class="article-body prose">([\s\S]*?)\n\s*<\/div>\s*<\/div>\s*<\/article>/
   );
-  if (legacy) return strip(legacy[1]);
+  if (legacy) return strip(withoutFaq(legacy[1]));
   const migrated = html.match(/<div class="prose"[^>]*>([\s\S]*?)<\/div>\s*<\/div>\s*<\/article>/);
   if (migrated) return strip(migrated[1]);
   return '';

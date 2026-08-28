@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { breadcrumb } from '../schema';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { lastUpdated } from '../lib/last-updated';
 
 const title = 'Work: Case Studies in SEO, Automation, and Web';
 const description =
@@ -46,6 +47,7 @@ const itemList = {
     name: e.title,
   })),
 };
+const updated = lastUpdated('src/pages/work.astro');
 ---
 
 <BaseLayout
@@ -90,7 +92,7 @@ const itemList = {
         <a href="/contact.html" class="btn btn-primary">Ask for case studies</a>
       </div>
 
-      <p class="updated">Last updated: June 2026</p>
+      {updated && <p class="updated">Last updated: {updated}</p>}
     </div>
   </section>
 </BaseLayout>

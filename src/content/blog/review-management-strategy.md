@@ -178,34 +178,7 @@ faqs:
 
 <p><strong>Make review generation part of the workflow.</strong> Integrate review requests into your standard operating procedures rather than treating them as an add-on. If the review request is part of the checkout process, the service completion workflow, or the follow-up communication sequence, it happens consistently without anyone needing to remember to do it. The goal is to make generating reviews as routine as generating invoices: a standard part of how your business operates.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>How do I ask customers for reviews without being pushy?</h3>
-<p>The key is timing and simplicity. Ask for a review within 24 hours of a positive interaction when the experience is still fresh. Use a brief, personal message that acknowledges the specific service they received and includes a direct link to your review page. Something like "We loved working with you on your kitchen renovation. If you have a moment, a Google review would mean a lot to us" works far better than generic requests. Keep it to one ask: never follow up multiple times about the same review request. Making the process as easy as a single click removes friction and increases response rates to 15 to 25 percent in my experience.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I respond to every review, even positive ones?</h3>
-<p>Yes, absolutely. Responding to positive reviews shows customers you value their feedback and encourages future reviews from other customers who see that you engage with reviewers. It also adds keyword-rich content to your Google Business Profile listing. Keep positive responses genuine and specific: reference something the reviewer mentioned to show you actually read their feedback. Avoid generic copy-paste responses as customers can spot them easily. Google has confirmed that review responses are a factor in local search rankings, so responding to all reviews has both SEO and customer relationship benefits that compound over time.</p>
-</div>
-
-<div class="faq-item">
-<h3>What should I do about fake negative reviews?</h3>
-<p>First, determine if the review is genuinely fake, from someone who was never a customer, a competitor, or a bot. If so, flag it for removal through the platform's reporting tools. On Google, click the three dots next to the review and select "Report review." Provide specific reasons why you believe it violates their policies. While waiting for the platform to review your report, respond professionally stating that you cannot find any record of their visit and inviting them to contact you directly. This shows potential customers that you take feedback seriously while signalling that the review may not be legitimate without directly accusing the reviewer.</p>
-</div>
-
-<div class="faq-item">
-<h3>How many reviews does my business need to be competitive?</h3>
-<p>The number varies significantly by industry and location. Research your top five competitors in the Google Local Pack and use their review counts as your benchmark. In most markets, having at least as many reviews as your closest competitor is a reasonable initial target. More important than the total number is review velocity: earning a steady stream of new reviews each month. A business that earns 10 new reviews monthly will eventually overtake a competitor with more total reviews but only 1 to 2 new reviews per month. I typically aim for 5 to 15 new Google reviews per month for my local business clients, adjusting based on the competitive landscape.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can I offer incentives for leaving reviews?</h3>
-<p>This depends on the platform. Google explicitly prohibits offering incentives in exchange for reviews: no discounts, gifts, or rewards for leaving a Google review. Violating this policy can result in review removal or profile suspension. However, you can incentivize general feedback without specifying a platform. For example, offering a discount for completing a feedback survey is acceptable, but offering a discount specifically for a Google review is not. Yelp has similar restrictions. I recommend building reviews through excellent service and systematic asking rather than incentives, as this produces more authentic and sustainable results that comply with all platform policies.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

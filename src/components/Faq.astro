@@ -3,14 +3,20 @@
 // needs no JavaScript. Pair the same items with faqPage() schema on the page.
 interface Props {
   heading?: string;
+  // Overridable so a page can keep an existing in-page anchor pointing here.
+  headingId?: string;
   items: { q: string; a: string }[];
 }
-const { heading = 'Frequently asked questions', items } = Astro.props;
+const {
+  heading = 'Frequently asked questions',
+  headingId = 'faq-heading',
+  items,
+} = Astro.props;
 ---
 
-<section class="section faq" aria-labelledby="faq-heading">
+<section class="section faq" aria-labelledby={headingId}>
   <div class="container narrow">
-    <h2 id="faq-heading">{heading}</h2>
+    <h2 id={headingId}>{heading}</h2>
     <div class="faq-list">
       {
         items.map((item) => (

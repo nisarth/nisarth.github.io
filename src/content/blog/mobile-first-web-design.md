@@ -198,34 +198,7 @@ faqs:
 
 <p><strong>Responsive image tools.</strong> I use Sharp (a Node.js image processing library) in my build pipeline to automatically generate multiple sizes and formats of every image. Each image gets versions at 400, 800, 1200, and 1600 pixels wide in both WebP and AVIF formats. The HTML uses <code>&lt;picture&gt;</code> elements with <code>&lt;source&gt;</code> tags for format selection and <code>srcset</code> attributes for size selection. This ensures mobile devices always download the smallest acceptable image.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is mobile-first web design and how does it differ from responsive design?</h3>
-<p>Mobile-first web design means you start by designing and coding for the smallest screen first, then progressively enhance the layout for larger screens using min-width media queries. Responsive design is the broader concept of making layouts adapt to any screen size, but it can be approached from either direction. The key difference is the starting point: mobile-first begins with constraints and adds complexity, while desktop-first starts with a full layout and tries to simplify it for smaller screens. Mobile-first tends to produce leaner, faster websites because you only add what larger screens actually need.</p>
-</div>
-
-<div class="faq-item">
-<h3>How much does mobile-first design affect SEO rankings?</h3>
-<p>Mobile-first design has a significant impact on SEO because Google uses mobile-first indexing, meaning it primarily crawls and indexes the mobile version of your site. If your mobile experience is poor (slow loading, broken layouts, tiny text, or inaccessible buttons), it directly harms your rankings on both mobile and desktop search results. Core Web Vitals metrics like LCP, INP, and CLS are measured on mobile devices, and failing these thresholds can push you below competitors who pass them. In my experience, fixing mobile usability issues alone has improved organic traffic by 15 to 30 percent for several client projects.</p>
-</div>
-
-<div class="faq-item">
-<h3>What are the most common mobile-first design mistakes?</h3>
-<p>The most common mistakes I encounter are: hiding essential content on mobile with display:none instead of restructuring it, using hover-dependent interactions that do not work on touch devices, setting font sizes too small to read without zooming, placing touch targets too close together, loading desktop-sized images on mobile connections, using fixed-width elements that break on narrow screens, and neglecting to test on actual devices with real network conditions. Another frequent error is designing mobile layouts in isolation without considering how they scale up, which creates awkward intermediate breakpoints on tablets.</p>
-</div>
-
-<div class="faq-item">
-<h3>What tools should I use for mobile-first design testing?</h3>
-<p>I use Chrome DevTools device emulation for quick viewport testing during development, but always supplement with real device testing on at least one iOS and one Android phone. BrowserStack or LambdaTest provide access to hundreds of real device configurations remotely. Google Lighthouse audits mobile performance, accessibility, and SEO in one pass. PageSpeed Insights shows real-user field data from actual mobile visitors. For layout debugging, I rely on Firefox's responsive design mode which has better touch simulation than Chrome. Responsively App lets you preview multiple viewports simultaneously during development.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I build a separate mobile site or use responsive design?</h3>
-<p>Use responsive design with a mobile-first approach. Separate mobile sites (m.example.com) are outdated and create serious maintenance and SEO problems: duplicate content, split link equity, synchronization headaches, and complex redirect rules. Google explicitly recommends responsive design as the preferred configuration. The only scenario where a separate mobile experience might make sense is a progressive web app that serves a fundamentally different experience for mobile users, but even then, it should live on the same domain using responsive techniques rather than a separate subdomain.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

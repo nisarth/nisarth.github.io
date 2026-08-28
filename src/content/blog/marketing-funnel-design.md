@@ -172,34 +172,7 @@ faqs:
 
 <p>Regardless of your tool stack, the fundamentals remain the same: attract prospects at the top, nurture them through the middle, convert them at the bottom, and retain them after the sale. Tools make the execution more efficient, but the strategy is what generates the results.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is a marketing funnel and why does my business need one?</h3>
-<p>A marketing funnel is a structured framework that maps the journey your potential customers take from first discovering your brand to making a purchase decision and beyond. It typically has three main stages: top of funnel (awareness), middle of funnel (consideration), and bottom of funnel (decision). Your business needs a funnel because most customers do not buy on their first interaction with your brand. Research consistently shows that it takes seven to thirteen touchpoints before a prospect is ready to purchase. Without a funnel, you are either trying to sell to people who are not ready, or losing potential customers who need more information and nurturing before they commit. A well-designed funnel ensures that at every stage, you are providing the right content, the right messaging, and the right offers to move prospects closer to a buying decision.</p>
-</div>
-
-<div class="faq-item">
-<h3>How long should a marketing funnel be from awareness to purchase?</h3>
-<p>The length of your funnel depends entirely on the complexity and cost of what you sell. For low-cost consumer products under fifty dollars, the funnel can be as short as a single session: someone sees an ad, clicks through to a product page, and purchases within minutes. For high-consideration B2B services costing thousands or tens of thousands of dollars, the funnel may span three to twelve months with dozens of touchpoints across multiple channels. A mid-range example would be a service business charging one thousand to five thousand dollars per project, where the funnel typically spans two to six weeks and includes five to ten touchpoints. The key principle is matching your funnel length to your buyer's natural decision timeline: trying to compress a six-month decision into a one-week funnel creates pressure that drives prospects away.</p>
-</div>
-
-<div class="faq-item">
-<h3>What is the difference between a lead generation funnel and a sales funnel?</h3>
-<p>A lead generation funnel focuses specifically on the top and middle stages: attracting potential customers and capturing their contact information so you can continue marketing to them. It typically ends with a form submission, email opt-in, or other lead capture action. A sales funnel encompasses the entire journey from first awareness through to the actual purchase transaction and often includes post-purchase stages like onboarding and upselling. In practice, most businesses need both working together: the lead generation funnel feeds prospects into the sales funnel. For businesses with sales teams, the lead generation funnel is often managed by marketing, and the sales funnel is managed jointly by marketing and sales. The handoff point between the two is one of the most important transitions to define clearly.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I know which stage of the funnel my prospects are in?</h3>
-<p>You can identify funnel stage through behavioural signals. Top-of-funnel prospects consume educational content, visit your blog, engage with social media posts, and search for informational keywords related to their problem. Middle-of-funnel prospects download lead magnets, subscribe to your email list, read case studies, compare solutions, and visit your services or product pages. Bottom-of-funnel prospects visit pricing pages, request demos or consultations, read testimonials and reviews, open sales-focused emails, and search for brand-name keywords. Use your analytics tools and CRM to track these behaviors and assign funnel stages to individual contacts. Most marketing automation platforms can score leads based on their behavior and automatically move them between funnel stages.</p>
-</div>
-
-<div class="faq-item">
-<h3>What are the most common reasons marketing funnels fail?</h3>
-<p>The most common reasons I see marketing funnels fail are: first, a missing middle (businesses invest heavily in awareness content and bottom-of-funnel sales pages but have nothing in between to nurture prospects from interest to intent). Second, poor handoffs between stages where the transition from one funnel stage to the next is abrupt or confusing for the prospect. Third, no follow-up system: leads are captured but never contacted or nurtured, so they go cold. Fourth, measuring the wrong metrics, like focusing on top-of-funnel traffic volume instead of through-funnel conversion rates. Fifth, treating the funnel as linear when modern buyer journeys are actually non-linear: prospects skip stages, revisit earlier stages, and enter at different points. The businesses that succeed build flexible funnels that accommodate these non-linear journeys.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

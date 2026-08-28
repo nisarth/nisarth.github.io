@@ -188,34 +188,7 @@ faqs:
 
 <p><strong>Featured snippet co-optimization.</strong> There is significant overlap between content that earns featured snippets and content that earns AI Overview citations. Pages that already hold featured snippet positions are disproportionately likely to be cited in AI Overviews for the same queries. If you already have featured snippets, protect them: they are a strong signal for AI Overview inclusion. If you do not, optimizing for featured snippets with concise, well-structured answer paragraphs is a strategy that pays double dividends.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What percentage of Google searches trigger AI Overviews?</h3>
-<p>As of early 2026, Google AI Overviews appear for approximately 25 to 35 percent of informational queries in markets where the feature has fully launched. The percentage varies significantly by query type: educational and how-to queries trigger AI Overviews at higher rates (40 to 50 percent), while navigational and transactional queries trigger them far less frequently. Google continues to expand the feature, so these percentages are increasing steadily. YMYL topics like health and finance see AI Overviews less frequently due to the higher accuracy standards Google applies.</p>
-</div>
-
-<div class="faq-item">
-<h3>Do AI Overviews reduce organic traffic to websites?</h3>
-<p>The impact on traffic depends heavily on the query type and your position in results. For simple factual queries where the AI Overview provides a complete answer, click-through rates to websites have decreased by 15 to 30 percent based on early data. However, for complex queries where the AI Overview serves as a starting point for deeper research, sites cited in the overview often see increased click-through rates compared to standard organic results. The key is being cited as a source within the AI Overview rather than having your content summarized without attribution, which is why optimization matters.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can I opt out of Google AI Overviews?</h3>
-<p>Currently, there is no specific meta tag or robots directive to opt out of AI Overviews specifically while remaining in standard Google search results. The nosnippet meta tag prevents your content from appearing in featured snippets and AI Overviews, but it also removes your snippet from standard search results, which significantly hurts click-through rates. Google has indicated they are considering more granular controls, but as of April 2026, the only options are the broad nosnippet tag or the max-snippet directive to limit snippet length, which may reduce AI Overview inclusion.</p>
-</div>
-
-<div class="faq-item">
-<h3>Does ranking position 1 guarantee inclusion in AI Overviews?</h3>
-<p>No, ranking first in standard organic results does not guarantee inclusion in AI Overviews. Google's AI Overview sources often pull from multiple pages across different ranking positions, and sometimes includes sources that rank on page two or even page three of standard results. Research from multiple SEO platforms shows that approximately 60 percent of AI Overview citations come from pages ranking in positions 1 through 5, but 40 percent come from lower-ranking pages. Content quality, relevance to the specific question, and E-E-A-T signals play a larger role than ranking position alone.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I track my AI Overview appearances in Google Search Console?</h3>
-<p>In Google Search Console, navigate to the Performance report and click on Search Appearance. Look for the AI Overview filter, which shows impressions and clicks specifically from AI Overview results. You can combine this with query, page, country, and device filters to understand which content is appearing in AI Overviews and for which queries. Note that this data has a processing delay of roughly 48 to 72 hours. For more granular tracking, I use third-party tools like Semrush or Ahrefs that track AI Overview appearances for specific target keywords daily.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

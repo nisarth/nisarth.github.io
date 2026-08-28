@@ -162,34 +162,7 @@ faqs:
 
 <p>For a comprehensive look at how schema markup fits into the broader technical health of your site, see my <a href="/blog/technical-seo-audit-checklist-2026.html">technical SEO audit checklist</a>.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>Does schema markup directly improve search rankings?</h3>
-<p>Schema markup is not a direct ranking factor in the traditional sense. Google has stated that structured data does not directly boost your position in search results. However, schema markup enables rich results like FAQ dropdowns, star ratings, and how-to steps that significantly increase your click-through rate. Higher CTR sends positive engagement signals to Google, which can indirectly improve rankings over time. Additionally, structured data helps search engines understand your content more accurately, which improves the likelihood of appearing for relevant queries. In practice, I consistently see measurable traffic increases after implementing comprehensive schema markup on client sites.</p>
-</div>
-
-<div class="faq-item">
-<h3>Which schema format should I use: JSON-LD, Microdata, or RDFa?</h3>
-<p>Use JSON-LD. Google has explicitly stated it as their preferred format, and it is the easiest to implement and maintain. JSON-LD sits in a script tag in your page's head section, completely separate from your HTML markup. This means you can add, edit, or remove structured data without touching your page content. Microdata and RDFa require embedding attributes directly in your HTML elements, which makes them harder to maintain and more prone to breaking when someone edits the page layout. Every implementation I do uses JSON-LD, and I recommend migrating away from Microdata or RDFa if you are currently using them.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I test if my schema markup is working correctly?</h3>
-<p>Use two tools together. First, Google's Rich Results Test at search.google.com/test/rich-results checks whether your schema is eligible for rich results in Google search and flags any errors or warnings. Second, the Schema Markup Validator at validator.schema.org validates your markup against the full Schema.org specification and catches issues the Rich Results Test might miss. After deployment, monitor the Enhancements section in Google Search Console for ongoing errors across your entire site. I also recommend using browser extensions for quick spot-checks when browsing your own site or auditing competitors.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can I add schema markup to any website platform?</h3>
-<p>Yes. Since JSON-LD schema is just a script tag in your HTML, it works on any platform that allows you to edit the page head or body. WordPress users can add schema through plugins like Rank Math or Yoast, or by editing theme template files. Shopify has built-in Product schema and allows custom JSON-LD through theme editing. Static sites, custom CMS platforms, and frameworks like Next.js or Gatsby all support JSON-LD implementation. If you can add a script tag to your page, you can add schema markup. The implementation method varies by platform, but the JSON-LD itself is universal.</p>
-</div>
-
-<div class="faq-item">
-<h3>How much schema markup should I add to a single page?</h3>
-<p>Add all schema types that are genuinely relevant to the page content. A blog post might have Article, BreadcrumbList, FAQPage, and Person schema all on the same page, and that is perfectly fine. The key rule is accuracy: every piece of schema must truthfully describe content that is actually visible on the page. Do not add schema for content that does not exist on the page, and do not add schema types that are not relevant. Google may issue manual actions for misleading structured data. Quality and accuracy matter far more than quantity. If you are unsure whether a schema type is appropriate for a page, <a href="/contact.html">reach out and I can advise</a>.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

@@ -184,34 +184,7 @@ faqs:
 
 <p><strong>Regular review cadence.</strong> I review landing page performance weekly for the first month after launch, then bi-weekly once the initial optimization phase is complete. During each review, I look for trends in conversion rate, identify new objections from form submissions or chat transcripts, and plan the next A/B test based on the data. A <a href="/blog/marketing-funnel-design.html">well-designed funnel</a> requires continuous attention to maintain and improve its performance.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is a good conversion rate for a landing page?</h3>
-<p>The average landing page conversion rate across industries is around 2 to 5 percent, but this varies enormously depending on your industry, traffic source, and offer. Lead generation landing pages typically convert at 5 to 15 percent, while e-commerce product pages might convert at 1 to 3 percent. Paid traffic from targeted Google Ads campaigns often converts higher than organic traffic because the intent is more specific. Rather than benchmarking against industry averages, I recommend measuring your current rate and then systematically improving it through testing. A page converting at 3 percent today can often reach 6 to 8 percent with proper optimization.</p>
-</div>
-
-<div class="faq-item">
-<h3>How long should a landing page be?</h3>
-<p>The ideal landing page length depends on the complexity of your offer and the awareness level of your audience. For simple, low-cost offers with high-awareness traffic, short pages of 500 to 800 words often perform best. For complex, high-cost offers or cold traffic, longer pages of 1500 to 3000 words that address objections and build trust tend to convert better. I have tested both extensively and found that the answer is almost always longer than you think for B2B services and shorter than you think for impulse purchases. The key principle is that every section must earn its place: remove anything that does not move the visitor closer to conversion.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should landing pages have navigation menus?</h3>
-<p>For dedicated campaign landing pages that receive paid traffic, I recommend removing the main site navigation. Studies consistently show that removing navigation increases conversion rates by 20 to 40 percent because it eliminates exit paths and keeps visitors focused on the single desired action. However, for SEO landing pages that need to rank organically and serve as part of your broader site, keeping navigation is necessary for both user experience and internal linking. The compromise I use is a simplified header with just the logo linking to the homepage and a single call-to-action button, which reduces distractions while maintaining brand context.</p>
-</div>
-
-<div class="faq-item">
-<h3>What tools are best for building and testing landing pages?</h3>
-<p>For building landing pages, I recommend custom-coded pages for maximum performance and control, or Webflow for design flexibility without coding. Unbounce and Instapage are solid choices if you need rapid deployment and built-in A/B testing. For testing, Google Optimize's successor, the A/B testing features now integrated into Google Analytics 4, handles basic experiments. VWO and Optimizely are more powerful for advanced testing. For heatmaps and session recordings, Hotjar and Microsoft Clarity (which is free) are invaluable for understanding how visitors actually interact with your page. I use Clarity on nearly every client project because the cost-to-value ratio is unbeatable.</p>
-</div>
-
-<div class="faq-item">
-<h3>How many CTAs should a landing page have?</h3>
-<p>A landing page should have one primary call-to-action that is repeated multiple times throughout the page. The action itself should be singular: fill out a form, book a call, start a trial, or make a purchase. But the button or form should appear at least three times: in the hero section, after the benefits or social proof section, and at the bottom of the page. This repetition ensures that visitors can convert at whatever point they become convinced, without having to scroll back up. Avoid having competing CTAs that ask for different actions, such as both requesting a demo and subscribing to a newsletter, as this creates decision friction and reduces overall conversion rates.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

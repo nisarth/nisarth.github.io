@@ -190,34 +190,7 @@ faqs:
 
 <p><strong>AI and GEO for local businesses.</strong> AI-powered search tools like Google's AI Overviews and ChatGPT are increasingly providing local recommendations. Ensuring your business information is accurate, consistent, and well-structured across the web increases the likelihood that AI tools will recommend you. Implement <code>llms.txt</code> on your website with clear information about your business, services, and location. The businesses that prepare for AI-driven local search now will have a significant advantage as adoption grows. I discuss this in more detail in my guide on <a href="/blog/local-business-digital-presence.html">building a digital presence for local businesses</a>.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>How long does it take to see results from local SEO?</h3>
-<p>Most businesses start seeing measurable improvements within three to six months of consistent local SEO work. Google Business Profile optimizations like adding photos, responding to reviews, and posting updates can show results within weeks. However, building local citations, earning quality backlinks, and climbing the map pack for competitive keywords typically takes longer. I have seen businesses in less competitive niches rank in the local three-pack within eight weeks, while those in saturated markets like legal or dental services may need six to twelve months of sustained effort. The key is consistency: local SEO compounds over time, and the businesses that maintain their efforts see the best long-term results.</p>
-</div>
-
-<div class="faq-item">
-<h3>Do I need a physical address to rank in local SEO?</h3>
-<p>You need a legitimate business address to create a Google Business Profile, but it does not have to be a traditional storefront. Service-area businesses that travel to customers can hide their address on their profile and instead specify the areas they serve. What you cannot do is use a PO Box, virtual office, or coworking space address unless you have dedicated signage and staff there during business hours. Google actively verifies addresses and will suspend profiles that use fake or ineligible locations. If you work from home, you can use your home address and choose to hide it from public view while still serving a defined geographic area.</p>
-</div>
-
-<div class="faq-item">
-<h3>What is the Google Local Pack and how do I rank in it?</h3>
-<p>The Google Local Pack, also called the map pack or three-pack, is the section of search results that shows three local business listings alongside a map. It appears for searches with local intent, such as "dentist near me" or "best restaurant in Ahmedabad." To rank in it, you need an optimized Google Business Profile with accurate information, consistent NAP citations across the web, positive reviews with good ratings, proximity to the searcher, and strong local relevance signals on your website. The Local Pack drives significant click-through rates because it appears above organic results for most local searches, making it the most valuable real estate in local search.</p>
-</div>
-
-<div class="faq-item">
-<h3>How important are online reviews for local SEO rankings?</h3>
-<p>Reviews are one of the top three ranking factors for the Google Local Pack. Both the quantity and quality of your reviews matter, as does how recently they were posted. A business with 200 reviews averaging 4.7 stars will typically outrank a competitor with 15 reviews averaging 5.0 stars. Google also looks at review velocity: a steady stream of new reviews signals an active, legitimate business. Beyond rankings, reviews directly influence click-through rates and conversion. I recommend building a systematic review generation process rather than relying on occasional one-off requests, as consistency in review acquisition sends stronger signals to Google.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I create separate pages for each location I serve?</h3>
-<p>Yes, if you serve multiple distinct areas, creating dedicated location pages is one of the most effective local SEO strategies. Each page should have unique, substantial content specific to that area, not just the same template with the city name swapped in. Include local landmarks, area-specific services, testimonials from customers in that location, and embedded Google Maps. For a business serving five cities, I would create five unique location pages each with at least 800 words of genuinely useful, location-specific content. Thin location pages with duplicate content can actually hurt your rankings rather than help, so invest the time in creating genuinely unique content for each area you serve.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

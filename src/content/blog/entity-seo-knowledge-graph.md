@@ -182,34 +182,7 @@ faqs:
 
 <p><strong>Multi-location businesses.</strong> Businesses with multiple locations face a unique entity challenge: maintaining a single strong Organization entity while also establishing distinct local entities for each location. I implement a parent Organization schema on the main website and separate LocalBusiness schema for each location, linked through the <code>parentOrganization</code> property. Each location should have its own Google Business Profile, local directory listings, and local review presence while sharing the brand-level entity signals of the parent organization.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is the difference between a keyword and an entity in SEO?</h3>
-<p>A keyword is a text string that users type into search engines: it is simply a sequence of characters. An entity is a distinct, well-defined concept that exists independently of language. The keyword "apple" is ambiguous: it could mean the fruit, the technology company, or a person's surname. The entity "Apple Inc." is unambiguous: it refers to a specific company with known attributes like its headquarters in Cupertino, its CEO, and its products. Google's Knowledge Graph resolves keywords into entities to understand search intent, which is why entity SEO focuses on making your business a clearly defined, unambiguous entity rather than just targeting text strings.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I check if my business has a Knowledge Graph entry?</h3>
-<p>Search for your exact business name on Google and look for a Knowledge Panel on the right side of desktop results or at the top of mobile results. If one appears, Google has recognized your business as an entity in its Knowledge Graph. You can also search Google's Knowledge Graph API directly using your business name. Additionally, check Wikidata for an entry about your business: Wikidata is a primary source for the Knowledge Graph. If no Knowledge Panel appears, your entity signals may be too weak or inconsistent for Google to confidently display one.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can small businesses get a Google Knowledge Panel?</h3>
-<p>Yes, small businesses can earn Knowledge Panels, though it requires deliberate effort. The most reliable path for small businesses starts with a complete, verified Google Business Profile, which can trigger a local Knowledge Panel for branded searches. Beyond that, building consistent entity information across directories, implementing comprehensive Organization schema on your website, creating a Wikidata entry, and earning mentions on authoritative websites all contribute. Most small businesses I work with achieve a basic Knowledge Panel within three to six months of focused entity building work.</p>
-</div>
-
-<div class="faq-item">
-<h3>Does entity SEO help with AI search tools like ChatGPT?</h3>
-<p>Absolutely. Entity SEO is arguably even more important for AI search tools than for traditional search. AI language models like ChatGPT, Gemini, and Perplexity rely heavily on entity recognition to identify authoritative sources, resolve ambiguous references, and make confident recommendations. A business with strong entity authority (consistent brand information, Wikidata presence, structured data, and corroborating mentions across authoritative sources) is far more likely to be mentioned by AI tools than a business with weak or inconsistent entity signals. Entity SEO is the bridge between traditional search optimization and GEO.</p>
-</div>
-
-<div class="faq-item">
-<h3>How long does it take to build entity authority?</h3>
-<p>Entity authority building is a gradual process. You can implement foundational elements (structured data, Wikidata entry, brand consistency cleanup) within two to four weeks. These foundational changes often show initial results within four to eight weeks as Google's systems process the signals. Building substantial entity authority through third-party mentions, reviews, and consistent content publishing typically takes six to twelve months. The timeline depends heavily on your starting point: a business with an existing web presence and some brand recognition will build entity authority faster than a brand-new business starting from zero.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

@@ -34,9 +34,106 @@ Nisarth Patel is a freelance digital growth specialist based in Ahmedabad, Gujar
 
 ## Service pages
 
-- SEO services: https://nisarth.github.io/services/seo.html
-- AEO services (answer engine optimization): https://nisarth.github.io/services/aeo.html
-- GEO services (generative engine optimization): https://nisarth.github.io/services/geo.html
-- AI automation services: https://nisarth.github.io/services/ai-automation.html
-- Web development services: https://nisarth.github.io/services/web-development.html
-- Local SEO services: https://nisarth.github.io/services/local-seo.html
+- AEO Services: Get Cited by AI Answers: https://nisarth.github.io/services/aeo.html
+  AEO services (answer engine optimization) that get your business quoted in featured snippets, voice search, and AI answers. Direct-answer content and FAQ schema that win the answer.
+- AI Automation Services (n8n, Make, Zapier): https://nisarth.github.io/services/ai-automation.html
+  AI automation services that connect your apps so routine work runs on its own. Custom n8n, Make, and Zapier workflows, AI chatbots, and lead pipelines that save hours each week.
+- GEO Services: Get Cited by ChatGPT and AI Search: https://nisarth.github.io/services/geo.html
+  GEO services (generative engine optimization) that get your business mentioned and cited by ChatGPT, Perplexity, Gemini, and Google AI Overviews. Content built for AI retrieval.
+- Local SEO Services: Rank on Google Maps: https://nisarth.github.io/services/local-seo.html
+  Local SEO services that get your business found on Google Maps and in local search. Google Business Profile optimization, local citations, and reviews that bring nearby customers.
+- SEO Services for Businesses: https://nisarth.github.io/services/seo.html
+  SEO services that help your business rank in Google for the searches your buyers actually type. Technical audits, content, and on-page work that drives organic leads.
+- Web Development Services: Fast, SEO-Ready Sites: https://nisarth.github.io/services/web-development.html
+  Web development services for fast, accessible, SEO-ready websites that load in under a second. Clean static builds, strong Core Web Vitals, and structured data search engines can read.
+
+## Articles
+
+Written from client work. Grouped by topic, newest first within each group.
+
+### AEO Articles - Answer Engine Optimization Guides
+https://nisarth.github.io/blog/category/aeo.html
+
+- AEO vs SEO: Understanding the Difference and Why You Need Both: https://nisarth.github.io/blog/aeo-vs-seo.html
+- FAQ Schema and People Also Ask: Owning the Answer Layer: https://nisarth.github.io/blog/faq-schema-optimization.html
+- How to Win Featured Snippets: A Data-Driven Approach: https://nisarth.github.io/blog/featured-snippets-guide.html
+- Voice Search Optimization: Preparing Content for Spoken Queries: https://nisarth.github.io/blog/voice-search-optimization.html
+- Zero-Click Searches: How to Win When Users Never Click: https://nisarth.github.io/blog/zero-click-search-strategy.html
+- What Is AEO (Answer Engine Optimization) and Why It Matters in 2026: https://nisarth.github.io/blog/what-is-aeo.html
+
+### AI Automation Articles - Workflows, Tools & Guides
+https://nisarth.github.io/blog/category/ai-automation.html
+
+- AI Email Marketing Automation: Sequences That Convert: https://nisarth.github.io/blog/ai-email-marketing-automation.html
+- AI-Powered Lead Generation: Automating Your Sales Pipeline: https://nisarth.github.io/blog/ai-lead-generation-automation.html
+- Building an AI Content Workflow: From Ideation to Publishing: https://nisarth.github.io/blog/ai-content-workflow.html
+- CRM Automation: Workflows That Save Hours Every Week: https://nisarth.github.io/blog/crm-automation-workflows.html
+- How to Set Up an AI Chatbot for Your Business Website: https://nisarth.github.io/blog/ai-chatbot-setup-guide.html
+- Make.com Automation: Visual Workflows for Non-Technical Teams: https://nisarth.github.io/blog/make-com-automation-guide.html
+- n8n vs Zapier: Which Automation Tool Is Right for Your Business: https://nisarth.github.io/blog/n8n-vs-zapier.html
+- n8n Automation: The Complete Guide for Business Workflows: https://nisarth.github.io/blog/n8n-automation-guide.html
+
+### Digital Marketing Articles - Ads, Content & Strategy
+https://nisarth.github.io/blog/category/digital-marketing.html
+
+- Content Marketing Strategy: Building a System That Compounds: https://nisarth.github.io/blog/content-marketing-strategy.html
+- Email Marketing Strategy: From List Building to Revenue: https://nisarth.github.io/blog/email-marketing-strategy.html
+- Google Ads Optimization: Reducing CPA While Increasing Conversions: https://nisarth.github.io/blog/google-ads-optimization.html
+- How to Allocate Your Digital Marketing Budget in 2026: https://nisarth.github.io/blog/digital-marketing-budget.html
+- Marketing Funnel Design: Moving Prospects from Awareness to Purchase: https://nisarth.github.io/blog/marketing-funnel-design.html
+- Social Media Marketing ROI: What Actually Works in 2026: https://nisarth.github.io/blog/social-media-roi.html
+
+### E-commerce & SaaS Articles - SEO, Conversions & Growth
+https://nisarth.github.io/blog/category/ecommerce-saas.html
+
+- E-commerce Conversion Optimization: Turning Browsers into Buyers: https://nisarth.github.io/blog/ecommerce-conversion-optimization.html
+- E-commerce SEO: Ranking Product Pages That Convert: https://nisarth.github.io/blog/ecommerce-seo-guide.html
+- Product Page Optimization: Elements That Drive Purchases: https://nisarth.github.io/blog/product-page-optimization.html
+- SaaS Lead Generation: Strategies That Scale Without Paid Ads: https://nisarth.github.io/blog/saas-lead-generation.html
+- SaaS SEO Strategy: Building Organic Growth for Software Companies: https://nisarth.github.io/blog/saas-seo-strategy.html
+
+### GEO Articles - Generative Engine Optimization Guides
+https://nisarth.github.io/blog/category/geo.html
+
+- Entity SEO and the Knowledge Graph: Building Your Digital Identity: https://nisarth.github.io/blog/entity-seo-knowledge-graph.html
+- GEO for Local Businesses: Getting AI to Recommend You: https://nisarth.github.io/blog/geo-for-local-business.html
+- Google AI Overviews: How to Get Your Content Featured: https://nisarth.github.io/blog/ai-overview-optimization.html
+- How to Get Your Business Mentioned by ChatGPT and Perplexity: https://nisarth.github.io/blog/get-mentioned-by-chatgpt.html
+- The Complete GEO Strategy Guide for AI-Powered Search: https://nisarth.github.io/blog/geo-strategy-guide.html
+- The llms.txt Standard: Making Your Site AI-Readable: https://nisarth.github.io/blog/llms-txt-ai-optimization.html
+- What Is GEO and Why Businesses Cannot Ignore It in 2026: https://nisarth.github.io/blog/what-is-geo.html
+
+### Local Business Articles - Local SEO & Digital Presence
+https://nisarth.github.io/blog/category/local-business.html
+
+- Building a Digital Presence for Local Businesses: https://nisarth.github.io/blog/local-business-digital-presence.html
+- Local Citation Building: Where to List Your Business and Why: https://nisarth.github.io/blog/local-citation-building.html
+- Local SEO: The Complete Guide to Ranking in Your Area: https://nisarth.github.io/blog/local-seo-guide.html
+- Online Review Management: Turning Reviews into Revenue: https://nisarth.github.io/blog/review-management-strategy.html
+- Google My Business Optimization: A Practical Guide: https://nisarth.github.io/blog/google-my-business-optimization.html
+
+### SEO Articles - Tips, Guides & Strategies
+https://nisarth.github.io/blog/category/seo.html
+
+- 15 SEO Mistakes Businesses Make and How to Fix Each One: https://nisarth.github.io/blog/seo-mistakes-businesses-make.html
+- Core Web Vitals Explained: What They Are and How to Fix Them: https://nisarth.github.io/blog/core-web-vitals-guide.html
+- Image SEO: How to Optimize Visual Content for Search Engines: https://nisarth.github.io/blog/image-seo-optimization.html
+- Link Building Strategies That Actually Work in 2026: https://nisarth.github.io/blog/link-building-strategies.html
+- Measuring SEO ROI: Metrics That Actually Matter to Your Business: https://nisarth.github.io/blog/seo-roi-measurement.html
+- Search Intent: How to Match Content to What Users Actually Want: https://nisarth.github.io/blog/search-intent-optimization.html
+- SEO for Startups: How to Build Organic Growth from Zero: https://nisarth.github.io/blog/seo-for-startups.html
+- Technical SEO Audit Checklist 2026: https://nisarth.github.io/blog/technical-seo-audit-checklist-2026.html
+- On-Page SEO: The Definitive Guide to Optimizing Every Element: https://nisarth.github.io/blog/on-page-seo-guide.html
+- Keyword Research in 2026: Finding Opportunities Your Competitors Miss: https://nisarth.github.io/blog/keyword-research-strategy.html
+- Content Silos and Topic Clusters: Structuring Your Site for Rankings: https://nisarth.github.io/blog/content-silo-structure.html
+- Schema Markup: The Complete Guide to Structured Data for SEO: https://nisarth.github.io/blog/schema-markup-guide.html
+
+### Web Development Articles - Performance, Design & Accessibility
+https://nisarth.github.io/blog/category/web-development.html
+
+- Landing Page Design for Conversions: Principles That Work: https://nisarth.github.io/blog/landing-page-conversion.html
+- Mobile-First Web Design: Building for the 70% on Phones: https://nisarth.github.io/blog/mobile-first-web-design.html
+- Progressive Web Apps in 2026: When and Why They Make Sense: https://nisarth.github.io/blog/progressive-web-apps-guide.html
+- Web Accessibility: Building Sites That Work for Everyone: https://nisarth.github.io/blog/web-accessibility-guide.html
+- Why Static Sites Win: Performance, Security, and SEO Benefits: https://nisarth.github.io/blog/static-site-performance.html
+- Website Speed Optimization: A Guide to Sub-2-Second Load Times: https://nisarth.github.io/blog/website-speed-optimization.html

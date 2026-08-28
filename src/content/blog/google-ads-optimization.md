@@ -186,34 +186,7 @@ faqs:
 
 <p><strong>The <a href="/blog/seo-roi-measurement.html">ROI measurement</a> framework.</strong> Ultimately, budget decisions should be driven by return on investment, not arbitrary spending targets. Calculate the lifetime value of a customer acquired through Google Ads, subtract the cost of acquisition, and that gives you the profit per acquisition. As long as this number is positive and the margin is acceptable for your business, increasing spend is justified. I build custom reporting dashboards that show not just cost per lead, but cost per qualified lead, cost per sale, and return on ad spend, so clients can make budget decisions based on actual business impact rather than advertising metrics alone.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>How much should I spend on Google Ads to see meaningful results?</h3>
-<p>The minimum budget depends entirely on your industry and target keywords. In highly competitive sectors like legal services or insurance, you may need three thousand to five thousand dollars per month just to gather enough data for meaningful optimization. For local service businesses or niche B2B markets, five hundred to one thousand dollars monthly can be sufficient to generate leads and test what works. The key is spending enough to collect statistically significant data within a reasonable timeframe. If your budget only generates ten clicks per day, it will take weeks to determine whether a keyword or ad variation is performing well. I recommend starting with a budget that allows at least fifty to one hundred clicks per day across your campaigns, running for at least two weeks before making major optimization decisions.</p>
-</div>
-
-<div class="faq-item">
-<h3>What is a good Quality Score and how do I improve it?</h3>
-<p>A Quality Score of seven or above is considered good, and scores of eight to ten are excellent. Quality Score is rated on a scale of one to ten for each keyword and is determined by three factors: expected click-through rate, ad relevance, and landing page experience. To improve it, ensure your ad copy directly addresses the keyword's search intent and includes the keyword naturally in headlines and descriptions. Make sure your landing page content closely matches both the keyword and the ad copy. Improve landing page load speed, mobile responsiveness, and user experience. Higher Quality Scores directly reduce your cost per click, sometimes by thirty to fifty percent compared to competitors with lower scores bidding on the same keywords.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I use broad match or exact match keywords in Google Ads?</h3>
-<p>In 2026, I recommend starting with phrase match for most campaigns and using exact match for your highest-value, highest-intent keywords. Broad match has become more intelligent with Google's AI matching, but it still tends to trigger for loosely related searches that waste budget, especially in smaller accounts without extensive negative keyword lists. Exact match gives you the tightest control over which searches trigger your ads, making it ideal for keywords where you know the exact phrases your customers use. Phrase match provides a good middle ground. Avoid pure broad match unless you are running a discovery campaign with a dedicated budget and are prepared to add negative keywords aggressively based on the search terms report.</p>
-</div>
-
-<div class="faq-item">
-<h3>How long does it take for Google Ads optimization to show results?</h3>
-<p>Expect a meaningful optimization cycle to take six to twelve weeks. The first two weeks are about gathering data: impressions, clicks, search terms, conversion patterns. Weeks three and four involve the first round of optimizations: pausing underperforming keywords, adding negative keywords, testing new ad copy, and adjusting bids. Weeks five through eight are when you start seeing the impact of those changes and can make more refined adjustments. By weeks nine through twelve, your campaigns should be noticeably more efficient than when you started. Automated bidding strategies like Target CPA need at least thirty conversions per month to work effectively, so if your conversion volume is low, manual bidding may produce faster results initially. The biggest mistake I see is making dramatic changes too quickly.</p>
-</div>
-
-<div class="faq-item">
-<h3>Is Google Ads worth it for small businesses with limited budgets?</h3>
-<p>Yes, but only if you approach it strategically. Small businesses cannot afford to waste budget on broad campaigns competing with large advertisers. The key is extreme focus: target a small number of high-intent keywords that indicate someone is ready to buy or enquire, write highly specific ads that pre-qualify clicks, and send traffic to dedicated landing pages optimized for conversion. A local accountant spending five hundred dollars per month on ten carefully chosen keywords with strong landing pages will typically outperform the same accountant spending two thousand dollars on fifty loosely targeted keywords sending traffic to their homepage. I have seen small businesses achieve CPAs under ten dollars for qualified leads by focusing on long-tail, high-intent keywords that larger competitors overlook.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

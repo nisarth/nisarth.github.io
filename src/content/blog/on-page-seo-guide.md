@@ -180,34 +180,7 @@ faqs:
 
 <p><strong>Schema markup integration.</strong> Semantic HTML works best when paired with structured data. Your <code>&lt;article&gt;</code> element maps to <code>Article</code> schema. Your <code>&lt;nav&gt;</code> with breadcrumbs maps to <code>BreadcrumbList</code> schema. FAQ sections use <code>FAQPage</code> schema. This combination of semantic HTML and structured data gives search engines the clearest possible picture of your page content and structure. I covered structured data implementation in detail in my <a href="/blog/technical-seo-audit-checklist-2026.html">technical SEO audit checklist</a>.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is on-page SEO and why does it matter?</h3>
-<p>On-page SEO is the practice of optimizing individual web pages to rank higher in search engines and attract more relevant traffic. It covers everything you can control directly on the page itself: title tags, meta descriptions, headings, content quality, images, internal links, URL structure, and structured data. It matters because even the best backlink profile cannot compensate for poorly optimized pages. On-page SEO ensures search engines understand what your page is about and that users find what they are looking for when they click through from search results. In my experience working with clients, fixing on-page issues is often the fastest path to ranking improvements because the changes take effect as soon as Google recrawls the page.</p>
-</div>
-
-<div class="faq-item">
-<h3>How long should a title tag be for SEO?</h3>
-<p>Google displays roughly 50 to 60 characters of a title tag in search results on desktop, though this is measured in pixels rather than characters. I aim for 55 characters or fewer to avoid truncation. The most important words, including your primary keyword, should appear within the first 40 characters so they are always visible regardless of the display width. Titles that are too long get cut off with an ellipsis, which can reduce click-through rates. If you must choose between a shorter title with the keyword up front and a longer, more descriptive title, go with the shorter one: truncated titles look unprofessional in search results.</p>
-</div>
-
-<div class="faq-item">
-<h3>How many times should I use a keyword on a page?</h3>
-<p>There is no magic keyword density number. The old advice of targeting two to three percent keyword density is outdated and can lead to over-optimization penalties. Instead, use your primary keyword naturally in the title tag, H1 heading, first 100 words of body content, and one or two subheadings. Then use semantic variations and related terms throughout the body. If you are writing comprehensive content that genuinely covers the topic, the right keyword frequency happens naturally. A 2500-word article on on-page SEO might use the exact phrase "on-page SEO" ten to fifteen times, but it would also use dozens of related terms like "title tags," "meta descriptions," and "content optimization" that reinforce the topic without repetition.</p>
-</div>
-
-<div class="faq-item">
-<h3>Do meta descriptions affect search rankings directly?</h3>
-<p>Meta descriptions are not a direct ranking factor. Google has confirmed this multiple times. However, they heavily influence click-through rate, which indirectly affects your rankings over time. A compelling meta description that matches search intent can significantly increase the percentage of people who click your result versus a competitor's. Google also bolds keywords in meta descriptions that match the search query, making your result more visually prominent. I have seen pages increase their CTR by twenty to thirty percent after rewriting weak meta descriptions, and the improved engagement often leads to gradual ranking improvements as well.</p>
-</div>
-
-<div class="faq-item">
-<h3>What is the difference between on-page SEO and technical SEO?</h3>
-<p>On-page SEO deals with optimizing the visible content and HTML source code of individual pages: titles, headings, content, images, and internal links. Technical SEO focuses on the infrastructure and backend of your website: crawlability, indexation, site speed, security, structured data, and server configuration. Both are essential. Technical SEO ensures search engines can find and process your pages. On-page SEO ensures those pages are relevant and valuable for the queries you want to rank for. I always recommend running a <a href="/blog/technical-seo-audit-checklist-2026.html">technical SEO audit</a> first to fix any infrastructure issues, then moving to on-page optimization once the foundation is solid.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

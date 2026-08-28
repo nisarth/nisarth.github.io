@@ -6,6 +6,7 @@ import { getCollection } from 'astro:content';
 import blogCategories from '../data/blog-categories.json';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { services } from '../data/services';
+import { lastUpdated } from '../lib/last-updated';
 
 const title = 'Services: SEO, AEO, AI Automation, and Web Development';
 const description =
@@ -83,6 +84,7 @@ const faqs = [
     a: 'I work with startups, local businesses, and growing brands, both in India and internationally. Most projects are remote.',
   },
 ];
+const updated = lastUpdated('src/pages/services.astro');
 ---
 
 <BaseLayout
@@ -151,7 +153,7 @@ const faqs = [
         }
       </ul>
 
-      <p class="updated">Last updated: June 2026</p>
+      {updated && <p class="updated">Last updated: {updated}</p>}
       <a href="/contact.html" class="btn btn-primary">Get a quote</a>
     </div>
   </section>

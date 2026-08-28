@@ -154,34 +154,7 @@ faqs:
 
 <p><strong>Security practices.</strong> Use n8n's built-in credential management rather than hardcoding API keys in workflows. Enable basic authentication or SSO for the n8n web interface. If you are self-hosting, run n8n behind a reverse proxy with HTTPS. Limit network access to the n8n interface to your IP range or VPN. Review and rotate API credentials regularly. For webhooks that receive external data, validate the incoming payload and implement webhook signatures where the sending service supports them.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>Is n8n really free to use?</h3>
-<p>n8n offers a fair-code license which means the source code is visible and you can self-host it for free with no execution limits. The community edition covers most business needs including all integrations, the visual editor, and webhook support. n8n Cloud is a paid hosted option starting around twenty euros per month that handles infrastructure for you. For most small to medium businesses, self-hosting on a basic VPS costing five to ten dollars per month gives you unlimited workflows and executions. The only features reserved for the Enterprise plan are things like SSO, role-based access control, and audit logging.</p>
-</div>
-
-<div class="faq-item">
-<h3>Do I need coding skills to use n8n?</h3>
-<p>You do not need coding skills to build most workflows in n8n. The visual editor lets you connect nodes by dragging and dropping, and most configuration is done through form fields and dropdown menus. However, having basic knowledge of JSON, APIs, and data structures helps when you need to transform data between nodes or debug issues. For advanced use cases like custom scoring algorithms, complex date calculations, or parsing nested API responses, basic JavaScript knowledge is useful. I would say eighty percent of the workflows I build use zero custom code, and the remaining twenty percent need just a few lines in a Code node.</p>
-</div>
-
-<div class="faq-item">
-<h3>How does n8n compare to Zapier for business automation?</h3>
-<p>n8n offers more flexibility and significantly lower cost at scale compared to Zapier. With self-hosting you get unlimited executions while Zapier charges per task, and those costs add up quickly for data-heavy workflows. n8n supports complex branching logic, loops, sub-workflows, and custom code nodes natively. Zapier has a larger library of pre-built integrations and is genuinely easier to set up for simple two-step automations like "when X happens, do Y." For businesses running more than a handful of automations or needing advanced data transformation, n8n is typically the better long-term choice. I wrote a <a href="/blog/n8n-vs-zapier.html">detailed comparison of n8n vs Zapier</a> if you want the full breakdown.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can n8n handle enterprise-level automation workloads?</h3>
-<p>Yes, n8n can handle enterprise workloads when properly configured. For high-volume environments you can run n8n in queue mode with multiple workers using Redis as a message broker and PostgreSQL as the database backend. This architecture distributes execution across machines and handles thousands of concurrent workflows. I have seen installations processing over ten thousand executions per day without issues. Enterprise features like role-based access control, audit logging, SSO integration, and dedicated support are available through the n8n Enterprise plan. The self-hosted nature also means you can scale the underlying infrastructure independently: adding more workers or upgrading your database as volume grows.</p>
-</div>
-
-<div class="faq-item">
-<h3>What is the best way to learn n8n for someone just starting out?</h3>
-<p>Start by installing n8n locally using Docker or npm: it takes about five minutes. Build a simple workflow first, like sending yourself an email notification when a row is added to a Google Sheet. The official n8n documentation has excellent step-by-step tutorials that walk you through basic concepts. Then move to a real business problem you have, like automating lead notifications or syncing contacts between your CRM and email tool. Learning by solving an actual problem you care about is far more effective than following abstract tutorials. The n8n community forum is a great resource for finding workflow templates and getting help. I also recommend joining the n8n Discord community where people share workflow ideas and troubleshoot together.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>
