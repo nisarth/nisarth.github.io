@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+import categories from '../../../data/blog-categories.json';
+import { breadcrumb, blogIndex } from '../../../schema';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return categories.map((c) => ({
+    params: { category: c.slug },
+    props: {
+      meta: c,
+      posts: posts
+        .filter((p) => p.data.categorySlug === c.slug)
+        .sort((a, b) => {
+          const diff = b.data.published.getTime() - a.data.published.getTime();
+          return diff !== 0 ? diff : a.data.title.localeCompare(b.data.title);
+        }),
+    },
+  }));
+}
+
+const { meta, posts } = Astro.props;
+const path = `/blog/category/${meta.slug}.html`;
+const others = categories.filter((c) => c.slug !== meta.slug);
+---
+
+<BaseLayout
+  title={`${meta.title} | Nisarth Patel`}
+  description={meta.description}
+  path={path}
+  jsonLd={[
+    breadcrumb([
+      { name: 'Home', path: '/' },
+      { name: 'Blog', path: '/blog.html' },
+      { name: meta.heading, path },
+    ]),
+    blogIndex(posts.map((p) => ({ name: p.data.title, url: `/blog/${p.id}.html` }))),
+  ]}
+>
+  <section class="section">
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Blog', href: '/blog.html' },
+          { name: meta.heading },
+        ]}
+      />
+      <p class="eyebrow">Category</p>
+      <h1>{meta.heading}</h1>
+      <p class="lead cat-lead">{meta.description}</p>
+
+      <div class="post-grid">
+        {posts.map((p) => <PostCard post={p} />)}
+      </div>
+
+      <h2 class="other-heading">Other topics</h2>
+      <ul class="link-chips">
+        {
+          others.map((c) => (
+            <li>
+              <a href={`/blog/category/${c.slug}.html`}>
+                {c.heading.replace(/ Articles$/, '')}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin: 0.6rem 0 1rem;
+  }
+  .cat-lead {
+    max-width: 62ch;
+  }
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.3rem;
+    margin-top: 2.2rem;
+  }
+  .other-heading {
+    font-size: 1.3rem;
+    margin: 3rem 0 1rem;
+  }
+  .link-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .link-chips a {
+    display: inline-block;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-elev);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .link-chips a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+</style>

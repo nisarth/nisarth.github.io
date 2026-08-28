@@ -1,0 +1,50 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const bySlug = new Map(posts.map((p) => [p.id, p]));
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      // Resolve the related slugs to real entries here, so the layout does not
+      // need collection access.
+      related: post.data.related
+        .map((slug) => bySlug.get(slug))
+        .filter((p) => p !== undefined)
+        .map((p) => ({
+          slug: p.id,
+          title: p.data.title,
+          category: p.data.category,
+        })),
+    },
+  }));
+}
+
+const { post, related } = Astro.props;
+const d = post.data;
+const { Content } = await render(post);
+const iso = (date: Date) => date.toISOString().slice(0, 10);
+---
+
+<BlogLayout
+  title={d.title}
+  description={d.description}
+  heading={d.heading}
+  category={d.category}
+  categorySlug={d.categorySlug}
+  slug={post.id}
+  published={iso(d.published)}
+  modified={iso(d.modified)}
+  displayDate={d.displayDate}
+  readingTime={d.readingTime}
+  toc={d.toc}
+  faqs={d.faqs}
+  speakable={d.speakable}
+  related={related}
+>
+  <Content />
+</BlogLayout>

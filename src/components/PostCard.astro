@@ -1,0 +1,74 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+const { post } = Astro.props;
+const d = post.data;
+// Pre-computed haystack so the index page's search filter needs no extra work
+// at runtime.
+const search = [d.title, d.excerpt, d.category].join(' ').toLowerCase();
+---
+
+<article class="card post-card" data-search={search}>
+  <span class="post-thumb" aria-hidden="true">{d.emoji}</span>
+  <p class="post-card-meta">
+    <span class="tag">{d.category}</span>
+    <time datetime={d.published.toISOString().slice(0, 10)}>{d.displayDate}</time>
+    <span>{d.readingTime}</span>
+  </p>
+  <h2 class="post-card-title">
+    <a href={`/blog/${post.id}.html`}>{d.title}</a>
+  </h2>
+  <p class="muted post-card-excerpt">{d.excerpt}</p>
+</article>
+
+<style>
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .post-card[hidden] {
+    display: none;
+  }
+  .post-thumb {
+    font-size: 1.9rem;
+    line-height: 1;
+  }
+  .post-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .post-card-title {
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+  .post-card-title a::after {
+    /* Makes the whole card clickable without nesting the excerpt in the link. */
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .post-card {
+    position: relative;
+  }
+  .post-card:hover .post-card-title a {
+    color: var(--accent);
+  }
+  .post-card-excerpt {
+    font-size: 0.94rem;
+  }
+</style>

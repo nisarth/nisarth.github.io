@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "aeo",
+    "title": "AEO Articles - Answer Engine Optimization Guides",
+    "description": "Answer Engine Optimization articles covering featured snippets, FAQ schema, voice search, zero-click strategies, and AEO vs SEO by Nisarth Patel.",
+    "heading": "AEO Articles"
+  },
+  {
+    "slug": "ai-automation",
+    "title": "AI Automation Articles - Workflows, Tools & Guides",
+    "description": "AI automation articles covering n8n, Make.com, Zapier, chatbot setup, lead generation, CRM workflows, content pipelines, and email marketing automation.",
+    "heading": "AI Automation Articles"
+  },
+  {
+    "slug": "digital-marketing",
+    "title": "Digital Marketing Articles - Ads, Content & Strategy",
+    "description": "Digital marketing articles covering Google Ads, content marketing, social media ROI, email strategy, funnel design, and budget planning by Nisarth Patel.",
+    "heading": "Digital Marketing Articles"
+  },
+  {
+    "slug": "ecommerce-saas",
+    "title": "E-commerce & SaaS Articles - SEO, Conversions & Growth",
+    "description": "E-commerce and SaaS articles covering product page optimization, conversion rate optimization, SaaS SEO, lead generation, and growth strategies.",
+    "heading": "E-commerce & SaaS Articles"
+  },
+  {
+    "slug": "geo",
+    "title": "GEO Articles - Generative Engine Optimization Guides",
+    "description": "Generative Engine Optimization articles on getting mentioned by ChatGPT, AI Overview optimization, entity SEO, llms.txt, and GEO strategy by Nisarth Patel.",
+    "heading": "GEO Articles"
+  },
+  {
+    "slug": "local-business",
+    "title": "Local Business Articles - Local SEO & Digital Presence",
+    "description": "Local business articles covering Google Business Profile optimization, local SEO, citation building, review management, and digital presence strategy.",
+    "heading": "Local Business Articles"
+  },
+  {
+    "slug": "seo",
+    "title": "SEO Articles - Tips, Guides & Strategies",
+    "description": "In-depth SEO articles covering technical audits, on-page optimization, keyword research, link building, Core Web Vitals, and more by Nisarth Patel.",
+    "heading": "SEO Articles"
+  },
+  {
+    "slug": "web-development",
+    "title": "Web Development Articles - Performance, Design & Accessibility",
+    "description": "Web development articles on site speed optimization, mobile-first design, landing page conversion, accessibility, static sites, and progressive web apps.",
+    "heading": "Web Development Articles"
+  }
+]

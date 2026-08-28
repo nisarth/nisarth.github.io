@@ -13,7 +13,9 @@
     "gen:sitemap": "node tools/gen-sitemap.mjs",
     "gen:icons": "node tools/gen-icons.mjs",
     "gen:og": "node tools/gen-og.mjs",
-    "verify": "node tools/verify/jsonld.mjs && node tools/verify/nav-a11y.mjs && node tools/verify/contact-form.mjs"
+    "verify": "node tools/verify/jsonld.mjs && node tools/verify/nav-a11y.mjs && node tools/verify/contact-form.mjs",
+    "verify:blog": "node tools/verify/blog-parity.mjs --allow-years-correction",
+    "migrate:blog": "node tools/migrate-blog.mjs"
   },
   "dependencies": {
     "astro": "^6.4.6"
