@@ -4,8 +4,11 @@ import Faq from '../components/Faq.astro';
 import { Picture } from 'astro:assets';
 import portrait from '../assets/nisarth.jpg';
 import { SITE } from '../consts';
-import { person, breadcrumb, faqPage } from '../schema';
+import { person, breadcrumb, faqPage, personCareer } from '../schema';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { lastUpdated } from '../lib/last-updated';
+import Experience from '../components/Experience.astro';
+import { publishedRoles, publishedEducation, publishedCredentials } from '../data/experience';
 
 const title = 'About Nisarth Patel: Freelance Digital Growth Specialist';
 const description =
@@ -32,13 +35,19 @@ const faqs = [
     a: 'I have 2.5 years of hands-on experience in SEO, AI automation, and web development for startups, local businesses, and growing brands.',
   },
 ];
+const updated = lastUpdated('about');
+const career = personCareer({
+  roles: publishedRoles,
+  education: publishedEducation,
+  credentials: publishedCredentials,
+});
 ---
 
 <BaseLayout
   title={title}
   description={description}
   path="/about.html"
-  jsonLd={[person(), breadcrumb([{ name: 'Home', path: '/' }, { name: 'About', path: '/about.html' }]), faqPage(faqs)]}
+  jsonLd={[person(career), breadcrumb([{ name: 'Home', path: '/' }, { name: 'About', path: '/about.html' }]), faqPage(faqs)]}
 >
   <section class="section">
     <div class="container narrow">
@@ -92,10 +101,12 @@ const faqs = [
         }
       </div>
 
-      <p class="updated">Last updated: June 2026</p>
+      {updated && <p class="updated">Last updated: {updated}</p>}
       <a href="/contact.html" class="btn btn-primary">Work with me</a>
     </div>
   </section>
+
+  <Experience />
 
   <Faq items={faqs} />
 </BaseLayout>

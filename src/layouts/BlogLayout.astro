@@ -110,7 +110,15 @@ const shareUrl = new URL(path, SITE.url).href;
     </div>
   </article>
 
-  {faqs.length > 0 && <Faq items={faqs} heading="Frequently asked questions" />}
+  {
+    faqs.length > 0 && (
+      <Faq
+        items={faqs}
+        heading="Frequently asked questions"
+        headingId="frequently-asked-questions"
+      />
+    )
+  }
 
   <section class="section-sm" aria-labelledby="author-heading">
     <div class="container narrow">
@@ -311,12 +319,6 @@ const shareUrl = new URL(path, SITE.url).href;
     font-size: 1.3rem;
     line-height: 1.3;
   }
-  /* The migrated FAQ block is rendered again by the Faq component below, so
-     hide the inline copy rather than showing the same questions twice. */
-  .prose :global(.faq-section) {
-    display: none;
-  }
-
   .author {
     display: flex;
     gap: 1.3rem;

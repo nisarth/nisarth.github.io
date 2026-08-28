@@ -24,7 +24,9 @@ export default defineConfig({
         "default-src 'self'",
         // data: covers the inline SVG icons; GA serves its pixel from
         // google-analytics.com once a visitor accepts.
-        "img-src 'self' data: https://www.google-analytics.com",
+        // GA sends its tracking beacon as an image from googletagmanager.com
+        // as well as google-analytics.com; omitting either one blocks it.
+        "img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com",
         "font-src 'self'",
         // GA beacons. region1 is the EU endpoint gtag falls back to.
         "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com",

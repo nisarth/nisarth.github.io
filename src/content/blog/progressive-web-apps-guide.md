@@ -220,34 +220,7 @@ faqs:
 
 <p>The trajectory is clear: the web platform is becoming more capable every year, and PWAs are the primary beneficiaries of these advances. The question is no longer whether PWAs are a viable alternative to native apps: it is whether your specific use case falls within the expanding capabilities of the web platform.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is a Progressive Web App and how does it differ from a regular website?</h3>
-<p>A Progressive Web App is a website that uses modern web technologies (service workers, a web app manifest, and HTTPS) to deliver an app-like experience directly through the browser. Unlike a regular website, a PWA can work offline, send push notifications, be installed on a user's home screen without an app store, and load almost instantly on repeat visits thanks to intelligent caching. The key difference is reliability: a regular website fails when there is no network connection, while a well-built PWA gracefully handles offline scenarios and poor connectivity. PWAs also have access to device features like cameras, geolocation, and background sync that were previously exclusive to native apps.</p>
-</div>
-
-<div class="faq-item">
-<h3>Do Progressive Web Apps work on iOS and Safari?</h3>
-<p>Yes, PWAs work on iOS and Safari, though with some limitations compared to Android and Chrome. Apple has gradually improved PWA support since first adding service workers to Safari in 2018. In 2026, iOS supports core PWA features including offline caching, home screen installation, and standalone display mode. However, iOS still restricts push notifications for PWAs in some contexts, limits background sync capabilities, and caps service worker cache storage. The installation experience is also less discoverable: users must manually use the Share menu and tap Add to Home Screen rather than seeing an automatic install prompt. Despite these limitations, PWAs on iOS still provide a significantly better experience than standard mobile websites.</p>
-</div>
-
-<div class="faq-item">
-<h3>When should I build a PWA instead of a native mobile app?</h3>
-<p>Choose a PWA when your primary goals are broad reach, lower development costs, and fast iteration. PWAs are ideal for content-heavy applications, e-commerce sites, news platforms, and business tools where discoverability through search engines matters. Choose native when you need deep hardware integration like Bluetooth, NFC, or advanced camera controls, when your app requires heavy graphics processing like games, or when your audience expects an app store presence. Budget is a practical factor: a PWA costs roughly one-third to one-half of building separate iOS and Android native apps, and you maintain a single codebase. For most small to medium businesses, a PWA covers ninety percent of what a native app would provide at a fraction of the cost.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do service workers affect website performance and SEO?</h3>
-<p>Service workers improve website performance by intercepting network requests and serving cached resources, which dramatically reduces load times on repeat visits. This directly benefits SEO because faster page loads improve Core Web Vitals scores, particularly Largest Contentful Paint and Interaction to Next Paint. A well-configured service worker using a cache-first strategy can make repeat page loads nearly instant, which reduces bounce rates and increases engagement. Search engines can still crawl and index PWAs normally because Googlebot processes the initial server response before service workers activate. The key is ensuring your initial HTML response contains all critical content and does not rely on the service worker for first-load rendering.</p>
-</div>
-
-<div class="faq-item">
-<h3>How much does it cost to build a Progressive Web App?</h3>
-<p>The cost varies enormously depending on complexity. Converting an existing responsive website into a basic PWA (adding a service worker, manifest file, and offline page) can take as little as a few hours and cost between five hundred and two thousand dollars if you hire a developer. A full-featured PWA built from scratch with offline data sync, push notifications, background updates, and complex caching strategies typically ranges from five thousand to twenty-five thousand dollars. Enterprise-grade PWAs with custom APIs and extensive functionality can exceed fifty thousand dollars. The long-term savings are significant though: you maintain one codebase instead of three, updates deploy instantly without app store review, and you avoid the thirty percent commission that Apple and Google charge on in-app purchases.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

@@ -140,34 +140,7 @@ faqs:
 
 <p><strong>Building for multi-surface visibility.</strong> Your keyword strategy in 2026 needs to account for visibility across traditional Google search, AI Overviews, Perplexity, ChatGPT search, and voice assistants. The content that performs best across all these surfaces is well-structured, factual, comprehensive, and clearly attributed to a credible author. This aligns naturally with good SEO practice, but it reinforces the importance of creating genuinely valuable content rather than optimizing thin pages for specific keyword variations.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>How long does keyword research take for a new website?</h3>
-<p>For a new website, initial keyword research typically takes one to two full working days to do properly. This includes seed keyword brainstorming, competitor analysis, search volume and difficulty assessment, intent mapping, and keyword clustering. However, keyword research is never truly done. I revisit and expand keyword lists monthly using Google Search Console data to find queries the site is beginning to rank for, and quarterly with a deeper dive into competitor gaps and emerging topics. The initial research sets the foundation, but the ongoing refinement based on real performance data is what keeps your strategy effective and ahead of competitors.</p>
-</div>
-
-<div class="faq-item">
-<h3>What is the best free keyword research tool?</h3>
-<p>Google Search Console is the best free keyword research tool because it shows you the actual queries people use to find your site, along with impressions, clicks, and average position. For new sites without existing data, Google Keyword Planner provides search volume estimates, though the ranges are broad unless you are running ads. Google Trends is excellent for comparing keyword popularity over time and identifying seasonal patterns. AnswerThePublic generates question-based keyword ideas from autocomplete data. Together, these free tools cover the fundamentals of keyword research without requiring a paid subscription. I built my initial keyword research workflow entirely on free tools before investing in Ahrefs.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I target high-volume or low-volume keywords?</h3>
-<p>The answer depends on your site's authority and competitive position. New and smaller sites should focus on low-volume, low-competition long-tail keywords where they can realistically rank on page one. These keywords individually drive modest traffic, but collectively they add up significantly and convert at higher rates because the search intent is more specific. As your site builds authority through consistent content and backlinks, gradually target higher-volume keywords. Even established sites should maintain a mix: high-volume keywords for brand visibility and traffic, low-volume long-tail keywords for conversions and topical depth. For guidance on building authority as a new site, see my article on <a href="/blog/seo-for-startups.html">SEO for startups</a>.</p>
-</div>
-
-<div class="faq-item">
-<h3>How many keywords should I target per page?</h3>
-<p>Each page should target one primary keyword and two to five closely related secondary keywords that share the same search intent. Trying to target too many unrelated keywords on a single page dilutes its focus and makes it less likely to rank well for any of them. If your keyword research reveals groups of keywords with different intents, those groups need separate pages. For example, "keyword research tools" and "how to do keyword research" are related but have different intents: one is looking for tool recommendations and the other wants a process guide. These should be separate pages, each with its own focused keyword cluster.</p>
-</div>
-
-<div class="faq-item">
-<h3>Is keyword research still relevant with AI search?</h3>
-<p>Absolutely. AI search tools like Google AI Overviews, ChatGPT, and Perplexity still rely on web content to generate their responses. Understanding what people search for and why tells you what content to create, regardless of whether that traffic comes from traditional search results or AI citations. What has changed is that people use more conversational queries, and some informational queries are answered directly in AI Overviews. But the underlying need to understand search demand, competitive dynamics, and user intent remains essential. Keyword research just needs to evolve to include conversational queries and multi-surface visibility alongside traditional search volume analysis.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

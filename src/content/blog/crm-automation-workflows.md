@@ -176,34 +176,7 @@ faqs:
 
 <p>Total implementation timeline: six weeks for a comprehensive setup. Quick wins start appearing by the end of week two. Full system maturity typically takes three months as you refine rules based on real performance data.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What CRM workflows should I automate first?</h3>
-<p>Start with the workflows that consume the most manual time and have the highest impact on revenue. For most businesses, that means lead capture to CRM entry, new lead assignment and notification, and follow-up reminder sequences. These three automations alone typically save five to ten hours per week for a small sales team and ensure no leads slip through the cracks. Once these are running reliably, move to deal stage automation, reporting, and data enrichment. Prioritize based on where your team spends the most time on repetitive tasks that do not require human judgment.</p>
-</div>
-
-<div class="faq-item">
-<h3>How much time can CRM automation actually save?</h3>
-<p>Based on my client implementations, a typical sales team of three to five people saves eight to fifteen hours per week with comprehensive CRM automation. The biggest time savings come from eliminating manual data entry (three to five hours), automating follow-up scheduling and reminders (two to four hours), and automated reporting that replaces manual spreadsheet work (two to three hours). Over a month, that translates to thirty to sixty hours of recovered selling time. For a team where each representative's time is worth two thousand to five thousand rupees per hour, the financial impact is substantial and measurable.</p>
-</div>
-
-<div class="faq-item">
-<h3>Do I need a developer to set up CRM automation?</h3>
-<p>Not necessarily. Most modern CRMs like HubSpot, Pipedrive, and Zoho offer built-in visual workflow builders that non-technical users can configure. Basic automations like lead assignment, email sequences, and deal stage updates can be set up without coding. However, advanced automations that involve external integrations, custom AI processing, or complex multi-system workflows typically benefit from a developer or automation specialist. I often set up the initial automation architecture for clients, then train their team to manage and extend it independently going forward.</p>
-</div>
-
-<div class="faq-item">
-<h3>What is the best CRM for small business automation?</h3>
-<p>For small businesses with limited budgets, HubSpot Free CRM offers the best automation capabilities at zero cost, including contact management, deal tracking, and basic workflows. Zoho CRM is excellent value with more advanced automation on its paid plans starting around fourteen dollars per user per month. Pipedrive is the best choice for sales-focused teams who want intuitive pipeline management with solid automation. For businesses already using Google Workspace extensively, Copper CRM integrates natively and keeps everything within a familiar interface. My default recommendation is HubSpot Free to start.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I measure the ROI of CRM automation?</h3>
-<p>Measure CRM automation ROI across three dimensions. First, time savings: track hours saved per week on manual tasks and multiply by your team's hourly cost. Second, revenue impact: compare lead response times, follow-up consistency, and conversion rates before and after automation. Third, data quality: measure the completeness and accuracy of CRM records, which directly affects forecasting reliability. I recommend measuring baseline metrics for at least two weeks before implementing automation, then comparing against the same metrics after four to six weeks of automated operation. Most businesses see positive ROI within the first month of implementation.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

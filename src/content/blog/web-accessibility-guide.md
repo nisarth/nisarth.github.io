@@ -192,34 +192,7 @@ faqs:
 
 <p><strong>No focus management.</strong> Removed or invisible focus indicators, focus that gets lost after dynamic content changes, modals that do not trap focus: these are all common issues that make keyboard navigation impossible or frustrating. Implement visible focus indicators using <code>:focus-visible</code>, manage focus programmatically when content changes dynamically, and trap focus within modal dialogs.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is WCAG and which level should I aim for?</h3>
-<p>WCAG stands for Web Content Accessibility Guidelines, published by the W3C. It has three conformance levels: A (minimum), AA (recommended), and AAA (highest). Most organizations should aim for WCAG 2.2 Level AA, which is the standard referenced by most accessibility laws worldwide including the European Accessibility Act and ADA requirements in the United States. Level AA covers the most impactful accessibility requirements without being prohibitively difficult to implement. Level AAA is aspirational and includes stricter requirements like 7:1 color contrast ratios that may conflict with brand guidelines. I recommend targeting AA as the baseline and implementing AAA criteria where practical.</p>
-</div>
-
-<div class="faq-item">
-<h3>Does web accessibility affect SEO?</h3>
-<p>Yes, web accessibility and SEO overlap significantly. Semantic HTML helps both screen readers and search engine crawlers understand your content structure. Alt text on images serves screen reader users and gives search engines context about image content. Proper heading hierarchy aids both navigation for screen reader users and content understanding for search algorithms. Page speed improvements benefit both accessibility and Core Web Vitals scores. Good link text helps screen reader users understand link destinations and provides keyword-rich anchor text for SEO. In my experience, fixing accessibility issues on a website almost always improves its SEO performance as a beneficial side effect.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I test my website for accessibility?</h3>
-<p>I use a layered testing approach. Automated tools like axe DevTools, WAVE, and Lighthouse catch approximately 30 to 40 percent of accessibility issues: mainly technical violations like missing alt text, insufficient contrast, and incorrect ARIA usage. Manual testing covers the rest: navigate the entire site using only a keyboard, test with a screen reader like NVDA or VoiceOver, check color contrast with a tool like Color Contrast Analyser, and verify that all interactive elements are properly labeled. For comprehensive coverage, combine automated scans with manual keyboard testing, screen reader testing, and ideally user testing with people who have disabilities.</p>
-</div>
-
-<div class="faq-item">
-<h3>Are accessibility overlays and widgets effective?</h3>
-<p>No, accessibility overlay widgets are not an effective solution and I strongly advise against them. These tools add a JavaScript widget to your site that claims to fix accessibility issues automatically, but they cannot address fundamental structural problems like missing semantic HTML, incorrect heading hierarchy, or poor keyboard navigation. Many disability advocacy organizations have publicly opposed overlays because they often interfere with the assistive technologies users already rely on. Some overlays have even been the subject of accessibility lawsuits themselves. The only reliable path to accessibility is building it into your site's HTML, CSS, and JavaScript from the start.</p>
-</div>
-
-<div class="faq-item">
-<h3>How much does it cost to make a website accessible?</h3>
-<p>The cost varies enormously depending on the size and complexity of your site and how far it currently is from compliance. For a new website, building accessibility in from the start adds roughly 10 to 15 percent to development time: a modest investment that avoids expensive retrofitting later. For existing sites, a basic accessibility remediation of a small business website typically costs between 2,000 and 10,000 USD depending on the severity of issues. Large enterprise sites can cost significantly more. The most cost-effective approach is to integrate accessibility into your standard development workflow so that every new page and feature is built accessibly from day one, rather than treating it as a separate remediation project.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

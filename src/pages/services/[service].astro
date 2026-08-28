@@ -4,9 +4,9 @@ import Faq from '../../components/Faq.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getCollection } from 'astro:content';
 import { services, serviceBySlug } from '../../data/services';
-import { cities } from '../../data/cities';
 import { postsForService } from '../../data/topic-links';
 import { breadcrumb, faqPage, service as serviceSchema } from '../../schema';
+import { lastUpdated } from '../../lib/last-updated';
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { service: s.slug }, props: { record: s } }));
@@ -19,8 +19,7 @@ const guides = postsForService(await getCollection('blog'), record.slug);
 const related = record.related
   .map((slug) => serviceBySlug(slug))
   .filter(Boolean);
-// Link to this service's page in every city (the combo pages).
-const linkCities = cities;
+const updated = lastUpdated('service');
 ---
 
 <BaseLayout
@@ -95,19 +94,7 @@ const linkCities = cities;
         )
       }
 
-      <h2>{record.name} in your city</h2>
-      <p class="muted">I work remote-first with businesses across India and abroad.</p>
-      <ul class="link-chips">
-        {
-          linkCities.map((c) => (
-            <li>
-              <a href={`/services/${record.slug}/${c.slug}.html`}>{record.name} services in {c.name}</a>
-            </li>
-          ))
-        }
-      </ul>
-
-      <p class="updated">Last updated: June 2026</p>
+      {updated && <p class="updated">Last updated: {updated}</p>}
       <a href="/contact.html" class="btn btn-primary">Get a quote for {record.name}</a>
     </div>
   </article>

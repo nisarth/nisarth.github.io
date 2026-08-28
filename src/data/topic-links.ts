@@ -40,11 +40,3 @@ export function postsForService(posts: Post[], serviceSlug: string, limit = 6): 
     .sort(byNewest)
     .slice(0, limit);
 }
-
-/** Articles worth showing on a location page. Local search is the common thread. */
-export function postsForLocation(posts: Post[], limit = 4): Post[] {
-  return posts
-    .filter((p) => p.data.categorySlug === 'local-business')
-    .sort(byNewest)
-    .slice(0, limit);
-}

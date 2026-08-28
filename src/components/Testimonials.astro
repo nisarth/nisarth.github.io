@@ -1,0 +1,116 @@
+---
+// Renders client testimonials, or nothing at all.
+//
+// The empty case is deliberate: an empty section with a heading looks like
+// something failed, and a placeholder quote would be a fabricated endorsement.
+// Until a real testimonial exists, this component outputs nothing.
+import { publishedTestimonials } from '../data/testimonials';
+
+interface Props {
+  heading?: string;
+}
+const { heading = 'What clients say' } = Astro.props;
+const items = publishedTestimonials;
+---
+
+{
+  items.length > 0 && (
+    <section class="section-sm testimonials" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <p class="eyebrow">Testimonials</p>
+        <h2 id="testimonials-heading">{heading}</h2>
+        <div class="testimonial-grid">
+          {items.map((t) => (
+            <figure class="card testimonial reveal">
+              <blockquote>
+                <p>{t.quote}</p>
+              </blockquote>
+              <figcaption>
+                <span class="t-name">{t.name}</span>
+                <span class="t-role">
+                  {t.role}
+                  {t.company && (
+                    <>
+                      {', '}
+                      {t.companyUrl ? (
+                        <a href={t.companyUrl} rel="noopener noreferrer nofollow" target="_blank">
+                          {t.company}
+                        </a>
+                      ) : (
+                        t.company
+                      )}
+                    </>
+                  )}
+                </span>
+                {t.source && (
+                  <a class="t-source" href={t.source} rel="noopener noreferrer" target="_blank">
+                    See the original
+                  </a>
+                )}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .testimonials h2 {
+    margin: 0.5rem 0 1.6rem;
+  }
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.3rem;
+  }
+  .testimonial {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0;
+  }
+  .testimonial blockquote {
+    margin: 0;
+  }
+  .testimonial blockquote p {
+    color: var(--text);
+  }
+  /* Quote mark as decoration only, so screen readers do not announce it. */
+  .testimonial blockquote::before {
+    content: '\201C';
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .testimonial figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-top: auto;
+  }
+  .t-name {
+    font-weight: 600;
+  }
+  .t-role {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .t-role a {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .t-source {
+    margin-top: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--link);
+  }
+  .t-source:hover {
+    color: var(--accent);
+  }
+</style>

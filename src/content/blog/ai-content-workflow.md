@@ -184,34 +184,7 @@ faqs:
 
 <p>I run every piece through this framework before it goes live. The checks take approximately thirty to forty-five minutes for a long-form article. That investment consistently prevents quality issues that would cost far more to address after publication, in terms of both reputation and search performance. If you want to build your own AI content workflow or need help implementing one for your team, <a href="/contact.html">get in touch</a> and I will walk you through the process.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>Can AI fully replace human content writers?</h3>
-<p>No, and I do not think it should. AI is an extraordinarily powerful tool for accelerating content production, but it cannot replace human expertise, original thinking, and authentic voice. AI excels at research synthesis, structural organization, draft generation, and repetitive optimization tasks. Humans excel at original insight, strategic thinking, brand voice, emotional nuance, and quality judgement. The most effective content workflows use AI to handle the time-consuming mechanical aspects of content creation while freeing human creators to focus on the high-value strategic and creative work that AI cannot replicate. Think of AI as a highly capable research assistant and first-draft generator, not a replacement for human creative direction.</p>
-</div>
-
-<div class="faq-item">
-<h3>Which AI tools are best for content creation in 2026?</h3>
-<p>The best AI tools depend on your specific needs and workflow. For general content drafting and editing, Claude and ChatGPT are both excellent, with Claude being particularly strong at longer-form content and maintaining consistent tone. For SEO-specific content optimization, tools like Surfer SEO and Clearscope integrate AI analysis with keyword and topical coverage recommendations. For image generation, Midjourney and DALL-E 3 produce high-quality visuals suitable for blog and social media use. For workflow automation, n8n and Make.com can connect these tools into automated pipelines. I recommend starting with one general-purpose AI tool and one SEO tool, then expanding as you identify specific bottlenecks in your workflow.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I maintain my brand voice when using AI for content?</h3>
-<p>Maintaining brand voice with AI requires intentional effort at multiple stages. First, create a detailed brand voice guide that documents your tone, vocabulary preferences, sentence structure patterns, and examples of on-brand writing. Feed this guide to the AI as context when generating content. Second, always use AI output as a starting point rather than a final product: edit every piece to align with your voice before publishing. Third, build custom instructions or system prompts that encode your voice characteristics so the AI starts closer to your target with each generation. Fourth, review published content regularly to catch any drift from your established voice. Over time, as you refine your prompts and editing process, maintaining voice consistency becomes faster and more natural.</p>
-</div>
-
-<div class="faq-item">
-<h3>Will Google penalize AI-generated content?</h3>
-<p>Google has stated clearly that they do not penalize content simply for being AI-generated. Their focus is on content quality, regardless of how it was produced. What Google does penalize is low-quality, spammy content created primarily to manipulate search rankings, whether written by humans or AI. The key is to ensure that any AI-assisted content meets Google's E-E-A-T standards: it should demonstrate experience, expertise, authoritativeness, and trustworthiness. Content that provides genuine value, includes original insights, is factually accurate, and serves the user's needs will perform well regardless of whether AI was involved in its creation. The risk comes from publishing AI output without proper review, fact-checking, and human enhancement.</p>
-</div>
-
-<div class="faq-item">
-<h3>How much time does an AI content workflow actually save?</h3>
-<p>In my experience, a well-designed AI content workflow reduces total content production time by 40 to 60 percent compared to a fully manual process. The savings vary by content type and stage. Topic research and ideation become roughly 70 percent faster because AI can analyze competitors, identify gaps, and suggest angles in minutes rather than hours. Outline creation is about 50 percent faster. First draft generation sees the largest time savings at 60 to 80 percent. However, editing and quality assurance take roughly the same time or slightly longer because you need to verify accuracy, add original insights, and ensure voice consistency. The net result is that a team producing four articles per week manually can often produce six to eight articles at the same quality level with a well-implemented AI-assisted workflow.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

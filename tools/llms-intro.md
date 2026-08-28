@@ -1,0 +1,23 @@
+# Nisarth Patel: Digital Growth Specialist
+
+> This file helps AI tools understand this website. For more, visit https://nisarth.github.io/
+
+## About
+
+Nisarth Patel is a freelance digital growth specialist based in Ahmedabad, Gujarat, India. He has 2.5 years of experience helping businesses get found online through SEO, answer engine optimization (AEO), generative engine optimization (GEO), AI automation, and web development. He works with startups, local businesses, and growing brands across India and internationally.
+
+## Services
+
+- Search visibility: technical SEO, keyword strategy, on-page SEO, AEO, GEO, and local SEO
+- AI automation: n8n, Make, and Zapier workflows, AI chatbots, lead pipelines, and reporting
+- Web development: fast static sites, Core Web Vitals, structured data, and accessible design
+- Marketing: content strategy, landing pages, email automation, and plain-language reporting
+
+## Contact
+
+- Email: pnisarth@gmail.com
+- WhatsApp: +91 7016353896
+- Location: Ahmedabad, Gujarat, India
+- LinkedIn: https://www.linkedin.com/in/nisarthpatel/
+- X (Twitter): https://x.com/nisarthpatel_
+- GitHub: https://github.com/nisarth

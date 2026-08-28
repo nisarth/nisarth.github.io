@@ -184,34 +184,7 @@ faqs:
 
 <p><strong>Forgetting about review management.</strong> Many directory platforms allow customers to leave reviews, and these reviews influence both your rankings on that platform and your overall online reputation. Do not just create listings and walk away: monitor reviews on every platform where your business is listed and respond to them promptly. For a comprehensive approach to managing reviews across platforms, read my guide on <a href="/blog/review-management-strategy.html">online review management strategy</a>.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>How many citations does my business need?</h3>
-<p>There is no magic number, but I typically aim for 40 to 80 high-quality citations for most local businesses. The emphasis should be on quality and consistency rather than volume. Start with the top 15 to 20 core directories that carry the most authority, then expand to industry-specific directories and local platforms. A business with 50 perfectly consistent citations will outperform one with 200 inconsistent listings. I recommend building citations gradually over two to three months rather than submitting to 100 directories in a single day, which can appear unnatural to search engines and overwhelm your ability to verify each listing.</p>
-</div>
-
-<div class="faq-item">
-<h3>What is NAP consistency and why does it matter?</h3>
-<p>NAP stands for Name, Address, and Phone number. NAP consistency means that these three pieces of information are identical across every online platform where your business is listed. Even minor differences like abbreviating "Street" to "St." or using a different phone number format can create conflicting signals for search engines. When Google finds inconsistent information about your business across the web, it has less confidence in the accuracy of your data, which can negatively impact your local rankings. I audit NAP consistency quarterly for all my clients and correct discrepancies immediately because even a single outdated listing can undermine an otherwise clean citation profile.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I use a citation building service or do it manually?</h3>
-<p>Both approaches have merit, and I use a hybrid approach. Manual submission gives you complete control over accuracy and allows you to fully optimize each listing with unique descriptions, photos, and category selections. Automated services like BrightLocal, Yext, or Whitespark can save significant time by submitting to dozens of directories simultaneously. I manually submit to the top 20 most important directories where I want full control over the listing quality, and use an automated service for the remaining lower-priority directories. The critical thing regardless of method is to verify every listing after submission to ensure accuracy.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I find and fix duplicate citations?</h3>
-<p>Duplicate citations occur when your business has multiple listings on the same platform, often from previous owners, old addresses, or automated directory scraping. Use tools like BrightLocal or Moz Local to scan for duplicates across major directories. Once identified, claim the most complete listing and request removal of duplicates through each platform's support process. For Google Business Profile, you can report duplicate listings directly through the suggest an edit feature. Some platforms make this easy with online forms, while others require email requests or phone calls. I schedule a duplicate audit every six months for ongoing clients to catch new duplicates early.</p>
-</div>
-
-<div class="faq-item">
-<h3>Do citations still matter for local SEO in 2026?</h3>
-<p>Yes, citations remain a confirmed local ranking factor in 2026, though their relative importance has shifted compared to five years ago. Citations are now more of a foundational element than a competitive differentiator. Having consistent citations across core directories is essential for establishing trust and legitimacy with search engines. However, the days of gaining significant ranking advantages purely through citation volume are over. Reviews, Google Business Profile optimization, and on-page local signals now carry more weight in the overall ranking algorithm. Think of citations as table stakes: you need them to compete, but they alone will not win you the top spot in the Local Pack.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

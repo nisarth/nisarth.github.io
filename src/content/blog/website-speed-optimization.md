@@ -182,34 +182,7 @@ faqs:
 
 <p><strong>A/B test the business impact.</strong> If possible, measure the business impact of your speed improvements. Compare conversion rates, bounce rates, and time on site before and after the optimization. This data justifies the investment and helps prioritize future performance work. For most of my clients, the conversion rate improvement from speed optimization pays for the entire engagement within the first month.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is a good website load time in 2026?</h3>
-<p>A good website load time in 2026 is under 2 seconds for the full page and under 2.5 seconds for Largest Contentful Paint. Google considers an LCP of 2.5 seconds or less as good, but the fastest sites aim for under 1.5 seconds. For mobile users on slower connections, keeping the total page weight under 1.5 MB and the LCP under 2 seconds should be your target. The specific threshold depends on your audience, if most of your users are on fast connections with modern devices, you have more headroom. If your audience is primarily mobile users in developing markets, you need to be more aggressive with optimization.</p>
-</div>
-
-<div class="faq-item">
-<h3>Does website speed affect SEO rankings?</h3>
-<p>Yes, website speed directly affects SEO rankings. Core Web Vitals, which include Largest Contentful Paint as a speed metric, are confirmed Google ranking factors. Beyond the direct ranking signal, slow sites have higher bounce rates and lower engagement, which indirectly harm your search performance. In competitive niches, the speed difference between your site and competitors can determine who ranks higher. That said, speed alone will not overcome weak content or poor backlink profiles: it is one factor among many, but an increasingly important one.</p>
-</div>
-
-<div class="faq-item">
-<h3>What are the most common causes of slow websites?</h3>
-<p>The most common causes of slow websites are unoptimized images that are too large or in outdated formats, render-blocking CSS and JavaScript files, slow server response times due to poor hosting or unoptimized databases, too many third-party scripts like analytics trackers and chat widgets, missing browser caching headers, and not using a CDN for static assets. In my experience working with clients across India, images and third-party scripts are responsible for the majority of speed issues on small business websites. Fixing these two categories alone often cuts load time in half.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I measure my website speed accurately?</h3>
-<p>Use a combination of lab testing and field data. For lab testing, run Google Lighthouse in Chrome DevTools or use PageSpeed Insights. For real-world field data, check Google Search Console Core Web Vitals report or the Chrome User Experience Report. Field data is what Google uses for ranking decisions. Always test from multiple locations and on both mobile and desktop. Tools like WebPageTest let you test from different geographic locations and network conditions. The key is to test under conditions that match your actual audience rather than just your own browsing environment.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I use a CDN for my website?</h3>
-<p>Yes, a CDN is worth using for almost any website, even small ones. A CDN serves your static files from servers geographically close to your visitors, reducing latency significantly. Free CDN options like Cloudflare provide meaningful speed improvements with zero cost. For sites with an international audience, a CDN is essential. Even for a site primarily serving Indian users, a CDN with edge nodes in Mumbai and Chennai will outperform a single server in any one location. The setup is straightforward and the performance gains are immediate: there is no reason not to use one.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

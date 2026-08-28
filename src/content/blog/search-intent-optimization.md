@@ -164,34 +164,7 @@ faqs:
 
 <p>The businesses I work with that take intent most seriously are consistently the ones that see the strongest SEO results. It is not enough to target the right keywords. You have to understand why people are searching for those keywords and give them exactly what they need. Do that consistently, and rankings follow.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What are the four types of search intent?</h3>
-<p>The four types of search intent are informational (seeking knowledge or answers, like "what is SEO"), navigational (looking for a specific website or page, like "Ahrefs login"), commercial investigation (researching before a purchase, like "best SEO tools 2026"), and transactional (ready to complete an action, like "buy Semrush subscription"). Each type requires a different content format and approach. Informational queries need educational content, navigational queries need clear brand pages, commercial queries need comparison content, and transactional queries need optimized product or service pages with clear calls to action.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I determine the search intent of a keyword?</h3>
-<p>The most reliable method is to search the keyword in Google and analyze the top-ranking results. Look at the content type (blog posts, product pages, comparison articles), the format (listicles, tutorials, landing pages), and the angle (educational, promotional, review-based). If the top ten results are all how-to guides, the intent is informational. If they are product pages with pricing, the intent is transactional. Google has already tested what users want for that query, so the search results are your best guide to intent. Modifier words also provide clues: "how to" suggests informational, "buy" suggests transactional.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can a single keyword have multiple search intents?</h3>
-<p>Yes, many keywords have mixed intent, and Google reflects this by showing different content types on the same results page. For example, searching "email marketing software" might show a mix of comparison articles, product pages, and educational content because users could be researching, comparing, or ready to buy. When you encounter mixed intent keywords, look at which intent dominates the results. If seven out of ten results are comparison articles, commercial investigation is the primary intent. You can also create content that addresses multiple intents within a single comprehensive page when they form a natural progression.</p>
-</div>
-
-<div class="faq-item">
-<h3>How often does search intent change for a keyword?</h3>
-<p>Search intent can shift gradually over time or change suddenly due to events. A keyword like "coronavirus" shifted from informational to navigational as people started seeking specific health authority websites. Seasonal keywords shift intent cyclically: "Christmas gifts" is informational in July but transactional in December. Industry terms can shift as markets mature. I recommend checking the search results for your target keywords quarterly to catch intent shifts. If you notice the types of content ranking have changed, you may need to update your content to match the new dominant intent.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I create separate pages for different search intents?</h3>
-<p>Generally, yes. If you have keywords with clearly different intents, they should be addressed by separate pages. A single page trying to be both an educational guide and a sales page rarely satisfies either intent well. For example, "what is CRM software" (informational) and "buy CRM software" (transactional) should be two different pages. However, for closely related intents within the same topic, you can sometimes address them on one comprehensive page: such as a guide that educates and then naturally transitions to product recommendations. The key test is whether the search results for each keyword show the same or different types of content.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

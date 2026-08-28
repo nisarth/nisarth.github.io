@@ -184,34 +184,7 @@ faqs:
 
 <p>For most small and medium business audits, the combination of Screaming Frog (free or paid), Google Search Console, Lighthouse, and the Rich Results Test covers ninety percent of what you need. The paid tools are valuable for larger sites and ongoing monitoring, but they are not strictly necessary to run a thorough audit.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>How often should I run a technical SEO audit?</h3>
-<p>I recommend a full technical SEO audit every quarter, with lighter crawl-based checks monthly. Major site changes like redesigns, CMS migrations, or significant content additions should always trigger an immediate audit. Between quarterly audits, keep an eye on Google Search Console for crawl errors, Core Web Vitals regressions, and indexation drops. If you are on a content-heavy site that publishes frequently, monthly crawl audits become more important because new content can introduce issues at scale: duplicate titles, thin pages, or broken internal links that compound over time.</p>
-</div>
-
-<div class="faq-item">
-<h3>What is the difference between a technical SEO audit and an on-page SEO audit?</h3>
-<p>A technical SEO audit focuses on the infrastructure of your website: crawlability, indexation, site speed, security, structured data, and server configuration. An on-page SEO audit looks at content-level factors like title tags, meta descriptions, heading hierarchy, keyword usage, and internal linking within individual pages. Both are necessary, but technical issues can prevent even perfectly optimized on-page content from ranking. I typically run a technical audit first because there is no point optimizing title tags on pages that Google cannot crawl or index. Once the technical foundation is solid, then I move to <a href="/blog/on-page-seo-guide.html">on-page optimization</a>.</p>
-</div>
-
-<div class="faq-item">
-<h3>Do I need expensive tools to run a technical SEO audit?</h3>
-<p>Not necessarily. Google Search Console, Lighthouse, and the Rich Results Test are all free and cover a large portion of what you need. Screaming Frog offers a free version that crawls up to 500 URLs. For larger sites or more advanced analysis, paid tools like Ahrefs, Semrush, or Sitebulb are worth the investment, but a small business site can be thoroughly audited with free tools alone. I built my initial audit workflow entirely on free tools before investing in paid subscriptions. Start there, and upgrade when the limitations actually hold you back rather than upgrading pre-emptively.</p>
-</div>
-
-<div class="faq-item">
-<h3>How long does a technical SEO audit take?</h3>
-<p>For a small site with under 500 pages, a thorough technical audit typically takes 4 to 8 hours. Medium sites with 500 to 5,000 pages usually take one to two full working days. Enterprise sites with tens of thousands of pages can take a week or more. The crawl itself is fast: it is the analysis, prioritization, and documentation of findings that takes the most time. I spend roughly twenty percent of my audit time crawling and collecting data, and eighty percent analyzing results, verifying issues, and writing actionable recommendations.</p>
-</div>
-
-<div class="faq-item">
-<h3>What should I prioritize first after a technical SEO audit?</h3>
-<p>Start with anything that blocks crawling or indexation: broken robots.txt rules, noindex tags on important pages, or canonical errors. These issues prevent Google from even seeing your content, so fixing them has the most immediate impact. Next, address Core Web Vitals failures since they directly affect rankings and user experience. After that, tackle structured data errors, security issues, and mobile usability problems in that order. I always create a prioritized spreadsheet for clients that groups issues into critical, high, medium, and low categories. If you are not sure where to start, <a href="/contact.html">reach out and I will walk you through it</a>.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

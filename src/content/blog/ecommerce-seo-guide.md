@@ -162,34 +162,7 @@ faqs:
 
 <p><strong>After-season strategy.</strong> When the season ends, do not delete or redirect your seasonal pages. Instead, update them with a brief note that the sale has ended and will return next year. You can add an email signup for early access to next year's deals. Between seasons, reduce the internal links to these pages but keep them accessible and indexed. This approach preserves the page's accumulated authority for the next cycle while preventing a poor user experience for anyone who finds the page between seasons.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>How do I handle duplicate content on e-commerce product pages?</h3>
-<p>Duplicate content is one of the most common e-commerce SEO challenges, especially when products appear in multiple categories or have color and size variations that each generate a separate URL. The primary solution is canonical tags: use the rel=canonical element to point all variations to a single preferred URL. For products that genuinely differ, such as different models with distinct specifications, create unique content for each page including unique descriptions, images, and meta data. Avoid using manufacturer descriptions verbatim, as every other retailer selling the same product likely uses them too. Write your own product descriptions that add genuine value, and use canonical tags to consolidate any parameter-based duplicates that your CMS generates automatically.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I optimize product pages or category pages for SEO?</h3>
-<p>Both, but they serve different purposes in your SEO strategy. Category pages typically target broader, higher-volume keywords like "running shoes for men" and act as the primary landing pages for commercial search intent. Product pages target long-tail, specific queries like "Nike Air Zoom Pegasus 43 black size 10". In most e-commerce sites, category pages drive more total organic traffic because they match broader search intent and have stronger internal link profiles. However, product pages often have higher conversion rates because visitors arriving on them have more specific purchase intent. I recommend prioritizing category page optimization first because improvements there cascade benefits to the product pages beneath them through improved crawl equity and topical authority.</p>
-</div>
-
-<div class="faq-item">
-<h3>How important is site speed for e-commerce SEO?</h3>
-<p>Site speed is critically important for e-commerce, both as a direct ranking factor through Core Web Vitals and as a conversion factor. Research consistently shows that every additional second of load time reduces e-commerce conversion rates by 7 to 10 percent. For a store doing ten lakh rupees per month in revenue, a one-second improvement in load time could translate to an additional 70,000 to one lakh rupees per month. From an SEO perspective, Google uses Core Web Vitals as ranking signals, and slow e-commerce sites with heavy product images and third-party scripts frequently fail these thresholds. Prioritize image optimization using WebP format with lazy loading, minimize third-party scripts, and implement a CDN to serve assets from locations closer to your customers.</p>
-</div>
-
-<div class="faq-item">
-<h3>What product schema markup should I implement for e-commerce SEO?</h3>
-<p>At minimum, every product page should have Product schema that includes the product name, description, image, brand, SKU or GTIN, and an Offer element with price, currency, availability status, and price valid until date. If you have customer reviews, add AggregateRating schema with the average rating and review count. This enables rich results in Google search showing price, availability, and star ratings directly in the search listing, which significantly improves click-through rates. For products with multiple variants, use the hasVariant property to connect them. I also recommend adding BreadcrumbList schema on every product page to show the category hierarchy in search results, giving users context about where the product sits within your store.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I manage faceted navigation without creating SEO problems?</h3>
-<p>Faceted navigation (filters for color, size, price range, brand, and other attributes) is essential for e-commerce usability but can create massive SEO problems if every filter combination generates an indexable URL. A store with 50 products and 10 filter options can easily generate thousands of near-duplicate URLs that waste crawl budget and dilute page authority. The solution is a layered approach. First, identify which filter combinations have genuine search demand using keyword research. Allow those specific combinations to be indexable with clean URLs. For all other combinations, use a combination of robots.txt rules to block crawling, noindex meta tags as a safety net, and canonical tags pointing back to the main category page. Implement filters using JavaScript-based URL parameters that do not create new server-side URLs where possible.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

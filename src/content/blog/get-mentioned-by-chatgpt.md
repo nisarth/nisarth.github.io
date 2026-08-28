@@ -198,34 +198,7 @@ faqs:
 
 <p><strong>Professional services.</strong> For consultancies, agencies, and freelance professionals, personal brand authority is paramount. The individual's entity (not just the company entity) needs to be established through thought leadership content, speaking engagements, professional profiles, and published work. My own AI mentions are driven as much by my personal entity authority as by my business entity.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>How long does it take to get mentioned by ChatGPT?</h3>
-<p>There is no fixed timeline because it depends on your existing digital footprint, the competitiveness of your industry, and how quickly you build entity authority. In my experience, businesses that already have strong brand mentions across the web and quality content can start appearing in AI responses within two to four months of focused GEO work. For newer brands starting from scratch, expect six to twelve months of consistent effort before you see reliable AI mentions. The key is building a corpus of authoritative, well-structured content that AI models can confidently reference.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can I pay to get my business mentioned by ChatGPT?</h3>
-<p>No, you cannot directly pay OpenAI or Perplexity to mention your business in organic AI responses. These models generate answers based on their training data and retrieval mechanisms, not advertising placements. However, some AI platforms are beginning to introduce sponsored results: Perplexity has tested sponsored follow-up questions, for example. The most reliable path to AI mentions remains building genuine authority through quality content, brand mentions on authoritative sites, structured data, and consistent entity information across the web.</p>
-</div>
-
-<div class="faq-item">
-<h3>Does blocking AI crawlers hurt my chances of being mentioned?</h3>
-<p>Blocking AI crawlers through robots.txt prevents those specific crawlers from accessing your content directly, but it does not guarantee you will not be mentioned. AI models are trained on broad datasets that may already include your content, and retrieval-augmented generation systems like Perplexity use web search results where your content may appear. That said, blocking crawlers reduces the likelihood of fresh content being picked up. I generally recommend allowing AI crawlers for most business sites because the visibility benefit outweighs the risks for non-proprietary content.</p>
-</div>
-
-<div class="faq-item">
-<h3>What type of content gets cited most by AI tools?</h3>
-<p>AI tools tend to cite content that provides clear, factual, well-structured answers to specific questions. Definitive guides, original research with statistics, comparison articles, how-to content with step-by-step instructions, and FAQ pages perform particularly well. Content that includes specific numbers, named methodologies, unique frameworks, or proprietary data gets cited more frequently because AI models can attribute these to a specific source. Avoid vague marketing copy: AI tools skip over content that reads like a sales pitch and prefer informational, expertise-driven material.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I optimize for ChatGPT and Perplexity differently?</h3>
-<p>Yes, there are differences worth understanding. ChatGPT primarily draws from its training data, so historical content authority and brand recognition matter more. Perplexity uses real-time web search with retrieval-augmented generation, making it more responsive to recently published content and traditional SEO signals. Google AI Overviews pull from Google's index, so standard SEO practices apply most directly there. However, the foundational strategy is the same across all platforms: build entity authority, create citation-worthy content, maintain consistent brand information, and use structured data throughout your site.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

@@ -200,34 +200,7 @@ faqs:
 
 <p><strong>Step six: Plan your reallocation triggers.</strong> Decide in advance what conditions would trigger a budget shift. For example: "If paid social CPA exceeds 800 rupees for two consecutive weeks, reduce budget by 20 percent and redirect to content marketing." Having these triggers predefined removes emotion from budgeting decisions and ensures you respond quickly to both opportunities and problems.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What percentage of revenue should a business spend on digital marketing?</h3>
-<p>The standard benchmark is between 5 and 15 percent of total revenue, depending on your industry and growth stage. Startups and businesses in aggressive growth mode often spend closer to 15 to 20 percent because they need to build awareness and acquire customers quickly. Established businesses with strong brand recognition and steady organic traffic can usually operate effectively at 5 to 8 percent. B2B companies typically spend less as a percentage than B2C companies because their sales cycles involve more direct relationship-building. The key is not to pick an arbitrary number but to calculate what customer acquisition cost your margins can support and work backwards from there.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I spend more on SEO or PPC in 2026?</h3>
-<p>It depends entirely on your timeline and business model. If you need leads or sales within the next 30 days, PPC is the faster path because it delivers traffic immediately once your campaigns are live. SEO is a longer-term investment that typically takes three to six months to show meaningful results, but the traffic it generates does not stop when you pause your budget. I generally recommend a split approach: invest in PPC for immediate revenue and keywords with high commercial intent, while simultaneously building your SEO foundation for sustainable long-term growth. Over time, as organic traffic grows, you can gradually shift budget from PPC to content and SEO.</p>
-</div>
-
-<div class="faq-item">
-<h3>How much should I budget for marketing tools and software?</h3>
-<p>For a small to medium business, expect to spend between 500 and 2,000 US dollars per month on essential marketing tools. This typically covers an SEO platform like Ahrefs or Semrush, an email marketing platform, a social media scheduling tool, analytics software, and a CRM. Many tools offer free tiers that are sufficient for businesses just starting out. I always recommend starting with free versions and upgrading only when you hit genuine limitations. The biggest mistake I see is businesses subscribing to enterprise-tier tools they do not need, which eats into budget that could be spent on actual marketing activity.</p>
-</div>
-
-<div class="faq-item">
-<h3>How often should I review and adjust my marketing budget?</h3>
-<p>I recommend a formal budget review every quarter, with lighter monthly check-ins on key metrics. Quarterly reviews give you enough data to identify meaningful trends without overreacting to short-term fluctuations. During each review, compare actual spend versus planned spend, evaluate cost per acquisition by channel, and assess whether each channel is meeting its targets. If a channel is significantly underperforming after two quarters despite proper optimization, it is time to reallocate that budget. Seasonal businesses should also adjust their budgets to front-load spending before peak periods rather than spreading it evenly across the year.</p>
-</div>
-
-<div class="faq-item">
-<h3>What are the most common digital marketing budget mistakes?</h3>
-<p>The most frequent mistake I see is putting all your budget into a single channel, usually paid ads, which creates a dangerous dependency. If your ad account gets suspended or costs spike, your entire lead flow stops. Second is not tracking attribution properly, which means you have no idea which channels are actually driving results. Third is cutting the SEO budget during slow months: SEO compounds over time, and stopping investment resets the clock. Fourth is ignoring content marketing because it does not show immediate returns, even though it typically delivers the lowest cost per acquisition over a 12-month period. Finally, many businesses budget for media spend but forget to budget for the creative, strategy, and analytics work needed to make that spend effective.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

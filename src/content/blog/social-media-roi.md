@@ -156,34 +156,7 @@ faqs:
 
 <p><strong>When social media is not worth it.</strong> I want to be honest about this: social media marketing is not the right investment for every business. If your target audience is not active on any social platform in a way that connects to purchase behavior, if you cannot commit to consistent content creation for at least six months, or if your budget is so limited that it would be better spent on higher-intent channels like search advertising or <a href="/blog/marketing-funnel-design.html">direct funnel marketing</a>, then social media may not be your best use of resources. I have told clients this, and in several cases, reallocating their social media budget to SEO or Google Ads produced better results. Honesty about where your marketing budget generates the best return is more valuable than advocacy for any single channel.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>Which social media platform is best for business marketing in 2026?</h3>
-<p>There is no single best platform: it depends entirely on where your target audience spends their time and what type of content you can consistently produce. LinkedIn is the strongest platform for B2B marketing, professional services, and thought leadership. Instagram and TikTok excel for visual consumer brands, lifestyle products, and reaching younger demographics. Facebook remains effective for local businesses, community building, and paid advertising with detailed targeting options. YouTube is unmatched for long-form educational content and has exceptional search discoverability. My recommendation is to focus on one or two platforms where your audience is most active rather than spreading yourself thin across five or six. Master one platform before expanding to another.</p>
-</div>
-
-<div class="faq-item">
-<h3>Is organic social media still worth the effort or should I focus on paid?</h3>
-<p>Both organic and paid social media serve different but complementary purposes. Organic social builds brand awareness, establishes credibility, nurtures existing followers, and creates content that can be amplified with paid spend. Paid social provides immediate reach, precise targeting, and measurable direct-response results. The mistake is treating them as either-or. I recommend building a consistent organic presence first: this gives you a content library to draw from and audience engagement data that informs your paid strategy. Then use paid promotion to amplify your best-performing organic content and run targeted campaigns for specific conversion goals. For most businesses, I suggest allocating sixty to seventy percent of social media budget to paid and thirty to forty percent of social media time to organic content creation.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I calculate the actual ROI of social media marketing?</h3>
-<p>Social media ROI is calculated as revenue attributed to social media minus total social media costs, divided by total social media costs, expressed as a percentage. The challenge is accurate attribution. Use UTM parameters on every link you share on social media so Google Analytics can track traffic and conversions from each platform and campaign. Set up conversion tracking pixels for Facebook, LinkedIn, and other paid platforms. For businesses with longer sales cycles, use multi-touch attribution that credits social media for its role in the customer journey even when it was not the final touchpoint. Include all costs in your calculation: content creation time, design tools, scheduling software, paid ad spend, and any agency or freelancer fees.</p>
-</div>
-
-<div class="faq-item">
-<h3>How often should I post on social media for maximum engagement?</h3>
-<p>Optimal posting frequency varies by platform and audience, but consistency matters more than volume. For LinkedIn, three to five posts per week is effective for building visibility without overwhelming your network. For Instagram, four to seven feed posts per week supplemented by daily stories maintains strong presence. For TikTok, one to three videos per day is ideal during growth phases, though quality should never be sacrificed for quantity. For Facebook, three to five posts per week works for most business pages. These are starting points: monitor your analytics to find the frequency where engagement per post remains strong. If increasing frequency causes engagement per post to drop significantly, you have exceeded your audience's appetite and should pull back.</p>
-</div>
-
-<div class="faq-item">
-<h3>What type of social media content gets the most engagement in 2026?</h3>
-<p>Short-form video consistently outperforms all other content types across platforms in 2026. Reels, TikToks, and YouTube Shorts generate significantly higher reach and engagement than static images or text posts. Beyond video, the content types that perform best are personal stories and behind-the-scenes content that humanizes your brand, educational content that teaches something specific and actionable, opinion pieces on industry topics that spark conversation, user-generated content and customer stories that provide social proof, and interactive content like polls and questions that invite participation. The common thread is content that provides value or provokes emotion rather than content that simply promotes your product or service. I follow an eighty-twenty rule: eighty percent of posts should educate, entertain, or inspire, and twenty percent can directly promote your offerings.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

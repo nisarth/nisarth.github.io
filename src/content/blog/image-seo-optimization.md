@@ -186,34 +186,7 @@ faqs:
 
 <p>The overlap between accessibility best practices and image SEO best practices is substantial. Descriptive alt text, meaningful captions, proper file naming, and clear image-text relationships all serve both purposes. When I optimize images for a client, I frame it as serving three audiences simultaneously: search engines, sighted users, and users who rely on assistive technology. Getting it right for all three is not significantly more work than getting it right for one: it just requires awareness and intentionality.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is the best image format for SEO in 2026?</h3>
-<p>WebP is currently the best general-purpose image format for SEO. It offers excellent compression with minimal quality loss, is supported by all modern browsers, and is specifically recommended by Google. AVIF provides even better compression and is gaining browser support, making it ideal for progressive enhancement using the picture element. For photographs, use WebP as your primary format with AVIF as an enhancement. For graphics with sharp edges and text, SVG remains the best choice because it scales infinitely without quality loss and has tiny file sizes. Always keep original source files archived for future re-processing.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I write good alt text for SEO?</h3>
-<p>Good alt text is descriptive, concise, and contextual. Describe what the image shows in plain language, keeping it under 125 characters when possible. Include your target keyword naturally if the image is relevant to that keyword, but never stuff keywords into alt text. For example, instead of "SEO SEO optimization SEO tips," write "Screenshot of Google Search Console showing organic traffic growth over six months." Decorative images that add no informational value should have empty alt attributes (<code>alt=""</code>) so screen readers skip them. Product images should include the product name, color, and key identifying details.</p>
-</div>
-
-<div class="faq-item">
-<h3>Does image file name affect SEO?</h3>
-<p>Yes, image file names are a ranking signal for Google Images. Google has confirmed that it uses file names to understand image content. A descriptive file name like "technical-seo-audit-checklist.webp" tells Google what the image depicts, whereas "IMG_4872.jpg" provides no useful information. Use lowercase letters, separate words with hyphens, keep names descriptive but concise, and include relevant keywords naturally. Avoid underscores, spaces, or special characters. While the file name alone will not make or break your rankings, it contributes to the overall relevance signal alongside alt text, surrounding content, and captions.</p>
-</div>
-
-<div class="faq-item">
-<h3>Should I use lazy loading for all images?</h3>
-<p>You should use lazy loading for images below the fold but never for images visible in the initial viewport, particularly your Largest Contentful Paint element. Lazy loading above-the-fold images delays their rendering and worsens your LCP score, which directly affects Core Web Vitals and rankings. The native HTML <code>loading="lazy"</code> attribute is the simplest implementation and is supported by all modern browsers. For images in the initial viewport, use <code>loading="eager"</code> or simply omit the loading attribute. Also add <code>fetchpriority="high"</code> to your LCP image to tell the browser to prioritize downloading it.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I get my images to rank in Google Images?</h3>
-<p>To rank in Google Images, focus on several factors: use descriptive file names and alt text that accurately describe the image content. Place images near relevant text content on the page. Use high-quality, original images rather than stock photos when possible. Implement image structured data where appropriate, such as Product schema with image properties. Create an image sitemap or include images in your existing XML sitemap. Ensure images load quickly by using modern formats and proper compression. The page itself also needs to rank well: Google Images considers the overall authority and relevance of the hosting page, not just the image in isolation.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

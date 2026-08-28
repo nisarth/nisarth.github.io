@@ -186,34 +186,7 @@ faqs:
 
 <p><strong>The build-time economy.</strong> As static site generators become more sophisticated, more work moves to build time. Image optimization, CSS purging, HTML minification, sitemap generation, RSS feed creation, search index building: all of these happen during the build rather than at request time. This trend will continue, with build-time processing handling increasingly complex tasks that currently require server-side runtime processing.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is a static site and how is it different from a dynamic site?</h3>
-<p>A static site consists of pre-built HTML, CSS, and JavaScript files that are served directly to the browser without any server-side processing. Every visitor receives the same files. A dynamic site like WordPress generates HTML on the server for each request by querying a database, processing PHP code, and assembling the page in real time. Static sites are faster because there is no server processing delay, more secure because there is no database or server-side code to exploit, and cheaper to host because they require minimal server resources. The trade-off is that content updates require a rebuild and deploy step rather than a simple CMS button click.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can static sites handle dynamic features like forms and search?</h3>
-<p>Yes, static sites can handle dynamic features through client-side JavaScript and third-party services. Contact forms can submit to services like Formspree, Netlify Forms, or a custom serverless function. Search can be implemented client-side using libraries like Pagefind or Lunr.js which build a search index at build time. Comments can use services like Giscus or Disqus. E-commerce can use Snipcart or Shopify's Buy Button. Authentication can use Auth0 or Clerk. This approach, static HTML enhanced with targeted dynamic features, gives you the performance benefits of static delivery with the functionality of dynamic sites where you actually need it.</p>
-</div>
-
-<div class="faq-item">
-<h3>Which static site generator should I use in 2026?</h3>
-<p>The best choice depends on your needs and technical background. Astro is my top recommendation for most projects because it supports multiple component frameworks, ships zero JavaScript by default, and handles content-heavy sites exceptionally well. Hugo is the fastest generator for pure build speed and works well for blogs and documentation. 11ty is the most flexible if you want minimal opinions about your stack. Next.js with static export is ideal if your team already knows React and you need some dynamic pages alongside static ones. For non-developers who need to edit content, I pair any of these with a headless CMS like Sanity, Contentful, or even a simple Markdown-based workflow.</p>
-</div>
-
-<div class="faq-item">
-<h3>How much does it cost to host a static site?</h3>
-<p>Static site hosting is remarkably affordable. GitHub Pages, Netlify, Vercel, and Cloudflare Pages all offer free tiers that handle most small to medium business sites comfortably. The free tiers typically include custom domain support, HTTPS certificates, and global CDN distribution. Even for high-traffic sites, costs are minimal compared to dynamic hosting: Netlify's paid plans start at 19 USD per month with generous bandwidth allowances. Compare this to WordPress hosting which typically costs 20 to 50 USD per month for decent performance, plus ongoing costs for security plugins, backup solutions, and performance optimization tools. Static hosting is often 50 to 90 percent cheaper than equivalent dynamic hosting.</p>
-</div>
-
-<div class="faq-item">
-<h3>Are static sites good for SEO?</h3>
-<p>Static sites are excellent for SEO. They deliver pre-rendered HTML that search engines can crawl immediately without waiting for JavaScript execution or server-side rendering. Page speed is inherently fast because files are served from a CDN with no database queries or server processing, which directly benefits Core Web Vitals scores. The clean HTML output gives you full control over meta tags, structured data, heading hierarchy, and semantic markup. Static sites also tend to have better uptime and reliability than dynamic sites, which means fewer crawl errors in Google Search Console. The main SEO consideration is ensuring your build process generates proper sitemaps, canonical URLs, and structured data for all pages.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

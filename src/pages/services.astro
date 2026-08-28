@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Faq from '../components/Faq.astro';
-import { breadcrumb, faqPage, professionalService } from '../schema';
+import { breadcrumb, faqPage, professionalService, reviews } from '../schema';
 import { getCollection } from 'astro:content';
 import blogCategories from '../data/blog-categories.json';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { services } from '../data/services';
+import { lastUpdated } from '../lib/last-updated';
+import Testimonials from '../components/Testimonials.astro';
+import { publishedTestimonials, aggregateRating } from '../data/testimonials';
 
 const title = 'Services: SEO, AEO, AI Automation, and Web Development';
 const description =
@@ -83,6 +86,11 @@ const faqs = [
     a: 'I work with startups, local businesses, and growing brands, both in India and internationally. Most projects are remote.',
   },
 ];
+const updated = lastUpdated('services');
+// Review markup only exists when real, permitted testimonials do.
+const reviewSchema = publishedTestimonials.length
+  ? [reviews(publishedTestimonials, aggregateRating)]
+  : [];
 ---
 
 <BaseLayout
@@ -93,6 +101,7 @@ const faqs = [
     professionalService(allServiceNames),
     breadcrumb([{ name: 'Home', path: '/' }, { name: 'Services', path: '/services.html' }]),
     faqPage(faqs),
+    ...reviewSchema,
   ]}
 >
   <section class="section">
@@ -131,9 +140,8 @@ const faqs = [
         }
       </ul>
 
-      <p class="locations-line">
-        I work remote-first with businesses everywhere. See
-        <a href="/locations.html">SEO and digital marketing by city</a>.
+      <p class="remote-line">
+        I work remote-first with businesses across India and internationally.
       </p>
 
       <h2>Read up on any of it</h2>
@@ -152,10 +160,12 @@ const faqs = [
         }
       </ul>
 
-      <p class="updated">Last updated: June 2026</p>
+      {updated && <p class="updated">Last updated: {updated}</p>}
       <a href="/contact.html" class="btn btn-primary">Get a quote</a>
     </div>
   </section>
+
+  <Testimonials />
 
   <Faq items={faqs} />
 </BaseLayout>
@@ -210,15 +220,9 @@ const faqs = [
   .explore-links a:hover {
     color: var(--accent);
   }
-  .locations-line {
+  .remote-line {
     margin-top: 1.4rem;
     color: var(--text-muted);
-  }
-  .locations-line a {
-    color: var(--link);
-  }
-  .locations-line a:hover {
-    color: var(--accent);
   }
   .link-chips {
     display: flex;

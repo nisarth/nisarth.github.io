@@ -188,34 +188,7 @@ faqs:
 
 <p><strong>Engagement-based throttling</strong> is an advanced technique where you prioritize delivery to your most engaged subscribers and gradually extend to less engaged segments. This ensures your initial engagement metrics are strong, which signals to email providers that your emails are wanted. AI can automate this by analyzing each subscriber's engagement history and scheduling delivery in order of predicted engagement, so the most likely openers receive the email first. If you would like help setting up a robust email marketing automation system for your business, <a href="/contact.html">get in touch</a> and we can design one together.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>What is the best email marketing platform for AI automation?</h3>
-<p>The best platform depends on your business size and needs. For small to medium businesses, ActiveCampaign offers the strongest combination of automation capabilities and built-in AI features, including predictive sending, AI-generated content suggestions, and advanced segmentation. Klaviyo is excellent for e-commerce businesses because of its deep integration with Shopify and WooCommerce and its AI-powered product recommendation engine. For businesses on a tighter budget, Brevo (formerly Sendinblue) offers solid AI features at a lower price point. If you need maximum flexibility and are comfortable with a more technical setup, combining a platform like Mailchimp or ConvertKit with external AI tools through Make.com or n8n automations gives you the most control over your AI email workflow.</p>
-</div>
-
-<div class="faq-item">
-<h3>How many emails should be in a welcome sequence?</h3>
-<p>I typically recommend five to seven emails in a welcome sequence, sent over a period of two to three weeks. The first email should be sent immediately upon signup and deliver whatever was promised: the lead magnet, discount code, or access details. The second email, sent one to two days later, should introduce your brand story and values. Subsequent emails should provide value through educational content, social proof, and gradually introduce your products or services. The final email should include a clear call to action. However, the ideal length depends on your sales cycle: businesses with longer consideration periods may benefit from longer sequences of eight to ten emails, while impulse-purchase products might convert effectively with a shorter three-to-four email series.</p>
-</div>
-
-<div class="faq-item">
-<h3>Does AI email personalization actually improve conversion rates?</h3>
-<p>Yes, the data consistently supports this. AI-powered personalization goes far beyond inserting someone's first name into a subject line. It includes dynamically selecting content blocks based on individual behavior, adjusting product recommendations based on browsing and purchase history, optimizing send times for each recipient, and adapting email copy based on engagement patterns. Studies show that AI-personalized emails can achieve 20 to 40 percent higher open rates and 30 to 50 percent higher click-through rates compared to generic batch emails. For one of my e-commerce clients, implementing AI-driven product recommendations in post-purchase emails increased repeat purchase revenue by 28 percent within three months of deployment.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I avoid AI-generated emails sounding robotic or generic?</h3>
-<p>The key is treating AI as a starting point rather than a finished product. First, create a detailed brand voice guide and include it in every AI prompt: specify your tone, vocabulary preferences, sentence structures, and examples of on-brand writing. Second, always edit AI-generated email copy before sending, adding personal touches, specific examples, and conversational elements that feel authentically human. Third, use AI for the structural and data-driven aspects of email creation (personalization, product recommendations, send time optimization) while writing the core emotional and persuasive copy yourself. Fourth, regularly review your automated emails with fresh eyes to catch any phrases that sound artificial. The best AI-assisted emails are indistinguishable from purely human-written ones.</p>
-</div>
-
-<div class="faq-item">
-<h3>What metrics should I track for AI email automation performance?</h3>
-<p>Track metrics at two levels: individual email performance and sequence-level performance. For individual emails, monitor open rate, click-through rate, conversion rate, unsubscribe rate, and spam complaint rate. For sequence-level performance, track the overall completion rate (percentage of people who receive all emails in a sequence), the sequence conversion rate (percentage who take the desired action by the end), revenue attributed to the sequence, and the time to conversion. AI-specific metrics to watch include the performance difference between AI-personalized emails and control versions, the accuracy of AI send-time predictions, and the relevance of AI-generated content recommendations. Review these metrics weekly for active campaigns and monthly for evergreen sequences.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

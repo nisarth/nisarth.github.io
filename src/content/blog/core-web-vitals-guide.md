@@ -184,34 +184,7 @@ faqs:
 
 <p><strong>For image optimization specifically:</strong> Squoosh is a free, browser-based tool that lets you compare different formats and quality settings visually. ShortPixel and Imagify work as WordPress plugins for automated optimization. For build-time optimization, Sharp (Node.js) and the <code>&lt;picture&gt;</code> element with multiple source formats give you the most control. I typically set up automated image optimization in the build pipeline so developers never need to manually optimize images: they upload any format and the build system produces optimized WebP and AVIF versions automatically.</p>
 
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-<div class="faq-section">
-<div class="faq-item">
-<h3>Are Core Web Vitals a ranking factor in Google?</h3>
-<p>Yes, Core Web Vitals are a confirmed ranking factor as part of Google's page experience signals. However, they are not the most heavily weighted factor. Relevance and content quality still matter more. Think of Core Web Vitals as a tiebreaker, if two pages have equally relevant content, the one with better Core Web Vitals will likely rank higher. That said, failing Core Web Vitals can hold back otherwise excellent content, which is why I always recommend fixing them. The ranking impact is most noticeable in competitive niches where many pages offer similar content quality. Start with your highest-traffic pages for maximum impact.</p>
-</div>
-
-<div class="faq-item">
-<h3>What is the difference between field data and lab data for Core Web Vitals?</h3>
-<p>Field data comes from real users visiting your site and is collected through the Chrome User Experience Report. It reflects actual performance across different devices, network conditions, and geographic locations. Lab data comes from controlled tests run in tools like Lighthouse or PageSpeed Insights using simulated conditions. Google uses field data for ranking purposes, making it your primary source of truth. Lab data is essential for debugging because it provides detailed diagnostic information that field data lacks. I always use both: field data to identify problems and prioritize fixes, and lab data to diagnose specific causes and verify that changes have the intended effect.</p>
-</div>
-
-<div class="faq-item">
-<h3>How do I check my Core Web Vitals scores?</h3>
-<p>The easiest way is Google Search Console's Core Web Vitals report, which shows field data for all your pages grouped by status. For individual page analysis, use PageSpeed Insights which combines field data from CrUX with lab data from Lighthouse. Chrome DevTools' Performance tab provides the most detailed diagnostic data for debugging specific issues. For a site-wide view, the CrUX Dashboard in Looker Studio lets you track trends over time. I recommend checking Search Console weekly and running PageSpeed Insights on your most important pages after any significant site changes or deployments.</p>
-</div>
-
-<div class="faq-item">
-<h3>Why are my lab scores good but my field data scores poor?</h3>
-<p>This is one of the most common questions I get. Lab tests run on fast hardware with a simulated connection, while field data reflects real users on varied devices and networks. Your visitors might be using older phones, slower connections, or experiencing different conditions than the lab test simulates. Third-party scripts like analytics, chat widgets, and ad networks also behave differently in real conditions versus controlled tests. Geographic distance from your server matters too: a lab test from your location might be fast, but users in another country experience higher latency. Focus on optimizing for real user conditions, not just lab scores. Implementing <code>web-vitals.js</code> can help you understand the specific conditions causing poor experiences.</p>
-</div>
-
-<div class="faq-item">
-<h3>How long does it take for Core Web Vitals improvements to affect rankings?</h3>
-<p>After you implement fixes, it typically takes twenty-eight days for the CrUX data to update because Google collects field data over a rolling twenty-eight-day window. Once the updated field data shows your pages passing Core Web Vitals, ranking improvements can follow within a few weeks, though the timeline varies. In my experience, the full cycle from implementing fixes to seeing measurable ranking changes is usually six to ten weeks. Pages that move from "poor" to "good" status tend to see more noticeable ranking lifts than pages moving from "needs improvement" to "good." If you need help prioritizing fixes, <a href="/contact.html">get in touch for a free performance audit</a>.</p>
-</div>
-</div>
 
 <div class="article-callout" role="complementary" aria-label="Key takeaway">
 <div class="article-callout-icon" aria-hidden="true">&#x1F4A1;</div>

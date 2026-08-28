@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "npm run check:dashes && astro build && npm run gen:sitemap",
+    "dev": "npm run gen:dates && astro dev",
+    "start": "npm run gen:dates && astro dev",
+    "build": "npm run check:dashes && npm run gen:dates && astro build && npm run gen:sitemap && npm run gen:llms",
     "preview": "astro preview",
-    "check": "astro check",
+    "check": "npm run gen:dates && astro check",
     "check:dashes": "node tools/check-no-em-dash.mjs",
     "gen:sitemap": "node tools/gen-sitemap.mjs",
     "gen:icons": "node tools/gen-icons.mjs",
@@ -17,7 +17,9 @@
     "verify:blog": "node tools/verify/blog-parity.mjs --allow-years-correction --allow-prose-fixes",
     "migrate:blog": "node tools/migrate-blog.mjs",
     "verify:csp": "node tools/verify/csp.mjs",
-    "fix:prose": "node tools/fix-blog-prose.mjs"
+    "fix:prose": "node tools/fix-blog-prose.mjs",
+    "gen:llms": "node tools/gen-llms.mjs",
+    "gen:dates": "node tools/gen-last-updated.mjs"
   },
   "dependencies": {
     "astro": "^6.4.6"
