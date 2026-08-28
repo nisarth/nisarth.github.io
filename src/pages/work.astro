@@ -4,6 +4,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Testimonials from '../components/Testimonials.astro';
 import { getCollection } from 'astro:content';
 import { breadcrumb } from '../schema';
+import { SITE } from '../consts';
 import { lastUpdated } from '../lib/last-updated';
 
 const title = 'Work: Case Studies in SEO, Automation, and Web';
@@ -47,18 +48,21 @@ const engagements = [
   },
 ];
 
+// Typed up front: a union of two differently shaped arrays leaves the
+// optional url unnarrowable at the call site.
+const listItems: { name: string; url?: string }[] = projects.length
+  ? projects.map((p) => ({ name: p.data.title, url: `/work/${p.id}.html` }))
+  : engagements.map((e) => ({ name: e.title }));
+
 const itemList = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: projects.length ? 'Case studies by Nisarth Patel' : 'Types of work by Nisarth Patel',
-  itemListElement: (projects.length
-    ? projects.map((p) => ({ name: p.data.title, url: `/work/${p.id}.html` }))
-    : engagements.map((e) => ({ name: e.title }))
-  ).map((item, i) => ({
+  itemListElement: listItems.map((item, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: item.name,
-    ...(('url' in item && item.url) ? { url: new URL(item.url, Astro.site).href } : {}),
+    ...(item.url ? { url: new URL(item.url, SITE.url).href } : {}),
   })),
 };
 
