@@ -1,15 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { breadcrumb } from '../schema';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { getCollection } from 'astro:content';
+import { breadcrumb } from '../schema';
 import { lastUpdated } from '../lib/last-updated';
 
 const title = 'Work: Case Studies in SEO, Automation, and Web';
 const description =
   'Selected work by Nisarth Patel across SEO, AI automation, and web development. Detailed case studies with client results are being added.';
 
-// Honest engagement types, no invented numbers. Real metrics, client names, and
-// timeframes will be added here once confirmed with Nisarth.
+// Only confirmed case studies ship. Drafts stay out of the build entirely, so a
+// half-written study can never appear here.
+const projects = (await getCollection('projects', (p) => !p.data.draft)).sort((a, b) => {
+  const at = a.data.finished?.getTime() ?? 0;
+  const bt = b.data.finished?.getTime() ?? 0;
+  return bt - at;
+});
+
+// The generic engagement cards are the fallback while there are no case
+// studies. They describe the kind of work honestly and claim no numbers.
 const engagements = [
   {
     tag: 'SEO',
@@ -40,14 +50,19 @@ const engagements = [
 const itemList = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Types of work by Nisarth Patel',
-  itemListElement: engagements.map((e, i) => ({
+  name: projects.length ? 'Case studies by Nisarth Patel' : 'Types of work by Nisarth Patel',
+  itemListElement: (projects.length
+    ? projects.map((p) => ({ name: p.data.title, url: `/work/${p.id}.html` }))
+    : engagements.map((e) => ({ name: e.title }))
+  ).map((item, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    name: e.title,
+    name: item.name,
+    ...(('url' in item && item.url) ? { url: new URL(item.url, Astro.site).href } : {}),
   })),
 };
-const updated = lastUpdated('src/pages/work.astro');
+
+const updated = lastUpdated('work');
 ---
 
 <BaseLayout
@@ -64,24 +79,53 @@ const updated = lastUpdated('src/pages/work.astro');
       <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Work' }]} />
       <p class="eyebrow">Work</p>
       <h1>The work I do</h1>
-      <p class="lead narrow-lead">
-        Here are the kinds of projects I take on. Detailed case studies with client
-        results are being added. If you want specifics for a project like yours, just
-        ask and I will walk you through real examples.
-      </p>
 
-      <div class="work-grid">
-        {
-          engagements.map((e) => (
-            <article class="card work-item reveal">
-              <span class="work-tag">{e.tag}</span>
-              <h2>{e.title}</h2>
-              <p class="work-goal">{e.goal}</p>
-              <p class="muted">{e.work}</p>
-            </article>
-          ))
-        }
-      </div>
+      {
+        projects.length > 0 ? (
+          <>
+            <p class="lead narrow-lead">
+              Real projects, with the numbers that came out of them.
+            </p>
+            <div class="case-grid">
+              {projects.map((p) => (
+                <a class="card case-card" href={`/work/${p.id}.html`}>
+                  <span class="case-client">{p.data.client}</span>
+                  <h2>{p.data.title}</h2>
+                  <p class="muted">{p.data.summary}</p>
+                  {p.data.results.length > 0 && (
+                    <ul class="case-results">
+                      {p.data.results.slice(0, 2).map((r) => (
+                        <li>
+                          <strong>{r.change}</strong>
+                          <span>{r.metric}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </a>
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <p class="lead narrow-lead">
+              Here are the kinds of projects I take on. Detailed case studies with
+              client results are being added. If you want specifics for a project like
+              yours, just ask and I will walk you through real examples.
+            </p>
+            <div class="work-grid">
+              {engagements.map((e) => (
+                <article class="card work-item reveal">
+                  <span class="work-tag">{e.tag}</span>
+                  <h2>{e.title}</h2>
+                  <p class="work-goal">{e.goal}</p>
+                  <p class="muted">{e.work}</p>
+                </article>
+              ))}
+            </div>
+          </>
+        )
+      }
 
       <div class="work-cta card">
         <h2>Want the numbers?</h2>
@@ -95,6 +139,8 @@ const updated = lastUpdated('src/pages/work.astro');
       {updated && <p class="updated">Last updated: {updated}</p>}
     </div>
   </section>
+
+  <Testimonials />
 </BaseLayout>
 
 <style>
@@ -102,7 +148,8 @@ const updated = lastUpdated('src/pages/work.astro');
     max-width: 60ch;
     margin: 0.8rem 0 2rem;
   }
-  .work-grid {
+  .work-grid,
+  .case-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.4rem;
@@ -116,13 +163,51 @@ const updated = lastUpdated('src/pages/work.astro');
     color: var(--accent);
     margin-bottom: 0.7rem;
   }
-  .work-item h2 {
+  .work-item h2,
+  .case-card h2 {
     font-size: 1.35rem;
     margin-bottom: 0.6rem;
   }
   .work-goal {
     margin-bottom: 0.6rem;
   }
+
+  .case-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .case-client {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+  }
+  .case-card:hover h2 {
+    color: var(--accent);
+  }
+  .case-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    margin-top: auto;
+    padding-top: 1.2rem;
+  }
+  .case-results li {
+    display: flex;
+    flex-direction: column;
+  }
+  .case-results strong {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text);
+  }
+  .case-results span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
   .work-cta {
     margin-top: 2rem;
     text-align: center;

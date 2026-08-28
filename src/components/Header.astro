@@ -171,31 +171,33 @@ const isActive = (href: string) =>
 </style>
 
 <script>
-  const toggle = document.querySelector('.nav-toggle');
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
   const nav = document.getElementById('primary-nav');
   if (toggle && nav) {
+    const btn = toggle;
+    const panel = nav;
     function setOpen(open: boolean) {
-      nav.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      panel.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       // Stop the page behind the panel from scrolling while it is open.
       document.body.classList.toggle('nav-open', open);
     }
 
-    toggle.addEventListener('click', () => {
-      setOpen(!nav.classList.contains('open'));
+    btn.addEventListener('click', () => {
+      setOpen(!panel.classList.contains('open'));
     });
 
-    nav.querySelectorAll('a').forEach((link) => {
+    panel.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => setOpen(false));
     });
 
     // Escape closes the panel and puts focus back on the button that opened
     // it, so keyboard users are never left with focus on a hidden element.
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && nav.classList.contains('open')) {
+      if (event.key === 'Escape' && panel.classList.contains('open')) {
         setOpen(false);
-        (toggle as HTMLElement).focus();
+        btn.focus();
       }
     });
   }

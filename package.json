@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "npm run check:dashes && astro build && npm run gen:sitemap && npm run gen:llms",
+    "build": "npm run check:dashes && npm run gen:dates && astro build && npm run gen:sitemap && npm run gen:llms",
     "preview": "astro preview",
     "check": "astro check",
     "check:dashes": "node tools/check-no-em-dash.mjs",
@@ -18,7 +18,8 @@
     "migrate:blog": "node tools/migrate-blog.mjs",
     "verify:csp": "node tools/verify/csp.mjs",
     "fix:prose": "node tools/fix-blog-prose.mjs",
-    "gen:llms": "node tools/gen-llms.mjs"
+    "gen:llms": "node tools/gen-llms.mjs",
+    "gen:dates": "node tools/gen-last-updated.mjs"
   },
   "dependencies": {
     "astro": "^6.4.6"

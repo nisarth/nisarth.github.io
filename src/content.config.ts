@@ -30,4 +30,35 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+
+// Case studies. Each entry stays draft until the client facts and any
+// permission to name them are confirmed, so an unfinished study cannot
+// reach the live site. Results are optional in the schema but a study
+// without them is a description, not a case study.
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
+  schema: z.object({
+    draft: z.boolean().default(false),
+    title: z.string(),
+    // How the client is described publicly. Anonymised is fine.
+    client: z.string(),
+    clientUrl: z.string().optional(),
+    summary: z.string(),
+    // Slug of the service page this work belongs to, for cross-linking.
+    service: z.string().optional(),
+    started: z.date().optional(),
+    finished: z.date().optional(),
+    results: z
+      .array(
+        z.object({
+          metric: z.string(),
+          change: z.string(),
+          over: z.string().optional(),
+        })
+      )
+      .default([]),
+    stack: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { blog, projects };

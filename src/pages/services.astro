@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Faq from '../components/Faq.astro';
-import { breadcrumb, faqPage, professionalService } from '../schema';
+import { breadcrumb, faqPage, professionalService, reviews } from '../schema';
 import { getCollection } from 'astro:content';
 import blogCategories from '../data/blog-categories.json';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { services } from '../data/services';
 import { lastUpdated } from '../lib/last-updated';
+import Testimonials from '../components/Testimonials.astro';
+import { publishedTestimonials, aggregateRating } from '../data/testimonials';
 
 const title = 'Services: SEO, AEO, AI Automation, and Web Development';
 const description =
@@ -84,7 +86,11 @@ const faqs = [
     a: 'I work with startups, local businesses, and growing brands, both in India and internationally. Most projects are remote.',
   },
 ];
-const updated = lastUpdated('src/pages/services.astro');
+const updated = lastUpdated('services');
+// Review markup only exists when real, permitted testimonials do.
+const reviewSchema = publishedTestimonials.length
+  ? [reviews(publishedTestimonials, aggregateRating)]
+  : [];
 ---
 
 <BaseLayout
@@ -95,6 +101,7 @@ const updated = lastUpdated('src/pages/services.astro');
     professionalService(allServiceNames),
     breadcrumb([{ name: 'Home', path: '/' }, { name: 'Services', path: '/services.html' }]),
     faqPage(faqs),
+    ...reviewSchema,
   ]}
 >
   <section class="section">
@@ -157,6 +164,8 @@ const updated = lastUpdated('src/pages/services.astro');
       <a href="/contact.html" class="btn btn-primary">Get a quote</a>
     </div>
   </section>
+
+  <Testimonials />
 
   <Faq items={faqs} />
 </BaseLayout>

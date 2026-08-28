@@ -1,0 +1,209 @@
+---
+// Work history, education and certifications, or nothing at all.
+//
+// Like the testimonials, an empty state renders no markup rather than an empty
+// heading. Every entry is confirmed before it gets here; drafts are filtered in
+// src/data/experience.ts.
+import {
+  publishedRoles,
+  publishedEducation,
+  publishedCredentials,
+  hasExperience,
+} from '../data/experience';
+
+const monthYear = (value: string) => {
+  const [year, month] = value.split('-');
+  if (!month) return year;
+  return new Date(Number(year), Number(month) - 1, 1).toLocaleString('en-GB', {
+    month: 'short',
+    year: 'numeric',
+  });
+};
+---
+
+{
+  hasExperience && (
+    <section class="section-sm experience" aria-labelledby="experience-heading">
+      <div class="container narrow">
+        <p class="eyebrow">Experience</p>
+        <h2 id="experience-heading">Where I have worked</h2>
+
+        {publishedRoles.length > 0 && (
+          <ol class="timeline">
+            {publishedRoles.map((r) => (
+              <li class="reveal">
+                <p class="period">
+                  <time datetime={r.start}>{monthYear(r.start)}</time>
+                  {' to '}
+                  {r.end ? <time datetime={r.end}>{monthYear(r.end)}</time> : 'now'}
+                </p>
+                <h3>
+                  {r.title}
+                  <span class="at"> at </span>
+                  {r.companyUrl ? (
+                    <a href={r.companyUrl} rel="noopener noreferrer" target="_blank">
+                      {r.company}
+                    </a>
+                  ) : (
+                    r.company
+                  )}
+                </h3>
+                <p class="meta">
+                  {[r.employmentType, r.location].filter(Boolean).join(' / ')}
+                </p>
+                <p class="muted">{r.summary}</p>
+                {r.highlights && r.highlights.length > 0 && (
+                  <ul class="highlights">
+                    {r.highlights.map((h) => (
+                      <li>{h}</li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ol>
+        )}
+
+        {publishedEducation.length > 0 && (
+          <>
+            <h3 class="sub">Education</h3>
+            <ul class="plain">
+              {publishedEducation.map((e) => (
+                <li>
+                  <strong>{e.qualification}</strong>
+                  <span class="muted">
+                    {' '}
+                    {e.institutionUrl ? (
+                      <a href={e.institutionUrl} rel="noopener noreferrer" target="_blank">
+                        {e.institution}
+                      </a>
+                    ) : (
+                      e.institution
+                    )}
+                    {', '}
+                    {e.years}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
+        {publishedCredentials.length > 0 && (
+          <>
+            <h3 class="sub">Certifications</h3>
+            <ul class="plain">
+              {publishedCredentials.map((c) => (
+                <li>
+                  <strong>
+                    {c.url ? (
+                      <a href={c.url} rel="noopener noreferrer" target="_blank">
+                        {c.name}
+                      </a>
+                    ) : (
+                      c.name
+                    )}
+                  </strong>
+                  <span class="muted">
+                    {' '}
+                    {c.issuer}, {c.year}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .experience h2 {
+    margin: 0.5rem 0 1.8rem;
+  }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-left: 2px solid var(--border);
+    padding-left: 1.4rem;
+  }
+  .timeline > li {
+    position: relative;
+  }
+  .timeline > li::before {
+    content: '';
+    position: absolute;
+    left: calc(-1.4rem - 6px);
+    top: 0.45rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .period {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .timeline h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+  .at {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .timeline h3 a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .timeline h3 a:hover {
+    color: var(--accent);
+  }
+  .meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+    color: var(--text-muted);
+  }
+  .highlights li {
+    padding-left: 1.3rem;
+    position: relative;
+  }
+  .highlights li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .sub {
+    font-size: 1.15rem;
+    margin: 2.5rem 0 0.9rem;
+  }
+  .plain {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .plain a {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .plain a:hover {
+    color: var(--accent);
+  }
+</style>

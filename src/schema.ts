@@ -185,3 +185,131 @@ export function blogIndex(items: { name: string; url: string }[]) {
     })),
   };
 }
+
+export function caseStudy(item: {
+  name: string;
+  description: string;
+  url: string;
+  client: string;
+  started?: string;
+  finished?: string;
+  keywords?: string[];
+}) {
+  const node: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: item.name,
+    description: item.description,
+    url: abs(item.url),
+    creator: { '@id': personId },
+    author: { '@id': personId },
+    about: item.client,
+    inLanguage: 'en',
+  };
+  if (item.started) node.dateCreated = item.started;
+  if (item.finished) node.datePublished = item.finished;
+  if (item.keywords && item.keywords.length) node.keywords = item.keywords.join(', ');
+  return node;
+}
+
+/**
+ * Review nodes for the ProfessionalService. Only ever called with testimonials
+ * a client actually wrote and gave permission to publish, and reviewRating is
+ * omitted unless they gave a real rating.
+ */
+export function reviews(
+  items: {
+    quote: string;
+    name: string;
+    role?: string;
+    company?: string;
+    date?: string;
+    rating?: number;
+  }[],
+  aggregate: { value: number; count: number } | null
+) {
+  const node: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': abs('/#service'),
+    name: SITE.name,
+    url: abs('/services.html'),
+    provider: { '@id': personId },
+    review: items.map((t) => {
+      const r: Record<string, unknown> = {
+        '@type': 'Review',
+        reviewBody: t.quote,
+        author: {
+          '@type': 'Person',
+          name: t.name,
+          ...(t.role ? { jobTitle: t.role } : {}),
+          ...(t.company ? { worksFor: { '@type': 'Organization', name: t.company } } : {}),
+        },
+        itemReviewed: { '@id': abs('/#service') },
+      };
+      if (t.date) r.datePublished = t.date;
+      if (typeof t.rating === 'number') {
+        r.reviewRating = { '@type': 'Rating', ratingValue: t.rating, bestRating: 5 };
+      }
+      return r;
+    }),
+  };
+  if (aggregate) {
+    node.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: aggregate.value,
+      reviewCount: aggregate.count,
+      bestRating: 5,
+    };
+  }
+  return node;
+}
+
+/**
+ * Occupation, employment and credential facts folded into the Person entity.
+ * Pass only confirmed records; anything empty is left out entirely rather than
+ * emitted as a hollow node.
+ */
+export function personCareer(input: {
+  roles?: { title: string; company: string; companyUrl?: string; start: string; end?: string }[];
+  education?: { qualification: string; institution: string; institutionUrl?: string }[];
+  credentials?: { name: string; issuer: string; year: string; url?: string }[];
+}) {
+  const extra: Record<string, unknown> = {};
+  const roles = input.roles || [];
+  const education = input.education || [];
+  const credentials = input.credentials || [];
+
+  if (roles.length) {
+    extra.hasOccupation = roles.map((r) => ({
+      '@type': 'Occupation',
+      name: r.title,
+      occupationLocation: { '@type': 'City', name: 'Ahmedabad' },
+    }));
+    // The current role is the one with no end date.
+    const current = roles.find((r) => !r.end) || roles[0];
+    extra.worksFor = {
+      '@type': 'Organization',
+      name: current.company,
+      ...(current.companyUrl ? { url: current.companyUrl } : {}),
+    };
+  }
+  if (education.length) {
+    extra.alumniOf = education.map((e) => ({
+      '@type': 'EducationalOrganization',
+      name: e.institution,
+      ...(e.institutionUrl ? { url: e.institutionUrl } : {}),
+    }));
+  }
+  if (credentials.length) {
+    extra.hasCredential = credentials.map((c) => ({
+      '@type': 'EducationalOccupationalCredential',
+      name: c.name,
+      credentialCategory: 'certification',
+      recognizedBy: { '@type': 'Organization', name: c.issuer },
+      dateCreated: c.year,
+      ...(c.url ? { url: c.url } : {}),
+    }));
+  }
+  return extra;
+}

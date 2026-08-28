@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getCollection, render } from 'astro:content';
+import { serviceBySlug } from '../../data/services';
+import { breadcrumb, caseStudy } from '../../schema';
+
+export async function getStaticPaths() {
+  // Drafts never build, so an unfinished study has no URL to be found at.
+  const projects = await getCollection('projects', (p) => !p.data.draft);
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const d = project.data;
+const path = `/work/${project.id}.html`;
+const { Content } = await render(project);
+
+const service = d.service ? serviceBySlug(d.service) : undefined;
+const iso = (date?: Date) => (date ? date.toISOString().slice(0, 10) : undefined);
+const period = [d.started, d.finished]
+  .filter(Boolean)
+  .map((x) => x!.toLocaleString('en-GB', { month: 'long', year: 'numeric' }))
+  .join(' to ');
+---
+
+<BaseLayout
+  title={`${d.title} | ${d.client} | Nisarth Patel`}
+  description={d.summary}
+  path={path}
+  ogType="article"
+  jsonLd={[
+    caseStudy({
+      name: d.title,
+      description: d.summary,
+      url: path,
+      client: d.client,
+      started: iso(d.started),
+      finished: iso(d.finished),
+      keywords: d.stack,
+    }),
+    breadcrumb([
+      { name: 'Home', path: '/' },
+      { name: 'Work', path: '/work.html' },
+      { name: d.title, path },
+    ]),
+  ]}
+>
+  <article class="section">
+    <div class="container narrow">
+      <Breadcrumbs
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Work', href: '/work.html' },
+          { name: d.client },
+        ]}
+      />
+      <p class="eyebrow">{d.client}</p>
+      <h1>{d.title}</h1>
+      <p class="lead">{d.summary}</p>
+
+      {
+        d.results.length > 0 && (
+          <ul class="results">
+            {d.results.map((r) => (
+              <li>
+                <strong>{r.change}</strong>
+                <span class="metric">{r.metric}</span>
+                {r.over && <span class="over">over {r.over}</span>}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      {
+        (period || d.stack.length > 0) && (
+          <dl class="facts">
+            {period && (
+              <div>
+                <dt>Timeframe</dt>
+                <dd>{period}</dd>
+              </div>
+            )}
+            {d.stack.length > 0 && (
+              <div>
+                <dt>Work involved</dt>
+                <dd>{d.stack.join(', ')}</dd>
+              </div>
+            )}
+            {d.clientUrl && (
+              <div>
+                <dt>Client</dt>
+                <dd>
+                  <a href={d.clientUrl} rel="noopener noreferrer nofollow" target="_blank">
+                    Visit the site
+                  </a>
+                </dd>
+              </div>
+            )}
+          </dl>
+        )
+      }
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <div class="card case-cta">
+        <h2>Want something like this?</h2>
+        <p class="muted">
+          Tell me what you are trying to grow and I will reply with a clear next step.
+        </p>
+        <div class="case-cta-actions">
+          <a href="/contact.html" class="btn btn-primary">Start a project</a>
+          {
+            service && (
+              <a href={`/services/${service.slug}.html`} class="btn btn-ghost">
+                {service.name} services
+              </a>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin: 0.6rem 0 1rem;
+  }
+  .results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.2rem;
+    margin: 2rem 0;
+    padding: 1.6rem 0;
+    border-block: 1px solid var(--border);
+  }
+  .results li {
+    display: flex;
+    flex-direction: column;
+  }
+  .results strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.1;
+  }
+  .metric {
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  .over {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  .facts dt {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+  }
+  .facts dd {
+    margin: 0;
+  }
+  .facts a {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose :global(h2) {
+    margin: 2.4rem 0 1rem;
+  }
+  .prose :global(p) {
+    margin-bottom: 1.15rem;
+  }
+  .prose :global(a) {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .case-cta {
+    margin-top: 2.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .case-cta .muted {
+    max-width: 46ch;
+  }
+  .case-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+</style>

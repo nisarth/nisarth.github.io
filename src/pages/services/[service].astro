@@ -19,7 +19,7 @@ const guides = postsForService(await getCollection('blog'), record.slug);
 const related = record.related
   .map((slug) => serviceBySlug(slug))
   .filter(Boolean);
-const updated = lastUpdated('src/pages/services/[service].astro', 'src/data/services.ts');
+const updated = lastUpdated('service');
 ---
 
 <BaseLayout
