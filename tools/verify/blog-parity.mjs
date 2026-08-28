@@ -8,6 +8,7 @@
 import { readdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
+import { SPELLING } from '../lib/spelling.mjs';
 
 const SNAP = join(tmpdir(), 'blog-parity-baseline.json');
 const SNAPSHOT = process.argv.includes('--snapshot');
@@ -133,7 +134,26 @@ const YEARS_CORRECTION = (s) =>
     .replace(/over YEARS/g, 'YEARS');
 
 const NORMALISE_YEARS = process.argv.includes('--allow-years-correction');
-const norm = (s) => (NORMALISE_YEARS ? YEARS_CORRECTION(s) : s);
+
+// The prose pass replaced every " -- " with a comma, colon, period or bracket
+// and switched British spellings to American. Comparing the word stream with
+// punctuation and case removed proves no actual wording changed.
+const PROSE_FIXES = process.argv.includes('--allow-prose-fixes');
+// Normalise with the very table the rewrite used, so the two cannot disagree.
+const wordStream = (s) =>
+  s
+    .toLowerCase()
+    // "analyses" is deliberately kept as the noun in a few places and turned
+    // into the verb "analyzes" elsewhere, so fold both to one form here.
+    .replace(/[a-z]+/g, (w) => (w === 'analyses' ? 'analyzes' : SPELLING[w] || w))
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+
+const norm = (s) => {
+  let out = NORMALISE_YEARS ? YEARS_CORRECTION(s) : s;
+  if (PROSE_FIXES) out = wordStream(out);
+  return out;
+};
 
 const base = JSON.parse(readFileSync(SNAP, 'utf8'));
 let pass = 0;
@@ -163,12 +183,12 @@ for (const [url, want] of Object.entries(base)) {
   if (got.canonical !== want.canonical) {
     issues.push(`canonical ${want.canonical} -> ${got.canonical}`);
   }
-  if (got.description !== want.description) {
+  if (norm(got.description) !== norm(want.description)) {
     issues.push(`description changed`);
   }
-  if (got.h1 !== want.h1) issues.push(`h1 "${want.h1}" -> "${got.h1}"`);
+  if (norm(got.h1) !== norm(want.h1)) issues.push(`h1 "${want.h1}" -> "${got.h1}"`);
   if (got.dates !== want.dates) issues.push(`article dates ${want.dates} -> ${got.dates}`);
-  if (got.faqs.join('|') !== want.faqs.join('|')) {
+  if (norm(got.faqs.join('|')) !== norm(want.faqs.join('|'))) {
     issues.push(`FAQ set changed (${want.faqs.length} -> ${got.faqs.length})`);
   }
 

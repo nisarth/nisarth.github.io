@@ -14,9 +14,10 @@
     "gen:icons": "node tools/gen-icons.mjs",
     "gen:og": "node tools/gen-og.mjs",
     "verify": "node tools/verify/jsonld.mjs && node tools/verify/internal-links.mjs && node tools/verify/nav-a11y.mjs && node tools/verify/contact-form.mjs",
-    "verify:blog": "node tools/verify/blog-parity.mjs --allow-years-correction",
+    "verify:blog": "node tools/verify/blog-parity.mjs --allow-years-correction --allow-prose-fixes",
     "migrate:blog": "node tools/migrate-blog.mjs",
-    "verify:csp": "node tools/verify/csp.mjs"
+    "verify:csp": "node tools/verify/csp.mjs",
+    "fix:prose": "node tools/fix-blog-prose.mjs"
   },
   "dependencies": {
     "astro": "^6.4.6"
