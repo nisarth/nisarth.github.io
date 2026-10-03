@@ -1,0 +1,306 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import { getCollection } from 'astro:content';
+import { breadcrumb, faqPage } from '../../schema';
+import { SITE } from '../../consts';
+import { hubs } from '../../data/hubs';
+import { termById } from '../../data/glossary';
+import { serviceBySlug } from '../../data/services';
+
+export function getStaticPaths() {
+  return hubs.map((h) => ({ params: { hub: h.slug }, props: { hub: h } }));
+}
+
+const { hub } = Astro.props;
+const path = `/guides/${hub.slug}.html`;
+
+const posts = await getCollection('blog');
+const postBySlug = new Map(posts.map((p) => [p.id, p]));
+
+// Resolve each section's slugs to real posts, dropping any that do not exist.
+const sections = hub.sections.map((s) => ({
+  ...s,
+  articles: (s.posts || []).flatMap((slug) => {
+    const post = postBySlug.get(slug);
+    return post ? [post] : [];
+  }),
+}));
+
+const terms = hub.terms.flatMap((id) => {
+  const term = termById(id);
+  return term ? [term] : [];
+});
+const service = serviceBySlug(hub.service);
+const others = hubs.filter((h) => h.slug !== hub.slug);
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: hub.h1,
+  description: hub.description,
+  url: new URL(path, SITE.url).href,
+  mainEntityOfPage: new URL(path, SITE.url).href,
+  author: { '@type': 'Person', name: SITE.name, url: SITE.url },
+  publisher: { '@type': 'Person', name: SITE.name, url: SITE.url },
+  about: hub.name,
+  hasPart: sections.flatMap((s) =>
+    s.articles.map((a) => ({
+      '@type': 'Article',
+      headline: a.data.title,
+      url: new URL(`/blog/${a.id}.html`, SITE.url).href,
+    }))
+  ),
+};
+---
+
+<BaseLayout
+  title={hub.title}
+  description={hub.description}
+  path={path}
+  ogType="article"
+  jsonLd={[
+    article,
+    breadcrumb([
+      { name: 'Home', path: '/' },
+      { name: 'Guides', path: '/guides.html' },
+      { name: `${hub.name} guide`, path },
+    ]),
+    faqPage(hub.faqs),
+  ]}
+>
+  <article class="section">
+    <div class="container narrow">
+      <Breadcrumbs
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Guides', href: '/guides.html' },
+          { name: `${hub.name} guide` },
+        ]}
+      />
+      <p class="eyebrow">{hub.name} guide</p>
+      <h1>{hub.h1}</h1>
+      <p class="lead">{hub.definition}</p>
+      <p class="intro">{hub.intro}</p>
+
+      <nav class="toc" aria-labelledby="toc-heading">
+        <h2 id="toc-heading">In this guide</h2>
+        <ol>
+          {
+            sections.map((s) => (
+              <li>
+                <a href={`#${s.id}`}>{s.heading}</a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+
+      {
+        sections.map((s, i) => (
+          <section class="part reveal" id={s.id} aria-labelledby={`${s.id}-heading`}>
+            <p class="part-num" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </p>
+            <h2 id={`${s.id}-heading`}>{s.heading}</h2>
+            {s.body.map((para) => (
+              <p>{para}</p>
+            ))}
+            {s.articles.length > 0 && (
+              <div class="deeper">
+                <h3>Go deeper</h3>
+                <ul>
+                  {s.articles.map((a) => (
+                    <li>
+                      <a href={`/blog/${a.id}.html`}>{a.data.title}</a>
+                      <span class="muted">{a.data.readingTime}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </section>
+        ))
+      }
+
+      <section class="part" aria-labelledby="terms-heading">
+        <h2 id="terms-heading">Terms to know</h2>
+        <dl class="terms">
+          {
+            terms.map((t) => (
+              <div>
+                <dt>
+                  <a href={`/glossary.html#${t.id}`}>{t.term}</a>
+                </dt>
+                <dd>{t.def}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <a href="/glossary.html" class="btn btn-ghost">See the full glossary</a>
+      </section>
+
+      <section class="part" aria-labelledby="next-heading">
+        <h2 id="next-heading">Where to go next</h2>
+        <ul class="next-links">
+          {
+            others.map((o) => (
+              <li>
+                <a href={`/guides/${o.slug}.html`}>{o.name} guide</a>
+                <span class="muted">{o.definition}</span>
+              </li>
+            ))
+          }
+          <li>
+            <a href="/seo-audit-checklist.html">SEO audit checklist</a>
+            <span class="muted">Tick off the checks your own site already passes.</span>
+          </li>
+          {
+            service && (
+              <li>
+                <a href={`/services/${service.slug}.html`}>{service.name} services</a>
+                <span class="muted">How I do this work for a business.</span>
+              </li>
+            )
+          }
+        </ul>
+        <a href="/contact.html" class="btn btn-primary">Talk about your site</a>
+      </section>
+    </div>
+  </article>
+
+  <Faq heading={`${hub.name} questions`} items={hub.faqs} />
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  .intro {
+    margin-top: 1rem;
+  }
+
+  .toc {
+    margin-top: 2rem;
+    padding: 1.3rem 1.5rem;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .toc h2 {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+  }
+  .toc ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 0.45rem 1.5rem;
+    counter-reset: toc;
+  }
+  .toc li {
+    counter-increment: toc;
+  }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-right: 0.6rem;
+  }
+  .toc a:hover {
+    color: var(--accent);
+  }
+
+  .part {
+    margin-top: 3.2rem;
+    scroll-margin-top: 6rem;
+  }
+  .part-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .part h2 {
+    font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+    margin-bottom: 1rem;
+  }
+  .part p + p {
+    margin-top: 1rem;
+  }
+
+  .deeper {
+    margin-top: 1.4rem;
+    padding: 1.1rem 1.3rem;
+    border-left: 3px solid var(--accent);
+    background: var(--bg-elev);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .deeper h3 {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.7rem;
+  }
+  .deeper ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .deeper li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem 0.7rem;
+  }
+  .deeper a,
+  .terms a,
+  .next-links a {
+    color: var(--link);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .deeper a:hover,
+  .terms a:hover,
+  .next-links a:hover {
+    color: var(--accent);
+  }
+  .deeper span {
+    font-size: 0.82rem;
+  }
+
+  .terms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem 2rem;
+    margin-bottom: 1.6rem;
+  }
+  .terms dd {
+    margin: 0.3rem 0 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .next-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-bottom: 1.6rem;
+  }
+  .next-links li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .next-links span {
+    font-size: 0.92rem;
+  }
+</style>

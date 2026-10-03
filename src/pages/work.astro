@@ -27,24 +27,53 @@ const engagements = [
     title: 'Organic search growth for a local business',
     goal: 'Goal: rank for the searches that bring real customers and grow steady organic leads.',
     work: 'Technical audit, on-page fixes, local SEO, and a content plan built around buyer intent.',
+    steps: [
+      'Audit the site for crawl, index, and speed problems',
+      'Match each page to one search and fix titles, headings, and copy',
+      'Set up and complete the Google Business Profile',
+      'Plan content around the questions buyers ask',
+      'Track rankings, clicks, and enquiries each month',
+    ],
   },
   {
     tag: 'Automation',
     title: 'Lead and follow-up automation',
     goal: 'Goal: stop losing leads and free up hours of manual follow-up each week.',
     work: 'An n8n workflow linking the website form, CRM, email, and WhatsApp so follow-up happens on its own.',
+    steps: [
+      'Map the current manual steps from first enquiry to reply',
+      'Pick the trigger and the tools that need to talk to each other',
+      'Build the workflow and test it with real cases',
+      'Add alerts for failed steps',
+      'Write a short guide so it can be changed later',
+    ],
   },
   {
     tag: 'Web',
     title: 'Fast, SEO-ready website build',
     goal: 'Goal: a site that loads fast, reads well on mobile, and is easy for search and AI tools to understand.',
     work: 'A static build with clean code, structured data, strong Core Web Vitals, and accessible design.',
+    steps: [
+      'Agree the pages, the content, and the URLs to keep',
+      'Design mobile first, with accessible contrast and focus states',
+      'Build static pages with structured data on each',
+      'Redirect old URLs so rankings are not lost',
+      'Test speed, forms, and a real phone before launch',
+    ],
   },
   {
     tag: 'AEO and GEO',
     title: 'Getting cited by AI answer engines',
     goal: 'Goal: show up inside AI answers and featured snippets, not just the blue links.',
     work: 'Direct-answer content, FAQ schema, and pages structured the way AI retrieval reads them.',
+    steps: [
+      'List the questions buyers ask search engines and AI tools',
+      'Check which answers already name the business, and which do not',
+      'Rewrite key pages answer first, with clear headings',
+      'Add FAQ, Article, and Organization schema',
+      'Make business details match across the site and the web',
+      'Re-test the same questions on a schedule',
+    ],
   },
 ];
 
@@ -124,12 +153,31 @@ const updated = lastUpdated('work');
                   <h2>{e.title}</h2>
                   <p class="work-goal">{e.goal}</p>
                   <p class="muted">{e.work}</p>
+                  <h3>What the work looks like</h3>
+                  <ol class="work-steps">
+                    {e.steps.map((s) => <li>{s}</li>)}
+                  </ol>
                 </article>
               ))}
             </div>
           </>
         )
       }
+
+      <div class="work-explain">
+        <h2>How results are reported</h2>
+        <p>
+          A result only counts if you can check it. So every project starts by writing
+          down where things stand: current rankings, clicks, and enquiries from Google
+          Search Console and Google Analytics 4. That starting point is what later
+          numbers are compared against.
+        </p>
+        <p>
+          Case studies on this page will follow the same rule. Each one will say what
+          the problem was, what was done, what changed, and over what period. Where a
+          change cannot be tied clearly to the work, it will say so.
+        </p>
+      </div>
 
       <div class="work-cta card">
         <h2>Want the numbers?</h2>
@@ -174,6 +222,50 @@ const updated = lastUpdated('work');
   }
   .work-goal {
     margin-bottom: 0.6rem;
+  }
+  .work-item h3 {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 1.3rem 0 0.7rem;
+  }
+  .work-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    counter-reset: work-step;
+  }
+  .work-steps li {
+    position: relative;
+    padding-left: 1.9rem;
+    counter-increment: work-step;
+  }
+  .work-steps li::before {
+    content: counter(work-step);
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    display: grid;
+    place-items: center;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .work-explain {
+    margin-top: 3rem;
+    max-width: 68ch;
+  }
+  .work-explain h2 {
+    margin-bottom: 1rem;
+  }
+  .work-explain p + p {
+    margin-top: 1rem;
   }
 
   .case-card {

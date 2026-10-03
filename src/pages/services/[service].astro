@@ -64,6 +64,20 @@ const updated = lastUpdated('service');
       <h2>Who it is for</h2>
       <p>{record.whoFor}</p>
 
+      {
+        record.guide?.map((part) => (
+          <section class="guide-part reveal">
+            <h2>{part.heading}</h2>
+            {part.body?.map((para) => <p>{para}</p>)}
+            {part.points && (
+              <ul class="check-list">
+                {part.points.map((point) => <li>{point}</li>)}
+              </ul>
+            )}
+          </section>
+        ))
+      }
+
       <h2>Related services</h2>
       <ul class="link-chips">
         {
@@ -80,7 +94,7 @@ const updated = lastUpdated('service');
           <>
             <h2>Guides on {record.name}</h2>
             <p class="muted">
-              Everything below is written from client work, not theory.
+              Practical guides, drawn from hands-on work where possible.
             </p>
             <ul class="guide-list">
               {guides.map((g) => (
@@ -91,6 +105,20 @@ const updated = lastUpdated('service');
               ))}
             </ul>
           </>
+        )
+      }
+
+      {
+        ['seo', 'local-seo', 'aeo', 'geo'].includes(record.slug) && (
+          <p class="tool-link">
+            Want to check your own site first? Use the free
+            <a href="/seo-audit-checklist.html">SEO audit checklist</a>. To learn how it
+            all works, read the
+            <a href={`/guides/${record.slug === 'local-seo' ? 'seo' : record.slug}.html`}>
+              {record.slug === 'local-seo' ? 'SEO' : record.name} guide
+            </a>
+            or look up a term in the <a href="/glossary.html">glossary</a>.
+          </p>
         )
       }
 
@@ -111,6 +139,21 @@ const updated = lastUpdated('service');
   }
   .lead {
     margin-bottom: 1rem;
+  }
+  .guide-part p + p,
+  .guide-part p + ul {
+    margin-top: 1rem;
+  }
+  .tool-link {
+    margin-top: 2rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elev);
+  }
+  .tool-link a {
+    color: var(--link);
+    font-weight: 600;
   }
   .check-list {
     display: flex;

@@ -1,0 +1,669 @@
+---
+// Three small animated drawings of the work: search rankings, AI answers, and
+// automation. They are illustrations only. No client names or numbers appear,
+// so nothing here can be read as a result claim.
+//
+// Without JavaScript all three panels show stacked in their finished state.
+// With it they become tabs that play when scrolled into view.
+const scenes = [
+  {
+    id: 'search',
+    tab: 'Search',
+    title: 'Search',
+    text: 'SEO moves your pages up for the searches your buyers type.',
+    href: '/services/seo.html',
+    link: 'How I do SEO',
+  },
+  {
+    id: 'answers',
+    tab: 'AI answers',
+    title: 'AI answers',
+    text: 'AEO and GEO get your business named as a source when people ask ChatGPT, Perplexity, or Google AI Overviews.',
+    href: '/services/aeo.html',
+    link: 'How I do AEO',
+  },
+  {
+    id: 'automation',
+    tab: 'Automation',
+    title: 'Automation',
+    text: 'Automation links your form, CRM, email, and WhatsApp so follow-up happens on its own.',
+    href: '/services/ai-automation.html',
+    link: 'How I do automation',
+  },
+];
+
+const flow = ['Website form', 'CRM', 'Email', 'WhatsApp'];
+---
+
+<div class="lab" data-lab>
+  <div class="lab-tabs" role="tablist" aria-label="Pick a part of the work">
+    {
+      scenes.map((s, i) => (
+        <button
+          type="button"
+          role="tab"
+          class="lab-tab"
+          id={`lab-tab-${s.id}`}
+          aria-controls={`lab-panel-${s.id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+        >
+          <span class="lab-tab-num" aria-hidden="true">0{i + 1}</span>
+          {s.tab}
+        </button>
+      ))
+    }
+  </div>
+
+  {
+    scenes.map((s, i) => (
+      <div
+        class="lab-panel"
+        role="tabpanel"
+        id={`lab-panel-${s.id}`}
+        aria-labelledby={`lab-tab-${s.id}`}
+        data-active={i === 0 ? '' : undefined}
+      >
+        <div class="lab-stage" aria-hidden="true">
+          <div class="win">
+            <div class="win-bar">
+              <i />
+              <i />
+              <i />
+            </div>
+
+            {s.id === 'search' && (
+              <div class="win-body">
+                <div class="query">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="m20 20-3.5-3.5" />
+                  </svg>
+                  <span class="typed">best dentist near me</span>
+                </div>
+                <ol class="serp">
+                  <li class="row row-you">
+                    <span class="rank">#1</span>
+                    <span class="row-copy">
+                      <b>Your business</b>
+                      <em>yourbusiness.com</em>
+                    </span>
+                  </li>
+                  <li class="row row-other"><span class="bar bar-a" /><span class="bar bar-b" /></li>
+                  <li class="row row-other"><span class="bar bar-a" /><span class="bar bar-b" /></li>
+                  <li class="row row-other"><span class="bar bar-a" /><span class="bar bar-b" /></li>
+                </ol>
+              </div>
+            )}
+
+            {s.id === 'answers' && (
+              <div class="win-body chat">
+                <p class="bubble ask">Who is the best dentist near me?</p>
+                <div class="bubble reply">
+                  <span class="line line-1" />
+                  <span class="line line-2" />
+                  <span class="line line-3" />
+                  <p class="sources">
+                    <span>Sources</span>
+                    <b class="chip">
+                      <i>1</i> yourbusiness.com
+                    </b>
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {s.id === 'automation' && (
+              <div class="win-body">
+                <ol class="flow">
+                  {flow.map((step) => (
+                    <li class="node">
+                      <span class="node-dot" />
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+                <p class="flow-done">Follow-up sent. Nobody had to do it by hand.</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div class="lab-copy">
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+          <a class="lab-link" href={s.href}>
+            {s.link}
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll<HTMLElement>('[data-lab]').forEach((lab) => {
+    const tabs = Array.from(lab.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const panels = Array.from(lab.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+    let current = 0;
+    let auto = !reduced;
+    let live = false;
+
+    const show = (index: number, focus = false) => {
+      current = (index + tabs.length) % tabs.length;
+      tabs.forEach((tab, i) => {
+        const on = i === current;
+        tab.setAttribute('aria-selected', String(on));
+        tab.tabIndex = on ? 0 : -1;
+        panels[i].toggleAttribute('data-active', on);
+      });
+      if (focus) tabs[current].focus();
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => {
+        auto = false;
+        show(i);
+      });
+      tab.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        auto = false;
+        show(current + (e.key === 'ArrowRight' ? 1 : -1), true);
+      });
+    });
+
+    // Hovering or focusing the drawing means someone is reading it, so the
+    // auto advance stops for good rather than pulling it away from them.
+    lab.addEventListener('pointerenter', () => (auto = false));
+    lab.addEventListener('focusin', () => (auto = false));
+
+    lab.setAttribute('data-js', '');
+
+    new IntersectionObserver(
+      ([entry]) => {
+        live = entry.isIntersecting;
+        if (live) lab.classList.add('is-live');
+      },
+      { threshold: 0.3 }
+    ).observe(lab);
+
+    setInterval(() => {
+      if (auto && live && !document.hidden) show(current + 1);
+    }, 6500);
+  });
+</script>
+
+<style>
+  .lab {
+    margin-top: 2rem;
+  }
+
+  /* Tabs only make sense once the script has turned the panels into tabs. */
+  .lab-tabs {
+    display: none;
+  }
+  .lab[data-js] .lab-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.4rem;
+  }
+  .lab-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font: inherit;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.55rem 1.1rem;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .lab-tab:hover {
+    color: var(--text);
+    border-color: var(--border-strong);
+  }
+  .lab-tab[aria-selected='true'] {
+    color: var(--accent-ink);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .lab-tab-num {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    opacity: 0.7;
+  }
+
+  .lab-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .lab[data-js] .lab-panel {
+    margin-bottom: 0;
+  }
+  .lab[data-js] .lab-panel:not([data-active]) {
+    display: none;
+  }
+  .lab-copy h3 {
+    margin-bottom: 0.7rem;
+  }
+  .lab-copy p {
+    color: var(--text-muted);
+    font-size: 1.08rem;
+  }
+  .lab-link {
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-top: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .lab-link span {
+    transition: transform 0.15s ease;
+  }
+  .lab-link:hover span {
+    transform: translateX(4px);
+  }
+
+  /* The drawing: a plain browser window. */
+  .lab-stage {
+    position: relative;
+  }
+  .lab-stage::before {
+    content: '';
+    position: absolute;
+    inset: 12% 8%;
+    background: var(--accent-glow);
+    filter: blur(60px);
+    z-index: -1;
+  }
+  .win {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .win-bar {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .win-bar i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border-strong);
+  }
+  .win-body {
+    padding: clamp(1rem, 3vw, 1.6rem);
+    min-height: 330px;
+  }
+
+  /* Scene 1: search results. Rows sit in their final order in the markup and
+     animate from the starting order, so the finished state needs no script. */
+  .query {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 0.6rem 1rem;
+    margin-bottom: 1.1rem;
+  }
+  .typed {
+    display: inline-block;
+    width: 20ch;
+    overflow: hidden;
+    white-space: nowrap;
+    color: var(--text);
+  }
+  .serp {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    height: 52px;
+    padding: 0 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+  }
+  .row-other {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.45rem;
+  }
+  .bar {
+    height: 7px;
+    border-radius: 4px;
+    background: var(--border-strong);
+  }
+  .bar-a {
+    width: 45%;
+  }
+  .bar-b {
+    width: 70%;
+    opacity: 0.6;
+  }
+  .row-you {
+    position: relative;
+    z-index: 1;
+    border-color: var(--accent);
+    background: var(--bg-elev-2, var(--bg-elev));
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .rank {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent-ink);
+    background: var(--accent);
+    border-radius: 6px;
+    padding: 0.15rem 0.4rem;
+  }
+  .row-copy {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+  .row-copy b {
+    font-size: 0.95rem;
+  }
+  .row-copy em {
+    font-style: normal;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  @keyframes lab-type {
+    from {
+      width: 0;
+    }
+  }
+  @keyframes lab-climb {
+    from {
+      transform: translateY(186px);
+    }
+  }
+  @keyframes lab-drop {
+    from {
+      transform: translateY(-62px);
+    }
+  }
+  @keyframes lab-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+  }
+  @keyframes lab-fade {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+  @keyframes lab-grow {
+    from {
+      transform: scaleX(0);
+    }
+  }
+  @keyframes lab-node {
+    from {
+      border-color: var(--border);
+      color: var(--text-muted);
+    }
+  }
+  @keyframes lab-dot {
+    from {
+      background: var(--border-strong);
+      box-shadow: none;
+    }
+  }
+
+  /* Scene 2: an AI answer that names a source. */
+  .chat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .bubble {
+    max-width: 88%;
+    border-radius: var(--radius);
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+  .ask {
+    align-self: flex-end;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    border-bottom-right-radius: 4px;
+  }
+  .reply {
+    width: 88%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.1rem 1rem;
+  }
+  .line {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--border-strong);
+    transform-origin: left;
+  }
+  .line-1 {
+    width: 92%;
+  }
+  .line-2 {
+    width: 78%;
+  }
+  .line-3 {
+    width: 55%;
+  }
+  .sources {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--text);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem 0.25rem 0.3rem;
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .chip i {
+    display: grid;
+    place-items: center;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    font-style: normal;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-ink);
+    background: var(--accent);
+  }
+
+  /* Scene 3: an automation flow lighting up step by step. */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .node {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+  }
+  .node + .node::before {
+    content: '';
+    position: absolute;
+    left: 1.2rem;
+    bottom: 100%;
+    width: 2px;
+    height: 1.5rem;
+    background: var(--accent);
+    transform-origin: top;
+  }
+  .node-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+  .flow-done {
+    margin-top: 1.1rem;
+    font-size: 0.9rem;
+    color: var(--accent);
+  }
+  @keyframes lab-wire {
+    from {
+      transform: scaleY(0);
+    }
+  }
+
+  /* Motion. Held paused until the lab scrolls into view, and replayed each
+     time a hidden panel is shown again. */
+  .lab[data-js] .typed {
+    animation: lab-type 1.2s steps(20) 0.2s both;
+  }
+  .lab[data-js] .row-you {
+    animation: lab-climb 1.5s cubic-bezier(0.7, 0, 0.2, 1) 1.7s both;
+  }
+  .lab[data-js] .row-other {
+    animation: lab-drop 1.5s cubic-bezier(0.7, 0, 0.2, 1) 1.7s both;
+  }
+  .lab[data-js] .rank {
+    animation: lab-pop 0.4s ease 3.2s both;
+  }
+  .lab[data-js] .ask {
+    animation: lab-fade 0.5s ease 0.2s both;
+  }
+  .lab[data-js] .reply {
+    animation: lab-fade 0.5s ease 0.9s both;
+  }
+  .lab[data-js] .line {
+    animation: lab-grow 0.6s ease both;
+  }
+  .lab[data-js] .line-1 {
+    animation-delay: 1.3s;
+  }
+  .lab[data-js] .line-2 {
+    animation-delay: 1.7s;
+  }
+  .lab[data-js] .line-3 {
+    animation-delay: 2.1s;
+  }
+  .lab[data-js] .sources {
+    animation: lab-fade 0.4s ease 2.7s both;
+  }
+  .lab[data-js] .chip {
+    animation: lab-pop 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) 3.1s both;
+  }
+  .lab[data-js] .node {
+    animation: lab-node 0.4s ease both;
+  }
+  .lab[data-js] .node-dot {
+    animation: lab-dot 0.4s ease both;
+  }
+  .lab[data-js] .node + .node::before {
+    animation: lab-wire 0.5s ease both;
+  }
+  .lab[data-js] .node:nth-child(1),
+  .lab[data-js] .node:nth-child(1) .node-dot {
+    animation-delay: 0.3s;
+  }
+  .lab[data-js] .node:nth-child(2)::before {
+    animation-delay: 0.7s;
+  }
+  .lab[data-js] .node:nth-child(2),
+  .lab[data-js] .node:nth-child(2) .node-dot {
+    animation-delay: 1.2s;
+  }
+  .lab[data-js] .node:nth-child(3)::before {
+    animation-delay: 1.6s;
+  }
+  .lab[data-js] .node:nth-child(3),
+  .lab[data-js] .node:nth-child(3) .node-dot {
+    animation-delay: 2.1s;
+  }
+  .lab[data-js] .node:nth-child(4)::before {
+    animation-delay: 2.5s;
+  }
+  .lab[data-js] .node:nth-child(4),
+  .lab[data-js] .node:nth-child(4) .node-dot {
+    animation-delay: 3s;
+  }
+  .lab[data-js] .flow-done {
+    animation: lab-fade 0.5s ease 3.5s both;
+  }
+
+  .lab[data-js]:not(.is-live) :is(.typed, .row, .rank, .bubble, .line, .sources, .chip, .node, .node-dot, .flow-done),
+  .lab[data-js]:not(.is-live) .node::before {
+    animation-play-state: paused;
+  }
+
+  /* Reduced motion: skip straight to the finished drawing. */
+  @media (prefers-reduced-motion: reduce) {
+    .lab[data-js] :is(.typed, .row, .rank, .bubble, .line, .sources, .chip, .node, .node-dot, .flow-done),
+    .lab[data-js] .node::before {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .lab-panel {
+      grid-template-columns: 1fr;
+    }
+    .win-body {
+      min-height: 0;
+    }
+  }
+</style>

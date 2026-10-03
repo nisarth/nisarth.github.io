@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { breadcrumb } from '../schema';
+import { SITE } from '../consts';
+import { hubs } from '../data/hubs';
+import { glossary } from '../data/glossary';
+import { totalChecks } from '../data/seo-audit-checklist';
+
+const path = '/guides.html';
+const title = 'Guides: SEO, AEO, and GEO Explained in Plain Words';
+const description =
+  'Start here to learn how search works now. Three plain-language guides on SEO, AEO, and GEO, a glossary of search terms, and a free SEO audit checklist.';
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Guides by Nisarth Patel',
+  itemListElement: hubs.map((h, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: `${h.name} guide`,
+    url: new URL(`/guides/${h.slug}.html`, SITE.url).href,
+  })),
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  jsonLd={[breadcrumb([{ name: 'Home', path: '/' }, { name: 'Guides', path }]), itemList]}
+>
+  <section class="section">
+    <div class="container">
+      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Guides' }]} />
+      <p class="eyebrow">Guides</p>
+      <h1>Learn how search works now</h1>
+      <p class="lead narrow-lead">
+        Three guides cover the three ways a business gets found: in search results, in
+        direct answers, and inside AI answers. Each one explains the idea in plain words
+        and links to the articles that go deeper.
+      </p>
+
+      <div class="hub-grid">
+        {
+          hubs.map((h, i) => (
+            <a class="card hub-card reveal" href={`/guides/${h.slug}.html`}>
+              <span class="hub-num" aria-hidden="true">
+                0{i + 1}
+              </span>
+              <h2>{h.name} guide</h2>
+              <p class="muted">{h.definition}</p>
+              <ul>
+                {h.sections.slice(0, 4).map((s) => (
+                  <li>{s.heading}</li>
+                ))}
+              </ul>
+              <span class="hub-go">
+                Read the guide <span aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+
+      <h2 class="tools-heading">Tools and reference</h2>
+      <div class="tool-grid">
+        <a class="card tool-card reveal" href="/glossary.html">
+          <h3>Glossary</h3>
+          <p class="muted">{glossary.length} search terms, each explained in one or two sentences.</p>
+        </a>
+        <a class="card tool-card reveal" href="/seo-audit-checklist.html">
+          <h3>SEO audit checklist</h3>
+          <p class="muted">{totalChecks} checks you can tick off, with a score that shows where to look next.</p>
+        </a>
+        <a class="card tool-card reveal" href="/blog.html">
+          <h3>All articles</h3>
+          <p class="muted">Every article on the blog, grouped by topic.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow-lead {
+    max-width: 62ch;
+    margin: 0.8rem 0 2.2rem;
+  }
+  .hub-grid,
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.3rem;
+  }
+  .hub-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .hub-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+  .hub-card h2 {
+    font-size: 1.6rem;
+  }
+  .hub-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.92rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border);
+  }
+  .hub-card li {
+    position: relative;
+    padding-left: 1.1rem;
+  }
+  .hub-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .hub-go {
+    margin-top: auto;
+    padding-top: 0.6rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .hub-go span {
+    display: inline-block;
+    transition: transform 0.15s ease;
+  }
+  .hub-card:hover .hub-go span {
+    transform: translateX(4px);
+  }
+  .tools-heading {
+    margin: 3.5rem 0 1.4rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+  .tool-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+  .tool-card:hover h3 {
+    color: var(--accent);
+  }
+</style>

@@ -39,6 +39,16 @@ const {
 } = Astro.props;
 
 const path = `/blog/${slug}.html`;
+
+// Each article points up to the guide for its topic, so the cluster links in
+// both directions. Categories with no guide show nothing.
+const HUB_FOR_CATEGORY: Record<string, { slug: string; name: string }> = {
+  seo: { slug: 'seo', name: 'SEO' },
+  'local-business': { slug: 'seo', name: 'SEO' },
+  aeo: { slug: 'aeo', name: 'AEO' },
+  geo: { slug: 'geo', name: 'GEO' },
+};
+const hub = HUB_FOR_CATEGORY[categorySlug];
 const shareUrl = new URL(path, SITE.url).href;
 ---
 
@@ -84,6 +94,14 @@ const shareUrl = new URL(path, SITE.url).href;
         <span aria-hidden="true">/</span>
         <span>By <a href="/about.html">{SITE.name}</a></span>
       </p>
+      {
+        hub && (
+          <p class="post-hub">
+            Part of the <a href={`/guides/${hub.slug}.html`}>{hub.name} guide</a>. New
+            to a term? See the <a href="/glossary.html">glossary</a>.
+          </p>
+        )
+      }
     </header>
 
     <div class="container post-layout">
@@ -205,6 +223,15 @@ const shareUrl = new URL(path, SITE.url).href;
     align-items: center;
     color: var(--text-muted);
     font-size: 0.9rem;
+  }
+  .post-hub {
+    margin-top: 0.9rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+  .post-hub a {
+    color: var(--link);
+    font-weight: 600;
   }
   .post-meta span[aria-hidden] {
     color: var(--border-strong);
