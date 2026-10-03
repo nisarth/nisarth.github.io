@@ -271,7 +271,7 @@ export function reviews(
  * emitted as a hollow node.
  */
 export function personCareer(input: {
-  roles?: { title: string; company: string; companyUrl?: string; start: string; end?: string }[];
+  roles?: { title: string; company?: string; companyUrl?: string; start: string; end?: string }[];
   education?: { qualification: string; institution: string; institutionUrl?: string }[];
   credentials?: { name: string; issuer: string; year: string; url?: string }[];
 }) {
@@ -288,11 +288,14 @@ export function personCareer(input: {
     }));
     // The current role is the one with no end date.
     const current = roles.find((r) => !r.end) || roles[0];
-    extra.worksFor = {
-      '@type': 'Organization',
-      name: current.company,
-      ...(current.companyUrl ? { url: current.companyUrl } : {}),
-    };
+    // Employer names are optional: a role can be published without one.
+    if (current.company) {
+      extra.worksFor = {
+        '@type': 'Organization',
+        name: current.company,
+        ...(current.companyUrl ? { url: current.companyUrl } : {}),
+      };
+    }
   }
   if (education.length) {
     extra.alumniOf = education.map((e) => ({

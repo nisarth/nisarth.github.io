@@ -47,6 +47,21 @@ Nisarth Patel is a freelance digital growth specialist based in Ahmedabad, Gujar
 - Web Development Services: Fast, SEO-Ready Sites: https://nisarth.github.io/services/web-development.html
   Web development services for fast, accessible, SEO-ready websites that load in under a second. Clean static builds, strong Core Web Vitals, and structured data search engines can read.
 
+## Guides and reference
+
+- Guides: SEO, AEO, and GEO Explained in Plain Words: https://nisarth.github.io/guides.html
+  Start here to learn how search works now. Three plain-language guides on SEO, AEO, and GEO, a glossary of search terms, and a free SEO audit checklist.
+- AEO Guide: How Answer Engine Optimization Works: https://nisarth.github.io/guides/aeo.html
+  A plain-language AEO guide. How featured snippets, People Also Ask, and voice answers pick their source, and how to write and mark up content so yours is chosen.
+- GEO Guide: How Generative Engine Optimization Works: https://nisarth.github.io/guides/geo.html
+  A plain-language GEO guide. How ChatGPT, Perplexity, and Google AI Overviews choose and cite sources, and what makes a business easy for AI tools to find and name.
+- SEO Guide: How Search Engine Optimization Works: https://nisarth.github.io/guides/seo.html
+  A plain-language SEO guide. How search engines crawl, index, and rank pages, and what to do about keywords, on-page SEO, site structure, links, and local search.
+- SEO, AEO, and GEO Glossary: 65 Terms in Plain Words: https://nisarth.github.io/glossary.html
+  A glossary of 65 SEO, AEO, and GEO terms, each explained in one or two plain sentences. Covers technical SEO, local search, AI answers, and analytics.
+- SEO Audit Checklist: 49 Checks You Can Tick Off: https://nisarth.github.io/seo-audit-checklist.html
+  A free SEO audit checklist with 49 checks across crawling, on-page SEO, speed, structured data, AI answers, and local search. Tick them off and see your score.
+
 ## Articles
 
 Written from client work. Grouped by topic, newest first within each group.

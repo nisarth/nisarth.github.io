@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { breadcrumb } from '../schema';
+import { SITE } from '../consts';
+import { glossary, TOPICS } from '../data/glossary';
+import { hubs } from '../data/hubs';
+
+const path = '/glossary.html';
+const title = `SEO, AEO, and GEO Glossary: ${glossary.length} Terms in Plain Words`;
+const description = `A glossary of ${glossary.length} SEO, AEO, and GEO terms, each explained in one or two plain sentences. Covers technical SEO, local search, AI answers, and analytics.`;
+
+// Group by first letter for the A to Z layout.
+const letters = [...new Set(glossary.map((t) => t.term[0].toUpperCase()))];
+const byLetter = letters.map((letter) => ({
+  letter,
+  terms: glossary.filter((t) => t.term[0].toUpperCase() === letter),
+}));
+
+const termSet = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  '@id': new URL(path, SITE.url).href,
+  name: 'SEO, AEO, and GEO glossary',
+  description,
+  hasDefinedTerm: glossary.map((t) => ({
+    '@type': 'DefinedTerm',
+    '@id': new URL(`${path}#${t.id}`, SITE.url).href,
+    name: t.term,
+    description: t.def,
+    inDefinedTermSet: new URL(path, SITE.url).href,
+  })),
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  jsonLd={[breadcrumb([{ name: 'Home', path: '/' }, { name: 'Glossary', path }]), termSet]}
+>
+  <section class="section">
+    <div class="container narrow">
+      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Glossary' }]} />
+      <p class="eyebrow">Glossary</p>
+      <h1>SEO, AEO, and GEO glossary</h1>
+      <p class="lead">
+        A glossary is a list of terms with their meanings. This one explains
+        {glossary.length} search terms in one or two plain sentences each, so you can
+        follow any conversation about SEO, answer engines, or AI search.
+      </p>
+      <p class="muted guides-line">
+        For the bigger picture, read the
+        {
+          hubs.map((h, i) => (
+            <><a href={`/guides/${h.slug}.html`}>{h.name} guide</a>{i < hubs.length - 2 ? ', ' : i === hubs.length - 2 ? ', or the ' : '.'}</>
+          ))
+        }
+      </p>
+
+      <div class="tools" data-glossary-tools hidden>
+        <label class="search">
+          <span class="visually-hidden">Search the glossary</span>
+          <input type="search" placeholder="Search a term" data-glossary-search autocomplete="off" />
+        </label>
+        <div class="chips" role="group" aria-label="Filter by topic">
+          <button type="button" class="chip" data-topic="" aria-pressed="true">All</button>
+          {
+            TOPICS.map((topic) => (
+              <button type="button" class="chip" data-topic={topic} aria-pressed="false">
+                {topic}
+              </button>
+            ))
+          }
+        </div>
+        <p class="muted count" data-glossary-count aria-live="polite"></p>
+      </div>
+
+      <div data-glossary>
+        {
+          byLetter.map((group) => (
+            <section class="letter" data-letter aria-labelledby={`letter-${group.letter}`}>
+              <h2 id={`letter-${group.letter}`}>{group.letter}</h2>
+              <dl>
+                {group.terms.map((t) => (
+                  <div class="term" id={t.id} data-term data-topic={t.topic}>
+                    <dt>
+                      {t.term}
+                      <span class="tag">{t.topic}</span>
+                    </dt>
+                    <dd>
+                      {t.def}
+                      {t.href && (
+                        <>
+                          {' '}
+                          <a href={t.href}>{t.more}</a>
+                        </>
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          ))
+        }
+        <p class="muted empty" data-glossary-empty hidden>
+          No term matches that. Try a shorter word.
+        </p>
+      </div>
+
+      <div class="next card">
+        <h2>Still not clear?</h2>
+        <p class="muted">
+          Ask me what a term means for your own site. I will answer in plain words.
+        </p>
+        <a href="/contact.html" class="btn btn-primary">Ask a question</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const tools = document.querySelector<HTMLElement>('[data-glossary-tools]');
+  const list = document.querySelector<HTMLElement>('[data-glossary]');
+
+  if (tools && list) {
+    const input = tools.querySelector<HTMLInputElement>('[data-glossary-search]')!;
+    const chips = Array.from(tools.querySelectorAll<HTMLButtonElement>('[data-topic]'));
+    const count = tools.querySelector<HTMLElement>('[data-glossary-count]')!;
+    const empty = list.querySelector<HTMLElement>('[data-glossary-empty]')!;
+    const terms = Array.from(list.querySelectorAll<HTMLElement>('[data-term]'));
+    const letters = Array.from(list.querySelectorAll<HTMLElement>('[data-letter]'));
+    let topic = '';
+
+    const apply = () => {
+      const query = input.value.trim().toLowerCase();
+      let shown = 0;
+      terms.forEach((el) => {
+        const match =
+          (!topic || el.dataset.topic === topic) &&
+          (!query || (el.textContent || '').toLowerCase().includes(query));
+        el.hidden = !match;
+        if (match) shown++;
+      });
+      letters.forEach((l) => {
+        l.hidden = !l.querySelector('[data-term]:not([hidden])');
+      });
+      empty.hidden = shown > 0;
+      count.textContent = `${shown} of ${terms.length} terms`;
+    };
+
+    input.addEventListener('input', apply);
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        topic = chip.dataset.topic || '';
+        chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+        apply();
+      });
+    });
+
+    // The controls only appear once the script is running.
+    tools.hidden = false;
+    apply();
+  }
+</script>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  .guides-line {
+    margin-top: 1rem;
+  }
+  .guides-line a,
+  dd a {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .tools {
+    position: sticky;
+    top: 4.4rem;
+    z-index: 5;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--bg-elev);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+  }
+  .search input {
+    width: 100%;
+    font: inherit;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.9rem;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+  }
+  .chip {
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .chip:hover {
+    border-color: var(--border-strong);
+    color: var(--text);
+  }
+  .chip[aria-pressed='true'] {
+    color: var(--accent-ink);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .count {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .letter {
+    margin-top: 2.6rem;
+  }
+  .letter h2 {
+    font-size: 1.6rem;
+    color: var(--accent);
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .term {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+    /* Keeps a linked term clear of the header and the sticky search. */
+    scroll-margin-top: 15rem;
+  }
+  .term:target {
+    background: var(--accent-soft);
+    margin-inline: -0.8rem;
+    padding-inline: 0.8rem;
+    border-radius: var(--radius-sm);
+  }
+  dt {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+  }
+  dd {
+    margin: 0.4rem 0 0;
+    color: var(--text-muted);
+  }
+  .empty {
+    margin-top: 2rem;
+  }
+
+  .next {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+  .next h2 {
+    font-size: 1.5rem;
+  }
+</style>

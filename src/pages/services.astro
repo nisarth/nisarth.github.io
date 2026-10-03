@@ -62,6 +62,45 @@ const groups = [
 
 const allServiceNames = groups.flatMap((g) => g.items);
 
+// Plain symptoms a business owner would recognise, each pointing to one page.
+const startHere = [
+  {
+    problem: 'Your site does not show up in Google',
+    answer:
+      'The pages may not be crawled or indexed, or they may not match what people search for. A technical SEO audit finds out which.',
+    href: '/services/seo.html',
+    link: 'SEO services',
+  },
+  {
+    problem: 'You rank, but few people click',
+    answer:
+      'Google may be answering the question on the results page. AEO shapes your content so your business is the answer shown.',
+    href: '/services/aeo.html',
+    link: 'AEO services',
+  },
+  {
+    problem: 'AI tools name your competitors, not you',
+    answer:
+      'ChatGPT, Perplexity, and AI Overviews cite sources they can read and trust. GEO works on being one of them.',
+    href: '/services/geo.html',
+    link: 'GEO services',
+  },
+  {
+    problem: 'Nearby customers cannot find you on Maps',
+    answer:
+      'The map pack depends on your Google Business Profile, matching details across the web, and reviews.',
+    href: '/services/local-seo.html',
+    link: 'Local SEO services',
+  },
+  {
+    problem: 'Your site is slow or hard to update',
+    answer:
+      'A slow site loses visitors and holds back rankings. A fast, clean build fixes the base everything else stands on.',
+    href: '/services/web-development.html',
+    link: 'Web development services',
+  },
+];
+
 // Link the hub into every blog topic, including the two categories
 // (digital marketing, e-commerce and SaaS) that have no service page of
 // their own and would otherwise be reachable only from the blog index.
@@ -140,13 +179,42 @@ const reviewSchema = publishedTestimonials.length
         }
       </ul>
 
+      <h2>Where to start</h2>
+      <p class="muted start-lead">
+        Most businesses do not need everything at once. Find the line that sounds like
+        you, and that is usually the first job.
+      </p>
+      <ul class="start-list">
+        {
+          startHere.map((s) => (
+            <li class="card reveal">
+              <h3>{s.problem}</h3>
+              <p class="muted">{s.answer}</p>
+              <a href={s.href}>{s.link}</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>How the services fit together</h2>
+      <p>
+        SEO is the base. It makes sure search engines can read the site and that each
+        page matches a real search. AEO and GEO build on that base: once the pages are
+        clear and trusted, they can be shaped so search engines and AI tools quote them.
+      </p>
+      <p>
+        The website carries all of it. A slow or badly built site holds back every other
+        effort, which is why speed, structure, and structured data come up in each
+        service.
+      </p>
+
       <p class="remote-line">
         I work remote-first with businesses across India and internationally.
       </p>
 
       <h2>Read up on any of it</h2>
       <p class="muted">
-        {posts.length} articles written from client work, grouped by topic.
+        {posts.length} practical articles, grouped by topic.
       </p>
       <ul class="link-chips">
         {
@@ -174,6 +242,31 @@ const reviewSchema = publishedTestimonials.length
   .narrow-lead {
     max-width: 60ch;
     margin: 0.8rem 0 0;
+  }
+  .container > h2 {
+    margin: 2.5rem 0 1rem;
+  }
+  .start-lead {
+    max-width: 60ch;
+  }
+  .start-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .start-list h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+  }
+  .start-list a {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .start-list a:hover {
+    text-decoration: underline;
   }
   .service-groups {
     display: grid;

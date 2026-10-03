@@ -4,7 +4,109 @@ import { Picture } from 'astro:assets';
 import portrait from '../assets/nisarth.jpg';
 import { getCollection } from 'astro:content';
 import { SITE } from '../consts';
-import { person, website } from '../schema';
+import { person, website, faqPage } from '../schema';
+import SearchLab from '../components/SearchLab.astro';
+import Marquee from '../components/Marquee.astro';
+import Faq from '../components/Faq.astro';
+
+// General explainers only. Nothing below is a claim about a client or a result.
+const searchSteps = [
+  {
+    name: 'Crawl',
+    text: 'Search engines send programs called crawlers to read your pages. If a page is blocked, slow, or not linked from anywhere, it may never be read. Technical SEO fixes this first.',
+  },
+  {
+    name: 'Understand',
+    text: 'The engine works out what each page is about and who is behind it. Clear headings, plain writing, and structured data make that meaning easy to read.',
+  },
+  {
+    name: 'Rank',
+    text: 'For each search, the engine picks the pages that answer it best and that people can trust. Useful content, links from other sites, and a fast page all count.',
+  },
+  {
+    name: 'Answer',
+    text: 'More and more, the engine writes the answer itself and names its sources. Google AI Overviews, ChatGPT, and Perplexity work this way. Pages that give short, direct answers are easier to quote.',
+  },
+];
+
+const compare = {
+  cols: [
+    { name: 'SEO', href: '/services/seo.html' },
+    { name: 'AEO', href: '/services/aeo.html' },
+    { name: 'GEO', href: '/services/geo.html' },
+  ],
+  rows: [
+    {
+      label: 'Stands for',
+      cells: ['Search engine optimization', 'Answer engine optimization', 'Generative engine optimization'],
+    },
+    {
+      label: 'Where you show up',
+      cells: [
+        'Google and Bing results',
+        'Featured snippets, People Also Ask, and voice answers',
+        'ChatGPT, Perplexity, Gemini, and Google AI Overviews',
+      ],
+    },
+    {
+      label: 'What it needs',
+      cells: [
+        'Pages that can be crawled, the right keywords, useful content, and links',
+        'Direct answers, question headings, and FAQ schema',
+        'Clear facts about who you are, the same details across the web, and content that is easy to quote',
+      ],
+    },
+    {
+      label: 'How you know it works',
+      cells: [
+        'Rankings, clicks, and organic traffic',
+        'Snippets won and questions you appear for',
+        'Mentions and citations inside AI answers',
+      ],
+    },
+  ],
+};
+
+const faqs = [
+  {
+    q: 'What is the difference between SEO, AEO, and GEO?',
+    a: 'SEO helps your pages rank in search results. AEO shapes your content so search engines can lift it as a direct answer, such as a featured snippet. GEO helps AI tools like ChatGPT and Perplexity find, trust, and cite your business. They share the same base: a site that is easy to read and worth quoting.',
+  },
+  {
+    q: 'How long does SEO take to show results?',
+    a: 'Most sites see early movement in 2 to 3 months and stronger results by 6 months. Google itself says it usually takes four months to a year to see the full benefit of SEO work. Technical fixes can show sooner, and new content takes longer.',
+  },
+  {
+    q: 'Do I still need SEO if people ask ChatGPT instead of Google?',
+    a: 'Yes. AI tools build their answers from pages they can find and read. A site that is crawlable, clear, and trusted has a better chance of being used as a source, so the same basics still apply.',
+  },
+  {
+    q: 'What is structured data?',
+    a: 'Structured data, also called schema markup, is a small block of code that tells search engines what a page contains: a business, a service, an article, a list of questions. It helps them understand the page and can earn richer results.',
+  },
+  {
+    q: 'What are Core Web Vitals?',
+    a: 'Core Web Vitals are three Google measures of how a page feels to use: how fast the main content loads (LCP), how quickly the page reacts when you tap or click (INP), and how much the layout jumps while loading (CLS).',
+  },
+  {
+    q: 'Can you promise a number one ranking?',
+    a: 'No. Nobody can, and Google warns against anyone who does. What I can do is find what holds your site back, fix it in order of impact, and report progress in plain words.',
+  },
+];
+
+// The places a business can show up. Shown one at a time in the hero.
+const foundIn = ['Google Search', 'AI Overviews', 'ChatGPT', 'Perplexity', 'Google Maps'];
+
+const marqueeItems = [
+  'SEO',
+  'AEO',
+  'GEO',
+  'Technical audits',
+  'Structured data',
+  'Core Web Vitals',
+  'Websites',
+  'Automation',
+];
 
 const title = 'Nisarth Patel: Digital Growth Specialist (SEO & AI)';
 const description =
@@ -47,7 +149,7 @@ const workTeaser = [
 ];
 ---
 
-<BaseLayout title={title} description={description} path="/" jsonLd={[person(), website()]}>
+<BaseLayout title={title} description={description} path="/" jsonLd={[person(), website(), faqPage(faqs)]}>
   <!-- Hero -->
   <section class="hero section-lg">
     <div class="container hero-inner">
@@ -58,6 +160,16 @@ const workTeaser = [
           {SITE.name} is a freelance {SITE.role.toLowerCase()} in Ahmedabad. I use SEO,
           answer engine optimization, and AI automation to turn a quiet website into a
           steady source of leads.
+        </p>
+        <p class="found">
+          <span class="found-label">Get found in</span>
+          <span class="visually-hidden">{foundIn.join(', ')}</span>
+          <span class="found-window" aria-hidden="true">
+            <span class="found-reel">
+              {foundIn.map((place) => <span>{place}</span>)}
+              <span>{foundIn[0]}</span>
+            </span>
+          </span>
         </p>
         <div class="hero-actions">
           <a href="/contact.html" class="btn btn-primary">Start a project</a>
@@ -85,10 +197,92 @@ const workTeaser = [
 
     <div class="container">
       <ul class="hero-stats">
-        <li><strong>{SITE.experienceYears}+</strong><span>years in digital growth</span></li>
+        <li><strong>{SITE.experienceYears}</strong><span>years in digital growth</span></li>
         <li><strong>SEO + AI</strong><span>search and automation focus</span></li>
         <li><strong>Remote</strong><span>India and worldwide</span></li>
       </ul>
+    </div>
+  </section>
+
+  <Marquee items={marqueeItems} label="What I work on" />
+
+  <!-- Animated drawings of the work -->
+  <section class="section" aria-labelledby="lab-heading">
+    <div class="container">
+      <p class="eyebrow">How it works</p>
+      <h2 id="lab-heading">Three places your customers look</h2>
+      <p class="lead lab-lead">
+        Pick one to see what the work changes. These are drawings, not client data.
+      </p>
+      <SearchLab />
+    </div>
+  </section>
+
+  <!-- How search works -->
+  <section class="section" aria-labelledby="steps-heading">
+    <div class="container">
+      <p class="eyebrow">The basics</p>
+      <h2 id="steps-heading">How a search engine decides who shows up</h2>
+      <p class="lead lab-lead">
+        Every result you see went through the same four steps. My work is making each
+        step easy for your site.
+      </p>
+      <ol class="steps">
+        {
+          searchSteps.map((step, i) => (
+            <li class="step reveal">
+              <span class="step-num" aria-hidden="true">0{i + 1}</span>
+              <h3>{step.name}</h3>
+              <p class="muted">{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="steps-actions">
+        <a href="/seo-audit-checklist.html" class="btn btn-primary">Check your own site</a>
+        <a href="/process.html" class="btn btn-ghost">See my process</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO, AEO, GEO compared -->
+  <section class="section" aria-labelledby="compare-heading">
+    <div class="container">
+      <p class="eyebrow">Side by side</p>
+      <h2 id="compare-heading">SEO, AEO, and GEO: what each one does</h2>
+      <p class="lead lab-lead">
+        Three names for one goal: being the business people find. Here is how they differ.
+      </p>
+      <div class="compare-wrap reveal" tabindex="0" role="region" aria-labelledby="compare-heading">
+        <table class="compare">
+          <thead>
+            <tr>
+              <td></td>
+              {compare.cols.map((c) => (
+                <th scope="col">
+                  <a href={c.href}>{c.name}</a>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {
+              compare.rows.map((row) => (
+                <tr>
+                  <th scope="row">{row.label}</th>
+                  {row.cells.map((cell) => <td>{cell}</td>)}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="steps-actions compare-actions">
+        <a href="/guides/seo.html" class="btn btn-ghost">SEO guide</a>
+        <a href="/guides/aeo.html" class="btn btn-ghost">AEO guide</a>
+        <a href="/guides/geo.html" class="btn btn-ghost">GEO guide</a>
+        <a href="/glossary.html" class="btn btn-ghost">Glossary</a>
+      </div>
     </div>
   </section>
 
@@ -166,6 +360,8 @@ const workTeaser = [
     </div>
   </section>
 
+  <Faq heading="Common questions" items={faqs} />
+
   <!-- CTA -->
   <section class="section cta-band">
     <div class="container cta-inner reveal">
@@ -193,7 +389,7 @@ const workTeaser = [
     z-index: -2;
     background:
       radial-gradient(46% 46% at 72% 22%, var(--accent-glow), transparent 68%),
-      radial-gradient(40% 44% at 12% 8%, rgba(154, 208, 255, 0.09), transparent 70%);
+      radial-gradient(40% 44% at 12% 8%, var(--accent-soft), transparent 70%);
     pointer-events: none;
   }
   .hero::after {
@@ -224,6 +420,144 @@ const workTeaser = [
   .hero-lead {
     max-width: 52ch;
   }
+  /* One place at a time, rolling upward. The reel repeats its first entry at
+     the end so the jump back to the start cannot be seen. */
+  .found {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.4rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    line-height: 1.5;
+  }
+  .found-label {
+    color: var(--text-muted);
+  }
+  .found-window {
+    display: inline-block;
+    height: 1.5em;
+    overflow: hidden;
+    color: var(--accent);
+  }
+  .found-reel {
+    display: flex;
+    flex-direction: column;
+    animation: found-roll 12s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+  }
+  .found-reel span {
+    height: 1.5em;
+    white-space: nowrap;
+  }
+  @keyframes found-roll {
+    0%, 16% { transform: translateY(0); }
+    20%, 36% { transform: translateY(-1.5em); }
+    40%, 56% { transform: translateY(-3em); }
+    60%, 76% { transform: translateY(-4.5em); }
+    80%, 96% { transform: translateY(-6em); }
+    100% { transform: translateY(-7.5em); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .found-reel {
+      animation: none;
+    }
+  }
+
+  .lab-lead {
+    max-width: 56ch;
+    margin-top: 0.8rem;
+  }
+
+  /* Four numbered steps joined by one rule, so they read as a sequence. */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(1.4rem, 3vw, 2.2rem);
+    margin: 2.2rem 0;
+    border-top: 1px solid var(--border-strong);
+  }
+  .step {
+    position: relative;
+    padding-top: 1.4rem;
+  }
+  .step::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .steps-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  .compare-actions {
+    margin-top: 1.4rem;
+  }
+  .step-num {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .step h3 {
+    margin-bottom: 0.6rem;
+  }
+
+  /* The table scrolls sideways on narrow screens instead of squeezing. */
+  .compare-wrap {
+    margin-top: 2rem;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-elev);
+  }
+  .compare {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  .compare th,
+  .compare td {
+    padding: 1rem 1.2rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare tbody tr:last-child th,
+  .compare tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .compare thead th {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+  }
+  .compare thead a {
+    color: var(--accent);
+  }
+  .compare thead a:hover {
+    text-decoration: underline;
+  }
+  .compare tbody th {
+    width: 11rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .compare tbody td {
+    color: var(--text);
+  }
+
   .hero-actions {
     display: flex;
     flex-wrap: wrap;

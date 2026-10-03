@@ -1,0 +1,94 @@
+---
+// A slow band of moving type. Pure CSS: the list is printed twice and slid by
+// half its width, so the loop has no seam. The copy is hidden from assistive
+// tech, which reads the list once.
+interface Props {
+  items: string[];
+  label: string;
+}
+
+const { items, label } = Astro.props;
+---
+
+<div class="marquee" role="group" aria-label={label}>
+  <div class="marquee-track">
+    <ul>
+      {items.map((item) => <li>{item}</li>)}
+    </ul>
+    <ul aria-hidden="true">
+      {items.map((item) => <li>{item}</li>)}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    border-block: 1px solid var(--border);
+    padding-block: clamp(1rem, 2.5vw, 1.6rem);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-slide 38s linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+  ul {
+    display: flex;
+    flex-shrink: 0;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 4.5vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  /* Every second word is drawn as an outline so the band reads as rhythm. */
+  li:nth-child(even) {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-muted);
+  }
+  li::after {
+    content: '';
+    width: 0.4em;
+    height: 0.4em;
+    margin-inline: clamp(1rem, 3vw, 2rem);
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  @keyframes marquee-slide {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* The global reduced-motion rule would freeze this mid-slide after one
+     frame. Stopping it outright and letting the list wrap reads better. */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+    .marquee-track {
+      animation: none;
+      width: auto;
+    }
+    ul {
+      flex-wrap: wrap;
+      row-gap: 0.6rem;
+    }
+    ul[aria-hidden] {
+      display: none;
+    }
+  }
+</style>

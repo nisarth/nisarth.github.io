@@ -39,8 +39,8 @@ const monthYear = (value: string) => {
                 </p>
                 <h3>
                   {r.title}
-                  <span class="at"> at </span>
-                  {r.companyUrl ? (
+                  {r.company && <span class="at"> at </span>}
+                  {r.company && r.companyUrl ? (
                     <a href={r.companyUrl} rel="noopener noreferrer" target="_blank">
                       {r.company}
                     </a>

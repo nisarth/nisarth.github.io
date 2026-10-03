@@ -15,36 +15,80 @@ const steps = [
     name: 'Discovery',
     line: 'Discovery is a short call to understand your business, your goals, and your customers.',
     detail: 'We talk about what you sell, who you sell to, and what a win looks like for you.',
+    more: [
+      'What you sell and who buys it',
+      'Where your leads come from today',
+      'What has been tried before, and what happened',
+      'What a good result looks like, as a number where possible',
+    ],
+    output: 'You leave with a short written summary of the goal, so we both mean the same thing.',
   },
   {
     n: '02',
     name: 'Audit',
     line: 'An audit is a close look at where you stand today.',
     detail: 'I review your site, search rankings, content, and any tools you already use, then list what is holding you back.',
+    more: [
+      'Crawl health: can search engines reach and index the pages that matter',
+      'On-page SEO: titles, headings, and how well each page matches a search',
+      'Content quality, thin pages, and pages that compete with each other',
+      'Internal links and site structure',
+      'Core Web Vitals and page speed',
+      'Structured data, and how the site shows up in AI answers',
+    ],
+    output: 'You get a list of what was found, in plain words, with the biggest problems first.',
   },
   {
     n: '03',
     name: 'Strategy',
     line: 'Strategy is a simple, prioritized plan you can understand.',
     detail: 'You get a clear roadmap with the work in order of impact, so you know what happens first and why.',
+    more: [
+      'Fixes sorted by impact and by effort',
+      'The topics and pages to build, grouped by what buyers search for',
+      'What will be measured, and where the numbers come from',
+      'What I need from you and when',
+    ],
+    output: 'You get a roadmap you can read in a few minutes and agree to before any work starts.',
   },
   {
     n: '04',
     name: 'Build',
     line: 'Build is where the work gets done.',
     detail: 'I make the fixes, write the content, or set up the automation, and keep you updated as I go.',
+    more: [
+      'Technical fixes, done directly or handed to your developer with clear notes',
+      'New and updated pages, written answer-first',
+      'Structured data added and tested',
+      'Each change noted, so results can be traced back to the work',
+    ],
+    output: 'You get the finished work, plus a record of what changed and when.',
   },
   {
     n: '05',
     name: 'Measure',
     line: 'Measure means checking the numbers that matter.',
     detail: 'I track rankings, traffic, leads, or hours saved, and report them in plain language.',
+    more: [
+      'Google Search Console: impressions, clicks, and position',
+      'Google Analytics 4: visits and enquiries from search',
+      'Featured snippets and AI mentions for the agreed questions',
+      'A before and after view against the starting point',
+    ],
+    output: 'You get a report that says what moved, what did not, and what happens next.',
   },
   {
     n: '06',
     name: 'Iterate',
     line: 'Iterate is the steady improvement after launch.',
     detail: 'Growth is not one and done. We keep refining based on what the data shows.',
+    more: [
+      'Pages that are close to ranking get improved first',
+      'Content that has gone out of date is refreshed',
+      'New questions buyers are asking become new pages',
+      'Search and AI tools change, so the plan is reviewed, not left alone',
+    ],
+    output: 'You get an updated plan, so the work keeps pointing at the goal.',
   },
 ];
 
@@ -93,6 +137,10 @@ const updated = lastUpdated('process');
                 <h2>{s.name}</h2>
                 <p class="step-line">{s.line}</p>
                 <p class="muted">{s.detail}</p>
+                <ul class="step-more">
+                  {s.more.map((m) => <li>{m}</li>)}
+                </ul>
+                <p class="step-output">{s.output}</p>
               </div>
             </li>
           ))
@@ -136,6 +184,29 @@ const updated = lastUpdated('process');
   }
   .step-line {
     margin-bottom: 0.4rem;
+  }
+  .step-more {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin: 1rem 0;
+  }
+  .step-more li {
+    position: relative;
+    padding-left: 1.4rem;
+    color: var(--text-muted);
+  }
+  .step-more li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .step-output {
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+    font-weight: 600;
   }
   .updated {
     font-family: var(--font-mono);

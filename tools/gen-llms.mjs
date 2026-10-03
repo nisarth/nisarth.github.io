@@ -67,6 +67,29 @@ if (serviceFiles.length) {
   lines.push('');
 }
 
+// Topic guides and reference pages. Listed only if they were built, so this
+// section cannot point at a page that does not exist.
+const guideFiles = [
+  'guides.html',
+  ...(existsSync(join(dist, 'guides'))
+    ? readdirSync(join(dist, 'guides'))
+        .filter((f) => f.endsWith('.html'))
+        .sort()
+        .map((f) => `guides/${f}`)
+    : []),
+  'glossary.html',
+  'seo-audit-checklist.html',
+].filter((f) => existsSync(join(dist, f)));
+if (guideFiles.length) {
+  lines.push('## Guides and reference', '');
+  for (const f of guideFiles) {
+    const html = read(f);
+    lines.push(`- ${titleOf(html)}: ${BASE}/${f}`);
+    lines.push(`  ${descOf(html)}`);
+  }
+  lines.push('');
+}
+
 // Articles, grouped by the category page each belongs to.
 const catDir = join(dist, 'blog', 'category');
 if (existsSync(catDir)) {

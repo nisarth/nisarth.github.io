@@ -10,6 +10,7 @@ export const SITE = {
   role: 'Digital Growth Specialist',
   tagline: 'SEO, AEO, GEO, and AI automation for businesses that want to be found.',
   location: 'Ahmedabad, Gujarat, India',
+  // Confirmed by Nisarth on 2026-10-03. Do not round up.
   experienceYears: 2.5,
   email: 'pnisarth@gmail.com',
   // Display and tel forms of the same number.
