@@ -26,6 +26,7 @@ Nisarth Patel is a freelance digital growth specialist based in Ahmedabad, Gujar
 
 - Home: https://nisarth.github.io/
 - About: https://nisarth.github.io/about.html
+- Resume: https://nisarth.github.io/resume.html
 - Services: https://nisarth.github.io/services.html
 - Work: https://nisarth.github.io/work.html
 - Process: https://nisarth.github.io/process.html

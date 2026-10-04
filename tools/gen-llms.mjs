@@ -40,6 +40,7 @@ const lines = [intro, ''];
 const core = [
   ['Home', '/index.html', '/'],
   ['About', '/about.html', '/about.html'],
+  ['Resume', '/resume.html', '/resume.html'],
   ['Services', '/services.html', '/services.html'],
   ['Work', '/work.html', '/work.html'],
   ['Process', '/process.html', '/process.html'],

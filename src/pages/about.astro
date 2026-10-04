@@ -139,7 +139,10 @@ const career = personCareer({
       </div>
 
       {updated && <p class="updated">Last updated: {updated}</p>}
-      <a href="/contact.html" class="btn btn-primary">Work with me</a>
+      <div class="about-actions">
+        <a href="/contact.html" class="btn btn-primary">Work with me</a>
+        <a href="/resume.html" class="btn btn-ghost">View my resume</a>
+      </div>
     </div>
   </section>
 
@@ -182,6 +185,11 @@ const career = personCareer({
     .about-intro :global(img) {
       max-width: 180px;
     }
+  }
+  .about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
   }
   .beliefs {
     display: flex;
