@@ -5,12 +5,12 @@ import sharp from 'sharp';
 import { mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const ACCENT = '#c8ff4d';
-const INK = '#0b0c0e';
+const ACCENT = '#2f4bff';
+const INK = '#ffffff';
 const pub = join(process.cwd(), 'public');
 mkdirSync(join(pub, 'icons'), { recursive: true });
 
-// Standard icon: rounded lime tile with dark initials, matching .brand-mark.
+// Standard icon: rounded accent tile with white initials, matching .brand-mark.
 const tile = (size) => `
 <svg width="${size}" height="${size}" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
   <rect width="64" height="64" rx="14" fill="${ACCENT}"/>
@@ -18,7 +18,7 @@ const tile = (size) => `
         font-size="27" fill="${INK}" text-anchor="middle" letter-spacing="-1">NP</text>
 </svg>`;
 
-// Maskable icon: full bleed lime, initials kept inside the 80% safe zone so
+// Maskable icon: full bleed accent, initials kept inside the 80% safe zone so
 // Android can crop it to any shape without clipping the letters.
 const maskable = (size) => `
 <svg width="${size}" height="${size}" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">

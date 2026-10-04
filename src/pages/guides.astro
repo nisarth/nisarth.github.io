@@ -6,6 +6,9 @@ import { SITE } from '../consts';
 import { hubs } from '../data/hubs';
 import { glossary } from '../data/glossary';
 import { totalChecks } from '../data/seo-audit-checklist';
+import { aeoChecklist, geoChecklist } from '../data/aeo-geo-checklists';
+
+const count = (groups: { checks: unknown[] }[]) => groups.reduce((sum, g) => sum + g.checks.length, 0);
 
 const path = '/guides.html';
 const title = 'Guides: SEO, AEO, and GEO Explained in Plain Words';
@@ -73,6 +76,14 @@ const itemList = {
         <a class="card tool-card reveal" href="/seo-audit-checklist.html">
           <h3>SEO audit checklist</h3>
           <p class="muted">{totalChecks} checks you can tick off, with a score that shows where to look next.</p>
+        </a>
+        <a class="card tool-card reveal" href="/aeo-checklist.html">
+          <h3>AEO checklist</h3>
+          <p class="muted">{count(aeoChecklist)} checks to see if a page is ready to be shown as a direct answer.</p>
+        </a>
+        <a class="card tool-card reveal" href="/geo-checklist.html">
+          <h3>GEO checklist</h3>
+          <p class="muted">{count(geoChecklist)} checks to see if AI tools can find, read, and cite your business.</p>
         </a>
         <a class="card tool-card reveal" href="/blog.html">
           <h3>All articles</h3>

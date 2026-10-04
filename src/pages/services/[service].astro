@@ -31,6 +31,12 @@ const related = record.related
   .filter(Boolean);
 const updated = lastUpdated('service');
 const drawing = DRAWING[record.slug];
+const toolLink =
+  record.slug === 'aeo'
+    ? { href: '/aeo-checklist.html', name: 'AEO checklist' }
+    : record.slug === 'geo'
+      ? { href: '/geo-checklist.html', name: 'GEO checklist' }
+      : { href: '/seo-audit-checklist.html', name: 'SEO audit checklist' };
 ---
 
 <BaseLayout
@@ -132,7 +138,7 @@ const drawing = DRAWING[record.slug];
         ['seo', 'local-seo', 'aeo', 'geo'].includes(record.slug) && (
           <p class="tool-link">
             Want to check your own site first? Use the free
-            <a href="/seo-audit-checklist.html">SEO audit checklist</a>. To learn how it
+            <a href={toolLink.href}>{toolLink.name}</a>. To learn how it
             all works, read the
             <a href={`/guides/${record.slug === 'local-seo' ? 'seo' : record.slug}.html`}>
               {record.slug === 'local-seo' ? 'SEO' : record.name} guide

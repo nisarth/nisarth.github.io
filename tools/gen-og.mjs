@@ -10,11 +10,12 @@ import { join } from 'node:path';
 const root = process.cwd();
 const source = join(root, 'src', 'assets', 'nisarth.jpg');
 
-const BG = '#0b0c0e';
-const PANEL = '#15171a';
-const ACCENT = '#c8ff4d';
-const TEXT = '#f3f4f6';
-const MUTED = '#a6acb5';
+const BG = '#f7f5f0';
+const PANEL = '#eceefd';
+const ACCENT = '#2f4bff';
+const ON_ACCENT = '#ffffff';
+const TEXT = '#17181a';
+const MUTED = '#5d6168';
 
 const W = 1200;
 const H = 630;
@@ -31,7 +32,7 @@ const backdrop = `
   <circle cx="${PHOTO_X + PHOTO / 2}" cy="${H / 2}" r="270" fill="${PANEL}"/>
   <g font-family="Arial, Helvetica, sans-serif">
     <rect x="70" y="118" width="86" height="86" rx="18" fill="${ACCENT}"/>
-    <text x="113" y="176" font-size="44" font-weight="700" fill="${BG}" text-anchor="middle">NP</text>
+    <text x="113" y="176" font-size="44" font-weight="700" fill="${ON_ACCENT}" text-anchor="middle">NP</text>
     <text x="70" y="330" font-size="82" font-weight="700" fill="${TEXT}">Nisarth Patel</text>
     <text x="70" y="396" font-size="36" font-weight="500" fill="${ACCENT}">Digital Growth Specialist</text>
     <text x="70" y="456" font-size="27" font-weight="400" fill="${MUTED}">SEO, AEO, GEO, and AI automation</text>
