@@ -7,6 +7,16 @@ import { services, serviceBySlug } from '../../data/services';
 import { postsForService } from '../../data/topic-links';
 import { breadcrumb, faqPage, service as serviceSchema } from '../../schema';
 import { lastUpdated } from '../../lib/last-updated';
+import SearchLab from '../../components/SearchLab.astro';
+
+// Which animated drawing fits each service. Web development has none.
+const DRAWING: Record<string, 'search' | 'answers' | 'automation'> = {
+  seo: 'search',
+  'local-seo': 'search',
+  aeo: 'answers',
+  geo: 'answers',
+  'ai-automation': 'automation',
+};
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { service: s.slug }, props: { record: s } }));
@@ -20,6 +30,7 @@ const related = record.related
   .map((slug) => serviceBySlug(slug))
   .filter(Boolean);
 const updated = lastUpdated('service');
+const drawing = DRAWING[record.slug];
 ---
 
 <BaseLayout
@@ -55,6 +66,15 @@ const updated = lastUpdated('service');
       <h1>{record.h1}</h1>
       <p class="lead">{record.definition}</p>
       <p>{record.intro}</p>
+
+      {
+        drawing && (
+          <figure class="drawing">
+            <SearchLab only={drawing} />
+            <figcaption>A drawing of the idea, not client data.</figcaption>
+          </figure>
+        )
+      }
 
       <h2>What my {record.primaryKeyword} include</h2>
       <ul class="check-list">
@@ -143,6 +163,14 @@ const updated = lastUpdated('service');
   .guide-part p + p,
   .guide-part p + ul {
     margin-top: 1rem;
+  }
+  .drawing {
+    margin: 0;
+  }
+  .drawing figcaption {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
   }
   .tool-link {
     margin-top: 2rem;

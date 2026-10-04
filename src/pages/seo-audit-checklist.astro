@@ -29,6 +29,14 @@ const faqs = [
   },
 ];
 
+// Official Google tools only, so the links stay stable and neutral.
+const freeTools = [
+  { name: 'Google Search Console', href: 'https://search.google.com/search-console', use: 'Indexing, sitemaps, and which searches show your pages.' },
+  { name: 'PageSpeed Insights', href: 'https://pagespeed.web.dev/', use: 'Core Web Vitals and what slows a page down.' },
+  { name: 'Rich Results Test', href: 'https://search.google.com/test/rich-results', use: 'Checks structured data for errors.' },
+  { name: 'Google Business Profile', href: 'https://www.google.com/business/', use: 'Your listing on Maps and in local results.' },
+];
+
 const itemList = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -126,6 +134,21 @@ const itemList = {
           </section>
         ))
       }
+
+      <section class="free-tools" aria-labelledby="tools-heading">
+        <h2 id="tools-heading">Free tools for these checks</h2>
+        <p class="muted">All from Google, all free. Between them they cover most of this list.</p>
+        <ul>
+          {
+            freeTools.map((t) => (
+              <li>
+                <a href={t.href} rel="noopener noreferrer" target="_blank">{t.name}</a>
+                <span class="muted">{t.use}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
 
       <div class="next card">
         <h2>Want this checked properly?</h2>
@@ -382,6 +405,29 @@ const itemList = {
     text-decoration-color: var(--text-muted);
   }
 
+  .free-tools {
+    margin-top: 3rem;
+  }
+  .free-tools h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .free-tools ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.1rem;
+  }
+  .free-tools li {
+    display: flex;
+    flex-direction: column;
+  }
+  .free-tools a {
+    color: var(--link);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
   .next {
     margin-top: 3rem;
     display: flex;
