@@ -8,6 +8,7 @@ import { person, breadcrumb, faqPage, personCareer } from '../schema';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { lastUpdated } from '../lib/last-updated';
 import Experience from '../components/Experience.astro';
+import Numbers from '../components/Numbers.astro';
 import { publishedRoles, publishedEducation, publishedCredentials } from '../data/experience';
 
 const title = 'About Nisarth Patel: Freelance Digital Growth Specialist';
@@ -46,6 +47,12 @@ const beliefs = [
   },
 ];
 
+// From the resume Nisarth supplied.
+const tools = [
+  'Google Analytics 4', 'Google Search Console', 'SEMrush', 'Ahrefs', 'Screaming Frog',
+  'PageSpeed Insights', 'Google Tag Manager', 'WordPress', 'Claude AI', 'ChatGPT',
+];
+
 const faqs = [
   {
     q: 'What does a digital growth specialist do?',
@@ -54,6 +61,10 @@ const faqs = [
   {
     q: 'Where are you based?',
     a: 'I am based in Ahmedabad, Gujarat, India, and I work remotely with clients across India and internationally.',
+  },
+  {
+    q: 'Do you work full-time or freelance?',
+    a: 'Both. I work full-time in SEO and take on freelance projects alongside it.',
   },
   {
     q: 'How much experience do you have?',
@@ -97,9 +108,54 @@ const career = personCareer({
         </p>
       </div>
 
-      <!-- Personal background to expand once confirmed with Nisarth:
-           how he got started, past roles, education, notable clients. Kept
-           general here so nothing is invented. -->
+      <!-- Background below uses only what Nisarth confirmed on 2026-10-03.
+           Employer names are left out at his request. -->
+      <h2>My path so far</h2>
+      <p>
+        I started in SEO in September 2023, in a part-time role while studying for a
+        B.Tech in Computer Engineering. That is where I learned SEO from the basics
+        and did the off-page work: link building and keyword research, along with
+        email marketing and social media posting.
+      </p>
+      <p>
+        During the degree I also worked as a React and React Native developer in two
+        internships. Building real interfaces taught me how websites are put together,
+        which is why I can read a technical problem and explain the fix to a developer.
+      </p>
+      <p>
+        After graduating in 2025 I took an in-house role as the only person looking
+        after SEO and site maintenance for a company with 80+ websites. Being the only
+        one meant doing all of it: on-page work, Search Console checks, and site
+        updates.
+      </p>
+      <p>
+        Since January 2026 I have worked full-time on client SEO: full site and content
+        audits, content plans built on search intent, technical fixes, and AEO and GEO
+        work. I take on freelance projects alongside it.
+      </p>
+
+      <Numbers heading="Numbers so far" />
+
+      <h2>How I use AI in my work</h2>
+      <p>
+        I use Claude, ChatGPT, and AI agents for the repeat parts of SEO: grouping
+        keywords, drafting meta tags, drafting schema markup, and building monthly
+        ranking reports. That leaves more time for the parts that need judgment, such
+        as deciding what a page should say and what to fix first.
+      </p>
+
+      <h2>Why a developer background helps</h2>
+      <p>
+        Many SEO fixes are code changes: a canonical tag, a redirect, structured data,
+        a slow script. Because I have built sites myself, I can find the cause, write
+        the fix or describe it exactly, and check that it was done right.
+      </p>
+
+      <h2>Tools I use</h2>
+      <ul class="tool-chips">
+        {tools.map((t) => <li>{t}</li>)}
+      </ul>
+
       <h2>How I work</h2>
       <p>
         I keep the work simple and honest. Every project starts with a clear goal,
@@ -190,6 +246,18 @@ const career = personCareer({
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
+  }
+  .tool-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .tool-chips li {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-elev);
   }
   .beliefs {
     display: flex;
