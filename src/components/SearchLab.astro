@@ -33,12 +33,22 @@ const scenes = [
 ];
 
 const flow = ['Website form', 'CRM', 'Email', 'WhatsApp'];
+
+interface Props {
+  // Show a single drawing with no tabs and no caption, for use at the top of
+  // a service page where the page itself is the caption.
+  only?: 'search' | 'answers' | 'automation';
+}
+const { only } = Astro.props;
+const shown = only ? scenes.filter((s) => s.id === only) : scenes;
+const solo = shown.length === 1;
 ---
 
-<div class="lab" data-lab>
+<div class:list={['lab', { 'lab-solo': solo }]} data-lab>
+  {!solo && (
   <div class="lab-tabs" role="tablist" aria-label="Pick a part of the work">
     {
-      scenes.map((s, i) => (
+      shown.map((s, i) => (
         <button
           type="button"
           role="tab"
@@ -54,14 +64,15 @@ const flow = ['Website form', 'CRM', 'Email', 'WhatsApp'];
       ))
     }
   </div>
+  )}
 
   {
-    scenes.map((s, i) => (
+    shown.map((s, i) => (
       <div
         class="lab-panel"
-        role="tabpanel"
+        role={solo ? undefined : 'tabpanel'}
         id={`lab-panel-${s.id}`}
-        aria-labelledby={`lab-tab-${s.id}`}
+        aria-labelledby={solo ? undefined : `lab-tab-${s.id}`}
         data-active={i === 0 ? '' : undefined}
       >
         <div class="lab-stage" aria-hidden="true">
@@ -129,14 +140,16 @@ const flow = ['Website form', 'CRM', 'Email', 'WhatsApp'];
           </div>
         </div>
 
-        <div class="lab-copy">
-          <h3>{s.title}</h3>
-          <p>{s.text}</p>
-          <a class="lab-link" href={s.href}>
-            {s.link}
-            <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
+        {!solo && (
+          <div class="lab-copy">
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            <a class="lab-link" href={s.href}>
+              {s.link}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        )}
       </div>
     ))
   }
@@ -153,6 +166,7 @@ const flow = ['Website form', 'CRM', 'Email', 'WhatsApp'];
     let live = false;
 
     const show = (index: number, focus = false) => {
+      if (tabs.length === 0) return;
       current = (index + tabs.length) % tabs.length;
       tabs.forEach((tab, i) => {
         const on = i === current;
@@ -253,6 +267,17 @@ const flow = ['Website form', 'CRM', 'Email', 'WhatsApp'];
   }
   .lab[data-js] .lab-panel:not([data-active]) {
     display: none;
+  }
+  /* One drawing on its own: full width, no caption column. */
+  .lab-solo {
+    margin: 2rem 0 0.5rem;
+  }
+  .lab-solo .lab-panel {
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+  }
+  .lab-solo .win-body {
+    min-height: 0;
   }
   .lab-copy h3 {
     margin-bottom: 0.7rem;
