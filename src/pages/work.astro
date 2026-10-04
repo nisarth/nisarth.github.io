@@ -137,10 +137,11 @@ const updated = lastUpdated('work');
       <h1>The work I do</h1>
 
       {
-        projects.length > 0 ? (
+        projects.length > 0 && (
           <>
             <p class="lead narrow-lead">
-              Real projects, with the numbers that came out of them.
+              Real projects, with the numbers that came out of them. Client case
+              studies are being added as each one is cleared to publish.
             </p>
             <div class="case-grid">
               {projects.map((p) => (
@@ -162,30 +163,30 @@ const updated = lastUpdated('work');
               ))}
             </div>
           </>
-        ) : (
-          <>
-            <p class="lead narrow-lead">
-              Here are the kinds of projects I take on. Detailed case studies with
-              client results are being added. If you want specifics for a project like
-              yours, just ask and I will walk you through real examples.
-            </p>
-            <div class="work-grid">
-              {engagements.map((e) => (
-                <article class="card work-item reveal">
-                  <span class="work-tag">{e.tag}</span>
-                  <h2>{e.title}</h2>
-                  <p class="work-goal">{e.goal}</p>
-                  <p class="muted">{e.work}</p>
-                  <h3>What the work looks like</h3>
-                  <ol class="work-steps">
-                    {e.steps.map((s) => <li>{s}</li>)}
-                  </ol>
-                </article>
-              ))}
-            </div>
-          </>
         )
       }
+
+      <h2 class="kinds-heading">The kinds of projects I take on</h2>
+      <p class="muted narrow-lead">
+        If you want specifics for a project like yours, just ask and I will walk you
+        through real examples.
+      </p>
+      <div class="work-grid">
+        {
+          engagements.map((e) => (
+            <article class="card work-item reveal">
+              <span class="work-tag">{e.tag}</span>
+              <h3 class="work-title">{e.title}</h3>
+              <p class="work-goal">{e.goal}</p>
+              <p class="muted">{e.work}</p>
+              <h4>What the work looks like</h4>
+              <ol class="work-steps">
+                {e.steps.map((s) => <li>{s}</li>)}
+              </ol>
+            </article>
+          ))
+        }
+      </div>
 
       <Numbers heading="Numbers so far" />
 
@@ -260,7 +261,11 @@ const updated = lastUpdated('work');
     color: var(--accent);
     margin-bottom: 0.7rem;
   }
-  .work-item h2,
+  .kinds-heading {
+    margin-top: 3rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+  .work-item .work-title,
   .case-card h2 {
     font-size: 1.35rem;
     margin-bottom: 0.6rem;
@@ -268,7 +273,7 @@ const updated = lastUpdated('work');
   .work-goal {
     margin-bottom: 0.6rem;
   }
-  .work-item h3 {
+  .work-item h4 {
     font-family: var(--font-mono);
     font-size: 0.75rem;
     letter-spacing: 0.08em;

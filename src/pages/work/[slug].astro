@@ -188,6 +188,50 @@ const period = [d.started, d.finished]
     text-decoration: underline;
     text-underline-offset: 2px;
   }
+  /* The global reset strips list markers, so case study lists get them back. */
+  .prose :global(ul),
+  .prose :global(ol) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin: 0 0 1.4rem;
+    padding-left: 1.4rem;
+  }
+  .prose :global(ul) {
+    list-style: disc;
+  }
+  .prose :global(ol) {
+    list-style: decimal;
+  }
+  .prose :global(li::marker) {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .prose :global(table) {
+    width: 100%;
+    margin: 0 0 1.4rem;
+    border-collapse: collapse;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-variant-numeric: tabular-nums;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 0.7rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .prose :global(th) {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .prose :global(tr:last-child td) {
+    border-bottom: 0;
+  }
   .case-cta {
     margin-top: 2.5rem;
     text-align: center;
