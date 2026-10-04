@@ -1,0 +1,53 @@
+---
+import ChecklistPage from '../components/ChecklistPage.astro';
+import { geoChecklist } from '../data/aeo-geo-checklists';
+
+const total = geoChecklist.reduce((sum, g) => sum + g.checks.length, 0);
+
+const faqs = [
+  {
+    q: 'What is a GEO checklist?',
+    a: 'A GEO checklist is a list of the things that make a business easy for AI tools such as ChatGPT, Perplexity, and Google AI Overviews to find, read, trust, and cite.',
+  },
+  {
+    q: 'Does passing every check mean AI tools will name my business?',
+    a: 'No. Nobody controls what an AI tool says. These checks remove the common reasons a business gets left out and make the right facts easy to find.',
+  },
+  {
+    q: 'How often should I re-check?',
+    a: 'Run the access and entity checks once, then again after any site change. Repeat the tracking test every month, because AI answers change often.',
+  },
+  {
+    q: 'Is my score saved?',
+    a: 'Your ticks are saved in your own browser only. Nothing is sent anywhere, and clearing your browser data removes them.',
+  },
+];
+
+const tools = [
+  { name: 'Google Search Console', href: 'https://search.google.com/search-console', use: 'Confirms pages are indexed and shows the searches they appear for.' },
+  { name: 'Bing Webmaster Tools', href: 'https://www.bing.com/webmasters', use: 'The same for Bing, whose index some AI tools use.' },
+  { name: 'Rich Results Test', href: 'https://search.google.com/test/rich-results', use: 'Checks Organization, Person, and Article schema for errors.' },
+  { name: 'Google Analytics 4', href: 'https://analytics.google.com/', use: 'Shows visits that arrive from AI tools.' },
+];
+---
+
+<ChecklistPage
+  path="/geo-checklist.html"
+  title={`GEO Checklist: ${total} Checks for AI Visibility`}
+  description={`A free GEO checklist with ${total} checks. See if AI tools like ChatGPT, Perplexity, and Google AI Overviews can find, read, and cite your business. Tick them off and see your score.`}
+  name="GEO checklist"
+  h1="GEO checklist: is your site ready for AI answers?"
+  lead={`A GEO checklist is a list of the things that make a business easy for AI tools to find, trust, and cite. This one has ${total} checks in ${geoChecklist.length} groups. Tick what is already true and the score shows where to look next.`}
+  how="Work from the top. If AI tools cannot read the site, nothing further down matters. Measuring AI visibility is still rough, so treat the score as a guide to what to fix, not a promise of being cited."
+  groups={geoChecklist}
+  storageKey="geo-checklist-v1"
+  faqs={faqs}
+  tools={tools}
+  toolsIntro="Free tools that cover most of this list."
+  nextHeading="Want help being found in AI answers?"
+  nextCta="Ask about GEO"
+>
+  Read the <a href="/guides/geo.html">GEO guide</a> for how AI tools pick their sources,
+  try the <a href="/aeo-checklist.html">AEO checklist</a> for answer-ready pages, or see
+  <a href="/services/geo.html">how I do GEO</a>.
+</ChecklistPage>

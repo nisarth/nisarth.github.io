@@ -80,6 +80,8 @@ const guideFiles = [
     : []),
   'glossary.html',
   'seo-audit-checklist.html',
+  'aeo-checklist.html',
+  'geo-checklist.html',
 ].filter((f) => existsSync(join(dist, f)));
 if (guideFiles.length) {
   lines.push('## Guides and reference', '');

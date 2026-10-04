@@ -35,6 +35,14 @@ const terms = hub.terms.flatMap((id) => {
 const service = serviceBySlug(hub.service);
 const others = hubs.filter((h) => h.slug !== hub.slug);
 
+// Each guide points to the checklist for its own topic.
+const CHECKLISTS: Record<string, { href: string; name: string }> = {
+  seo: { href: '/seo-audit-checklist.html', name: 'SEO audit checklist' },
+  aeo: { href: '/aeo-checklist.html', name: 'AEO checklist' },
+  geo: { href: '/geo-checklist.html', name: 'GEO checklist' },
+};
+const checklist = CHECKLISTS[hub.slug] || CHECKLISTS.seo;
+
 const article = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -153,7 +161,7 @@ const article = {
             ))
           }
           <li>
-            <a href="/seo-audit-checklist.html">SEO audit checklist</a>
+            <a href={checklist.href}>{checklist.name}</a>
             <span class="muted">Tick off the checks your own site already passes.</span>
           </li>
           {

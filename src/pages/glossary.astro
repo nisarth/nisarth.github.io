@@ -189,6 +189,12 @@ const termSet = {
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
   }
+  /* On a phone the search panel is too tall to pin, so it scrolls away. */
+  @media (max-width: 600px) {
+    .tools {
+      position: static;
+    }
+  }
   .search input {
     width: 100%;
     font: inherit;

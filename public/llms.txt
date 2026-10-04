@@ -62,6 +62,10 @@ Nisarth Patel is a freelance digital growth specialist based in Ahmedabad, Gujar
   A glossary of 65 SEO, AEO, and GEO terms, each explained in one or two plain sentences. Covers technical SEO, local search, AI answers, and analytics.
 - SEO Audit Checklist: 49 Checks You Can Tick Off: https://nisarth.github.io/seo-audit-checklist.html
   A free SEO audit checklist with 49 checks across crawling, on-page SEO, speed, structured data, AI answers, and local search. Tick them off and see your score.
+- AEO Checklist: 30 Checks for Answer-Ready Pages: https://nisarth.github.io/aeo-checklist.html
+  A free AEO checklist with 30 checks. See if a page is ready to be shown as a featured snippet, a People Also Ask answer, or a voice reply. Tick them off and see your score.
+- GEO Checklist: 30 Checks for AI Visibility: https://nisarth.github.io/geo-checklist.html
+  A free GEO checklist with 30 checks. See if AI tools like ChatGPT, Perplexity, and Google AI Overviews can find, read, and cite your business. Tick them off and see your score.
 
 ## Articles
 

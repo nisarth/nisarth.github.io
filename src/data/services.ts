@@ -115,6 +115,70 @@ export const services: ServiceRecord[] = [
           'Rankings alone are not the goal. A report should tie search visibility to visits and to leads, in words you can follow.',
         ],
       },
+      {
+        heading: 'Common SEO problems',
+        body: [
+          'Most sites that struggle in search share a short list of problems. These are the ones an audit finds most often.',
+        ],
+        points: [
+          'Important pages blocked by robots.txt or by a stray noindex tag.',
+          'Several pages aimed at the same search, so none of them ranks well.',
+          'Titles and headings that describe the business instead of what people search for.',
+          'Thin pages with a few lines of text and no real answer.',
+          'Slow pages weighed down by large images and scripts.',
+          'No internal links pointing to the pages that matter most.',
+          'A redesign that changed URLs without redirects and wiped out old rankings.',
+        ],
+      },
+      {
+        heading: 'The usual order of work',
+        body: [
+          'SEO works best in a set order, because each step depends on the one before it.',
+        ],
+        points: [
+          'Fix whatever stops pages being crawled and indexed.',
+          'Match each key page to one search, then fix its title, headings, and copy.',
+          'Fill the gaps: write the pages buyers search for that the site does not have yet.',
+          'Link related pages together into clear topics.',
+          'Earn links and mentions from relevant sites.',
+          'Measure, then repeat on the next set of pages.',
+        ],
+      },
+      {
+        heading: 'SEO now that AI answers exist',
+        body: [
+          'AI tools such as ChatGPT and Google AI Overviews find their sources through search. A page that ranks well and reads clearly is the kind of page they use. So the base for being named in AI answers is still solid SEO.',
+          'What has changed is where the clicks are. Simple questions are often answered on the results page. Searches where someone needs a provider, a price, or a comparison still bring visits, and those are the searches worth building pages for.',
+        ],
+      },
+      {
+        heading: 'What SEO cannot do',
+        body: [
+          'SEO cannot promise a position, because search engines decide rankings and change how they work. It is not instant, since new pages take time to be crawled, indexed, and trusted. And it cannot make a weak offer sell: it brings the right people to the page, but the page still has to give them a reason to get in touch.',
+        ],
+      },
+      {
+        heading: 'Questions to ask before you hire anyone',
+        body: [
+          'These questions help you judge anyone you speak to, including me. A straight answer to each is a good sign.',
+        ],
+        points: [
+          'What will you fix first, and why that before anything else?',
+          'Which numbers will you report, and where do they come from?',
+          'How do you earn links, and can I see examples?',
+          'What happens to the work if we stop: do I keep the content and the access?',
+          'What would make you say SEO is not the right fit for my business?',
+        ],
+      },
+      {
+        heading: 'What I need from you',
+        points: [
+          'Access to Google Search Console and Google Analytics 4, or permission to set them up.',
+          'Access to the website, or a developer who can make changes.',
+          'Someone who knows the business and can answer questions about customers and services.',
+          'Honest feedback on which enquiries turned into real work, so the effort goes where it pays.',
+        ],
+      },
     ],
     related: ['local-seo', 'aeo', 'web-development'],
   },
@@ -192,6 +256,76 @@ export const services: ServiceRecord[] = [
         heading: 'How AEO progress is measured',
         body: [
           'Progress shows up as featured snippets won, questions in People Also Ask where the site appears, and impressions for question searches in Google Search Console.',
+        ],
+      },
+      {
+        heading: 'Common AEO problems',
+        body: [
+          'When a page ranks but is never shown as the answer, the cause is usually one of these.',
+        ],
+        points: [
+          'The answer is buried under a long introduction.',
+          'Headings are labels such as "Overview" instead of the question people ask.',
+          'One paragraph tries to answer three questions at once.',
+          'Steps are written as a block of text instead of a numbered list.',
+          'The answer says "it" or "this" and makes no sense once lifted out.',
+          'Schema is missing, broken, or does not match the visible text.',
+        ],
+      },
+      {
+        heading: 'The usual order of work',
+        body: [
+          'AEO starts from questions, not from keywords.',
+        ],
+        points: [
+          'Collect the real questions buyers ask, from Search Console, People Also Ask, and your own enquiries.',
+          'Pick the pages that already rank for those questions.',
+          'Rewrite each one answer first, with the question as a heading.',
+          'Put steps in lists and comparisons in tables.',
+          'Add and test FAQ, Article, and Organization schema.',
+          'Track snippets and question searches, then move to the next set of pages.',
+        ],
+      },
+      {
+        heading: 'Where AEO fits with SEO and GEO',
+        body: [
+          'SEO gets the page ranking. AEO shapes the page so the engine can lift an answer from it. GEO goes one step further and aims at AI tools that write their own answer and cite sources.',
+          'The three share the same base, so the work is rarely done apart. A page rewritten to answer a question clearly helps in all three places at once.',
+        ],
+      },
+      {
+        heading: 'What AEO cannot do',
+        body: [
+          'AEO cannot force a search engine to show a snippet. It makes a page eligible and easy to use, and the engine still chooses. It also cannot rescue a page that does not rank, because answers are drawn from pages near the top. And some answer features bring views without clicks, so the gain is often visibility first and visits second.',
+        ],
+      },
+      {
+        heading: 'Questions to ask before you hire anyone',
+        body: [
+          'These questions help you judge anyone you speak to, including me. A straight answer to each is a good sign.',
+        ],
+        points: [
+          'Which questions do my buyers ask, and how did you find them?',
+          'Which of my pages are closest to winning an answer today?',
+          'How will you show whether a page was picked as an answer?',
+          'Do you write schema to match the visible text, word for word?',
+          'What will you do if a page ranks but is never chosen?',
+        ],
+      },
+      {
+        heading: 'Which pages to start with',
+        body: [
+          'Not every page is worth the effort. The best candidates already rank on the first page for a question, have a clear single topic, and sit close to a buying decision. Service pages and guides usually come first.',
+          'Pages that do not rank yet are better served by SEO work first. Once they reach the first page, AEO can shape them into answers.',
+        ],
+      },
+      {
+        heading: 'What I need from you',
+        points: [
+          'Access to Google Search Console and Google Analytics 4, or permission to set them up.',
+          'Access to the website, or a developer who can make changes.',
+          'Someone who knows the business and can answer questions about customers and services.',
+          'Honest feedback on which enquiries turned into real work, so the effort goes where it pays.',
         ],
       },
     ],
@@ -273,6 +407,70 @@ export const services: ServiceRecord[] = [
           'Measuring GEO is still rough, and it is better to say so. The practical method is to ask the main AI tools the questions your buyers ask, on a fixed schedule, and note whether your business is named or cited. Google Analytics 4 also shows visits that arrive from AI tools.',
         ],
       },
+      {
+        heading: 'Common GEO problems',
+        body: [
+          'When AI tools name competitors and leave a business out, these are the usual reasons.',
+        ],
+        points: [
+          'AI crawlers are blocked in robots.txt or by a firewall, often by accident.',
+          'The main content only appears after scripts run, so the crawler sees an empty page.',
+          'Pages are full of slogans and short on plain facts a tool can quote.',
+          'The business name, address, or description differs from one site to the next.',
+          'There is no clear About page saying who runs the business and where.',
+          'Almost nothing outside the business\'s own site mentions it.',
+        ],
+      },
+      {
+        heading: 'The usual order of work',
+        body: [
+          'GEO moves from access, to clarity, to reputation.',
+        ],
+        points: [
+          'Check that AI crawlers can reach and read the site.',
+          'List the questions buyers would ask an AI tool, and record who gets named today.',
+          'Rewrite key pages so the facts are plain, complete, and easy to lift.',
+          'Make the business details match across the site and every profile.',
+          'Add Organization and Person schema that links those profiles together.',
+          'Build real mentions on relevant sites and review platforms.',
+          'Re-test the same questions on a schedule.',
+        ],
+      },
+      {
+        heading: 'Why mentions on other sites matter',
+        body: [
+          'An AI tool does not only read your own site. It weighs what the rest of the web says about you. A business described the same way on its own site, on review platforms, and in a few independent places is easier to trust than one that only describes itself.',
+          'That is why GEO work often reaches beyond the website, to profiles, listings, and real coverage.',
+        ],
+      },
+      {
+        heading: 'What GEO cannot do',
+        body: [
+          'GEO cannot control what an AI tool says. Answers change from day to day and differ between tools. Nobody can promise a mention, and anyone who does is guessing. What the work can do is remove the reasons a business gets left out and make the right facts easy to find. Measurement is also still rough, so progress is shown with repeated tests, not a single score.',
+        ],
+      },
+      {
+        heading: 'Questions to ask before you hire anyone',
+        body: [
+          'These questions help you judge anyone you speak to, including me. A straight answer to each is a good sign.',
+        ],
+        points: [
+          'Which AI tools did you test, with which questions, and can I see the results?',
+          'How do you measure progress when answers change every day?',
+          'What will you change on my site, and what outside it?',
+          'Do you promise mentions? If so, how?',
+          'How will you keep my business details the same across the web?',
+        ],
+      },
+      {
+        heading: 'What I need from you',
+        points: [
+          'Access to Google Search Console and Google Analytics 4, or permission to set them up.',
+          'Access to the website, or a developer who can make changes.',
+          'Someone who knows the business and can answer questions about customers and services.',
+          'Honest feedback on which enquiries turned into real work, so the effort goes where it pays.',
+        ],
+      },
     ],
     related: ['aeo', 'seo', 'web-development'],
   },
@@ -347,6 +545,81 @@ export const services: ServiceRecord[] = [
           'A test with real cases before it goes live.',
           'Passwords and API keys stored safely, never inside the workflow text.',
           'A short written guide, so someone else can fix or change it later.',
+        ],
+      },
+      {
+        heading: 'Common automation problems',
+        body: [
+          'Automations fail in a few predictable ways. Knowing them up front avoids most of the pain.',
+        ],
+        points: [
+          'A workflow built on a process nobody had written down, so it automates the wrong steps.',
+          'No alert when a step fails, so it stays broken for weeks.',
+          'One person built it, left no notes, and nobody else can change it.',
+          'An AI step that sends text to customers with no check on what it wrote.',
+          'Too many tools chained together, where one small change breaks the rest.',
+        ],
+      },
+      {
+        heading: 'The usual order of work',
+        body: [
+          'A good automation starts on paper, not in a tool.',
+        ],
+        points: [
+          'Write down the current manual steps, from trigger to finished job.',
+          'Decide which steps are worth automating and which need a person.',
+          'Pick the simplest tool that can do it.',
+          'Build it, then test with real cases, including ones that should fail.',
+          'Add alerts and a log.',
+          'Write a short guide and hand it over.',
+        ],
+      },
+      {
+        heading: 'Choosing a tool',
+        body: [
+          'Tools like Zapier and Make are quick to set up and suit simple jobs that link two or three apps. n8n takes more setup but handles complex logic and can run on your own server, which keeps data in your hands and can cost less at high volume.',
+          'The right pick depends on how complex the job is, how many times it runs, and who will look after it.',
+        ],
+      },
+      {
+        heading: 'What automation cannot do',
+        body: [
+          'Automation cannot fix a process that is unclear to begin with. If nobody can say what should happen at each step, a workflow will only do the wrong thing faster. It also does not replace judgment: complaints, pricing exceptions, and anything sensitive still need a person. And every automation needs some care, because the apps it connects change over time.',
+        ],
+      },
+      {
+        heading: 'Questions to ask before you hire anyone',
+        body: [
+          'These questions help you judge anyone you speak to, including me. A straight answer to each is a good sign.',
+        ],
+        points: [
+          'What happens when a step fails, and who finds out?',
+          'Where is my data stored, and who can see it?',
+          'Can someone else change the workflow later without you?',
+          'What will it cost to run each month, including the tools?',
+          'Which parts should stay manual, and why?',
+        ],
+      },
+      {
+        heading: 'A good first automation',
+        body: [
+          'The best first project is small, frequent, and easy to check. Sending every new enquiry to one place and replying with a short confirmation is a common one. It runs many times a week, the result is easy to see, and a mistake does little harm.',
+          'A first project like that shows how your tools behave and what your team finds useful. Larger workflows are easier to plan once that is known.',
+        ],
+      },
+      {
+        heading: 'Where AI should not decide alone',
+        body: [
+          'AI is useful for reading, sorting, and drafting. It should not be the last word on anything that costs money, affects a customer, or cannot be undone. Refunds, prices, legal or medical replies, and account changes need a person to approve them. A sound workflow has AI prepare the work and a person confirm it.',
+        ],
+      },
+      {
+        heading: 'What I need from you',
+        points: [
+          'A walk through how the task is done by hand today.',
+          'Access to the tools involved, with the least permission that still lets the job run.',
+          'A few real examples to test with.',
+          'One person who will own the workflow once it is live.',
         ],
       },
     ],
@@ -441,6 +714,76 @@ export const services: ServiceRecord[] = [
           'Analytics only loads after the visitor agrees.',
         ],
       },
+      {
+        heading: 'Common website problems',
+        body: [
+          'These are the faults that most often hold a business site back in search.',
+        ],
+        points: [
+          'Large, uncompressed images that slow every page.',
+          'Text that only appears after scripts load, which some crawlers never see.',
+          'Layouts that work on a desktop and break on a phone.',
+          'No structured data, so search engines have to guess what the business is.',
+          'Pages with the same title and description.',
+          'A redesign that dropped old URLs without redirects.',
+        ],
+      },
+      {
+        heading: 'The usual order of work',
+        body: [
+          'A site build goes smoothly when content and structure are settled before design.',
+        ],
+        points: [
+          'Agree the pages, the content, and the URLs that must be kept.',
+          'Plan the structure so every page has a clear place and links to related pages.',
+          'Design mobile first, with readable type and clear contrast.',
+          'Build the pages with clean HTML and structured data.',
+          'Test speed, forms, and real phones.',
+          'Launch with redirects in place, then watch Search Console for errors.',
+        ],
+      },
+      {
+        heading: 'Moving a site without losing rankings',
+        body: [
+          'A redesign or a move to a new platform is the riskiest moment for a site\'s search traffic. Rankings belong to URLs. If a URL changes and the old one does not redirect to the new one, the history is lost.',
+          'The safe way is to list every existing URL before any work starts, keep them the same where possible, and redirect the rest one by one. After launch, Search Console shows any pages that broke.',
+        ],
+      },
+      {
+        heading: 'What a new website cannot do',
+        body: [
+          'A fast, clean site removes what holds rankings back. It does not create demand or replace content. If the pages do not answer what people search for, a better build will load a weak page faster. A new site also does not rank on day one: search engines need time to crawl it and trust it.',
+        ],
+      },
+      {
+        heading: 'Questions to ask before you hire anyone',
+        body: [
+          'These questions help you judge anyone you speak to, including me. A straight answer to each is a good sign.',
+        ],
+        points: [
+          'Will every current URL keep working, or redirect to its new page?',
+          'How fast will the pages load on a phone, and how will you prove it?',
+          'Can I update the content myself afterwards?',
+          'Who owns the code, the domain, and the hosting account?',
+          'What will the site cost to run each year?',
+        ],
+      },
+      {
+        heading: 'What a small business site needs',
+        body: [
+          'Most business sites need less than people expect. A clear home page, a page for each service, an About page with real names and faces, proof such as reviews or past work, and an easy way to get in touch cover nearly every case.',
+          'Extra features add weight and upkeep. It is usually better to launch the short list, done well, and add more once real visitors show what is missing.',
+        ],
+      },
+      {
+        heading: 'What I need from you',
+        points: [
+          'The content for each page, or time to work it out together.',
+          'Brand assets: logo, colours, and photos.',
+          'Access to the domain and current hosting.',
+          'A list of the current pages and any tools the site connects to.',
+        ],
+      },
     ],
     related: ['seo', 'ai-automation', 'local-seo'],
   },
@@ -529,6 +872,76 @@ export const services: ServiceRecord[] = [
         heading: 'How local SEO progress is measured',
         body: [
           'The Business Profile reports how many people called, asked for directions, or clicked through to the website. Together with map pack rankings for the main searches, those numbers show whether local visibility is turning into customers.',
+        ],
+      },
+      {
+        heading: 'Common local SEO problems',
+        body: [
+          'When a nearby business does not show on the map, the cause is usually on this list.',
+        ],
+        points: [
+          'The Google Business Profile is unclaimed, half filled in, or has the wrong main category.',
+          'The address or phone number differs between the website, the profile, and directories.',
+          'There are few reviews, old reviews, or no replies to them.',
+          'The website never says which areas the business serves.',
+          'Duplicate listings for the same business confuse Google and customers.',
+          'Opening hours are out of date, which leads to bad reviews.',
+        ],
+      },
+      {
+        heading: 'The usual order of work',
+        body: [
+          'Local SEO starts with the listing and works outward.',
+        ],
+        points: [
+          'Claim and complete the Google Business Profile.',
+          'Fix the name, address, and phone number everywhere they appear.',
+          'Remove or merge duplicate listings.',
+          'Set up a simple way to ask real customers for reviews, and reply to each one.',
+          'Add location and service-area pages to the website, with LocalBusiness schema.',
+          'Track calls, direction requests, and map rankings.',
+        ],
+      },
+      {
+        heading: 'Businesses with no shop front',
+        body: [
+          'A business that travels to its customers, such as a plumber or a pest control service, can still appear in local results. Google lets it list the areas it serves instead of showing an address.',
+          'The rules are strict here. The listing must be for a real business that serves those areas, and a virtual office address is not allowed. On the website, a clear page for each service area does the supporting work.',
+        ],
+      },
+      {
+        heading: 'What local SEO cannot do',
+        body: [
+          'Local SEO cannot move a business closer to the person searching. Distance is one of the three things Google weighs, and it cannot be changed. It also cannot make up for poor service: reviews reflect what customers really got. And it cannot use shortcuts such as fake reviews or keywords stuffed into the business name, which break Google rules and can get a listing suspended.',
+        ],
+      },
+      {
+        heading: 'Questions to ask before you hire anyone',
+        body: [
+          'These questions help you judge anyone you speak to, including me. A straight answer to each is a good sign.',
+        ],
+        points: [
+          'Who will own the Google Business Profile: me or you?',
+          'How do you get reviews, and is every one from a real customer?',
+          'Which directories will you list the business on, and why those?',
+          'How will you report calls and direction requests, not only rankings?',
+          'What do you do about duplicate or wrong listings?',
+        ],
+      },
+      {
+        heading: 'More than one location',
+        body: [
+          'A business with several branches needs a separate Business Profile for each real location, and a separate page on the website for each one. Each page should carry that branch\'s own address, phone number, hours, and services.',
+          'Copying one page and changing only the city name does not work. Search engines treat near-identical pages as thin, so each location page needs details that are true only for that branch.',
+        ],
+      },
+      {
+        heading: 'What I need from you',
+        points: [
+          'Owner or manager access to the Google Business Profile.',
+          'The correct business name, address, phone number, and opening hours.',
+          'A list of the areas served and the services offered in each.',
+          'Photos of the place, the team, and the work.',
         ],
       },
     ],

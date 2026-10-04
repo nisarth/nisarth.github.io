@@ -197,15 +197,34 @@ const solo = shown.length === 1;
 
     lab.setAttribute('data-js', '');
 
+    const goLive = () => lab.classList.add('is-live');
+
     new IntersectionObserver(
       ([entry]) => {
         live = entry.isIntersecting;
-        if (live) lab.classList.add('is-live');
+        if (live) goLive();
       },
       { threshold: 0.3 }
     ).observe(lab);
 
+    // Safety net. If the observer never reports, the drawing would sit in its
+    // starting state for good, which reads as broken. A plain position check
+    // on scroll, and once after load, starts it anyway.
+    const inView = () => {
+      const r = lab.getBoundingClientRect();
+      return r.top < window.innerHeight * 0.75 && r.bottom > window.innerHeight * 0.25;
+    };
+    const check = () => {
+      if (lab.classList.contains('is-live') || !inView()) return;
+      live = true;
+      goLive();
+      window.removeEventListener('scroll', check);
+    };
+    window.addEventListener('scroll', check, { passive: true });
+    setTimeout(check, 1500);
+
     setInterval(() => {
+      check();
       if (auto && live && !document.hidden) show(current + 1);
     }, 6500);
   });

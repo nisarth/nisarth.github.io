@@ -1,0 +1,52 @@
+---
+import ChecklistPage from '../components/ChecklistPage.astro';
+import { aeoChecklist } from '../data/aeo-geo-checklists';
+
+const total = aeoChecklist.reduce((sum, g) => sum + g.checks.length, 0);
+
+const faqs = [
+  {
+    q: 'What is an AEO checklist?',
+    a: 'An AEO checklist is a list of the things that make a page easy for a search engine to use as a direct answer: a clear question, a short answer right below it, the right format, and matching schema.',
+  },
+  {
+    q: 'Should I run this on every page?',
+    a: 'No. Use it on the pages that answer a real question from buyers: service pages, guides, and FAQ sections. A contact page does not need it.',
+  },
+  {
+    q: 'Does passing every check win a featured snippet?',
+    a: 'No. It makes the page eligible and easy to use. Whether it is picked also depends on how well the page ranks and what competing pages offer.',
+  },
+  {
+    q: 'Is my score saved?',
+    a: 'Your ticks are saved in your own browser only. Nothing is sent anywhere, and clearing your browser data removes them.',
+  },
+];
+
+const tools = [
+  { name: 'Google Search Console', href: 'https://search.google.com/search-console', use: 'Shows the question searches your pages already appear for.' },
+  { name: 'Rich Results Test', href: 'https://search.google.com/test/rich-results', use: 'Checks FAQ, Article, and other schema for errors.' },
+  { name: 'Schema Markup Validator', href: 'https://validator.schema.org/', use: 'Checks any Schema.org markup, including types Google does not show.' },
+];
+---
+
+<ChecklistPage
+  path="/aeo-checklist.html"
+  title={`AEO Checklist: ${total} Checks for Answer-Ready Pages`}
+  description={`A free AEO checklist with ${total} checks. See if a page is ready to be shown as a featured snippet, a People Also Ask answer, or a voice reply. Tick them off and see your score.`}
+  name="AEO checklist"
+  h1="AEO checklist"
+  lead={`An AEO checklist is a list of the things that make a page easy to show as a direct answer. This one has ${total} checks in ${aeoChecklist.length} groups. Pick one page, tick what it already does, and the score shows what to fix next.`}
+  how="Use it one page at a time, on pages that answer a real question. Start with the page that already ranks best, because answer features are drawn from pages near the top."
+  groups={aeoChecklist}
+  storageKey="aeo-checklist-v1"
+  faqs={faqs}
+  tools={tools}
+  toolsIntro="Free tools that cover most of this list."
+  nextHeading="Want your pages made answer-ready?"
+  nextCta="Ask about AEO"
+>
+  Read the <a href="/guides/aeo.html">AEO guide</a> for the ideas behind these checks,
+  run the <a href="/seo-audit-checklist.html">SEO audit checklist</a> first if the page
+  does not rank yet, or see <a href="/services/aeo.html">how I do AEO</a>.
+</ChecklistPage>
