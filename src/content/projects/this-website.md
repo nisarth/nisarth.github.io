@@ -11,7 +11,7 @@ results:
   - metric: 'Lighthouse SEO, mobile'
     change: '100'
   - metric: 'Largest Contentful Paint, mobile'
-    change: '1.6 s'
+    change: '1.7 s'
   - metric: 'Home page total size'
     change: '50 KB'
   - metric: 'Words on the home page'
@@ -83,11 +83,11 @@ Measured on the live home page with Lighthouse 12.8 on 4 October 2026.
 
 | Measure | Mobile | Desktop |
 |---|---|---|
-| Performance | 97 | 99 |
+| Performance | 97 | 98 |
 | SEO | 100 | 100 |
 | Best practices | 100 | 100 |
-| Accessibility | 97 | 97 |
-| Largest Contentful Paint | 1.6 s | 0.4 s |
+| Accessibility | 100 | 100 |
+| Largest Contentful Paint | 1.7 s | 0.5 s |
 | Cumulative Layout Shift | 0 | 0 |
 
 Google counts a Largest Contentful Paint of 2.5 seconds or less as good, and a
@@ -100,8 +100,9 @@ What the site holds now:
 - no broken internal links
 - 86 URLs in the sitemap
 
-The accessibility score of 97 came from one contrast problem on three small
-labels. It was found by this same test and has since been fixed.
+The first run scored 97 for accessibility, because three small labels did not
+have enough contrast. That was fixed, and the figures above are from the run
+after the fix. Scores can move by a point or two from one run to the next.
 
 ## What is not known yet
 
