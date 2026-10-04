@@ -12,6 +12,8 @@ Hosted free on GitHub Pages at https://nisarth.github.io.
 
 - Astro (static output). Ships zero client JavaScript by default.
 - Plain scoped CSS with design tokens in `src/styles/global.css`. No CSS framework.
+- Light theme: warm paper, ink text, one cobalt accent. `DESIGN.md` holds the
+  colour, type, layout, and motion rules. Read it before adding a page.
 - Self-hosted fonts in `public/fonts/`. No render-blocking font CDN.
 - Deploys via GitHub Actions (`.github/workflows/deploy.yml`) to GitHub Pages.
 
@@ -30,9 +32,23 @@ Hosted free on GitHub Pages at https://nisarth.github.io.
 ## URL rule (protect search rankings)
 
 Keep every existing URL exactly. Astro `build.format: 'file'` outputs
-`/about.html`, `/services.html`, and so on, matching the old paths. The legacy
-blog lives untouched in `public/blog/` and `public/blog.html` and must keep its
-current URLs. Do not rename or remove these paths.
+`/about.html`, `/services.html`, and so on, matching the old paths. Blog posts
+are Markdown in `src/content/blog/` and must keep their `/blog/<slug>.html`
+URLs. Do not rename or remove any published path.
+
+## What is on the site
+
+- Core pages: home, about, services, six service pages, process, work, contact,
+  blog, resume.
+- Guides: `/guides.html` plus SEO, AEO, and GEO guides (`src/data/hubs.ts`).
+  Each guide links down to its blog posts, and each post links back up.
+- Reference: `/glossary.html` (`src/data/glossary.ts`).
+- Tools: SEO audit, AEO, and GEO checklists, all built on
+  `src/components/ChecklistPage.astro`.
+- Confirmed facts live in `src/data/experience.ts` and `src/data/proof.ts`.
+  Employer names are left out at Nisarth's request. Do not add them.
+- Downloads in `public/downloads/` are static copies. The private resume files
+  are not in this repo and must not be added, because the repo is public.
 
 ## Conventions
 

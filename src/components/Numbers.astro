@@ -1,0 +1,130 @@
+---
+// A row of confirmed figures that count up when scrolled into view. The final
+// values are in the HTML, so the row reads correctly with no JavaScript and
+// with reduced motion.
+import { numbers, numbersNote } from '../data/proof';
+
+interface Props {
+  heading?: string;
+  headingId?: string;
+}
+const { heading = 'Numbers so far', headingId = 'numbers-heading' } = Astro.props;
+const format = (n: number) => n.toLocaleString('en-US');
+---
+
+<section class="numbers" aria-labelledby={headingId}>
+  <h2 id={headingId}>{heading}</h2>
+  <ul data-numbers>
+    {
+      numbers.map((n) => (
+        <li>
+          <strong><span data-count={n.value}>{format(n.value)}</span>{n.suffix}</strong>
+          <span class="label">{n.label}</span>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="note">{numbersNote}</p>
+</section>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll<HTMLElement>('[data-numbers]').forEach((list) => {
+    if (reduced) return;
+    const items = Array.from(list.querySelectorAll<HTMLElement>('[data-count]'));
+    let done = false;
+
+    const run = () => {
+      if (done) return;
+      done = true;
+      const start = performance.now();
+      const duration = 1300;
+      let finished = false;
+
+      // These are real figures, so a half-finished count must never be left on
+      // screen. Browsers pause animation frames in background tabs, so a timer
+      // sets the true values no matter what the frames do.
+      const finish = () => {
+        finished = true;
+        items.forEach((el) => {
+          el.textContent = Number(el.dataset.count).toLocaleString('en-US');
+        });
+      };
+      setTimeout(finish, duration + 150);
+
+      const tick = (now: number) => {
+        if (finished) return;
+        const t = Math.min(1, (now - start) / duration);
+        if (t >= 1) return finish();
+        // Ease out, so the count slows as it lands on the real value.
+        const eased = 1 - Math.pow(1 - t, 3);
+        items.forEach((el) => {
+          const target = Number(el.dataset.count);
+          el.textContent = Math.round(target * eased).toLocaleString('en-US');
+        });
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    // Observer first, with a plain position check as a fallback.
+    const inView = () => {
+      const r = list.getBoundingClientRect();
+      return r.top < window.innerHeight * 0.85 && r.bottom > 0;
+    };
+    const check = () => {
+      if (!inView()) return;
+      run();
+      window.removeEventListener('scroll', check);
+    };
+    new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) run();
+      },
+      { threshold: 0.4 }
+    ).observe(list);
+    window.addEventListener('scroll', check, { passive: true });
+  });
+</script>
+
+<style>
+  .numbers {
+    margin-top: 3rem;
+  }
+  h2 {
+    margin-bottom: 1.4rem;
+  }
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.1rem 1.2rem;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    line-height: 1;
+    color: var(--accent);
+    white-space: nowrap;
+    /* Stops the row jumping as digits change width during the count. */
+    font-variant-numeric: tabular-nums;
+  }
+  .label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .note {
+    margin-top: 0.9rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+</style>

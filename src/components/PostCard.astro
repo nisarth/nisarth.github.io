@@ -11,7 +11,7 @@ const d = post.data;
 const search = [d.title, d.excerpt, d.category].join(' ').toLowerCase();
 ---
 
-<article class="card post-card" data-search={search}>
+<article class="card post-card reveal" data-search={search}>
   <span class="post-thumb" aria-hidden="true">{d.emoji}</span>
   <p class="post-card-meta">
     <span class="tag">{d.category}</span>

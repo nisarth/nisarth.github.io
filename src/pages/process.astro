@@ -92,7 +92,30 @@ const steps = [
   },
 ];
 
+const constants = [
+  'A written goal before work starts, so success is not a matter of opinion.',
+  'A starting point recorded from Search Console and Analytics, so results can be compared.',
+  'Fixes in order of impact, not in the order they were found.',
+  'Plain reports: what was done, what changed, and what happens next.',
+  'You keep everything. The content, the access, and the accounts stay yours.',
+];
+
+const needs = [
+  'Access to Google Search Console and Google Analytics 4, or permission to set them up.',
+  'Access to the website, or a developer who can make changes.',
+  'Someone who knows the business and can answer questions about customers and services.',
+  'Honest feedback on which enquiries turned into real work.',
+];
+
 const faqs = [
+  {
+    q: 'Can you work with my developer or my team?',
+    a: 'Yes. I can hand over each fix as clear notes for your developer, or make the changes myself if I have access. Either way the change is checked once it is live.',
+  },
+  {
+    q: 'What if I only need one step, such as an audit?',
+    a: 'That is fine. An audit can stand alone. You get the findings and the order to fix them in, and you can do the work yourself or with someone else.',
+  },
   {
     q: 'How long does a project take?',
     a: 'It depends on the work. A technical SEO audit can be done in a week, while ongoing SEO or content work shows results over a few months. I will give you a realistic timeline before we start.',
@@ -146,6 +169,40 @@ const updated = lastUpdated('process');
           ))
         }
       </ol>
+
+      <div class="more">
+        <h2>What stays the same on every project</h2>
+        <ul class="plain-list">
+          {constants.map((c) => <li class="reveal">{c}</li>)}
+        </ul>
+
+        <h2>What I need from you</h2>
+        <ul class="plain-list">
+          {needs.map((n) => <li class="reveal">{n}</li>)}
+        </ul>
+
+        <h2>When things do not go to plan</h2>
+        <p>
+          Search is not fully predictable. A page may take longer to rank than expected,
+          or a search engine update may move things around. When that happens I say so,
+          show what the data says, and change the plan. A plan that never changes is not
+          being checked against the results.
+        </p>
+        <p>
+          The same goes for limits. Nobody can promise a ranking or a mention in an AI
+          answer. What can be promised is the work itself, done in a sensible order and
+          reported honestly.
+        </p>
+
+        <h2>Check your own site first</h2>
+        <p>
+          If you want to see where you stand before a call, the
+          <a href="/seo-audit-checklist.html">SEO audit checklist</a>, the
+          <a href="/aeo-checklist.html">AEO checklist</a>, and the
+          <a href="/geo-checklist.html">GEO checklist</a> are free and take a few minutes
+          each. The <a href="/guides.html">guides</a> explain the ideas behind them.
+        </p>
+      </div>
 
       {updated && <p class="updated">Last updated: {updated}</p>}
       <a href="/contact.html" class="btn btn-primary">Start with a call</a>
@@ -207,6 +264,38 @@ const updated = lastUpdated('process');
     padding-top: 0.9rem;
     border-top: 1px solid var(--border);
     font-weight: 600;
+  }
+  .more {
+    max-width: 68ch;
+  }
+  .more h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    margin: 3rem 0 1rem;
+  }
+  .more p + p {
+    margin-top: 1rem;
+  }
+  .more a {
+    color: var(--link);
+  }
+  .plain-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .plain-list li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .plain-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
   }
   .updated {
     font-family: var(--font-mono);

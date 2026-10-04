@@ -9,13 +9,14 @@ import { breadcrumb, faqPage, service as serviceSchema } from '../../schema';
 import { lastUpdated } from '../../lib/last-updated';
 import SearchLab from '../../components/SearchLab.astro';
 
-// Which animated drawing fits each service. Web development has none.
-const DRAWING: Record<string, 'search' | 'answers' | 'automation'> = {
+// Which animated drawing fits each service.
+const DRAWING: Record<string, 'search' | 'answers' | 'automation' | 'speed'> = {
   seo: 'search',
   'local-seo': 'search',
   aeo: 'answers',
   geo: 'answers',
   'ai-automation': 'automation',
+  'web-development': 'speed',
 };
 
 export function getStaticPaths() {

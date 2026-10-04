@@ -3,9 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Testimonials from '../components/Testimonials.astro';
 import { getCollection } from 'astro:content';
-import { breadcrumb } from '../schema';
+import { breadcrumb, faqPage } from '../schema';
+import Faq from '../components/Faq.astro';
 import { SITE } from '../consts';
 import { lastUpdated } from '../lib/last-updated';
+import Numbers from '../components/Numbers.astro';
+import { industries } from '../data/proof';
 
 const title = 'Work: Case Studies in SEO, Automation, and Web';
 const description =
@@ -95,6 +98,25 @@ const itemList = {
   })),
 };
 
+const faqs = [
+  {
+    q: 'Why are client names not shown?',
+    a: 'Case studies on this page will describe the kind of business without naming it, so client details stay private.',
+  },
+  {
+    q: 'Can I see results for a business like mine?',
+    a: 'Yes. Tell me your industry and your goal, and I will walk you through the most relevant work on a call.',
+  },
+  {
+    q: 'Do you only work with the industries listed here?',
+    a: 'No. The list shows where I have worked so far. The method is the same in any field: find what holds the site back, fix it in order, and measure the result.',
+  },
+  {
+    q: 'Where do the numbers on this page come from?',
+    a: 'They combine my own work and work done with my team in my current full-time role, since January 2026. They are totals across client projects, not the result of one project.',
+  },
+];
+
 const updated = lastUpdated('work');
 ---
 
@@ -105,6 +127,7 @@ const updated = lastUpdated('work');
   jsonLd={[
     breadcrumb([{ name: 'Home', path: '/' }, { name: 'Work', path: '/work.html' }]),
     itemList,
+    faqPage(faqs),
   ]}
 >
   <section class="section">
@@ -164,6 +187,26 @@ const updated = lastUpdated('work');
         )
       }
 
+      <Numbers heading="Numbers so far" />
+
+      <section class="industries" aria-labelledby="industries-heading">
+        <h2 id="industries-heading">Industries I have worked with</h2>
+        <p class="muted industries-lead">
+          These are fields I have worked in. Each note says what usually matters most
+          for search in that field.
+        </p>
+        <ul>
+          {
+            industries.map((ind) => (
+              <li class="reveal">
+                <h3>{ind.name}</h3>
+                <p class="muted">{ind.note}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
       <div class="work-explain">
         <h2>How results are reported</h2>
         <p>
@@ -193,6 +236,8 @@ const updated = lastUpdated('work');
   </section>
 
   <Testimonials />
+
+  <Faq heading="Questions about the work" items={faqs} />
 </BaseLayout>
 
 <style>
@@ -256,6 +301,26 @@ const updated = lastUpdated('work');
     font-weight: 700;
     color: var(--accent);
     background: var(--accent-soft);
+  }
+  .industries {
+    margin-top: 3rem;
+  }
+  .industries-lead {
+    max-width: 60ch;
+    margin: 0.6rem 0 1.4rem;
+  }
+  .industries ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0 2.2rem;
+  }
+  .industries li {
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .industries h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
   }
   .work-explain {
     margin-top: 3rem;

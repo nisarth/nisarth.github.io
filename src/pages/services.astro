@@ -111,7 +111,23 @@ const topics = blogCategories.map((c) => ({
   count: posts.filter((p) => p.data.categorySlug === c.slug).length,
 }));
 
+const everyService = [
+  'A starting point recorded before work begins, so results can be compared.',
+  'Work done in order of impact, biggest problems first.',
+  'Plain reports that say what was done, what changed, and what happens next.',
+  'Honest limits. Nobody can promise a ranking or a mention in an AI answer.',
+  'You keep everything: the content, the accounts, and the access stay yours.',
+];
+
 const faqs = [
+  {
+    q: 'Can I start with just an audit?',
+    a: 'Yes. An audit is the most common first step. You get a list of what is holding the site back, in order of importance, and you decide what to do next.',
+  },
+  {
+    q: 'What should I have ready before we start?',
+    a: 'Access to your website, Google Search Console, and Google Analytics 4 if you have them, plus a short note on who your customers are and what a good result looks like. If the tools are not set up yet, that becomes the first job.',
+  },
   {
     q: 'How do you price your work?',
     a: 'Pricing depends on the scope of the project. Smaller one-off jobs are quoted as a fixed price, and ongoing work is set up as a monthly retainer. Tell me what you need and I will send a clear quote.',
@@ -208,6 +224,45 @@ const reviewSchema = publishedTestimonials.length
         service.
       </p>
 
+      <h2>What every service includes</h2>
+      <ul class="include-list">
+        {everyService.map((e) => <li class="reveal">{e}</li>)}
+      </ul>
+
+      <h2>One-off or ongoing</h2>
+      <p>
+        Some jobs have a clear end. An audit, a website build, a structured data setup,
+        or a Business Profile clean-up can each be done once and handed over.
+      </p>
+      <p>
+        Other work pays off through repetition. Publishing useful content, earning
+        links, tracking rankings, and re-checking AI answers all build over months. For
+        those, a steady monthly rhythm works better than a single push.
+      </p>
+      <p>
+        Many businesses start with a one-off audit, fix the biggest problems, and only
+        then decide whether ongoing work is worth it.
+      </p>
+
+      <h2>Not sure what you need?</h2>
+      <p>
+        That is the usual starting point, and it is fine. Tell me what is going wrong:
+        no calls from the website, traffic that dropped, a competitor who shows up
+        everywhere. I will look at the site, say what I think the cause is, and suggest
+        the smallest first step that would prove it. If the honest answer is that you
+        do not need me, I will say that too.
+      </p>
+
+      <h2>Free ways to check your own site</h2>
+      <p>
+        You do not need to hire anyone to find out where you stand. The
+        <a href="/seo-audit-checklist.html">SEO audit checklist</a>,
+        <a href="/aeo-checklist.html">AEO checklist</a>, and
+        <a href="/geo-checklist.html">GEO checklist</a> are free. The
+        <a href="/guides.html">guides</a> explain how search works now, and the
+        <a href="/glossary.html">glossary</a> explains the terms.
+      </p>
+
       <p class="remote-line">
         I work remote-first with businesses across India and internationally.
       </p>
@@ -245,6 +300,29 @@ const reviewSchema = publishedTestimonials.length
   }
   .container > h2 {
     margin: 2.5rem 0 1rem;
+  }
+  .include-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-width: 68ch;
+  }
+  .include-list li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .include-list li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .container > p {
+    max-width: 68ch;
+  }
+  .container > p a {
+    color: var(--link);
   }
   .start-lead {
     max-width: 60ch;
